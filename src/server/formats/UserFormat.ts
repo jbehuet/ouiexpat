@@ -1,0 +1,19 @@
+import PhoneFormat from './PhoneFormat';
+import ExpeditionFormat from './ExpeditionFormat';
+import AddressFormat from './AddressFormat';
+
+export default class UserFormat {
+    _id: string;
+    firstname: string;
+    lastname: string;
+    password: string;
+    email: string;
+    photo: string;
+    address: AddressFormat;
+    administrator: boolean;
+    phone: PhoneFormat;
+    birthday: Date;
+    expeditions: Array<ExpeditionFormat>;
+    createdAt: Date;
+    updatedAt: Date;
+}
