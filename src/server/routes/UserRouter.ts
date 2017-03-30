@@ -24,9 +24,7 @@ class UserRouter extends AbstractRouter {
         if (!req.authenticatedUser.administrator && req.params._id !== req.authenticatedUser._id)
             return ErrorHelper.handleError(HTTPCode.error.client.UNAUTHORIZED, 'Not authorize', res);
 
-        UserModel.update({
-            _id: req.params._id
-        }, req.body, (err: mongoose.Error, user: UserFormat) => {
+        UserModel.update({ _id: req.params._id }, req.body, { new: true }, (err: mongoose.Error, user: UserFormat) => {
             if (err)
                 ErrorHelper.handleMongooseError(err, res);
             else
@@ -73,6 +71,7 @@ class UserRouter extends AbstractRouter {
     }
 
     private deleteExpedition(req: IRequest, res: Response, next: NextFunction) {
+
         UserModel.findOneAndUpdate({ _id: req.authenticatedUser._id },
             { $pull: { "expeditions": { "_id": req.params.id } } }, { new: true }, (err: mongoose.Error, user: UserFormat) => {
                 if (err)
