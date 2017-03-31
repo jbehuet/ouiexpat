@@ -3,12 +3,14 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: {
-        'public/app': './src/ui/js/app'
+        'public/js/app': './src/ui/js/app',
+        'public/js/vendor' : ['angular', 'angular-ui-router']
     },
     output: {
-        filename: "./dist/[name].js"
+        filename: "./dist/[name].min.js"
     },
     target: "node",
+    devtool: 'source-map',
     resolve: {
         extensions: ['.js']
     },
