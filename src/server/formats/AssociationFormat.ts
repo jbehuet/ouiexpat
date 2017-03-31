@@ -6,6 +6,7 @@ export default class AssociationFormat {
     name: string;
     email: string;
     logo: string;
+    website: string;
     phone: PhoneFormat;
     details: string;
     services: Array<string>;

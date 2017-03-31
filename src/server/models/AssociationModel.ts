@@ -13,6 +13,7 @@ const _schema = new mongoose.Schema({
         }, 'Please use a valid email address'],
     },
     logo: String,
+    website: String,
     phone: {
         number: {
             type: String,
