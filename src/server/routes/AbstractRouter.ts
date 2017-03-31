@@ -19,7 +19,7 @@ class AbstractRouter {
         this.router.get('/', this.getAll.bind(this));
         this.router.get('/:id', this.getById.bind(this));
         this.router.post('/', this.create.bind(this));
-        this.router.put('/', this.update.bind(this));
+        this.router.put('/:id', this.update.bind(this));
         this.router.delete('/:id', this.delete.bind(this));
     }
 

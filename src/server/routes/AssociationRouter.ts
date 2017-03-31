@@ -76,12 +76,7 @@ class AssociationRouter extends AbstractRouter {
                     review.review = req.body.review;
                     review.rate = req.body.rate;
 
-                    if (req.authenticatedUser.administrator){
-                        association.platformReview = new Object();
-                        association.platformReview.user = req.authenticatedUser;
-                        association.platformReview.review = req.body.review;
-                        association.platformReview.rate = req.body.rate;
-                    } else if (isNew)
+                    if (isNew)
                         association.reviews.push(review);
 
                     association.save();
@@ -102,10 +97,8 @@ class AssociationRouter extends AbstractRouter {
                     res.status(HTTPCode.error.client.NOT_FOUND).json({ status: HTTPCode.error.client.NOT_FOUND });
                 }
                 else {
-                    if (req.authenticatedUser.administrator)
-                        association.platformReview = new Object();
-                    else
-                        association.reviews = association.reviews.filter(r => r.user.email !== req.authenticatedUser.email);
+
+                    association.reviews = association.reviews.filter(r => r.user.email !== req.authenticatedUser.email);
                     association.save();
                     res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: association });
                 }

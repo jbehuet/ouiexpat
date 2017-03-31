@@ -18,6 +18,19 @@ class UserRouter extends AbstractRouter {
         this.router.delete('/expeditions/:id', this.deleteExpedition.bind(this));
     }
 
+    protected getAll(req: IRequest, res: Response, next: NextFunction) {
+
+      if (!req.authenticatedUser.administrator) return ErrorHelper.handleError(HTTPCode.error.client.UNAUTHORIZED, 'Not authorize', res);
+
+      this.model.find({}).sort({ createdAt: "desc" }).exec((err: mongoose.Error, objects: Array<mongoose.Document>) => {
+          if (err)
+              ErrorHelper.handleMongooseError(err, res);
+          else
+              res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: objects });
+      });
+
+    }
+
     protected update(req: IRequest, res: Response, next: NextFunction) {
 
         if (_.isEmpty(req.body)) return ErrorHelper.handleError(HTTPCode.error.client.BAD_REQUEST, 'Request body is empty', res);
@@ -30,6 +43,7 @@ class UserRouter extends AbstractRouter {
             else
                 res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user });
         });
+        
     }
 
     protected delete(req: IRequest, res: Response, next: NextFunction) {
