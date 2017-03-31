@@ -42,7 +42,7 @@ const _schema = new mongoose.Schema({
          ref: 'user'
       },
       review: String,
-      note: Number
+      rate: Number
     }]
 }, {
         timestamps: true

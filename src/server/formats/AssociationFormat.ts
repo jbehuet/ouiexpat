@@ -13,4 +13,5 @@ export default class AssociationFormat {
     reviews: Array<ReviewFormat>;
     createdAt: Date;
     updatedAt: Date;
+    save:any;
 }

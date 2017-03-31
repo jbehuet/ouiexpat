@@ -7,13 +7,14 @@ import AbstractRouter from './AbstractRouter';
 import ErrorHelper from '../helpers/ErrorHelper';
 import AssociationModel from '../models/AssociationModel';
 import AssociationFormat from '../formats/AssociationFormat';
+import ReviewFormat from '../formats/ReviewFormat';
 
 class AssociationRouter extends AbstractRouter {
 
     constructor() {
         super(AssociationModel)
-        this.router.post('/:association_id/reviews', this.createReview.bind(this));
-        this.router.put('/:association_id/reviews/:id', this.updateReview.bind(this));
+        this.router.post('/:association_id/reviews', this.updateOrCreateReview.bind(this));
+        this.router.put('/:association_id/reviews/:id', this.updateOrCreateReview.bind(this));
         this.router.delete('/:association_id/reviews/:id', this.deleteReview.bind(this));
     }
 
@@ -58,12 +59,29 @@ class AssociationRouter extends AbstractRouter {
 
     }
 
-    private createReview(req: IRequest, res: Response, next: NextFunction) {
-        // TODO
-    }
+    private updateOrCreateReview(req: IRequest, res: Response, next: NextFunction) {
 
-    private updateReview(req: IRequest, res: Response, next: NextFunction) {
-        // TODO
+        AssociationModel.findOne({ _id: req.params.association_id })
+            .populate('reviews.user')
+            .exec((err: mongoose.Error, association: AssociationFormat) => {
+                if (err)
+                    ErrorHelper.handleMongooseError(err, res);
+                else if (!association) {
+                    res.status(HTTPCode.error.client.NOT_FOUND).json({ status: HTTPCode.error.client.NOT_FOUND });
+                }
+                else {
+                    let review = association.reviews.find(r => r.user.email === req.authenticatedUser.email) || new ReviewFormat();
+                    let isNew = _.isEmpty(review.user)
+
+                    review.user = req.authenticatedUser;
+                    review.review = req.body.review;
+                    review.rate = req.body.rate;
+                    if (isNew) association.reviews.push(review);
+                    association.save();
+                    res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: association });
+                }
+            });
+
     }
 
     private deleteReview(req: IRequest, res: Response, next: NextFunction) {

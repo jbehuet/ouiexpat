@@ -1,5 +1,7 @@
+import UserFormat from './UserFormat';
+
 export default class ReviewFormat {
-    user: object;
+    user: UserFormat;
     review: string;
-    note: number;
+    rate: number;
 }

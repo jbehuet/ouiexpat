@@ -36,7 +36,7 @@ class App {
         this.express.use('/api', router);
         this.express.use('/api/v1/auth', authRouter.router);
         this.express.use('/api/v1/users', userRouter.router);
-        this.express.use('/api/v1/assocations', associationRouter.router);
+        this.express.use('/api/v1/associations', associationRouter.router);
     }
 
 }
