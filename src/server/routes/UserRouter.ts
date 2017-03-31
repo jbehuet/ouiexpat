@@ -20,14 +20,14 @@ class UserRouter extends AbstractRouter {
 
     protected getAll(req: IRequest, res: Response, next: NextFunction) {
 
-      if (!req.authenticatedUser.administrator) return ErrorHelper.handleError(HTTPCode.error.client.UNAUTHORIZED, 'Not authorize', res);
+        if (!req.authenticatedUser.administrator) return ErrorHelper.handleError(HTTPCode.error.client.UNAUTHORIZED, 'Not authorize', res);
 
-      this.model.find({}).sort({ createdAt: "desc" }).exec((err: mongoose.Error, objects: Array<mongoose.Document>) => {
-          if (err)
-              ErrorHelper.handleMongooseError(err, res);
-          else
-              res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: objects });
-      });
+        this.model.find({}).sort({ createdAt: "desc" }).exec((err: mongoose.Error, objects: Array<mongoose.Document>) => {
+            if (err)
+                ErrorHelper.handleMongooseError(err, res);
+            else
+                res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: objects });
+        });
 
     }
 
@@ -43,7 +43,7 @@ class UserRouter extends AbstractRouter {
             else
                 res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user });
         });
-        
+
     }
 
     protected delete(req: IRequest, res: Response, next: NextFunction) {
@@ -57,6 +57,10 @@ class UserRouter extends AbstractRouter {
                 res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK });
         });
 
+    }
+
+    private uploadMedia(req: IRequest, res: Response, next: NextFunction) {
+        //TODO
     }
 
     private createExpedition(req: IRequest, res: Response, next: NextFunction) {

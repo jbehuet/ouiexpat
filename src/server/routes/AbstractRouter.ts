@@ -2,6 +2,9 @@ import * as mongoose from 'mongoose';
 import {Router, Response, NextFunction} from 'express';
 import * as _ from 'lodash';
 import * as jwt from 'jsonwebtoken';
+import * as formidable from 'formidable';
+import * as fs from 'fs';
+import * as path from 'path';
 import HTTPCode from '../constants/HttpCodeConstant';
 import IRequest from '../interfaces/IRequest';
 import ErrorHelper from '../helpers/ErrorHelper';
@@ -21,6 +24,7 @@ class AbstractRouter {
         this.router.post('/', this.create.bind(this));
         this.router.put('/:id', this.update.bind(this));
         this.router.delete('/:id', this.delete.bind(this));
+        this.router.post('/media', this.upload.bind(this));
     }
 
     public authenticate(req: IRequest, res: Response, next: NextFunction) {
@@ -73,7 +77,7 @@ class AbstractRouter {
 
     protected update(req: IRequest, res: Response, next: NextFunction) {
 
-        this.model.update({ _id: req.params.id }, req.body, {new : true }, (err: mongoose.Error, object: mongoose.Document) => {
+        this.model.update({ _id: req.params.id }, req.body, { new: true }, (err: mongoose.Error, object: mongoose.Document) => {
             if (err)
                 ErrorHelper.handleMongooseError(err, res);
             else
@@ -91,6 +95,22 @@ class AbstractRouter {
                 res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK });
         });
 
+    }
+
+    protected upload(req: IRequest, res: Response, next: NextFunction) {
+        let form = new formidable.IncomingForm();
+        const uploadPath = path.join(__dirname, '../public/img/');
+        form.uploadDir = uploadPath;
+
+        if (!fs.existsSync(uploadPath)) fs.mkdirSync(uploadPath);
+
+        form.on('file', (field, file) => {
+            fs.renameSync(file.path, uploadPath + file.name);
+        }).on('end', () => {
+            res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK });
+        });
+
+        form.parse(req);
     }
 }
 
