@@ -10,7 +10,7 @@ interface IAssociation extends mongoose.Document {
     phone: PhoneFormat;
     details: string;
     services: Array<string>;
-    platform_review: ReviewFormat;
+    platformReview: ReviewFormat;
     reviews: Array<ReviewFormat>;
     createdAt: Date;
     updatedAt: Date;

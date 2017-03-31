@@ -1,9 +1,10 @@
+import * as mongoose from 'mongoose';
 import PhoneFormat from './PhoneFormat';
 import ExpeditionFormat from './ExpeditionFormat';
 import AddressFormat from './AddressFormat';
 
 export default class UserFormat {
-    _id: string;
+    _id: mongoose.Types.ObjectId;
     firstname: string;
     lastname: string;
     password: string;

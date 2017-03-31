@@ -28,13 +28,13 @@ const _schema = new mongoose.Schema({
       require: true
     },
     services: [String],
-    platform_review: {
+    platformReview: {
       user:{
          type: mongoose.Schema.Types.ObjectId,
          ref: 'user'
       },
       review: String,
-      note: Number
+      rate: Number
     },
     reviews: [{
       user:{

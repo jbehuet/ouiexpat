@@ -14,8 +14,7 @@ class AssociationRouter extends AbstractRouter {
     constructor() {
         super(AssociationModel)
         this.router.post('/:association_id/reviews', this.updateOrCreateReview.bind(this));
-        this.router.put('/:association_id/reviews/:id', this.updateOrCreateReview.bind(this));
-        this.router.delete('/:association_id/reviews/:id', this.deleteReview.bind(this));
+        this.router.delete('/:association_id/reviews', this.deleteReview.bind(this));
     }
 
     protected create(req: IRequest, res: Response, next: NextFunction) {
@@ -76,7 +75,15 @@ class AssociationRouter extends AbstractRouter {
                     review.user = req.authenticatedUser;
                     review.review = req.body.review;
                     review.rate = req.body.rate;
-                    if (isNew) association.reviews.push(review);
+
+                    if (req.authenticatedUser.administrator){
+                        association.platformReview = new Object();
+                        association.platformReview.user = req.authenticatedUser;
+                        association.platformReview.review = req.body.review;
+                        association.platformReview.rate = req.body.rate;
+                    } else if (isNew)
+                        association.reviews.push(review);
+
                     association.save();
                     res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: association });
                 }
@@ -85,7 +92,24 @@ class AssociationRouter extends AbstractRouter {
     }
 
     private deleteReview(req: IRequest, res: Response, next: NextFunction) {
-        // TODO
+
+        AssociationModel.findOne({ _id: req.params.association_id })
+            .populate('reviews.user')
+            .exec((err: mongoose.Error, association: AssociationFormat) => {
+                if (err)
+                    ErrorHelper.handleMongooseError(err, res);
+                else if (!association) {
+                    res.status(HTTPCode.error.client.NOT_FOUND).json({ status: HTTPCode.error.client.NOT_FOUND });
+                }
+                else {
+                    if (req.authenticatedUser.administrator)
+                        association.platformReview = new Object();
+                    else
+                        association.reviews = association.reviews.filter(r => r.user.email !== req.authenticatedUser.email);
+                    association.save();
+                    res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: association });
+                }
+            });
     }
 
 }

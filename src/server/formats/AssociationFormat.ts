@@ -9,7 +9,7 @@ export default class AssociationFormat {
     phone: PhoneFormat;
     details: string;
     services: Array<string>;
-    platform_review: ReviewFormat;
+    platformReview: any;
     reviews: Array<ReviewFormat>;
     createdAt: Date;
     updatedAt: Date;
