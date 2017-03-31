@@ -14,12 +14,12 @@ class AuthRouter {
 
     constructor() {
         this.router = Router();
-        this.router.post('/registrer', this.registrer.bind(this));
+        this.router.post('/register', this.register.bind(this));
         this.router.post('/login', this.authentication.bind(this));
         this.router.post('/refresh', this.refreshToken.bind(this));
     }
 
-    private registrer(req: IRequest, res: Response, next: NextFunction) {
+    private register(req: IRequest, res: Response, next: NextFunction) {
 
         if (_.isEmpty(req.body)) return ErrorHelper.handleError(HTTPCode.error.client.BAD_REQUEST, 'Request body is empty', res);
         if (_.isEmpty(req.body.email)) return ErrorHelper.handleError(HTTPCode.error.client.BAD_REQUEST, 'Email is require', res);
@@ -32,6 +32,7 @@ class AuthRouter {
             else
                 res.status(HTTPCode.success.CREATED).json({ status: HTTPCode.success.CREATED, data: object });
         })
+
     }
 
     private authentication(req: IRequest, res: Response, next: NextFunction) {
@@ -54,6 +55,7 @@ class AuthRouter {
                 })
             }
         });
+
     }
 
     private refreshToken(req: IRequest, res: Response, next: NextFunction) {
@@ -62,4 +64,4 @@ class AuthRouter {
 
 }
 
-export default AuthRouter
+export default AuthRouter;

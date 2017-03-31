@@ -28,18 +28,21 @@ class UserRouter extends AbstractRouter {
             if (err)
                 ErrorHelper.handleMongooseError(err, res);
             else
-                res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user })
-        })
+                res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user });
+        });
     }
 
     protected delete(req: IRequest, res: Response, next: NextFunction) {
+
         if (!req.authenticatedUser.administrator) return ErrorHelper.handleError(HTTPCode.error.client.UNAUTHORIZED, 'Not authorize', res);
+
         UserModel.findByIdAndRemove(req.params._id, (err: mongoose.Error) => {
             if (err)
                 ErrorHelper.handleMongooseError(err, res);
             else
-                res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK })
-        })
+                res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK });
+        });
+
     }
 
     private createExpedition(req: IRequest, res: Response, next: NextFunction) {
@@ -51,8 +54,9 @@ class UserRouter extends AbstractRouter {
                 if (err)
                     ErrorHelper.handleMongooseError(err, res);
                 else
-                    res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user })
-            })
+                    res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user });
+            });
+
     }
 
     private updateExpedition(req: IRequest, res: Response, next: NextFunction) {
@@ -66,8 +70,9 @@ class UserRouter extends AbstractRouter {
                 if (err)
                     ErrorHelper.handleMongooseError(err, res);
                 else
-                    res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user })
-            })
+                    res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user });
+            });
+
     }
 
     private deleteExpedition(req: IRequest, res: Response, next: NextFunction) {
@@ -77,10 +82,11 @@ class UserRouter extends AbstractRouter {
                 if (err)
                     ErrorHelper.handleMongooseError(err, res);
                 else
-                    res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user })
-            })
+                    res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user });
+            });
+
     }
 
 }
 
-export default UserRouter
+export default UserRouter;

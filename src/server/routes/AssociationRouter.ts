@@ -26,8 +26,9 @@ class AssociationRouter extends AbstractRouter {
             if (err)
                 ErrorHelper.handleMongooseError(err, res);
             else
-                res.status(HTTPCode.success.CREATED).json({ status: HTTPCode.success.CREATED, data: association })
-        })
+                res.status(HTTPCode.success.CREATED).json({ status: HTTPCode.success.CREATED, data: association });
+        });
+
     }
 
     protected update(req: IRequest, res: Response, next: NextFunction) {
@@ -39,8 +40,9 @@ class AssociationRouter extends AbstractRouter {
             if (err)
                 ErrorHelper.handleMongooseError(err, res);
             else
-                res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: association })
-        })
+                res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: association });
+        });
+
     }
 
     protected delete(req: IRequest, res: Response, next: NextFunction) {
@@ -51,8 +53,9 @@ class AssociationRouter extends AbstractRouter {
             if (err)
                 ErrorHelper.handleMongooseError(err, res);
             else
-                res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK })
-        })
+                res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK });
+        });
+
     }
 
     private createReview(req: IRequest, res: Response, next: NextFunction) {
@@ -69,4 +72,4 @@ class AssociationRouter extends AbstractRouter {
 
 }
 
-export default AssociationRouter
+export default AssociationRouter;

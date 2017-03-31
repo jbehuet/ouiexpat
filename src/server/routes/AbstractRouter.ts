@@ -24,7 +24,9 @@ class AbstractRouter {
     }
 
     public authenticate(req: IRequest, res: Response, next: NextFunction) {
+
         if (_.isUndefined(req.headers.authorization)) return ErrorHelper.handleError(HTTPCode.error.client.FORBIDDEN, 'Not authorize', res);
+
         jwt.verify(req.headers.authorization, CONFIG.jwt.secret, (err: any, decoded: any) => {
             if (err) {
                 ErrorHelper.handleError(HTTPCode.error.client.UNAUTHORIZED, err.message, res);
@@ -32,53 +34,64 @@ class AbstractRouter {
                 req.authenticatedUser = decoded._doc;
                 next();
             }
-        })
+        });
+
     }
 
     protected getAll(req: IRequest, res: Response, next: NextFunction) {
+
         this.model.find({}).sort({ createdAt: "desc" }).exec((err: mongoose.Error, objects: Array<mongoose.Document>) => {
             if (err)
                 ErrorHelper.handleMongooseError(err, res);
             else
-                res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: objects })
-        })
+                res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: objects });
+        });
+
     }
 
     protected getById(req: IRequest, res: Response, next: NextFunction) {
+
         this.model.findById(req.params.id).exec((err: mongoose.Error, object: mongoose.Document) => {
             if (err)
                 ErrorHelper.handleMongooseError(err, res);
             else
-                res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: object })
-        })
+                res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: object });
+        });
+
     }
 
     protected create(req: IRequest, res: Response, next: NextFunction) {
+
         this.model.create(req.body, (err: mongoose.Error, object: mongoose.Document) => {
             if (err)
                 ErrorHelper.handleMongooseError(err, res);
             else
-                res.status(HTTPCode.success.CREATED).json({ status: HTTPCode.success.CREATED, data: object })
-        })
+                res.status(HTTPCode.success.CREATED).json({ status: HTTPCode.success.CREATED, data: object });
+        });
+
     }
 
     protected update(req: IRequest, res: Response, next: NextFunction) {
+
         this.model.update({ _id: req.params.id }, req.body, {new : true }, (err: mongoose.Error, object: mongoose.Document) => {
             if (err)
                 ErrorHelper.handleMongooseError(err, res);
             else
-                res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: object })
-        })
+                res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: object });
+        });
+
     }
 
     protected delete(req: IRequest, res: Response, next: NextFunction) {
+
         this.model.findByIdAndRemove(req.params.id, (err: mongoose.Error) => {
             if (err)
                 ErrorHelper.handleMongooseError(err, res);
             else
-                res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK })
-        })
+                res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK });
+        });
+
     }
 }
 
-export default AbstractRouter
+export default AbstractRouter;
