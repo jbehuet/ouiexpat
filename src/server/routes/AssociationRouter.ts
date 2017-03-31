@@ -13,7 +13,6 @@ class AssociationRouter extends AbstractRouter {
 
     constructor() {
         super(AssociationModel)
-        this.router.post('/:association_id/media', this.uploadMedia.bind(this));
         this.router.post('/:association_id/reviews', this.updateOrCreateReview.bind(this));
         this.router.delete('/:association_id/reviews', this.deleteReview.bind(this));
     }
@@ -57,10 +56,6 @@ class AssociationRouter extends AbstractRouter {
                 res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK });
         });
 
-    }
-
-    private uploadMedia(req: IRequest, res: Response, next: NextFunction) {
-        //TODO
     }
 
     private updateOrCreateReview(req: IRequest, res: Response, next: NextFunction) {
