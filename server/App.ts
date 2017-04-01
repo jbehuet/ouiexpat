@@ -25,7 +25,10 @@ class App {
         this.express.use(bodyParser.urlencoded({ extended: false }));
         // Override HTTP methods to support DELETE PUT
         this.express.use(methodOverride('X-HTTP-Method-Override'));
-        this.express.use(express.static('dist/public'));
+        
+        console.log(`Server Mode : ${this.express.get('env')}`)
+        if (this.express.get('env') === 'production')
+            this.express.use(express.static('dist/client'));
     }
 
     private routes(): void {
