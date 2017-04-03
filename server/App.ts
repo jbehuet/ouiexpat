@@ -25,7 +25,7 @@ class App {
         this.express.use(bodyParser.urlencoded({ extended: false }));
         // Override HTTP methods to support DELETE PUT
         this.express.use(methodOverride('X-HTTP-Method-Override'));
-        
+
         console.log(`Server Mode : ${this.express.get('env')}`)
         if (this.express.get('env') === 'production')
             this.express.use(express.static('dist/client'));
@@ -40,6 +40,10 @@ class App {
         this.express.use('/api/v1/auth', authRouter.router);
         this.express.use('/api/v1/users', userRouter.router);
         this.express.use('/api/v1/associations', associationRouter.router);
+        //Catch all other routes
+        this.express.get('*', (req, res) => {
+            res.sendFile(path.join(__dirname, '../client/index.html'));
+        });
     }
 
 }
