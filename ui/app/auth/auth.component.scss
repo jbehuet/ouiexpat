@@ -1,0 +1,25 @@
+.auth {
+    background-image: url('/assets/bg-home.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 0;
+    padding-top: 5%;
+    height: 100%;
+    min-height: 600px;
+}
+
+.back {
+    color: #F8F8F8;
+
+    .icon {
+        font-size: 12px;
+    }
+
+    a,
+    a:focus,
+    a:visited {
+        font-size: 16px;
+        color: #F8F8F8;
+        cursor: pointer;
+    }
+}
