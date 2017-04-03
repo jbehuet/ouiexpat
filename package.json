@@ -9,6 +9,7 @@
     "build": "ng build --prod --sm=false --aot=true && npm run server:build",
     "server:run": "tsc -p ./server && concurrently \"tsc -w -p ./server\" \"node-dev dist/server\" ",
     "server:build": "tsc -p ./server",
+    "client:run": "ng serve --proxy-config proxy.conf.json",
     "dev": "concurrently --kill-others \"ng serve --aot=true --progress=false --proxy-config proxy.conf.json\" \"npm run server:run\"",
     "postinstall": "npm run build"
   },
