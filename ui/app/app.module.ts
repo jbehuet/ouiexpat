@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterializeModule } from 'angular2-materialize';
 import { AuthModule } from './auth/auth.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 import { ROUTES } from './app.routes';
 
@@ -20,7 +21,8 @@ import { AppComponent } from './app.component';
         HttpModule,
         MaterializeModule,
         RouterModule.forRoot(ROUTES),
-        AuthModule
+        AuthModule,
+        DashboardModule
     ],
     providers: [],
     bootstrap: [AppComponent]

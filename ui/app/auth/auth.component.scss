@@ -13,12 +13,18 @@
 
     .icon {
         font-size: 12px;
+        @media screen and (max-width: 320px) {
+            font-size: 8px;
+        }
     }
 
     a,
     a:focus,
     a:visited {
         font-size: 16px;
+        @media screen and (max-width: 320px) {
+            font-size: 10px;
+        }
         color: #F8F8F8;
         cursor: pointer;
     }

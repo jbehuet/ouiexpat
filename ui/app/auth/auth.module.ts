@@ -13,6 +13,7 @@ import { RegisterFormComponent } from './register-form/register-form.component';
                 path: 'auth',
                 component: AuthComponent,
                 children: [
+                    { path: '', redirectTo: 'login', pathMatch: 'full' },
                     { path: 'login', component: LoginFormComponent },
                     { path: 'register', component: RegisterFormComponent }
                 ]

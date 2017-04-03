@@ -2,15 +2,22 @@
     color: #525356;
     height: 80%;
     margin-top: 10%;
+    padding: 0 24px;
 }
 
 h1 {
     font-size: 24px;
     font-family: "Capriola-Regular";
+    @media screen and (max-width: 320px) {
+        font-size: 16px;
+    }
 }
 
 .title-icon {
     font-size: 24px;
+    @media screen and (max-width: 320px) {
+        font-size: 16px;
+    }
     line-height: 110%;
     margin: 1.9rem 0 1.68rem;
 }

@@ -1,10 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-
 @font-face {
     font-family: "Capriola-Regular";
     src: url("/assets/fonts/Capriola-Regular/Capriola-Regular.ttf");
 }
-
 @font-face {
     font-family: "Open Sans";
     src: url("/assets/fonts/Open-Sans/OpenSans-Regular.ttf");
@@ -12,33 +10,44 @@
 
 body {
     height: 100vh;
+    font-size: 14px;
+    @media screen and (max-width: 320px) {
+        font-size: 10px;
+    }
     font-family: "Open Sans";
 }
 
 .full-height {
-    height: 100%
+    height: 100%;
 }
 
 .no-margin {
-  margin: 0;
+    margin: 0;
 }
 
 .form-card {
     border-radius: 3px;
     background-color: #F8F8F8;
 }
-
-
 /* label color */
 .input-field label {
     color: #B8B8B8;
+    @media screen and (max-width: 320px) {
+        font-size: 0.8rem;
+    }
+}
+
+
+.input-field input[type=text]{
+  @media screen and (max-width: 320px) {
+      font-size: 0.8rem;
+  }
 }
 
 /* label focus color */
 .input-field input[type=text]:focus+label {
     color: #00A2D8;
 }
-
 /* label underline focus color */
 .input-field input[type=text]:focus {
     border-bottom: 1px solid #00A2D8;
