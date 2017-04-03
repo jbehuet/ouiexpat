@@ -10,6 +10,7 @@
     "server:run": "tsc -p ./server && concurrently \"tsc -w -p ./server\" \"node-dev dist/server\" ",
     "server:build": "tsc -p ./server",
     "dev": "concurrently --kill-others \"ng serve --aot=true --progress=false --proxy-config proxy.conf.json\" \"npm run server:run\"",
+    "preinstall":"npm install --dev",
     "postinstall": "npm run build"
   },
   "private": true,
