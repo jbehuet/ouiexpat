@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MaterializeDirective, MaterializeAction, toast } from 'angular2-materialize';
 import { AuthenticationService } from '../../_services/authentication.service';
 
 @Component({
@@ -20,11 +21,9 @@ export class LoginFormComponent implements OnInit {
     login(data) {
         this.authenticationService.login(data.email, data.password)
             .subscribe(result => {
-                if (result === true) {
-                    this.router.navigate(['/']);
-                } else {
-                    //ERROR
-                }
+              this.router.navigate(['/']);
+            }, (err) => {
+              toast(err, 4000);
             });
     }
 

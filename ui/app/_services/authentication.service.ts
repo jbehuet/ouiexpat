@@ -15,27 +15,20 @@ export class AuthenticationService {
 
     login(email: string, password: string): Observable<boolean> {
         return this.http.post('/api/v1/auth/login', { email, password })
+            .map(res => res.json())
             .map((response: Response) => {
-                if (response.status) {
-                  const body = response.json();
-                  // login successful if there's a jwt token in the response
-                  this.token = body.token;
-
-                  // store username and jwt token in local storage to keep user logged in between page refreshes
-                  localStorage.setItem('currentUser', JSON.stringify({ token: this.token }));
-
-                  // return true to indicate successful login
-                  return true;
-                } else {
-                  // return false to indicate failed login
-                  return false;
-                }
+                const data = response.json();
+                this.token = data.token;
+                localStorage.setItem('currentUser', JSON.stringify({ token: this.token }));
+            })
+            .catch((error: any) => {
+              return Observable.throw(error.json().message || 'Server error')
             });
     }
 
     logout(): void {
         // clear token remove user from local storage to log user out
         this.token = null;
-
+        localStorage.removeItem('currentUser');
     }
 }
