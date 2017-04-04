@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import * as _ from 'lodash';
 
 @Component({
-    selector: 'date-inline',
+    selector: 'oe-date-inline',
     templateUrl: './date-inline.component.html',
     styleUrls: ['./date-inline.component.scss'],
 })

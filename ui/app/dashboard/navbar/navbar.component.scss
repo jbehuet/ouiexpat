@@ -1,0 +1,49 @@
+$primary-color: #00A2D8;
+$secondary-color: #00A2D8;
+$text-color: #525356;
+$grey-light: #B8B8B8;
+$grey: #9e9e9e;
+$white: #F8F8F8;
+
+.navbar-fixed {
+    background-color: #F8F8F8;
+}
+
+#sidenav-overlay {
+    display: none;
+}
+
+nav {
+    background: $white;
+    color: $text-color;
+    font-family: "Capriola-Regular";
+
+    a.brand-logo {
+        height: 100%;
+
+        img {
+            height: 100%;
+        }
+    }
+
+    ul.desktop {
+        height: 100%;
+
+        li {
+            height: 100%;
+        }
+
+        a,
+        a:focus,
+        a:visited {
+            color: $text-color;
+        }
+
+        a:hover {
+            height: 100%;
+            padding-bottom: 3px;
+            background: linear-gradient(301deg, #F7CB0A 0%, #00A2D8 100%) left bottom rgba(0, 0, 0, 0.1) no-repeat;
+            background-size: 100% 3px;
+        }
+    }
+}
