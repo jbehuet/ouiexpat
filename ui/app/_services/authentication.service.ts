@@ -1,3 +1,4 @@
+import { CookieService } from 'ng2-cookies';
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs';
@@ -6,19 +7,24 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AuthenticationService {
     public token: string;
+    public user: any;
 
-    constructor(private http: Http) {
+    constructor(private http: Http, private cookieService: CookieService) {
         // set token if saved in local storage
-        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        this.token = currentUser && currentUser.token;
+        if (this.cookieService.get('__session')) {
+            const __session = JSON.parse(this.cookieService.get('__session'));
+            this.token = __session.token;
+            this.user = this._decodePayload()._doc;
+        }
     }
 
     login(email: string, password: string): Observable<boolean> {
         return this.http.post('/api/v1/auth/login', { email, password })
             .map(res => res.json())
-            .map(data => {
-                this.token = data.token;
-                localStorage.setItem('currentUser', JSON.stringify({ token: this.token }));
+            .map(res => {
+                this.token = res.token;
+                this.user = res.data;
+                this.cookieService.set('__session', JSON.stringify({ token: this.token }));
             })
             .catch((error: any) => {
                 return Observable.throw(error.json().message || 'Server error')
@@ -26,9 +32,10 @@ export class AuthenticationService {
     }
 
     logout(): void {
-        // clear token remove user from local storage to log user out
+        // clear token, user and remove cookie to log user out
         this.token = null;
-        localStorage.removeItem('currentUser');
+        this.user = null;
+        this.cookieService.deleteAll();
     }
 
     register(user: any): Observable<boolean> {
@@ -41,5 +48,20 @@ export class AuthenticationService {
             .catch((error: any) => {
                 return Observable.throw(error.json().message || 'Server error')
             });
+    }
+
+    checkValideSession(): any {
+        if (Math.round(new Date().getTime() / 1000) > this._decodePayload().exp) {
+            this.logout();
+            return false;
+        } else
+            return true;
+    }
+
+    private _decodePayload(): any {
+        let payload = this.token.split('.')[1];
+        payload = window.atob(payload);
+        payload = JSON.parse(payload);
+        return payload;
     }
 }
