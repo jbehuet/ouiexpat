@@ -30,7 +30,7 @@ class AuthRouter {
             if (err)
                 ErrorHelper.handleMongooseError(err, res);
             else {
-                if (user.password) delete user.password;
+                user.password = '****';
                 const token = jwt.sign(user, CONFIG.jwt.secret, CONFIG.jwt.options);
                 res.status(HTTPCode.success.CREATED).json({
                     status: HTTPCode.success.CREATED,
