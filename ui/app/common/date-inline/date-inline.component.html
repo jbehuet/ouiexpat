@@ -3,15 +3,15 @@
         <label class="col s12">{{label}}</label>
     </div>
     <div class="row">
-        <select materialize="material_select" class="col s3" (ngModelChange)="onDayChange($event)" name="daySelected">
+        <select name="daySelected" materialize="material_select" class="col s3" (ngModelChange)="onDayChange($event)" ngModel>
           <option value="" disabled selected>Jour</option>
           <option *ngFor="let day of days" value="{{day}}">{{day}}</option>
         </select>
-        <select materialize="material_select" class="col s6" (ngModelChange)="onMonthChange($event)" name="monthSelected">
+        <select name="monthSelected" materialize="material_select" class="col s6" (ngModelChange)="onMonthChange($event)" ngModel>
           <option value="" disabled selected>Mois</option>
           <option *ngFor="let month of months; index as i" value="{{i}}">{{month}}</option>
         </select>
-        <select materialize="material_select" class="col s3" (ngModelChange)="onYearChange($event)" name="yearSelected">
+        <select name="yearSelected" materialize="material_select" class="col s3" (ngModelChange)="onYearChange($event)" ngModel>
           <option value="" disabled selected>Année</option>
           <option *ngFor="let year of years" value="{{year}}">{{year}}</option>
         </select>
