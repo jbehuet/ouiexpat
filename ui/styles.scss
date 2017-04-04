@@ -54,6 +54,10 @@ body {
     background-color: #eeeeee;
 }
 /* Override */
+#sidenav-overlay {
+    display: none;
+}
+
 .select-wrapper span.caret {
     color: $text-color;
 }

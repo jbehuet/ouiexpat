@@ -9,10 +9,6 @@ $white: #F8F8F8;
     background-color: #F8F8F8;
 }
 
-#sidenav-overlay {
-    display: none;
-}
-
 nav {
     background: $white;
     color: $text-color;
@@ -40,10 +36,13 @@ nav {
         }
 
         a:hover {
-            height: 100%;
-            padding-bottom: 3px;
-            background: linear-gradient(301deg, #F7CB0A 0%, #00A2D8 100%) left bottom rgba(0, 0, 0, 0.1) no-repeat;
-            background-size: 100% 3px;
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+        a.active{
+          height: 100%;
+          padding-bottom: 3px;
+          background: linear-gradient(301deg, #F7CB0A 0%, #00A2D8 100%) left bottom rgba(0, 0, 0, 0) no-repeat;
+          background-size: 100% 3px;
         }
     }
 }
