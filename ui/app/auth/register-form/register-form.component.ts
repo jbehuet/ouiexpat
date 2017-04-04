@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Pickadate } from 'materialize-css';
 import { toast } from 'angular2-materialize';
 import { AuthenticationService } from '../../_services/authentication.service';
@@ -12,7 +13,8 @@ export class RegisterFormComponent implements OnInit {
 
     private birthday: Date;
 
-    constructor(private authenticationService: AuthenticationService) { }
+    constructor(private authenticationService: AuthenticationService,
+        private router: Router) { }
 
     ngOnInit() {
 
@@ -25,7 +27,7 @@ export class RegisterFormComponent implements OnInit {
     register(data) {
         data.birthday = this.birthday;
         this.authenticationService.register(data).subscribe(result => {
-            toast('Whouuuuuu', 4000);
+            this.router.navigate(['/']);
         }, (err) => {
             toast(err, 4000);
         });

@@ -36,7 +36,6 @@ export class DateInlineComponent implements OnInit {
     }
 
     onMonthChange(event) {
-        debugger
         this.currentDate.setMonth(event);
         this.onDateChange.emit(this.currentDate);
     }

@@ -16,8 +16,7 @@ export class AuthenticationService {
     login(email: string, password: string): Observable<boolean> {
         return this.http.post('/api/v1/auth/login', { email, password })
             .map(res => res.json())
-            .map((response: Response) => {
-                const data = response.json();
+            .map(data => {
                 this.token = data.token;
                 localStorage.setItem('currentUser', JSON.stringify({ token: this.token }));
             })
@@ -35,9 +34,9 @@ export class AuthenticationService {
     register(user: any): Observable<boolean> {
         return this.http.post('/api/v1/auth/register', user)
             .map(res => res.json())
-            .map((response: Response) => {
-
-
+            .map(data => {
+              this.token = data.token;
+              localStorage.setItem('currentUser', JSON.stringify({ token: this.token }));
             })
             .catch((error: any) => {
                 return Observable.throw(error.json().message || 'Server error')
