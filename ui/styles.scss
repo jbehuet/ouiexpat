@@ -1,4 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+$primary-color: #00A2D8;
+$secondary-color: #00A2D8;
+$text-color: #525356;
+$grey: #9e9e9e;
+
 @font-face {
     font-family: "Capriola-Regular";
     src: url("/assets/fonts/Capriola-Regular/Capriola-Regular.ttf");
@@ -29,6 +33,49 @@ body {
     border-radius: 3px;
     background-color: #F8F8F8;
 }
+
+.btn-validate {
+    background: linear-gradient(301deg, #F7CB0A 0%, #00A2D8 100%);
+    border-radius: 40px;
+}
+
+.btn-white {
+    background: #F8F8F8;
+    border-radius: 40px;
+    color: $text-color;
+    border: 2px solid $text-color;
+    height: 38px;
+}
+
+.btn-white:focus,
+.btn-white:hover {
+    background-color: #f1eeee;
+}
+/* Override */
+.picker__box {
+    border: none;
+    border-radius: 3px;
+}
+
+.picker__date-display {
+    background-color: $primary-color;
+}
+
+.picker__weekday-display {
+    background-color: $primary-color;
+}
+
+.picker__close,
+.picker__day.picker__day--today,
+.picker__today {
+    color: $primary-color;
+}
+
+.picker--focused .picker__day--selected,
+.picker__day--selected,
+.picker__day--selected:hover {
+    background-color: $primary-color;
+}
 /* label color */
 .input-field label {
     color: #B8B8B8;
@@ -37,19 +84,33 @@ body {
     }
 }
 
-
-.input-field input[type=text]{
-  @media screen and (max-width: 320px) {
-      font-size: 0.8rem;
-  }
+.input-field input[type=email],
+.input-field input[type=password],
+.input-field input[type=text] {
+    @media screen and (max-width: 320px) {
+        font-size: 0.8rem;
+    }
 }
-
 /* label focus color */
+.input-field input[type=email]:focus+label,
+.input-field input[type=password]:focus+label,
 .input-field input[type=text]:focus+label {
     color: #00A2D8;
 }
 /* label underline focus color */
+.input-field input[type=email]:focus,
+.input-field input[type=password]:focus,
 .input-field input[type=text]:focus {
-    border-bottom: 1px solid #00A2D8;
-    box-shadow: 0 1px 0 0 #00A2D8;
+    border-bottom: 1px solid $primary-color;
+    box-shadow: 0 1px 0 0 $primary-color;
+}
+
+.input-field input[type=email].valid,
+.input-field input[type=password].valid,
+.input-field input[type=text].valid,
+.input-field input[type=email]:focus.valid,
+.input-field input[type=password]:focus.valid,
+.input-field input[type=text]:focus.valid {
+    border-bottom: 1px solid $grey;
+    box-shadow: none;
 }

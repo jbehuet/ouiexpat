@@ -11,17 +11,17 @@
                 <input id="email" name="email" type="email"
                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                        class="validate" ngModel required>
-                <label for="email">Adresse E-mail</label>
+                <label for="email">Adresse E-mail *</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
                 <input id="password" name="password" type="password" class="validate" ngModel required>
-                <label for="password">Mot de passe</label>
+                <label for="password">Mot de passe *</label>
             </div>
         </div>
         <div class="row">
-            <button class="btn btn-connect waves-effect col s8 offset-s2" type="submit">Se connecter</button>
+            <button class="btn btn-validate waves-effect col s8 offset-s2" type="submit">Se connecter</button>
         </div>
     </form>
 

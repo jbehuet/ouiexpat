@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
-import { AuthenticationService } from '../_services/authentication.service';
+import { MaterializeModule } from 'angular2-materialize';
 
 import { AuthComponent } from './auth.component';
 import { LoginFormComponent } from './login-form/login-form.component';
@@ -13,6 +12,7 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     imports: [
         CommonModule,
         FormsModule,
+        MaterializeModule,
         RouterModule.forChild([
             {
                 path: 'auth',
@@ -25,7 +25,7 @@ import { RegisterFormComponent } from './register-form/register-form.component';
             }
         ])
     ],
-    providers: [AuthenticationService],
+    providers: [],
     declarations: [AuthComponent, LoginFormComponent, RegisterFormComponent]
 })
 export class AuthModule { }

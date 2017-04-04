@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
-import { MaterializeModule } from 'angular2-materialize';
 
 import { AuthModule } from './auth/auth.module';
 import { DashboardModule } from './dashboard/dashboard.module';
@@ -10,6 +9,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { ROUTES } from './app.routes';
 
 import { AuthGuard } from './_guards/auth.guard';
+import { AuthenticationService } from './_services/authentication.service';
 
 import { AppComponent } from './app.component';
 
@@ -20,12 +20,11 @@ import { AppComponent } from './app.component';
     imports: [
         BrowserModule,
         HttpModule,
-        MaterializeModule,
         RouterModule.forRoot(ROUTES),
         AuthModule,
         DashboardModule
     ],
-    providers: [AuthGuard],
+    providers: [AuthGuard, AuthenticationService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
