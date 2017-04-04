@@ -22,7 +22,7 @@ export class AuthenticationService {
                 localStorage.setItem('currentUser', JSON.stringify({ token: this.token }));
             })
             .catch((error: any) => {
-              return Observable.throw(error.json().message || 'Server error')
+                return Observable.throw(error.json().message || 'Server error')
             });
     }
 
@@ -30,5 +30,17 @@ export class AuthenticationService {
         // clear token remove user from local storage to log user out
         this.token = null;
         localStorage.removeItem('currentUser');
+    }
+
+    register(user: any): Observable<boolean> {
+        return this.http.post('/api/v1/auth/register', user)
+            .map(res => res.json())
+            .map((response: Response) => {
+
+
+            })
+            .catch((error: any) => {
+                return Observable.throw(error.json().message || 'Server error')
+            });
     }
 }

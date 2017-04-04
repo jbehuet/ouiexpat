@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MaterializeDirective, MaterializeAction, toast } from 'angular2-materialize';
+import { toast } from 'angular2-materialize';
 import { AuthenticationService } from '../../_services/authentication.service';
 
 @Component({

@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { MaterializeModule } from 'angular2-materialize';
 
 import { AuthComponent } from './auth.component';
+import { DateInlineComponent } from '../common/date-inline/date-inline.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 
@@ -26,6 +27,6 @@ import { RegisterFormComponent } from './register-form/register-form.component';
         ])
     ],
     providers: [],
-    declarations: [AuthComponent, LoginFormComponent, RegisterFormComponent]
+    declarations: [AuthComponent, LoginFormComponent, RegisterFormComponent, DateInlineComponent]
 })
 export class AuthModule { }

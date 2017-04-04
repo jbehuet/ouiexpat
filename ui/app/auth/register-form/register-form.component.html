@@ -5,7 +5,7 @@
         <span class="col s4 title-icon right-align"><i class="icon icon-user"></i></span>
     </div>
 
-    <form>
+    <form (ngSubmit)="registerForm.form.valid && register(registerForm.value)" #registerForm="ngForm">
         <div class="row no-margin">
             <div class="input-field col s12">
                 <input id="email" name="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="validate" ngModel required>
@@ -14,8 +14,8 @@
         </div>
         <div class="row no-margin">
             <div class="input-field col s12">
-                <input id="lastname" name="lastname" type="text" class="validate" ngModel required>
-                <label for="lastname">Nom *</label>
+                <input id="password" name="password" type="password" class="validate" ngModel required>
+                <label for="password">Mot de passe *</label>
             </div>
         </div>
         <div class="row no-margin">
@@ -24,12 +24,15 @@
                 <label for="firstname">Prénom *</label>
             </div>
         </div>
-        <div class="row">
+        <div class="row no-margin">
             <div class="input-field col s12">
-                <input id="birthday" name="birthday" type="text" materialize="pickadate" [materializeParams]="[formDateOptions]" class="datepicker">
-                <label for="birthday">Date de naissance</label>
+                <input id="lastname" name="lastname" type="text" class="validate" ngModel required>
+                <label for="lastname">Nom *</label>
             </div>
         </div>
+
+        <date-inline label="Date de naissance" (onDateChange)="setBirthday($event)"></date-inline>
+
         <div class="row">
             <button class="btn btn-validate waves-effect col s8 offset-s2" type="submit">S'inscrire</button>
         </div>

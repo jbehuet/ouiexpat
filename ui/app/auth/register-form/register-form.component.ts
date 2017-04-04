@@ -1,36 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import { Pickadate } from 'materialize-css';
+import { toast } from 'angular2-materialize';
+import { AuthenticationService } from '../../_services/authentication.service';
 
 @Component({
-  selector: 'oe-register-form',
-  templateUrl: './register-form.component.html',
-  styleUrls: ['./register-form.component.scss']
+    selector: 'oe-register-form',
+    templateUrl: './register-form.component.html',
+    styleUrls: ['./register-form.component.scss']
 })
 export class RegisterFormComponent implements OnInit {
 
-  private formDateOptions:Pickadate.DateOptions;
+    private birthday: Date;
 
-  constructor() { }
+    constructor(private authenticationService: AuthenticationService) { }
 
-  ngOnInit() {
-    this.formDateOptions = this.getDefaultPickaDateOptions();
-  }
+    ngOnInit() {
 
-  private getDefaultPickaDateOptions(): Pickadate.DateOptions {
-    return {
-      selectMonths: true,
-      selectYears: 100,
-      monthsFull: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
-      monthsShort: ['Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Août', 'Sept', 'Oct', 'Nov', 'Dec'],
-      weekdaysFull: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
-      weekdaysLetter: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
-      firstDay: 1,
-      today: 'AUJ.',
-      clear: 'SUPP.',
-      close: 'OK',
-      format: 'dd/mm/yyyy',
-      max: new Date().toISOString()
-    };
-  }
+    }
+
+    setBirthday(event) {
+        this.birthday = event;
+    }
+
+    register(data) {
+        data.birthday = this.birthday;
+        this.authenticationService.register(data).subscribe(result => {
+            toast('Whouuuuuu', 4000);
+        }, (err) => {
+            toast(err, 4000);
+        });
+    }
 
 }
