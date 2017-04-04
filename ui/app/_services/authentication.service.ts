@@ -35,8 +35,8 @@ export class AuthenticationService {
         return this.http.post('/api/v1/auth/register', user)
             .map(res => res.json())
             .map(data => {
-              this.token = data.token;
-              localStorage.setItem('currentUser', JSON.stringify({ token: this.token }));
+                this.token = data.token;
+                localStorage.setItem('currentUser', JSON.stringify({ token: this.token }));
             })
             .catch((error: any) => {
                 return Observable.throw(error.json().message || 'Server error')

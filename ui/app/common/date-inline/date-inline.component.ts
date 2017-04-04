@@ -11,9 +11,9 @@ export class DateInlineComponent implements OnInit {
     @Input() date: Date;
     @Output() onDateChange: EventEmitter<Date> = new EventEmitter<Date>();
 
-    private days: Array<Number> = [];
-    private months: Array<String> = [];
-    private years: Array<Number> = [];
+    public days: Array<Number> = [];
+    public months: Array<String> = [];
+    public years: Array<Number> = [];
 
     private currentDate: Date = new Date();
 
