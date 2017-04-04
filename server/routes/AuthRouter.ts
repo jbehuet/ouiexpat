@@ -26,11 +26,18 @@ class AuthRouter {
         if (_.isEmpty(req.body.password)) return ErrorHelper.handleError(HTTPCode.error.client.BAD_REQUEST, 'Password is require', res);
         if (_.isEmpty(req.body.birthday)) return ErrorHelper.handleError(HTTPCode.error.client.BAD_REQUEST, 'Bithday is require', res);
 
-        UserModel.create(req.body, (err: mongoose.Error, object: mongoose.Document) => {
+        UserModel.create(req.body, (err: mongoose.Error, user: UserFormat) => {
             if (err)
                 ErrorHelper.handleMongooseError(err, res);
-            else
-                res.status(HTTPCode.success.CREATED).json({ status: HTTPCode.success.CREATED, data: object });
+            else {
+                if (user.password) delete user.password;
+                const token = jwt.sign(user, CONFIG.jwt.secret, CONFIG.jwt.options);
+                res.status(HTTPCode.success.CREATED).json({
+                    status: HTTPCode.success.CREATED,
+                    data: user,
+                    token: token
+                })
+            }
         })
 
     }
