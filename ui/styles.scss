@@ -51,6 +51,10 @@ body {
     background-color: #f1eeee;
 }
 /* Override */
+.select-wrapper span.caret {
+    color: $text-color;
+}
+
 .dropdown-content li {
     color: $primary-color;
 

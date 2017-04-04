@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import * as _ from 'lodash';
 
 @Component({
     selector: 'date-inline',
@@ -20,14 +21,10 @@ export class DateInlineComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
-        this.days = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
+        const start = new Date().getFullYear();
+        this.days = _.range(1, 32);
         this.months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
-
-        let start = new Date().getFullYear();
-        let end = start - 100;
-        for (let year = start; year > end; year--) {
-            this.years.push(year);
-        }
+        this.years = _.range(start, start - 100, -1);
     }
 
     onDayChange(event) {
