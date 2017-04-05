@@ -46,7 +46,7 @@ class AbstractRouter {
 
         this.model.find({}).sort({ createdAt: "desc" }).exec((err: mongoose.Error, objects: Array<mongoose.Document>) => {
             if (err)
-                ErrorHelper.handleMongooseError(err, res);
+                ErrorHelper.handleMongooseError(err, res, req);
             else
                 res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: objects });
         });
@@ -57,7 +57,7 @@ class AbstractRouter {
 
         this.model.findById(req.params.id).exec((err: mongoose.Error, object: mongoose.Document) => {
             if (err)
-                ErrorHelper.handleMongooseError(err, res);
+                ErrorHelper.handleMongooseError(err, res, req);
             else
                 res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: object });
         });
@@ -68,7 +68,7 @@ class AbstractRouter {
 
         this.model.create(req.body, (err: mongoose.Error, object: mongoose.Document) => {
             if (err)
-                ErrorHelper.handleMongooseError(err, res);
+                ErrorHelper.handleMongooseError(err, res, req);
             else
                 res.status(HTTPCode.success.CREATED).json({ status: HTTPCode.success.CREATED, data: object });
         });
@@ -79,7 +79,7 @@ class AbstractRouter {
 
         this.model.update({ _id: req.params.id }, req.body, { new: true }, (err: mongoose.Error, object: mongoose.Document) => {
             if (err)
-                ErrorHelper.handleMongooseError(err, res);
+                ErrorHelper.handleMongooseError(err, res, req);
             else
                 res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: object });
         });
@@ -90,7 +90,7 @@ class AbstractRouter {
 
         this.model.findByIdAndRemove(req.params.id, (err: mongoose.Error) => {
             if (err)
-                ErrorHelper.handleMongooseError(err, res);
+                ErrorHelper.handleMongooseError(err, res, req);
             else
                 res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK });
         });

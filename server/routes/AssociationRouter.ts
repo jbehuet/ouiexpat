@@ -24,7 +24,7 @@ class AssociationRouter extends AbstractRouter {
 
         AssociationModel.create(req.body, (err: mongoose.Error, association: AssociationFormat) => {
             if (err)
-                ErrorHelper.handleMongooseError(err, res);
+                ErrorHelper.handleMongooseError(err, res, req);
             else
                 res.status(HTTPCode.success.CREATED).json({ status: HTTPCode.success.CREATED, data: association });
         });
@@ -38,7 +38,7 @@ class AssociationRouter extends AbstractRouter {
 
         AssociationModel.update({ _id: req.params._id }, req.body, { new: true }, (err: mongoose.Error, association: AssociationFormat) => {
             if (err)
-                ErrorHelper.handleMongooseError(err, res);
+                ErrorHelper.handleMongooseError(err, res, req);
             else
                 res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: association });
         });
@@ -51,7 +51,7 @@ class AssociationRouter extends AbstractRouter {
 
         AssociationModel.findByIdAndRemove(req.params._id, (err: mongoose.Error) => {
             if (err)
-                ErrorHelper.handleMongooseError(err, res);
+                ErrorHelper.handleMongooseError(err, res, req);
             else
                 res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK });
         });
@@ -64,7 +64,7 @@ class AssociationRouter extends AbstractRouter {
             .populate('reviews.user')
             .exec((err: mongoose.Error, association: AssociationFormat) => {
                 if (err)
-                    ErrorHelper.handleMongooseError(err, res);
+                    ErrorHelper.handleMongooseError(err, res, req);
                 else if (!association) {
                     res.status(HTTPCode.error.client.NOT_FOUND).json({ status: HTTPCode.error.client.NOT_FOUND });
                 }
@@ -92,7 +92,7 @@ class AssociationRouter extends AbstractRouter {
             .populate('reviews.user')
             .exec((err: mongoose.Error, association: AssociationFormat) => {
                 if (err)
-                    ErrorHelper.handleMongooseError(err, res);
+                    ErrorHelper.handleMongooseError(err, res, req);
                 else if (!association) {
                     res.status(HTTPCode.error.client.NOT_FOUND).json({ status: HTTPCode.error.client.NOT_FOUND });
                 }

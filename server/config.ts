@@ -1,4 +1,5 @@
 const CONFIG = {
+    rollbar: process.env.ROLLBAR_API || '',
     port: process.env.PORT ||  3000,
     jwt: {
         secret: process.env.TOKEN_SECRET || 'monsecret',

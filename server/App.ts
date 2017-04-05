@@ -4,7 +4,10 @@ import * as express from 'express';
 import * as logger from 'morgan';
 import * as bodyParser from 'body-parser';
 import * as methodOverride from 'method-override';
+import * as rollbar from 'rollbar';
+import RollbarHelper from './helpers/RollbarHelper';
 import HTTPCode from './constants/HttpCodeConstant';
+import CONFIG from './config';
 import UserRouter from './routes/UserRouter';
 import AuthRouter from './routes/AuthRouter';
 import AssociationRouter from './routes/AssociationRouter';
@@ -12,6 +15,7 @@ import AssociationRouter from './routes/AssociationRouter';
 class App {
 
     public express: express.Application;
+    public rollbarHelper: RollbarHelper;
 
     constructor() {
         this.express = express();
@@ -27,8 +31,13 @@ class App {
         this.express.use(methodOverride('X-HTTP-Method-Override'));
 
         console.log(`Server Mode : ${this.express.get('env')}`)
-        if (this.express.get('env') === 'production')
+        if (this.express.get('env') === 'production') {
             this.express.use(express.static('dist/client'));
+            if (CONFIG.rollbar) {
+                this.rollbarHelper = RollbarHelper.getInstance();
+                this.express.use(rollbar.errorHandler(CONFIG.rollbar))
+            }
+        }
     }
 
     private routes(): void {

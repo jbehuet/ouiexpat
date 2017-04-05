@@ -24,7 +24,7 @@ class UserRouter extends AbstractRouter {
 
         this.model.find({}).sort({ createdAt: "desc" }).exec((err: mongoose.Error, objects: Array<mongoose.Document>) => {
             if (err)
-                ErrorHelper.handleMongooseError(err, res);
+                ErrorHelper.handleMongooseError(err, res, req);
             else
                 res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: objects });
         });
@@ -39,7 +39,7 @@ class UserRouter extends AbstractRouter {
 
         UserModel.update({ _id: req.params._id }, req.body, { new: true }, (err: mongoose.Error, user: UserFormat) => {
             if (err)
-                ErrorHelper.handleMongooseError(err, res);
+                ErrorHelper.handleMongooseError(err, res, req);
             else
                 res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user });
         });
@@ -52,7 +52,7 @@ class UserRouter extends AbstractRouter {
 
         UserModel.findByIdAndRemove(req.params._id, (err: mongoose.Error) => {
             if (err)
-                ErrorHelper.handleMongooseError(err, res);
+                ErrorHelper.handleMongooseError(err, res, req);
             else
                 res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK });
         });
@@ -70,7 +70,7 @@ class UserRouter extends AbstractRouter {
         UserModel.findOneAndUpdate({ _id: req.authenticatedUser._id },
             { $push: { "expeditions": req.body } }, { new: true }, (err: mongoose.Error, user: UserFormat) => {
                 if (err)
-                    ErrorHelper.handleMongooseError(err, res);
+                    ErrorHelper.handleMongooseError(err, res, req);
                 else
                     res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user });
             });
@@ -86,7 +86,7 @@ class UserRouter extends AbstractRouter {
         UserModel.findOneAndUpdate({ _id: req.authenticatedUser._id, 'expeditions._id': req.params.id },
             { $set: { "expeditions.$": req.body } }, { new: true }, (err: mongoose.Error, user: UserFormat) => {
                 if (err)
-                    ErrorHelper.handleMongooseError(err, res);
+                    ErrorHelper.handleMongooseError(err, res, req);
                 else
                     res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user });
             });
@@ -98,7 +98,7 @@ class UserRouter extends AbstractRouter {
         UserModel.findOneAndUpdate({ _id: req.authenticatedUser._id },
             { $pull: { "expeditions": { "_id": req.params.id } } }, { new: true }, (err: mongoose.Error, user: UserFormat) => {
                 if (err)
-                    ErrorHelper.handleMongooseError(err, res);
+                    ErrorHelper.handleMongooseError(err, res, req);
                 else
                     res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user });
             });

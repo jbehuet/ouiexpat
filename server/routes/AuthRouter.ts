@@ -28,7 +28,7 @@ class AuthRouter {
 
         UserModel.create(req.body, (err: mongoose.Error, user: UserFormat) => {
             if (err)
-                ErrorHelper.handleMongooseError(err, res);
+                ErrorHelper.handleMongooseError(err, res, req);
             else {
                 user.password = '****';
                 const token = jwt.sign(user, CONFIG.jwt.secret, CONFIG.jwt.options);
@@ -50,7 +50,7 @@ class AuthRouter {
 
         UserModel.findOne(req.body, { password: 0 }, (err: mongoose.Error, user: UserFormat) => {
             if (err)
-                ErrorHelper.handleMongooseError(err, res);
+                ErrorHelper.handleMongooseError(err, res, req);
             else if (!user)
                 ErrorHelper.handleError(HTTPCode.error.client.UNAUTHORIZED, 'Email and password not match', res);
             else {
