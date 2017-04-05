@@ -31,12 +31,11 @@ class App {
         this.express.use(methodOverride('X-HTTP-Method-Override'));
 
         console.log(`Server Mode : ${this.express.get('env')}`)
-        if (this.express.get('env') === 'production') {
+        if (this.express.get('env') === 'production')
             this.express.use(express.static('dist/client'));
-            if (CONFIG.rollbar) {
-                this.rollbarHelper = RollbarHelper.getInstance();
-                this.express.use(rollbar.errorHandler(CONFIG.rollbar))
-            }
+        if (CONFIG.rollbar) {
+            this.rollbarHelper = RollbarHelper.getInstance();
+            this.express.use(rollbar.errorHandler(CONFIG.rollbar))
         }
     }
 
