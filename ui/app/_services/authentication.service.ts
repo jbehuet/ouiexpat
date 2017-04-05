@@ -50,8 +50,10 @@ export class AuthenticationService {
             });
     }
 
-    checkValideSession(): any {
-        if (Math.round(new Date().getTime() / 1000) > this._decodePayload().exp) {
+    checkValidSession(): any {
+        if (!this.token) return false;
+        const payload = this._decodePayload();
+        if (Math.round(new Date().getTime() / 1000) > payload.exp) {
             this.logout();
             return false;
         } else
