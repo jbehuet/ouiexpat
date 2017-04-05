@@ -4,7 +4,10 @@ import IUser from '../interfaces/IUser';
 const _schema = new mongoose.Schema({
     firstname: String,
     lastname: String,
-    photo: String,
+    photo: {
+        type: String,
+        default: '/assets/img/no-avatar.png'
+    },
     administrator: {
         type: Boolean,
         default: false
