@@ -5,16 +5,16 @@ import { AuthenticationService } from '../_services/authentication.service';
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-    constructor(private router: Router, private authenticationService: AuthenticationService) { }
+    constructor(private _router: Router, private _authenticationService: AuthenticationService) { }
 
     canActivate() {
-        if (this.authenticationService.checkValidSession()) {
+        if (this._authenticationService.checkValidSession()) {
             // logged in so return true
             return true;
         }
 
         // not logged in so redirect to login page
-        this.router.navigate(['/auth/login']);
+        this._router.navigate(['/auth/login']);
         return false;
     }
 }

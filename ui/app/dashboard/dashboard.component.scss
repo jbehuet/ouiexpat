@@ -2,3 +2,9 @@
     background-color: #F4F7FC;
     min-height: 100%;
 }
+
+.container{
+  @media only screen and (min-width: 993px){
+    width: 85%;
+  }
+}

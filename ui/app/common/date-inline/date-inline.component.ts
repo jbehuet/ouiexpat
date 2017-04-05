@@ -16,7 +16,7 @@ export class DateInlineComponent implements OnInit {
     public months: Array<String> = [];
     public years: Array<Number> = [];
 
-    private currentDate: Date = new Date();
+    private _currentDate: Date = new Date();
 
     constructor() { }
 
@@ -28,18 +28,18 @@ export class DateInlineComponent implements OnInit {
     }
 
     onDayChange(event) {
-        this.currentDate.setDate(event);
-        this.onDateChange.emit(this.currentDate);
+        this._currentDate.setDate(event);
+        this.onDateChange.emit(this._currentDate);
     }
 
     onMonthChange(event) {
-        this.currentDate.setMonth(event);
-        this.onDateChange.emit(this.currentDate);
+        this._currentDate.setMonth(event);
+        this.onDateChange.emit(this._currentDate);
     }
 
     onYearChange(event) {
-        this.currentDate.setFullYear(event);
-        this.onDateChange.emit(this.currentDate);
+        this._currentDate.setFullYear(event);
+        this.onDateChange.emit(this._currentDate);
     }
 
 

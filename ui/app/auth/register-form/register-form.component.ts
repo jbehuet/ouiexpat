@@ -13,8 +13,8 @@ export class RegisterFormComponent implements OnInit {
 
     private birthday: Date;
 
-    constructor(private authenticationService: AuthenticationService,
-        private router: Router) { }
+    constructor(private _authenticationService: AuthenticationService,
+        private _router: Router) { }
 
     ngOnInit() {
 
@@ -26,8 +26,8 @@ export class RegisterFormComponent implements OnInit {
 
     register(data) {
         data.birthday = this.birthday;
-        this.authenticationService.register(data).subscribe(result => {
-            this.router.navigate(['/']);
+        this._authenticationService.register(data).subscribe(result => {
+            this._router.navigate(['/']);
         }, (err) => {
             toast(err, 4000);
         });

@@ -4,17 +4,44 @@
             <a routerLink="/" class="brand-logo"><img src="/assets/img/logo-96x96.png" alt="Logo"></a>
             <a href="" data-activates="mobile-nav" class="button-collapse" materialize="sideNav" [materializeParams]="[{edge:'left'}]"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down desktop">
-                <li><a routerLink="/" routerLinkActive="active">DASHBOARD</a></li>
+                <li><a routerLink="/" routerLinkActive="current">DASHBOARD</a></li>
                 <li><a routerLink="/">CHECKLISTS</a></li>
                 <li><a routerLink="/">HAPPYEXPAT</a></li>
                 <li><a routerLink="/">EXPATRIATIONS</a></li>
+                <li>
+                    <a class="account dropdown-button row valign-wrapper" href="#!" data-activates="dropdown1" materialize="dropdown" [materializeParams]="[{hover:true}]">
+                        <div class="col s7 right-align account-info">
+                            <span class="row">{{ user.lastname }} {{ user.firstname }}</span>
+                            <span class="row notification">Notifications</span>
+                        </div>
+                        <span class="col s3"><img src="/assets/img/default_user.jpg" alt="Profil" class="circle" height="40"></span>
+                        <span class="col s2"><i class="material-icons right">arrow_drop_down</i></span>
+                    </a>
+                </li>
             </ul>
             <ul class="side-nav" id="mobile-nav">
-              <li><a routerLink="/">DASHBOARD</a></li>
-              <li><a routerLink="/">CHECKLISTS</a></li>
-              <li><a routerLink="/">HAPPYEXPAT</a></li>
-              <li><a routerLink="/">EXPATRIATIONS</a></li>
+                <li class="profil">
+                    <div class="row no-margin info">
+                        <span class="col s3"><img src="/assets/img/default_user.jpg" alt="Profil" class="circle" height="40"></span>
+                        <span class="col s7">
+                          <div class="row no-margin"> {{ user.lastname }} {{ user.firstname }}</div>
+                          <div class="row notification">Notifications</div>
+                        </span>
+                    </div>
+                </li>
+                <li><a routerLink="/">DASHBOARD</a></li>
+                <li><a routerLink="/">CHECKLISTS</a></li>
+                <li><a routerLink="/">HAPPYEXPAT</a></li>
+                <li><a routerLink="/">EXPATRIATIONS</a></li>
+                <li class="divider"></li>
+                <li><a routerLink="/auth/login">SE DECONNECTER</a></li>
             </ul>
         </div>
     </nav>
+    <!-- Dropdown Structure -->
+    <ul id="dropdown1" class="dropdown-content">
+        <li><a href="#!">MON PROFILE</a></li>
+        <li class="divider"></li>
+        <li><a routerLink="/auth/login">SE DECONNECTER</a></li>
+    </ul>
 </div>

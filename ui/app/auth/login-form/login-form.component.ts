@@ -10,18 +10,18 @@ import { AuthenticationService } from '../../_services/authentication.service';
 })
 export class LoginFormComponent implements OnInit {
 
-    constructor(private authenticationService: AuthenticationService,
-                private router:Router) { }
+    constructor(private _authenticationService: AuthenticationService,
+                private _router:Router) { }
 
     ngOnInit() {
         // reset login status
-        this.authenticationService.logout();
+        this._authenticationService.logout();
     }
 
     login(data) {
-        this.authenticationService.login(data.email, data.password)
+        this._authenticationService.login(data.email, data.password)
             .subscribe(result => {
-              this.router.navigate(['/']);
+              this._router.navigate(['/']);
             }, (err) => {
               toast(err, 4000);
             });
