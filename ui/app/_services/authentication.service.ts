@@ -32,7 +32,6 @@ export class AuthenticationService {
                 this.payload = this._decodePayload();
                 this.user = res.data;
                 this._cookieService.set(this.COOKIE_KEY, JSON.stringify({ token: this.token }), this.payload.exp, '/');
-                console.log('SET')
             })
             .catch((error: any) => {
                 return Observable.throw(error.json().message || 'Server error')
@@ -44,8 +43,6 @@ export class AuthenticationService {
         this.token = null;
         this.user = null;
         this._cookieService.deleteAll('/');
-        /*if (this._cookieService.get(this.COOKIE_KEY))
-            this._cookieService.set(this.COOKIE_KEY, '');*/
     }
 
     register(user: any): Observable<boolean> {
@@ -62,15 +59,16 @@ export class AuthenticationService {
             });
     }
 
-    checkValidSession(): any {
+    checkValidSession(): boolean {
         if (!this.token && !this._cookieService.get(this.COOKIE_KEY)) return false;
         this.token = this.token || JSON.parse(this._cookieService.get(this.COOKIE_KEY)).token;
         const payload = this._decodePayload();
         if (Math.round(new Date().getTime() / 1000) > payload.exp) {
             this.logout();
             return false;
-        } else
+        } else {
             return true;
+        }
     }
 
     private _decodePayload(): any {
