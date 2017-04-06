@@ -12,7 +12,7 @@ import { AuthenticationService } from '../../_services/authentication.service';
 export class RegisterFormComponent implements OnInit {
 
     private birthday: Date;
-    private displayTerms: Boolean = false;
+    public displayTerms: Boolean = false;
 
     constructor(private _authenticationService: AuthenticationService,
         private _router: Router) { }
