@@ -6,6 +6,7 @@ import { AuthGuard } from '../_guards/auth.guard';
 import { DashboardComponent } from './dashboard.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { WidgetProfilComponent } from './widgets/widget-profil/widget-profil.component';
+import { WidgetExpatriationsComponent } from './widgets/widget-expatriations/widget-expatriations.component';
 
 @NgModule({
     imports: [
@@ -19,6 +20,6 @@ import { WidgetProfilComponent } from './widgets/widget-profil/widget-profil.com
             }
         ])
     ],
-    declarations: [DashboardComponent, NavbarComponent, WidgetProfilComponent]
+    declarations: [DashboardComponent, NavbarComponent, WidgetProfilComponent, WidgetExpatriationsComponent]
 })
 export class DashboardModule { }
