@@ -5,6 +5,7 @@ import { MaterializeModule } from 'angular2-materialize';
 import { AuthGuard } from '../_guards/auth.guard';
 import { DashboardComponent } from './dashboard.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { WidgetProfilComponent } from './widgets/widget-profil/widget-profil.component';
 
 @NgModule({
     imports: [
@@ -18,6 +19,6 @@ import { NavbarComponent } from './navbar/navbar.component';
             }
         ])
     ],
-    declarations: [DashboardComponent, NavbarComponent]
+    declarations: [DashboardComponent, NavbarComponent, WidgetProfilComponent]
 })
 export class DashboardModule { }
