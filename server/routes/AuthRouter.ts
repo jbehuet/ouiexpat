@@ -24,7 +24,6 @@ class AuthRouter {
         if (_.isEmpty(req.body)) return ErrorHelper.handleError(HTTPCode.error.client.BAD_REQUEST, 'Request body is empty', res);
         if (_.isEmpty(req.body.email)) return ErrorHelper.handleError(HTTPCode.error.client.BAD_REQUEST, 'Email is require', res);
         if (_.isEmpty(req.body.password)) return ErrorHelper.handleError(HTTPCode.error.client.BAD_REQUEST, 'Password is require', res);
-        if (_.isEmpty(req.body.birthday)) return ErrorHelper.handleError(HTTPCode.error.client.BAD_REQUEST, 'Bithday is require', res);
 
         UserModel.create(req.body, (err: mongoose.Error, user: UserFormat) => {
             if (err)

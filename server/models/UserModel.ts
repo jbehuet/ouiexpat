@@ -47,8 +47,7 @@ const _schema = new mongoose.Schema({
         }
     },
     birthday: {
-        type: Date,
-        require: true
+        type: Date
     },
     expeditions: [{
         location: {
