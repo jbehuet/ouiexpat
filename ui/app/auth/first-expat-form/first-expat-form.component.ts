@@ -16,6 +16,10 @@ export class FirstExpatFormComponent implements OnInit {
         this.formDateOptions = this._getDefaultPickaDateOptions();
     }
 
+    register(data){
+      
+    }
+
     private _getDefaultPickaDateOptions(): Pickadate.DateOptions {
         return {
             selectMonths: true,
