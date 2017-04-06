@@ -1,0 +1,25 @@
+.first-expat-form {
+    color: #525356;
+    height: 80%;
+    margin-top: 10%;
+    padding: 0 24px;
+}
+
+h1 {
+    font-size: 24px;
+    font-family: "Capriola-Regular";
+    @media screen and (max-width: 320px) {
+        font-size: 16px;
+    }
+}
+
+.chapter {
+    font-size: 16px;
+    background: linear-gradient(301deg, #F7CB0A 0%, #00A2D8 100%) left bottom rgba(0, 0, 0, 0) no-repeat;
+    background-size: 100% 1px;
+
+    .number {
+        font-size: 26px;
+        font-weight: bold;
+    }
+}

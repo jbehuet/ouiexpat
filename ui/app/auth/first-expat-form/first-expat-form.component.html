@@ -1,0 +1,40 @@
+<div class="first-expat-form form-card" *ngIf="!displayTerms">
+
+    <div class="row no-margin">
+        <h1 class="col s12 center-align">Votre 1ère expatriation</h1>
+    </div>
+    <div class="row no-margin">
+        <a routerLink="/" class="btn btn-validate waves-effect col s8 offset-s2 row">
+            <div class="col s10">Plus tard</div>
+            <div class="col s2 right-align icon icon-arrow-thin-right"></div>
+        </a>
+    </div>
+
+    <form (ngSubmit)="firstForm.form.valid && register(firstForm.value)" #firstForm="ngForm">
+        <div class="row">
+            <div class="col s12 chapter"><span class="number">1.</span> Votre situation</div>
+        </div>
+
+
+        <div class="row">
+            <div class="col s12 chapter"><span class="number">2.</span> Expatriation</div>
+        </div>
+
+        <div class="row no-margin">
+            <div class="input-field col s8">
+                <input id="location" name="location" type="text" class="validate" ngModel required>
+                <label for="location">Destination *</label>
+            </div>
+
+            <div class="input-field col s4">
+                <input id="date" name="date" type="text" materialize="pickadate" [materializeParams]="[formDateOptions]" ngModel required>
+                <label for="date">Date *</label>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <button class="btn btn-validate waves-effect col s8 offset-s2" type="submit" [disabled]="firstForm.invalid">Valider</button>
+        </div>
+    </form>
+</div>
