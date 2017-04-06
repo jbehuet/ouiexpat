@@ -1,3 +1,5 @@
+@import "../../styles/utils/_variables.scss";
+
 .auth {
     background-image: url('/assets/img/bg-home.jpg');
     background-repeat: no-repeat;
@@ -7,8 +9,35 @@
     min-height: 100%;
 }
 
+.auth-form {
+    color: $text-color;
+    height: 80%;
+    margin-top: 10%;
+    padding: 0 24px;
+
+    .title-icon {
+        font-size: 24px;
+        @media screen and (max-width: 320px) {
+            font-size: 16px;
+        }
+        line-height: 110%;
+        margin: 1.9rem 0 1.68rem;
+    }
+}
+
+.chapter {
+    font-size: 16px;
+    background: $linear-gradient left bottom rgba(0, 0, 0, 0) no-repeat;
+    background-size: 100% 1px;
+
+    .number {
+        font-size: 26px;
+        font-weight: bold;
+    }
+}
+
 .back {
-    color: #F8F8F8;
+    color: $white;
 
     .icon {
         font-size: 12px;
@@ -24,13 +53,13 @@
         @media screen and (max-width: 320px) {
             font-size: 10px;
         }
-        color: #F8F8F8;
+        color: $white;
         cursor: pointer;
     }
 }
 
 .footer {
-    color: #F8F8F8;
+    color: $white;
     margin: 0;
     bottom: 10px;
     text-align: center;
@@ -43,7 +72,7 @@
         @media screen and (max-width: 320px) {
             font-size: 10px;
         }
-        color: #F8F8F8;
+        color: $white;
         cursor: pointer;
     }
 

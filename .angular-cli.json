@@ -21,7 +21,7 @@
       "styles": [
         "../node_modules/normalize.css/normalize.css",
         "../node_modules/materialize-css/dist/css/materialize.css",
-        "styles.scss",
+        "./styles/main.scss",
         "./assets/fonts/font-icons/styles.css"
       ],
       "scripts": [

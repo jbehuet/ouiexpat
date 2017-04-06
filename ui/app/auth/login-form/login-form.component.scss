@@ -1,39 +1,18 @@
-.login-form {
-    color: #525356;
-    height: 80%;
-    margin-top: 10%;
-    padding: 0 24px;
-}
-
-h1 {
-    font-size: 24px;
-    font-family: "Capriola-Regular";
-    @media screen and (max-width: 320px) {
-        font-size: 16px;
-    }
-}
-
-.title-icon {
-    font-size: 24px;
-    @media screen and (max-width: 320px) {
-        font-size: 16px;
-    }
-    line-height: 110%;
-    margin: 1.9rem 0 1.68rem;
-}
+@import "../auth.component.scss";
 
 .register-link {
     height: 54px;
     line-height: 54px;
     border-radius: 3px;
-    background-color: #F7CB0A;
+    background-color: $yellow;
     font-weight: 600;
     margin: 40px -24px 0;
-
+    color: $text-color;
+    
     a,
     a:focus,
     a:visited {
         cursor: pointer;
-        color: #606164;
+        color: $text-color;
     }
 }

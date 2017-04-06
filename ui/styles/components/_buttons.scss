@@ -1,0 +1,23 @@
+.btn-validate {
+    background: $linear-gradient;
+    border-radius: 40px;
+}
+
+.btn-validate:disabled,
+.btn-validate[disabled] {
+    background: $grey-light !important;
+    color: $text-color !important;
+}
+
+.btn-white {
+    background: $white;
+    border-radius: 40px;
+    color: $text-color;
+    border: 2px solid $text-color;
+    height: 38px;
+}
+
+.btn-white:focus,
+.btn-white:hover {
+    background-color: $grey-very-light;
+}
