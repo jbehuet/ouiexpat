@@ -24,7 +24,7 @@ export class AuthenticationService {
         }
     }
 
-    login(email: string, password: string): Observable<boolean> {
+    login(email: string, password: string): Observable<any> {
         return this._http.post('/api/v1/auth/login', { email, password })
             .map(res => res.json())
             .map(res => {
@@ -32,6 +32,7 @@ export class AuthenticationService {
                 this.payload = this._decodePayload();
                 this.user = res.data;
                 this._cookieService.set(this.COOKIE_KEY, JSON.stringify({ token: this.token }), this.payload.exp, '/');
+                return this.user;
             })
             .catch((error: any) => {
                 return Observable.throw(error.json().message || 'Server error')

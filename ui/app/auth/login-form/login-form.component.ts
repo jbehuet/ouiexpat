@@ -11,7 +11,7 @@ import { AuthenticationService } from '../../_services/authentication.service';
 export class LoginFormComponent implements OnInit {
 
     constructor(private _authenticationService: AuthenticationService,
-                private _router:Router) { }
+        private _router: Router) { }
 
     ngOnInit() {
         // reset login status
@@ -20,10 +20,14 @@ export class LoginFormComponent implements OnInit {
 
     login(data) {
         this._authenticationService.login(data.email, data.password)
-            .subscribe(result => {
-              this._router.navigate(['/']);
+            .subscribe(user => {
+                if (user.expeditions.length === 0) {
+                    this._router.navigate(['/auth/first']);
+                } else {
+                    this._router.navigate(['/']);
+                }
             }, (err) => {
-              toast(err, 4000);
+                toast(err, 4000);
             });
     }
 

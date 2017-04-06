@@ -1,13 +1,18 @@
 <div class="form-card widget">
-    <div class="row">
+    <div class="row" *ngIf="(user.expeditions.length === 0)">
         <span class="col s5"><img src="assets/img/expat.png" alt="Profil" class="no-expat"></span>
         <span class="col s7">
         <div class="row">
           <div class="col s12 center-align">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
         </div>
         <div class="row">
-          <button class="btn btn-validate waves-effect col s12" type="submit">Créer mon expatriation</button>
+          <a routerLink="/auth/first" class="btn btn-validate waves-effect col s12">Créer mon expatriation</a>
         </div>
       </span>
+    </div>
+    <div class="row" *ngIf="(user.expeditions.length > 0)">
+      <div class="row">
+        Nothing
+      </div>
     </div>
 </div>
