@@ -1,40 +1,57 @@
-<div class="auth-form form-card">
-
-    <div class="row no-margin">
-        <h1 class="col s12 center-align">Votre 1ère expatriation</h1>
-    </div>
-    <div class="row no-margin">
-        <a routerLink="/" class="btn btn-validate waves-effect col s8 offset-s2 row">
-            <div class="col s10">Plus tard</div>
-            <div class="col s2 right-align icon icon-arrow-thin-right"></div>
-        </a>
-    </div>
-
-    <form (ngSubmit)="firstForm.form.valid && register(firstForm.value)" #firstForm="ngForm">
+<div class="row">
+    <div class="col s12 m8 l6 offset-m2 offset-l3">
         <div class="row">
-            <div class="col s12 chapter"><span class="number">1.</span> Votre situation</div>
+            <img src="/assets/img/logo.svg" alt="Logo Ouiexpat" class="col s10 offset-s1" />
         </div>
-
-
         <div class="row">
-            <div class="col s12 chapter"><span class="number">2.</span> Expatriation</div>
-        </div>
+            <div class="col s12">
+                <div class="auth-form form-card">
 
-        <div class="row no-margin">
-            <div class="input-field col s8">
-                <input id="location" name="location" type="text" class="validate" ngModel required>
-                <label for="location">Destination *</label>
+                    <div class="row no-margin">
+                        <h1 class="col s12 center-align">Votre 1ère expatriation</h1>
+                    </div>
+                    <div class="row no-margin">
+                        <a routerLink="/" class="btn btn-validate waves-effect col s8 offset-s2 row">
+                            <div class="col s11">Plus tard, découvrir OuiExpat</div>
+                            <div class="col s1 right-align icon icon-arrow-thin-right"></div>
+                        </a>
+                    </div>
+
+                    <form (ngSubmit)="firstForm.form.valid && register(firstForm.value)" #firstForm="ngForm">
+                        <div class="row">
+                            <div class="col s12 chapter"><span class="number">1.</span> Votre situation</div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col s12 chapter"><span class="number">2.</span> Expatriation</div>
+                        </div>
+
+                        <div class="row no-margin">
+                            <div class="input-field col s8">
+                                <input id="location" name="location" type="text" class="validate" ngModel required>
+                                <label for="location">Destination *</label>
+                            </div>
+
+                            <div class="input-field col s4">
+                                <input id="date" name="date" type="text" materialize="pickadate" [materializeParams]="[formDateOptions]" ngModel required>
+                                <label for="date">Date *</label>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <button class="btn btn-validate waves-effect col s8 offset-s2" type="submit" [disabled]="firstForm.invalid">Valider</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="row back center-align">
+                    <div class="col s12">
+                        <span class="icon icon-arrow-thin-left"></span>
+                        <a href="http://www.ouiexpat.com">Retour au site</a>
+                    </div>
+                </div>
             </div>
-
-            <div class="input-field col s4">
-                <input id="date" name="date" type="text" materialize="pickadate" [materializeParams]="[formDateOptions]" ngModel required>
-                <label for="date">Date *</label>
-            </div>
         </div>
-
-
-        <div class="row">
-            <button class="btn btn-validate waves-effect col s8 offset-s2" type="submit" [disabled]="firstForm.invalid">Valider</button>
-        </div>
-    </form>
+    </div>
 </div>

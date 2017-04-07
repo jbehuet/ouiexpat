@@ -1,82 +1,119 @@
-<div class="auth-form form-card" *ngIf="!displayTerms">
-
-    <div class="row no-margin">
-        <h1 class="col s8">Inscription</h1>
-        <span class="col s4 title-icon right-align"><i class="icon icon-user"></i></span>
-    </div>
-
-    <form (ngSubmit)="registerForm.form.valid && register(registerForm.value)" #registerForm="ngForm">
-        <div class="row no-margin">
-            <div class="input-field col s12">
-                <input id="email" name="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="validate" ngModel required>
-                <label for="email">Adresse E-mail *</label>
-            </div>
+<div class="row" *ngIf="!displayTerms">
+    <div class="col s12 m8 l4 offset-m2 offset-l4">
+        <div class="row">
+            <img src="/assets/img/logo.svg" alt="Logo Ouiexpat" class="col s10 offset-s1" />
         </div>
-        <div class="row no-margin">
-            <div class="input-field col s12">
-                <input id="password" name="password" type="password" class="validate" ngModel required>
-                <label for="password">Mot de passe *</label>
-            </div>
-        </div>
-        <div class="row no-margin">
-            <div class="input-field col s12">
-                <input id="firstname" name="firstname" type="text" class="validate" ngModel required>
-                <label for="firstname">Prénom *</label>
-            </div>
-        </div>
-        <div class="row no-margin">
-            <div class="input-field col s12">
-                <input id="lastname" name="lastname" type="text" class="validate" ngModel required>
-                <label for="lastname">Nom *</label>
-            </div>
-        </div>
-
         <div class="row">
             <div class="col s12">
-                <input type="checkbox" id="terms" name="terms" required ngModel/>
-                <label for="terms" class="terms">En créant un compte, j'accepte les <a (click)="displayTerms = !displayTerms">Conditions générales</a></label>
+
+                <div class="auth-form form-card">
+
+                    <div class="row no-margin">
+                        <h1 class="col s8">Inscription</h1>
+                        <span class="col s4 title-icon right-align"><i class="icon icon-user"></i></span>
+                    </div>
+
+                    <form (ngSubmit)="registerForm.form.valid && register(registerForm.value)" #registerForm="ngForm">
+                        <div class="row no-margin">
+                            <div class="input-field col s12">
+                                <input id="email" name="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="validate" ngModel required>
+                                <label for="email">Adresse E-mail *</label>
+                            </div>
+                        </div>
+                        <div class="row no-margin">
+                            <div class="input-field col s12">
+                                <input id="password" name="password" type="password" class="validate" ngModel required>
+                                <label for="password">Mot de passe *</label>
+                            </div>
+                        </div>
+                        <div class="row no-margin">
+                            <div class="input-field col s12">
+                                <input id="firstname" name="firstname" type="text" class="validate" ngModel required>
+                                <label for="firstname">Prénom *</label>
+                            </div>
+                        </div>
+                        <div class="row no-margin">
+                            <div class="input-field col s12">
+                                <input id="lastname" name="lastname" type="text" class="validate" ngModel required>
+                                <label for="lastname">Nom *</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col s12">
+                                <input type="checkbox" id="terms" name="terms" required ngModel/>
+                                <label for="terms" class="terms">En créant un compte, j'accepte les <a (click)="displayTerms = !displayTerms">Conditions générales</a></label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <button class="btn btn-validate waves-effect col s8 offset-s2" type="submit" [disabled]="registerForm.invalid">S'inscrire</button>
+                        </div>
+                    </form>
+
+                    <div class="row center-align">
+                        Vous avez déjà un compte ?
+                    </div>
+
+                    <div class="row no-margin">
+                        <a routerLink="/auth/login" class="btn-flat btn-white waves-effect center-align col s8 offset-s2">Se connecter</a>
+                    </div>
+
+                </div>
+
+                <div class="row back center-align">
+                    <div class="col s12">
+                        <span class="icon icon-arrow-thin-left"></span>
+                        <a href="http://www.ouiexpat.com">Retour au site</a>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="row">
-            <button class="btn btn-validate waves-effect col s8 offset-s2" type="submit" [disabled]="registerForm.invalid">S'inscrire</button>
-        </div>
-    </form>
-
-    <div class="row center-align">
-        Vous avez déjà un compte ?
     </div>
-
-    <div class="row no-margin">
-        <a routerLink="/auth/login" class="btn-flat btn-white waves-effect center-align col s8 offset-s2">Se connecter</a>
-    </div>
-
 </div>
 
-<div class="auth-form form-card" *ngIf="displayTerms">
-    <div class="row no-margin">
-        <h1 class="col s12">Conditions générales</h1>
-    </div>
+<div class="row" *ngIf="displayTerms">
+    <div class="col s12 m8 l6 offset-m2 offset-l3">
+        <div class="row">
+            <img src="/assets/img/logo.svg" alt="Logo Ouiexpat" class="col s10 offset-s1" />
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="auth-form form-card">
+                    <div class="row no-margin">
+                        <h1 class="col s12">Conditions générales</h1>
+                    </div>
 
-    <div class="row no-margin">
-        <div class="col s12 chapter"><span class="number">1.</span> Chapitre</div>
-    </div>
+                    <div class="row no-margin">
+                        <div class="col s12 chapter"><span class="number">1.</span> Chapitre</div>
+                    </div>
 
-    <div class="row">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    </div>
+                    <div class="row">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
 
-    <div class="row no-margin">
-        <div class="col s12 chapter"><span class="number">2.</span> Chapitre</div>
-    </div>
+                    <div class="row no-margin">
+                        <div class="col s12 chapter"><span class="number">2.</span> Chapitre</div>
+                    </div>
 
-    <div class="row">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    </div>
+                    <div class="row">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
 
-    <div class="row">
-        <a class="btn-flat btn-white waves-effect center-align col s8 offset-s2" (click)="displayTerms = !displayTerms">Retour</a>
+                    <div class="row">
+                        <a class="btn-flat btn-white waves-effect center-align col s8 offset-s2" (click)="displayTerms = !displayTerms">Retour</a>
+                    </div>
+                </div>
+
+                <div class="row back center-align">
+                    <div class="col s12">
+                        <span class="icon icon-arrow-thin-left"></span>
+                        <a href="http://www.ouiexpat.com">Retour au site</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
