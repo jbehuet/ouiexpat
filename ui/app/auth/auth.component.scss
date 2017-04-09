@@ -1,13 +1,5 @@
-$blue: #00A2D8;
-$text-color: #525356;
-$grey-light: #B8B8B8;
-$grey-very-light: #eeeeee;
-$grey: #9e9e9e;
-$white: #F8F8F8;
-$yellow: #F7CB0A;
-$white-grey:#F4F7FC;
-$red: #FF3950;
-$linear-gradient: linear-gradient(301deg, $yellow 0%, $blue 100%);
+
+$linear-gradient: linear-gradient(301deg, #F7CB0A 0%, #00A2D8 100%);
 
 .auth {
     background-image: url('/assets/img/bg-home.jpg');
@@ -19,7 +11,6 @@ $linear-gradient: linear-gradient(301deg, $yellow 0%, $blue 100%);
 }
 
 .auth-form {
-    color: $text-color;
     height: 80%;
     margin-top: 10%;
     padding: 0 24px;
@@ -46,7 +37,7 @@ $linear-gradient: linear-gradient(301deg, $yellow 0%, $blue 100%);
 }
 
 .back {
-    color: $white;
+    color: #F8F8F8;
 
     .icon {
         font-size: 12px;
@@ -62,13 +53,13 @@ $linear-gradient: linear-gradient(301deg, $yellow 0%, $blue 100%);
         @media screen and (max-width: 320px) {
             font-size: 10px;
         }
-        color: $white;
+        color: #F8F8F8;
         cursor: pointer;
     }
 }
 
 .footer {
-    color: $white;
+    color: #F8F8F8;
     margin: 0;
     bottom: 10px;
     text-align: center;
@@ -81,7 +72,7 @@ $linear-gradient: linear-gradient(301deg, $yellow 0%, $blue 100%);
         @media screen and (max-width: 320px) {
             font-size: 10px;
         }
-        color: $white;
+        color: #F8F8F8;
         cursor: pointer;
     }
 

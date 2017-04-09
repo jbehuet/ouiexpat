@@ -20,9 +20,8 @@
       "prefix": "oe",
       "styles": [
         "../node_modules/normalize.css/normalize.css",
-        "../node_modules/materialize-css/dist/css/materialize.css",
-        "./styles/main.scss",
-        "./assets/fonts/font-icons/styles.css"
+        "./assets/fonts/font-icons/styles.css",
+        "./styles/main.scss"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.js",

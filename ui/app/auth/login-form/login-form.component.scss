@@ -1,28 +1,11 @@
 @import '../auth.component.scss';
 
-$blue: #00A2D8;
-$text-color: #525356;
-$grey-light: #B8B8B8;
-$grey-very-light: #eeeeee;
-$grey: #9e9e9e;
-$white: #F8F8F8;
-$yellow: #F7CB0A;
-$white-grey:#F4F7FC;
-$red: #FF3950;
-$linear-gradient: linear-gradient(301deg, $yellow 0%, $blue 100%);
-
 .register-link {
     height: 54px;
     line-height: 54px;
     border-radius: 3px;
-    background-color: $yellow;
+    background-color: #F7CB0A;
     font-weight: 600;
     margin: 40px -24px 0;
 
-    a,
-    a:focus,
-    a:visited {
-        cursor: pointer;
-        color: $text-color;
-    }
 }

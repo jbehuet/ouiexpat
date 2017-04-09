@@ -1,15 +1,9 @@
 @import "../dashboard.component.scss";
 
-$blue: #00A2D8;
-$text-color: #525356;
 $grey-light: #B8B8B8;
-$grey-very-light: #eeeeee;
-$grey: #9e9e9e;
 $white: #F8F8F8;
-$yellow: #F7CB0A;
-$white-grey:#F4F7FC;
 $red: #FF3950;
-$linear-gradient: linear-gradient(301deg, $yellow 0%, $blue 100%);
+$linear-gradient: linear-gradient(301deg, #F7CB0A 0%, #00A2D8 100%);
 $capriola: "Capriola-Regular";
 $open-sans: "Open Sans";
 
@@ -19,7 +13,6 @@ $open-sans: "Open Sans";
 
 nav {
     background: $white;
-    color: $text-color;
     font-family: $capriola;
 
     .container {
@@ -37,12 +30,6 @@ nav {
         }
     }
 
-    a,
-    a:focus,
-    a:visited {
-        color: $blue;
-    }
-
     ul.desktop {
         height: 100%;
 
@@ -52,17 +39,6 @@ nav {
             .divider {
                 height: 1px;
             }
-        }
-
-        a,
-        a:focus,
-        a:visited {
-            font-size: 14px;
-            color: $text-color;
-        }
-
-        a:hover {
-            background-color: rgba(0, 0, 0, 0.1);
         }
 
         a.current {
@@ -92,8 +68,6 @@ nav {
 
 .dropdown-content {
     top: 64px !important;
-    background: $white;
-    color: $text-color;
 }
 
 .side-nav {
