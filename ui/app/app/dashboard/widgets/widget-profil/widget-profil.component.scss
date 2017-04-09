@@ -4,10 +4,15 @@ $yellow: #F7CB0A;
 $linear-gradient: linear-gradient(301deg, $yellow 0%, $blue 100%);
 
 .widget {
+    padding: 0px;
     height: calc(100vh - 100px);
 
     .title {
         background-origin: border-box;
         background: $linear-gradient;
+        padding: 10px;
+    }
+    .content{
+      padding: 24px;
     }
 }
