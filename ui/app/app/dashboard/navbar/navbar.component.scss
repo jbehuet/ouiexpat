@@ -1,5 +1,4 @@
 @import "../dashboard.component.scss";
-
 $grey-light: #B8B8B8;
 $white: #F8F8F8;
 $red: #FF3950;
@@ -68,6 +67,12 @@ nav {
 
 .dropdown-content {
     top: 64px !important;
+
+    a,
+    a:focus,
+    a:visited {
+        color: #525356;
+    }
 }
 
 .side-nav {
@@ -77,6 +82,7 @@ nav {
         .info {
             line-height: 100%;
             margin-top: 10px;
+
             .notification {
                 margin-top: 5px;
                 font-size: 12px;

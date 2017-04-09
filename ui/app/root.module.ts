@@ -6,18 +6,16 @@ import { HttpModule } from '@angular/http';
 import { RollbarModule, RollbarService } from 'angular-rollbar/lib/';
 
 import { AuthModule } from './auth/auth.module';
-import { DashboardModule } from './dashboard/dashboard.module';
-
-import { ROUTES } from './app.routes';
+import { AppModule } from './app/app.module';
 
 import { AuthGuard } from './_guards/auth.guard';
 import { AuthenticationService } from './_services/authentication.service';
 
-import { AppComponent } from './app.component';
+import { RootComponent } from './root.component';
 
 @NgModule({
     declarations: [
-        AppComponent
+        RootComponent
     ],
     imports: [
         BrowserModule,
@@ -25,11 +23,14 @@ import { AppComponent } from './app.component';
         RollbarModule.forRoot({
             accessToken: 'f548a573433d41a680fc4b738428f31d'
         }),
-        RouterModule.forRoot(ROUTES),
+        RouterModule.forRoot([
+            // otherwise redirect to home
+            { path: '**', redirectTo: '' }
+        ]),
         AuthModule,
-        DashboardModule
+        AppModule
     ],
     providers: [RollbarService, CookieService, AuthGuard, AuthenticationService],
-    bootstrap: [AppComponent]
+    bootstrap: [RootComponent]
 })
-export class AppModule { }
+export class RootModule { }

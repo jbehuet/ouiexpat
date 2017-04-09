@@ -4,7 +4,7 @@
             <a routerLink="/" class="brand-logo"><img src="/assets/img/logo-96x96.png" alt="Logo"></a>
             <a href="" data-activates="mobile-nav" class="button-collapse" materialize="sideNav" [materializeParams]="[{edge:'left'}]"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down desktop">
-                <li><a routerLink="/" routerLinkActive="current">DASHBOARD</a></li>
+                <li><a routerLink="/dashboard" routerLinkActive="current">DASHBOARD</a></li>
                 <li><a routerLink="/">CHECKLISTS</a></li>
                 <li><a routerLink="/">HAPPYEXPAT</a></li>
                 <li><a routerLink="/">EXPATRIATIONS</a></li>
@@ -40,7 +40,7 @@
     </nav>
     <!-- Dropdown Structure -->
     <ul id="dropdown1" class="dropdown-content">
-        <li><a href="#!">MON PROFILE</a></li>
+        <li><a routerLink="/profil">MON PROFIL</a></li>
         <li class="divider"></li>
         <li><a routerLink="/auth/login">SE DECONNECTER</a></li>
     </ul>
