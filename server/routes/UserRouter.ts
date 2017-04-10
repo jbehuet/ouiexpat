@@ -37,7 +37,7 @@ class UserRouter extends AbstractRouter {
         if (!req.authenticatedUser.administrator && req.params._id !== req.authenticatedUser._id)
             return ErrorHelper.handleError(HTTPCode.error.client.UNAUTHORIZED, 'Not authorize', res);
 
-        UserModel.update({ _id: req.params._id }, req.body, { new: true }, (err: mongoose.Error, user: UserFormat) => {
+        UserModel.findOneAndUpdate({ _id: req.authenticatedUser._id} , req.body, { new: true }, (err: mongoose.Error, user: UserFormat) => {
             if (err)
                 ErrorHelper.handleMongooseError(err, res, req);
             else

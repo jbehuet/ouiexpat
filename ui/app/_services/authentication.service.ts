@@ -9,7 +9,7 @@ declare function escape(s: string): string;
 @Injectable()
 export class AuthenticationService {
 
-    private readonly COOKIE_KEY: string = "__session";
+    public readonly COOKIE_KEY: string = "__session";
     public token: string;
     public payload: any;
     public user: any;
@@ -73,11 +73,10 @@ export class AuthenticationService {
     }
 
     updateProfil(user: any): Observable<any> {
-        return this._http.put('/api/v1/users', user)
+        return this._http.put('/api/v1/users/' + user._id, user)
             .map(res => res.json())
             .map(res => {
-                this.user = res.data;
-                return this.user;
+                return true;
             })
             .catch((error: any) => {
                 return Observable.throw(error.json().message || 'Server error')

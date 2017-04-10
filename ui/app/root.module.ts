@@ -2,12 +2,14 @@ import { CookieService } from 'ng2-cookies';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { HttpModule } from '@angular/http';
+import { HttpModule, Http, XHRBackend, RequestOptions } from '@angular/http';
 import { RollbarModule, RollbarService } from 'angular-rollbar/lib/';
 
 import { AuthModule } from './auth/auth.module';
 import { AppModule } from './app/app.module';
 
+
+import { httpFactory } from "./_factories/http.factory";
 import { AuthGuard } from './_guards/auth.guard';
 import { AuthenticationService } from './_services/authentication.service';
 
@@ -30,7 +32,13 @@ import { RootComponent } from './root.component';
         AuthModule,
         AppModule
     ],
-    providers: [RollbarService, CookieService, AuthGuard, AuthenticationService],
+    providers: [
+        {
+            provide: Http,
+            useFactory: httpFactory,
+            deps: [XHRBackend, RequestOptions, CookieService]
+        },
+        RollbarService, CookieService, AuthGuard, AuthenticationService],
     bootstrap: [RootComponent]
 })
 export class RootModule { }

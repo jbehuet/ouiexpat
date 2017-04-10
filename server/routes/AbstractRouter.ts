@@ -76,8 +76,7 @@ class AbstractRouter {
     }
 
     protected update(req: IRequest, res: Response, next: NextFunction) {
-
-        this.model.update({ _id: req.params.id }, req.body, { new: true }, (err: mongoose.Error, object: mongoose.Document) => {
+        this.model.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true }, (err: mongoose.Error, object: mongoose.Document) => {
             if (err)
                 ErrorHelper.handleMongooseError(err, res, req);
             else
