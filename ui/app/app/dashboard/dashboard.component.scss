@@ -21,4 +21,10 @@ $open-sans: "Open Sans";
             color: $white;
         }
     }
+
+    .empty {
+        .icon {
+         font-size: 3rem;
+        }
+    }
 }
