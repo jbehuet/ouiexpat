@@ -52,6 +52,16 @@ nav {
             margin: 0;
         }
 
+        a.selected {
+            color: #00A2D8;
+
+            img {
+                // border-image: #00A2D8;
+                // border-width: 2px;
+                // border-style: solid;
+            }
+        }
+
         .account-info {
             font-size: 13px;
             margin-top: 14px;
@@ -77,8 +87,6 @@ nav {
 
 .side-nav {
     li.profil {
-        padding: 0 32px;
-
         .info {
             line-height: 100%;
             margin-top: 10px;

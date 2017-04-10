@@ -7,7 +7,6 @@ import { MaterializeModule } from 'angular2-materialize';
 import { AuthGuard } from '../_guards/auth.guard';
 
 import { AuthComponent } from './auth.component';
-import { DateInlineComponent } from '../common/date-inline/date-inline.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { FirstExpatFormComponent } from './first-expat-form/first-expat-form.component';
@@ -31,6 +30,6 @@ import { FirstExpatFormComponent } from './first-expat-form/first-expat-form.com
         ])
     ],
     providers: [],
-    declarations: [AuthComponent, LoginFormComponent, RegisterFormComponent, DateInlineComponent, FirstExpatFormComponent]
+    declarations: [AuthComponent, LoginFormComponent, RegisterFormComponent, FirstExpatFormComponent]
 })
 export class AuthModule { }

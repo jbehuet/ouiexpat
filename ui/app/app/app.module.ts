@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { MaterializeModule } from 'angular2-materialize';
 import { AuthGuard } from '../_guards/auth.guard';
+
+import { DateInlineComponent } from '../common/date-inline/date-inline.component';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavbarComponent } from './dashboard/navbar/navbar.component';
@@ -15,6 +18,7 @@ import { ProfilComponent } from './profil/profil.component';
 @NgModule({
     imports: [
         CommonModule,
+        FormsModule,
         MaterializeModule,
         RouterModule.forChild([
             {
@@ -32,7 +36,7 @@ import { ProfilComponent } from './profil/profil.component';
     declarations: [
         AppComponent, DashboardComponent, NavbarComponent, WidgetProfilComponent,
         WidgetExpatriationsComponent, WidgetActusComponent, WidgetFavorisComponent,
-        ProfilComponent
+        ProfilComponent, DateInlineComponent
     ]
 })
 export class AppModule { }

@@ -72,6 +72,18 @@ export class AuthenticationService {
         }
     }
 
+    updateProfil(user: any): Observable<any> {
+        return this._http.put('/api/v1/users', user)
+            .map(res => res.json())
+            .map(res => {
+                this.user = res.data;
+                return this.user;
+            })
+            .catch((error: any) => {
+                return Observable.throw(error.json().message || 'Server error')
+            });
+    }
+
     private _decodePayload(): any {
         let payload = this.token.split('.')[1];
         payload = decodeURIComponent(escape(window.atob(payload)));
