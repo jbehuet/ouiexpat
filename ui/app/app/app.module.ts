@@ -16,6 +16,7 @@ import { WidgetActusComponent } from './dashboard/widgets/widget-actus/widget-ac
 import { WidgetFavorisComponent } from './dashboard/widgets/widget-favoris/widget-favoris.component';
 import { ProfilComponent } from './profil/profil.component';
 import { ExpatriationsComponent } from './expatriations/expatriations.component';
+import { MyFilterPipe } from './expatriations/date.filter';
 
 @NgModule({
     imports: [
@@ -40,7 +41,7 @@ import { ExpatriationsComponent } from './expatriations/expatriations.component'
     declarations: [
         AppComponent, DashboardComponent, NavbarComponent, WidgetProfilComponent,
         WidgetExpatriationsComponent, WidgetActusComponent, WidgetFavorisComponent,
-        ExpatriationsComponent, ProfilComponent
+        ExpatriationsComponent, ProfilComponent, MyFilterPipe
     ]
 })
 export class AppModule { }

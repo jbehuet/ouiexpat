@@ -3,6 +3,18 @@
         <div class="row">
             <h1 class="col s12"><i class="icon icon-location"></i> Mes expatriations</h1>
         </div>
+        <div class="row">
+            <button class="btn btn-validate waves-effect col s12"><i class="material-icons right">add</i>Créer une expatriation</button>
+        </div>
+        <div class="row">
+          <h4 class="subtitle">A venir</h4>
+          <p *ngFor="let expat of (user.expeditions | myfilter:['date','now'])">{{expat.location.country}}</p>
+        </div>
+
+        <div class="row">
+          <h4 class="subtitle">Passée(s)</h4>
+          <p *ngFor="let expat of (user.expeditions | myfilter:['date','now', 'before'])">{{expat.location.country}}</p>
+        </div>
     </div>
     <div class="col s12 m9">
     </div>
