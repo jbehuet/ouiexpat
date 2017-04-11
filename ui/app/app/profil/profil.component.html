@@ -47,19 +47,19 @@
                     </div>
                     <div class="row no-margin">
                         <div class="input-field col s12">
-                            <input id="email" name="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [(ngModel)]="user.email" required>
+                            <input id="email" placeholder="E-mail" name="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [(ngModel)]="user.email" required>
                             <label for="email">Adresse E-mail</label>
                         </div>
                     </div>
                     <div class="row no-margin">
                         <div class="input-field col s12">
-                            <input id="lasstname" name="lastname" type="text" [(ngModel)]="user.lastname" required>
-                            <label for="lasstname">Prénom</label>
+                            <input id="lastname" placeholder="Prénom" name="lastname" type="text" [(ngModel)]="user.lastname" required>
+                            <label for="lastname">Prénom</label>
                         </div>
                     </div>
                     <div class="row no-margin">
                         <div class="input-field col s12">
-                            <input id="firstname" name="firstname" type="text" [(ngModel)]="user.firstname" required>
+                            <input id="firstname" placeholder="Nom" name="firstname" type="text" [(ngModel)]="user.firstname" required>
                             <label for="firstname">Nom</label>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
                     </div>
 
                     <div class="row">
-                        <button class="btn btn-validate waves-effect col s8 offset-s4" type="submit">Sauvegarder et mettre à jour</button>
+                        <button class="btn btn-validate waves-effect col s8 offset-s4" type="submit" [disabled]="profilForm.invalid || profilForm.pristine">Sauvegarder et mettre à jour</button>
                     </div>
                 </form>
 

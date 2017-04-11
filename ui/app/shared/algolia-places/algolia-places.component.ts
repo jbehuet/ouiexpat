@@ -29,6 +29,7 @@ export class AlgoliaPlacesComponent implements OnInit, ControlValueAccessor {
     onChange: any = () => { };
     onTouched: any = () => { };
 
+    private placesAutocomplete;
 
     get value() {
         return this.place;
@@ -43,19 +44,21 @@ export class AlgoliaPlacesComponent implements OnInit, ControlValueAccessor {
     }
 
     ngOnInit(){
-      const placesAutocomplete = places({
+      this.placesAutocomplete = places({
           container: document.querySelector('#location')
       });
 
-      placesAutocomplete.on('change', e => {
+      this.placesAutocomplete.on('change', e => {
         this.place = e.suggestion
         this.onChange(this.place);
       });
+
     }
 
     writeValue(value) {
         if (value) {
             this.place = value;
+            this.placesAutocomplete.setVal(this.place.value)
         }
     }
 

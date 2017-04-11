@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../../../_services/authentication.service';
+import { User } from '../../../../_interfaces/user.interface';
 
 @Component({
     selector: 'oe-widget-expatriations',
@@ -8,7 +9,7 @@ import { AuthenticationService } from '../../../../_services/authentication.serv
 })
 export class WidgetExpatriationsComponent implements OnInit {
 
-    public user: any;
+    public user: User;
     public expatSelected: any;
 
     constructor(private _authenticationService: AuthenticationService) { }

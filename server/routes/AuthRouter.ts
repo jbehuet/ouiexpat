@@ -30,7 +30,7 @@ class AuthRouter {
                 ErrorHelper.handleMongooseError(err, res, req);
             else {
                 user.password = '****';
-                const token = jwt.sign(user, CONFIG.jwt.secret, CONFIG.jwt.options);
+                const token = AuthRouter.generateToken(user);//jwt.sign(user, CONFIG.jwt.secret, CONFIG.jwt.options);
                 res.status(HTTPCode.success.CREATED).json({
                     status: HTTPCode.success.CREATED,
                     data: user,
@@ -66,6 +66,10 @@ class AuthRouter {
 
     private refreshToken(req: IRequest, res: Response, next: NextFunction) {
         // TODO
+    }
+
+    public static generateToken(data:any): string{
+      return jwt.sign(data, CONFIG.jwt.secret, CONFIG.jwt.options);
     }
 
 }

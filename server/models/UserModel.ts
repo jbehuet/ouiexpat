@@ -37,7 +37,8 @@ const _schema = new mongoose.Schema({
         }
     },
     address: {
-        address: String,
+        value: String,
+        name: String,
         city: String,
         country: String,
         postcode: String,
@@ -52,7 +53,8 @@ const _schema = new mongoose.Schema({
     },
     expeditions: [{
         location: {
-            address: String,
+            value: String,
+            name: String,
             city: String,
             country: String,
             postcode: String,

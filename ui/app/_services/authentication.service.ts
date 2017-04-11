@@ -1,8 +1,10 @@
 import { CookieService } from 'ng2-cookies';
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
+
+import { User } from '../_interfaces/user.interface';
 
 declare function escape(s: string): string;
 
@@ -12,7 +14,8 @@ export class AuthenticationService {
     public readonly COOKIE_KEY: string = "__session";
     public token: string;
     public payload: any;
-    public user: any;
+    public user: User;
+    public userChange: EventEmitter<User> = new EventEmitter();
 
     constructor(private _http: Http, private _cookieService: CookieService) {
         // set token if saved in local storage
@@ -46,7 +49,7 @@ export class AuthenticationService {
         this._cookieService.deleteAll('/');
     }
 
-    register(user: any): Observable<boolean> {
+    register(user: User): Observable<boolean> {
         return this._http.post('/api/v1/auth/register', user)
             .map(res => res.json())
             .map(res => {
@@ -72,11 +75,16 @@ export class AuthenticationService {
         }
     }
 
-    updateProfil(user: any): Observable<any> {
+    updateProfil(user: User): Observable<any> {
         return this._http.put('/api/v1/users/' + user._id, user)
             .map(res => res.json())
             .map(res => {
-                return true;
+                this.token = res.token;
+                this.payload = this._decodePayload();
+                this.user = res.data;
+                this._cookieService.set(this.COOKIE_KEY, JSON.stringify({ token: this.token }), this.payload.exp, '/');
+                this.userChange.emit(this.user);
+                return this.user;
             })
             .catch((error: any) => {
                 return Observable.throw(error.json().message || 'Server error')
@@ -84,15 +92,15 @@ export class AuthenticationService {
     }
 
     createExpatriation(expatriation: any): Observable<any> {
-      return this._http.post('/api/v1/users/expeditions', expatriation)
-          .map(res => res.json())
-          .map(res => {
-              this.user = res.data;
-              return true;
-          })
-          .catch((error: any) => {
-              return Observable.throw(error.json().message || 'Server error')
-          });
+        return this._http.post('/api/v1/users/expeditions', expatriation)
+            .map(res => res.json())
+            .map(res => {
+                this.user = res.data;
+                return true;
+            })
+            .catch((error: any) => {
+                return Observable.throw(error.json().message || 'Server error')
+            });
 
     }
 

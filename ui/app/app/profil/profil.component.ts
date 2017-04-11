@@ -4,6 +4,7 @@ import { toast } from 'angular2-materialize';
 
 import { User } from '../../_interfaces/user.interface';
 
+
 @Component({
     selector: 'oe-profil',
     templateUrl: './profil.component.html',
@@ -16,10 +17,14 @@ export class ProfilComponent implements OnInit {
     constructor(private _authenticationService: AuthenticationService) { }
 
     ngOnInit() {
-        this.user = this._authenticationService.user;
+        this.user = { ...this._authenticationService.user };
     }
 
     updateProfil() {
+        this.user.address.geometry = this.user.address.geometry ||  {
+            coordinate: [this.user.address.latlng.lat, this.user.address.latlng.lng]
+        };
+
         this._authenticationService.updateProfil(this.user)
             .subscribe(user => {
                 toast("Updated", 4000);

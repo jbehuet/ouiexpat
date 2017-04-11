@@ -1,5 +1,6 @@
 export default class AddressFormat {
-    address: string;
+    value: string;
+    name: string;
     city: string;
     postcode: string;
     country: string;

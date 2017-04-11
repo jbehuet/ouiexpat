@@ -22,21 +22,11 @@ export class FirstExpatFormComponent implements OnInit {
     }
 
     register() {
-        const _expatriation = {
-          location: {
-              address: this.expatriation.location.value,
-              city: this.expatriation.location.city || this.expatriation.location.name,
-              postcode: this.expatriation.location.postcode || '',
-              country: this.expatriation.location.country,
-              countryCode: this.expatriation.location.countryCode,
-              geometry: {
-                  coordinate: [this.expatriation.location.latlng.lat, this.expatriation.location.latlng.lng]
-              }
-          },
-          date: this.expatriation.date
-        }
+        this.expatriation.location.geometry = {
+            coordinate: [this.expatriation.location.latlng.lat, this.expatriation.location.latlng.lng]
+        };
 
-        this._authenticationService.createExpatriation(_expatriation).subscribe(result => {
+        this._authenticationService.createExpatriation(this.expatriation).subscribe(result => {
             this._router.navigate(['/dashboard']);
         }, (err) => {
             toast(err, 4000);

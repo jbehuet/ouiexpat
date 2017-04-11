@@ -5,6 +5,7 @@ import HTTPCode from '../constants/HttpCodeConstant';
 import IRequest from '../interfaces/IRequest';
 import ErrorHelper from '../helpers/ErrorHelper';
 import AbstractRouter from './AbstractRouter';
+import AuthRouter from './AuthRouter';
 import ExpeditionFormat from '../formats/ExpeditionFormat';
 import UserFormat from '../formats/UserFormat';
 import UserModel from '../models/UserModel';
@@ -37,11 +38,13 @@ class UserRouter extends AbstractRouter {
         if (!req.authenticatedUser.administrator && req.params._id !== req.authenticatedUser._id)
             return ErrorHelper.handleError(HTTPCode.error.client.UNAUTHORIZED, 'Not authorize', res);
 
-        UserModel.findOneAndUpdate({ _id: req.authenticatedUser._id} , req.body, { new: true }, (err: mongoose.Error, user: UserFormat) => {
+        UserModel.findOneAndUpdate({ _id: req.authenticatedUser._id }, req.body, { new: true }, (err: mongoose.Error, user: UserFormat) => {
             if (err)
                 ErrorHelper.handleMongooseError(err, res, req);
-            else
-                res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user });
+            else {
+                const token = AuthRouter.generateToken(user);
+                res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user, token:token });
+            }
         });
 
     }
