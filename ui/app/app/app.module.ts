@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MaterializeModule } from 'angular2-materialize';
+import { SharedModule } from '../shared/shared.module';
+
 import { AuthGuard } from '../_guards/auth.guard';
 
-import { DateInlineComponent } from '../common/date-inline/date-inline.component';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavbarComponent } from './dashboard/navbar/navbar.component';
@@ -20,6 +21,7 @@ import { ProfilComponent } from './profil/profil.component';
         CommonModule,
         FormsModule,
         MaterializeModule,
+        SharedModule,
         RouterModule.forChild([
             {
                 path: '',
@@ -36,7 +38,7 @@ import { ProfilComponent } from './profil/profil.component';
     declarations: [
         AppComponent, DashboardComponent, NavbarComponent, WidgetProfilComponent,
         WidgetExpatriationsComponent, WidgetActusComponent, WidgetFavorisComponent,
-        ProfilComponent, DateInlineComponent
+        ProfilComponent
     ]
 })
 export class AppModule { }

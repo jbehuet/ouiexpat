@@ -9,6 +9,8 @@ import { Pickadate } from 'materialize-css';
 export class FirstExpatFormComponent implements OnInit {
 
     public formDateOptions: Pickadate.DateOptions;
+    public dataModel: string = '';
+
 
     constructor() { }
 
@@ -17,7 +19,7 @@ export class FirstExpatFormComponent implements OnInit {
     }
 
     register(data){
-      
+
     }
 
     private _getDefaultPickaDateOptions(): Pickadate.DateOptions {

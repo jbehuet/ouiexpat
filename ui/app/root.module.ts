@@ -8,7 +8,6 @@ import { RollbarModule, RollbarService } from 'angular-rollbar/lib/';
 import { AuthModule } from './auth/auth.module';
 import { AppModule } from './app/app.module';
 
-
 import { httpFactory } from "./_factories/http.factory";
 import { AuthGuard } from './_guards/auth.guard';
 import { AuthenticationService } from './_services/authentication.service';

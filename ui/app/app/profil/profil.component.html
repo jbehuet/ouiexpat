@@ -69,9 +69,8 @@
                     </div>
 
                     <div class="row">
-                        <div class="input-field col s12">
-                            <input id="address" name="address" type="text">
-                            <label for="address">Adresse</label>
+                        <div class="col s12">
+                            <algolia-places name="address" [(ngModel)]="user.address"></algolia-places>
                         </div>
                     </div>
 

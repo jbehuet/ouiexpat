@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MaterializeModule } from 'angular2-materialize';
+import { SharedModule } from '../shared/shared.module';
 
 import { AuthGuard } from '../_guards/auth.guard';
 
@@ -16,6 +17,7 @@ import { FirstExpatFormComponent } from './first-expat-form/first-expat-form.com
         CommonModule,
         FormsModule,
         MaterializeModule,
+        SharedModule,
         RouterModule.forChild([
             {
                 path: 'auth',

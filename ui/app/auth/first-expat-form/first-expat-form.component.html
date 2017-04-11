@@ -27,10 +27,14 @@
                             <div class="col s12 chapter"><span class="number">2.</span> Expatriation</div>
                         </div>
 
+                        <div class="row">
+                            {{address | json}}
+                        </div>
+
                         <div class="row no-margin">
-                            <div class="input-field col s8">
-                                <input id="location" name="location" type="text" class="validate" ngModel required>
-                                <label for="location">Destination *</label>
+
+                            <div class="col s8">
+                                <algolia-places name="address" [(ngModel)]="address"></algolia-places>
                             </div>
 
                             <div class="input-field col s4">
