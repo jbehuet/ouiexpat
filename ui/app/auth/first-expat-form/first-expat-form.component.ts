@@ -56,7 +56,7 @@ export class FirstExpatFormComponent implements OnInit {
             today: 'AUJ.',
             clear: 'SUPP.',
             close: 'OK',
-            format: 'dd/mm/yyyy'
+            format: 'yyyy-mm-dd'
         };
     }
 
