@@ -5,6 +5,7 @@ $linear-gradient: linear-gradient(301deg, $yellow 0%, $blue 100%);
 
 .widget {
     padding: 0px;
+    min-height: 370px;
     height: calc(100vh - 100px);
 
     .title {
