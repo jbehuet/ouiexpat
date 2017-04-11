@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { toast } from 'angular2-materialize';
 import { AuthenticationService } from '../../_services/authentication.service';
+import { ToastHelper } from '../../_helpers/toast.helper';
+
+import { User } from '../../_interfaces/user.interface';
 
 @Component({
     selector: 'oe-login-form',
@@ -20,14 +22,15 @@ export class LoginFormComponent implements OnInit {
 
     login(data) {
         this._authenticationService.login(data.email, data.password)
-            .subscribe(user => {
+            .subscribe((user:User)=> {
                 if (user.expeditions.length === 0) {
                     this._router.navigate(['/auth/first']);
                 } else {
                     this._router.navigate(['/']);
+                    ToastHelper.displayInfo("Bonjour " + user.lastname + ' ' + user.firstname);
                 }
             }, (err) => {
-                toast(err, 4000);
+                ToastHelper.displayError(err);
             });
     }
 

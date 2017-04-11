@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { toast } from 'angular2-materialize';
+import { ToastHelper } from '../../_helpers/toast.helper';
 import { AuthenticationService } from '../../_services/authentication.service';
 
 @Component({
@@ -23,7 +23,7 @@ export class RegisterFormComponent implements OnInit {
         this._authenticationService.register(data).subscribe(result => {
             this._router.navigate(['/auth/first']);
         }, (err) => {
-            toast(err, 4000);
+            ToastHelper.displayError(err);
         });
     }
 

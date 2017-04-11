@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../_services/authentication.service';
-import { toast } from 'angular2-materialize';
+import { ToastHelper } from '../../_helpers/toast.helper';
 
 import { User } from '../../_interfaces/user.interface';
 
@@ -27,9 +27,9 @@ export class ProfilComponent implements OnInit {
 
         this._authenticationService.updateProfil(this.user)
             .subscribe(user => {
-                toast("Updated", 4000);
+                ToastHelper.displaySuccess("Updated");
             }, (err) => {
-                toast(err, 4000);
+                ToastHelper.displayError(err);
             });
     }
 

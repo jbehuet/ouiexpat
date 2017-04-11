@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Pickadate } from 'materialize-css';
 import { Router } from '@angular/router';
-import { toast } from 'angular2-materialize';
+import { ToastHelper } from '../../_helpers/toast.helper';
 import { AuthenticationService } from '../../_services/authentication.service';
 
 @Component({
@@ -29,7 +29,7 @@ export class FirstExpatFormComponent implements OnInit {
         this._authenticationService.createExpatriation(this.expatriation).subscribe(result => {
             this._router.navigate(['/dashboard']);
         }, (err) => {
-            toast(err, 4000);
+            ToastHelper.displayError(err);
         });
 
     }
