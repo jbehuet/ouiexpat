@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Pickadate } from 'materialize-css';
+import { Router } from '@angular/router';
+import { toast } from 'angular2-materialize';
+import { AuthenticationService } from '../../_services/authentication.service';
 
 @Component({
     selector: 'oe-first-expat-form',
@@ -9,16 +12,35 @@ import { Pickadate } from 'materialize-css';
 export class FirstExpatFormComponent implements OnInit {
 
     public formDateOptions: Pickadate.DateOptions;
-    public dataModel: string = '';
+    public expatriation: any = {};
 
 
-    constructor() { }
+    constructor(private _router: Router, private _authenticationService: AuthenticationService) { }
 
     ngOnInit() {
         this.formDateOptions = this._getDefaultPickaDateOptions();
     }
 
-    register(data){
+    register() {
+        const _expatriation = {
+          location: {
+              address: this.expatriation.location.value,
+              city: this.expatriation.location.city || this.expatriation.location.name,
+              postcode: this.expatriation.location.postcode || '',
+              country: this.expatriation.location.country,
+              countryCode: this.expatriation.location.countryCode,
+              geometry: {
+                  coordinate: [this.expatriation.location.latlng.lat, this.expatriation.location.latlng.lng]
+              }
+          },
+          date: this.expatriation.date
+        }
+
+        this._authenticationService.createExpatriation(_expatriation).subscribe(result => {
+            this._router.navigate(['/dashboard']);
+        }, (err) => {
+            toast(err, 4000);
+        });
 
     }
 

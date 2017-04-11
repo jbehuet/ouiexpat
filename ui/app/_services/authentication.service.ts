@@ -83,6 +83,19 @@ export class AuthenticationService {
             });
     }
 
+    createExpatriation(expatriation: any): Observable<any> {
+      return this._http.post('/api/v1/users/expeditions', expatriation)
+          .map(res => res.json())
+          .map(res => {
+              this.user = res.data;
+              return true;
+          })
+          .catch((error: any) => {
+              return Observable.throw(error.json().message || 'Server error')
+          });
+
+    }
+
     private _decodePayload(): any {
         let payload = this.token.split('.')[1];
         payload = decodeURIComponent(escape(window.atob(payload)));

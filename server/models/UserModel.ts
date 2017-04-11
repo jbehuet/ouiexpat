@@ -12,6 +12,7 @@ const _schema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
+    situation: String,
     email: {
         type: String,
         required: true,

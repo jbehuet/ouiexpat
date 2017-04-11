@@ -17,9 +17,24 @@
                         </a>
                     </div>
 
-                    <form (ngSubmit)="firstForm.form.valid && register(firstForm.value)" #firstForm="ngForm">
+                    <form (ngSubmit)="firstForm.form.valid && register()" #firstForm="ngForm">
                         <div class="row">
                             <div class="col s12 chapter"><span class="number">1.</span> Votre situation</div>
+                        </div>
+
+                        <div class="row">
+                            <p>
+                                <input name="situtation" type="radio" id="new" />
+                                <label for="new">Vous allez bientôt partir</label>
+                            </p>
+                            <p>
+                                <input name="situtation" type="radio" id="expat" />
+                                <label for="expat">Je suis expatrié</label>
+                            </p>
+                            <p>
+                                <input name="situtation" type="radio" id="back" />
+                                <label for="back">Je vais rentrer en France</label>
+                            </p>
                         </div>
 
 
@@ -27,19 +42,30 @@
                             <div class="col s12 chapter"><span class="number">2.</span> Expatriation</div>
                         </div>
 
-                        <div class="row">
-                            {{address | json}}
-                        </div>
-
                         <div class="row no-margin">
 
                             <div class="col s8">
-                                <algolia-places name="address" [(ngModel)]="address"></algolia-places>
+                                <algolia-places name="address" [(ngModel)]="expatriation.location"></algolia-places>
                             </div>
 
                             <div class="input-field col s4">
-                                <input id="date" name="date" type="text" materialize="pickadate" [materializeParams]="[formDateOptions]" ngModel required>
+                                <input id="date" name="date" type="text" materialize="pickadate" [materializeParams]="[formDateOptions]" [(ngModel)]="expatriation.date" required>
                                 <label for="date">Date *</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col s12 chapter"><span class="number">3.</span> Vos besoins</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col s6">
+                                <input name="need" type="checkbox" id="logement" />
+                                <label for="logement"><i class="icon icon-key"></i> Logement</label>
+                            </div>
+                            <div class="col s6">
+                                <input name="need" type="checkbox" id="administratif" />
+                                <label for="administratif"><i class="icon icon-document"></i> Administratif</label>
                             </div>
                         </div>
 

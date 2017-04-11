@@ -10,6 +10,7 @@ interface IUser extends mongoose.Document {
     password: string;
     email: string;
     photo: string;
+    situation: string;
     address: AddressFormat;
     phone: PhoneFormat;
     birthday: Date;

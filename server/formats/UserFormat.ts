@@ -10,6 +10,7 @@ export default class UserFormat {
     password: string;
     email: string;
     photo: string;
+    situation: string;
     address: AddressFormat;
     administrator: boolean;
     phone: PhoneFormat;
