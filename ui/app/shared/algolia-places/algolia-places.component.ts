@@ -21,8 +21,8 @@ import places from 'places.js';
 })
 export class AlgoliaPlacesComponent implements OnInit, ControlValueAccessor {
 
-    @Input() private label?: String = '';
-    @Input() private required?: Boolean = true;
+    @Input() label?: String = '';
+    @Input() required?: Boolean = true;
     //Internal value
     @Input() place;
 
