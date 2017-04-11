@@ -9,12 +9,13 @@ import { AuthGuard } from '../_guards/auth.guard';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { NavbarComponent } from './dashboard/navbar/navbar.component';
+import { NavbarComponent } from './navbar/navbar.component';
 import { WidgetProfilComponent } from './dashboard/widgets/widget-profil/widget-profil.component';
 import { WidgetExpatriationsComponent } from './dashboard/widgets/widget-expatriations/widget-expatriations.component';
 import { WidgetActusComponent } from './dashboard/widgets/widget-actus/widget-actus.component';
 import { WidgetFavorisComponent } from './dashboard/widgets/widget-favoris/widget-favoris.component';
 import { ProfilComponent } from './profil/profil.component';
+import { ExpatriationsComponent } from './expatriations/expatriations.component';
 
 @NgModule({
     imports: [
@@ -30,6 +31,7 @@ import { ProfilComponent } from './profil/profil.component';
                 children: [
                     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
                     { path: 'dashboard', component: DashboardComponent },
+                    { path: 'expatriations', component: ExpatriationsComponent },
                     { path: 'profil', component: ProfilComponent }
                 ]
             }
@@ -38,7 +40,7 @@ import { ProfilComponent } from './profil/profil.component';
     declarations: [
         AppComponent, DashboardComponent, NavbarComponent, WidgetProfilComponent,
         WidgetExpatriationsComponent, WidgetActusComponent, WidgetFavorisComponent,
-        ProfilComponent
+        ExpatriationsComponent, ProfilComponent
     ]
 })
 export class AppModule { }
