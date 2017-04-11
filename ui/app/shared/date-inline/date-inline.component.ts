@@ -1,22 +1,43 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import * as _ from 'lodash';
 
 @Component({
     selector: 'oe-date-inline',
     templateUrl: './date-inline.component.html',
     styleUrls: ['./date-inline.component.scss'],
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => DateInlineComponent),
+            multi: true
+        }
+    ]
 })
-export class DateInlineComponent implements OnInit {
+export class DateInlineComponent implements OnInit, ControlValueAccessor {
 
     @Input() label: String;
-    @Input() date: Date;
-    @Output() onDateChange: EventEmitter<Date> = new EventEmitter<Date>();
 
     public days: Array<Number> = [];
     public months: Array<String> = [];
     public years: Array<Number> = [];
 
-    private _currentDate: Date = new Date();
+    public _currentDate: Date = new Date();
+
+
+    onChange: any = () => { };
+    onTouched: any = () => { };
+
+
+    get value() {
+        return this._currentDate;
+    }
+
+    set value(value) {
+        this._currentDate = value;
+        this.onChange(value);
+    }
+
 
     constructor() { }
 
@@ -29,18 +50,31 @@ export class DateInlineComponent implements OnInit {
 
     onDayChange(event) {
         this._currentDate.setDate(event);
-        this.onDateChange.emit(this._currentDate);
+        this.onChange(this._currentDate);
     }
 
     onMonthChange(event) {
         this._currentDate.setMonth(event);
-        this.onDateChange.emit(this._currentDate);
+        this.onChange(this._currentDate);
     }
 
     onYearChange(event) {
         this._currentDate.setFullYear(event);
-        this.onDateChange.emit(this._currentDate);
+        this.onChange(this._currentDate);
     }
 
+    writeValue(value) {
+        if (value) {
+            this._currentDate = new Date(value);
+        }
+    }
+
+    registerOnChange(fn) {
+        this.onChange = fn;
+    }
+
+    registerOnTouched(fn) {
+        this.onTouched = fn;
+    }
 
 }

@@ -19,10 +19,6 @@ export class ProfilComponent implements OnInit {
         this.user = this._authenticationService.user;
     }
 
-    onDateChange(date) {
-        this.user.birthday = date;
-    }
-
     updateProfil() {
         this._authenticationService.updateProfil(this.user)
             .subscribe(user => {

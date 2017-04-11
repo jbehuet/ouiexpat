@@ -65,7 +65,7 @@
                     </div>
 
                     <div class="row no-margin">
-                        <oe-date-inline class="col s12" label="Date de naissance" (onDateChange)="onDateChange($event)"></oe-date-inline>
+                        <oe-date-inline class="col s12" label="Date de naissance" name="birthday" [(ngModel)]="user.birthday"></oe-date-inline>
                     </div>
 
                     <div class="row">

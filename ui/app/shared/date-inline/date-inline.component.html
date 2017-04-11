@@ -3,17 +3,17 @@
         <label class="col s12">{{label}}</label>
     </div>
     <div class="row">
-        <select name="daySelected" materialize="material_select" class="col s3" (ngModelChange)="onDayChange($event)" ngModel>
+        <select name="daySelected" materialize="material_select" class="col s3" (change)="onDayChange($event.target.value)" >
           <option value="" disabled selected>Jour</option>
-          <option *ngFor="let day of days" value="{{day}}">{{day}}</option>
+          <option *ngFor="let day of days" value="{{day}}" [selected]="_currentDate.getDate() == day">{{day}}</option>
         </select>
-        <select name="monthSelected" materialize="material_select" class="col s6" (ngModelChange)="onMonthChange($event)" ngModel>
+        <select name="monthSelected" materialize="material_select" class="col s6" (change)="onMonthChange($event.target.value)">
           <option value="" disabled selected>Mois</option>
-          <option *ngFor="let month of months; index as i" value="{{i}}">{{month}}</option>
+          <option *ngFor="let month of months; index as i" value="{{i}}" [selected]="_currentDate.getMonth() == i">{{month}}</option>
         </select>
-        <select name="yearSelected" materialize="material_select" class="col s3" (ngModelChange)="onYearChange($event)" ngModel>
+        <select name="yearSelected" materialize="material_select" class="col s3" (change)="onYearChange($event.target.value)">
           <option value="" disabled selected>Année</option>
-          <option *ngFor="let year of years" value="{{year}}">{{year}}</option>
+          <option *ngFor="let year of years" value="{{year}}" [selected]="_currentDate.getFullYear() == year">{{year}}</option>
         </select>
     </div>
 </div>
