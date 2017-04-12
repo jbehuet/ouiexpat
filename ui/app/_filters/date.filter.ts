@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({ name: 'myfilter' })
-export class MyFilterPipe implements PipeTransform {
+@Pipe({ name: 'dateFilter' })
+export class DateFilterPipe implements PipeTransform {
     transform(items: any[], args: any[]): any {
         let filter = new Date();
         let comparator = args[2] ||  '>';

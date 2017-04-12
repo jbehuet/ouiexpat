@@ -4,6 +4,7 @@ import { MaterializeModule } from 'angular2-materialize';
 
 import { AlgoliaPlacesComponent } from './algolia-places/algolia-places.component';
 import { DateInlineComponent } from './date-inline/date-inline.component';
+import { LeafletComponent } from './leaflet/leaflet.component';
 
 @NgModule({
   imports: [
@@ -12,11 +13,13 @@ import { DateInlineComponent } from './date-inline/date-inline.component';
   ],
   declarations: [
        AlgoliaPlacesComponent,
-       DateInlineComponent
+       DateInlineComponent,
+       LeafletComponent
   ],
   exports: [
       AlgoliaPlacesComponent,
-      DateInlineComponent
+      DateInlineComponent,
+      LeafletComponent
   ]
 })
 export class SharedModule { }

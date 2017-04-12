@@ -9,7 +9,12 @@
       "outDir": "dist/client",
       "assets": [
         "assets",
-        "manifest.json"
+        "manifest.json",
+        {
+          "glob": "**/*",
+          "input": "../node_modules/leaflet/dist/images",
+          "output": "./assets/"
+        }
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -20,6 +25,7 @@
       "prefix": "oe",
       "styles": [
         "../node_modules/normalize.css/normalize.css",
+        "../node_modules/leaflet/dist/leaflet.css",
         "./assets/fonts/font-icons/styles.css",
         "./styles/main.scss"
       ],

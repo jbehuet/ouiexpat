@@ -7,6 +7,8 @@ import { SharedModule } from '../shared/shared.module';
 
 import { AuthGuard } from '../_guards/auth.guard';
 
+import { DateFilterPipe } from '../_filters/date.filter';
+
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -16,7 +18,6 @@ import { WidgetActusComponent } from './dashboard/widgets/widget-actus/widget-ac
 import { WidgetFavorisComponent } from './dashboard/widgets/widget-favoris/widget-favoris.component';
 import { ProfilComponent } from './profil/profil.component';
 import { ExpatriationsComponent } from './expatriations/expatriations.component';
-import { MyFilterPipe } from './expatriations/date.filter';
 
 @NgModule({
     imports: [
@@ -39,9 +40,10 @@ import { MyFilterPipe } from './expatriations/date.filter';
         ])
     ],
     declarations: [
+        DateFilterPipe,
         AppComponent, DashboardComponent, NavbarComponent, WidgetProfilComponent,
         WidgetExpatriationsComponent, WidgetActusComponent, WidgetFavorisComponent,
-        ExpatriationsComponent, ProfilComponent, MyFilterPipe
+        ExpatriationsComponent, ProfilComponent
     ]
 })
 export class AppModule { }
