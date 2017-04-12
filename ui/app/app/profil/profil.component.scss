@@ -13,3 +13,26 @@
 .icon-information {
     font-size: 34px;
 }
+
+ul.left-menu {
+    li {
+        line-height: 64px;
+        padding: 0 10px;
+        border-bottom: 1px solid #D4D6DF;
+    }
+
+    li.selected,
+    li.selected:hover {
+        color: #FFF;
+        background: linear-gradient(301deg, #F7CB0A 0%, #00A2D8 100%);
+    }
+
+    li:hover {
+        background: rgba(212, 214, 223, .2);
+        cursor: pointer;
+    }
+
+    .ico {
+        font-size: 24px;
+    }
+}
