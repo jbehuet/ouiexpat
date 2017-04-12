@@ -20,7 +20,7 @@
                     <img [src]="'http://www.geonames.org/flags/x/' + expatSelected.location.countryCode + '.gif'" height="24" width="34" alt="">
                 </div>
                 <div class="col s8">
-                    <span class="city">{{ expatSelected.location.city }}</span>
+                    <span class="city">{{ expatSelected.location.name }}</span>
                 </div>
                 <div class="col s2" *ngIf="getDayDiff() > -1">
                     J-{{getDayDiff()}}
