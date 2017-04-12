@@ -7,10 +7,9 @@
 
 ul.expatriations {
     li {
-        line-height: 54px;
-        padding: 0 10px;
+        height: 64px;
+        padding: 10px;
         border-bottom: 1px solid #D4D6DF;
-
     }
 
     li.selected,
@@ -23,5 +22,19 @@ ul.expatriations {
         background: rgba(212, 214, 223, .2);
         cursor: pointer;
     }
+}
 
+.map {
+    padding-right: 0;
+}
+
+.expat{
+  .info{
+    font-family: "Capriola-Regular";
+  }
+
+  .ico {
+    font-size: 24px;
+    padding-top: 5px;
+}
 }
