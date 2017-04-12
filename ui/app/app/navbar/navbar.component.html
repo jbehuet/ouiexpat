@@ -14,8 +14,7 @@
                             <span class="row name">{{ user.lastname }} {{ user.firstname }}</span>
                             <span class="row notification">Aucune notification</span>
                         </div>
-                        <span class="col s3 circle-border" [ngStyle]="{'background-image': 'url(' + user.photo + ')'}"></span>
-                        <!-- <span class="col s3"><img src="{{user.photo}}" alt="Profil" class="circle" height="40"></span> -->
+                        <span class="col s3 circle-border" [style.backgroundImage]="'url(' + user.photo + ')'"></span>
                         <span class="col s2"><i class="icon icon-chevron-down right"></i></span>
                     </a>
                 </li>
@@ -23,7 +22,7 @@
             <ul class="side-nav" id="mobile-nav">
                 <li class="profil">
                     <a class="row no-margin info" routerLink="/profil">
-                        <span class="col s3"><img src="{{user.photo}}" alt="Profil" class="circle" height="40"></span>
+                        <span class="col s3"><img [src]="user.photo" alt="Profil" class="circle" height="40"></span>
                         <span class="col s7">
                           <div class="row no-margin"> {{ user.lastname }} {{ user.firstname }}</div>
                           <div class="row notification">Aucune notification</div>

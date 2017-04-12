@@ -24,8 +24,13 @@ $open-sans: "Open Sans";
     }
 
     .empty {
+        background-size: contain;
+        background-repeat: space;
+        background-image: url("/assets/img/empty-line.png");
+        font-family: $capriola;
+        
         .icon {
-         font-size: 3rem;
+            font-size: 3rem;
         }
     }
 }
