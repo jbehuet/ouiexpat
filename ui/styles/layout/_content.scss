@@ -58,8 +58,8 @@
     width: 100%;
     padding: 24px;
     background-color: white !important;
-    background-size: calc(100% - 48px);
-    background-position: center;
+    background-size: calc(80% - 48px);
+    background-position: 20% center;
     background-repeat: repeat-y;
     background-image: url($img-path + "empty-line.png");
     content: '';
