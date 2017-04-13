@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col m3 hide-on-small-only">
-        <div class="row no-margin">
+        <div class="row">
             <h1 class="col s12"><i class="icon icon-location"></i> Mes expatriations</h1>
         </div>
         <div class="row">
@@ -11,19 +11,14 @@
             <ul class="expatriations">
                 <li *ngFor="let expat of (user?.expeditions | dateFilter:['date','now'])" class="row no-margin" [class.selected]="(currentExpat?._id === expat._id)" (click)="currentExpat = expat">
                     <div class="valign-wrapper expat">
-                        <div class="col s8">
-                            <div class="row no-margin">
-                                <div class="col s12">
-                                    <i class="icon icon-calendar"></i> {{expat?.date | date:"dd/MM/yy"}}
-                                </div>
+                        <div class="row no-margin">
+                            <div class="col s12 space-bottom-5">
+                                <i class="icon icon-calendar"></i> {{expat?.date | date:"dd/MM/yy"}}
                             </div>
-                            <div class="row no-margin">
-                                <div class="col s12 info">
-                                    <img [src]="'http://www.geonames.org/flags/x/' + expat?.location.countryCode + '.gif'" height="12" width="18" alt=""> {{expat?.location.country}} - {{expat?.location.name}}
-                                </div>
+                            <div class="col s12 info">
+                                <img [src]="'http://www.geonames.org/flags/x/' + expat?.location.countryCode + '.gif'" height="12" width="18" alt=""> {{expat?.location.country}} - {{expat?.location.name}}
                             </div>
                         </div>
-                        <div class="col s4 right-align valign ico"><i class="icon icon-chevron-right"></i></div>
                     </div>
                 </li>
             </ul>
@@ -34,19 +29,14 @@
             <ul class="expatriations">
                 <li *ngFor="let expat of (user?.expeditions | dateFilter:['date','now', 'before'])" class="row no-margin" [class.selected]="(currentExpat?._id === expat._id)" (click)="currentExpat = expat">
                     <div class="valign-wrapper expat">
-                        <div class="col s8">
-                            <div class="row no-margin">
-                                <div class="col s12">
-                                    <i class="icon icon-calendar"></i> {{expat?.date | date:"dd/MM/yy"}}
-                                </div>
+                        <div class="row no-margin">
+                            <div class="col s12 space-bottom-5">
+                                <i class="icon icon-calendar"></i> {{expat?.date | date:"dd/MM/yy"}}
                             </div>
-                            <div class="row no-margin">
-                                <div class="col s12 info">
-                                    <img [src]="'http://www.geonames.org/flags/x/' + expat?.location.countryCode + '.gif'" height="12" width="18" alt=""> {{expat?.location.country}} - {{expat?.location.name}}
-                                </div>
+                            <div class="col s12 info">
+                                <img [src]="'http://www.geonames.org/flags/x/' + expat?.location.countryCode + '.gif'" height="12" width="18" alt=""> {{expat?.location.country}} - {{expat?.location.name}}
                             </div>
                         </div>
-                        <div class="col s4 right-align valign ico"><i class="icon icon-chevron-right"></i></div>
                     </div>
                 </li>
             </ul>
