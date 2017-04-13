@@ -41,9 +41,3 @@ h4 {
     }
 }
 
-
-.icon-gradient:before {
-    background: linear-gradient(301deg, $yellow 0%, $blue 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
