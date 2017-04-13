@@ -3,4 +3,9 @@
   transition: all 0.25s;
 }
 
+// ==== Empty Block effect
 
+%emptyBlock {
+    opacity: 0.3;
+    filter: blur(5px);
+}
