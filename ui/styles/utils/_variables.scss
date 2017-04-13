@@ -1,21 +1,26 @@
-$roboto-font-path: '../../node_modules/materialize-css/fonts/roboto/' !default;
-$blue: #00A2D8;
-$text-color: #525356;
-$grey-light: #B8B8B8;
-$grey-very-light: #eeeeee;
-$grey: #9e9e9e;
-$white: #F8F8F8;
-$yellow: #F7CB0A;
-$white-grey: #F4F7FC;
-$red: #FF3950;
-$linear-gradient: linear-gradient(301deg, $yellow 0%, $blue 100%);
+$blue:                                            #00A2D8 !default;
+
+$text-color:                                      #525356 !default;
+$grey-light:                                      #B8B8B8 !default;
+$grey-very-light:                                 #eeeeee !default;
+$grey:                                            #9e9e9e !default;
+$white:                                           #F8F8F8 !default;
+$white-grey:                                      #F4F7FC !default;
+
+$yellow:                                          #F7CB0A !default;
+$red:                                             #FF3950 !default;
+$linear-gradient:                                 linear-gradient(301deg, $yellow 0%, $blue 100%)!default;
+
 //Override materialize-css
-$primary-color: #525356 !default;
-$secondary-color: #00A2D8 !default;
-$link-color: $text-color !default; //  Fonts
-$dropdown-color: $secondary-color !default;
-$navbar-font-color: $primary-color !default;
-$sidenav-font-color: $primary-color !default;
+
+$primary-color:                                  #525356 !default;
+$secondary-color:                                #00A2D8 !default;
+
+
+$link-color:                                     $text-color !default; //  Fonts
+$dropdown-color:                                 $secondary-color !default;
+$navbar-font-color:                              $primary-color !default;
+$sidenav-font-color:                             $primary-color !default;
 // ===================================================================
 @font-face {
     font-family: "Capriola-Regular";
@@ -30,6 +35,7 @@ $open-sans: "Open Sans";
 
 
 // ==== PATHS
+$roboto-font-path: '../../node_modules/materialize-css/fonts/roboto/' !default;
 $img-path :                                     '/assets/img/' !default;
 $svg-path :                                     '/assets/img/svg/' !default;
 
