@@ -7,7 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 
 import { AuthGuard } from '../_guards/auth.guard';
 
-import { DateFilterPipe } from '../_filters/date.filter';
+import { DateFilterPipe } from '../_pipes/date.pipe';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
