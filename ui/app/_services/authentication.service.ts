@@ -104,6 +104,30 @@ export class AuthenticationService {
 
     }
 
+    requestResetPassword(body: any): Observable<any> {
+        return this._http.post('/api/v1/auth/reset_password', body)
+            .map(res => res.json())
+            .map(res => {
+                return true;
+            })
+            .catch((error: any) => {
+                return Observable.throw(error.json().message || 'Server error')
+            });
+    }
+
+    resetPassword(token: string, body: any): Observable<any> {
+        return this._http.post('/api/v1/auth/reset_password/' + token, body)
+            .map(res => res.json())
+            .map(res => {
+                return true;
+            })
+            .catch((error: any) => {
+                return Observable.throw(error.json().message || 'Server error')
+            });
+
+    }
+
+
     private _decodePayload(): any {
         let payload = this.token.split('.')[1];
         payload = decodeURIComponent(escape(window.atob(payload)));
