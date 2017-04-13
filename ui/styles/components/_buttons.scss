@@ -5,8 +5,10 @@
 
 .btn-validate:disabled,
 .btn-validate[disabled] {
-    background: $grey-light !important;
-    color: $text-color !important;
+    opacity: 0.3;
+    background: $linear-gradient !important;
+    color: white !important;
+    cursor: not-allowed;
 }
 
 .btn-white {

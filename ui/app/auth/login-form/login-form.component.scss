@@ -1,4 +1,9 @@
 @import '../auth.component.scss';
+@import '../../../styles/utils/placeholders';
+
+.logo-login {
+    max-width: 200px;
+}
 
 .register-link {
     height: 54px;
@@ -7,5 +12,16 @@
     background-color: #F7CB0A;
     font-weight: 600;
     margin: 40px -24px 0;
+    @extend %transition;
 
+    &:hover {
+        @extend %transition;
+        background-color: lighten(#F7CB0A, 10%);
+    }
+
+    a {
+        display: block;
+        height: 100%;
+        width: 100%;
+    }
 }

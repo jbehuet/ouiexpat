@@ -2,11 +2,11 @@
 
 @font-face {
   font-family: "ouiexpat";
-  src:url("fonts/ouiexpat.eot");
-  src:url("fonts/ouiexpat.eot?#iefix") format("embedded-opentype"),
-    url("fonts/ouiexpat.woff") format("woff"),
-    url("fonts/ouiexpat.ttf") format("truetype"),
-    url("fonts/ouiexpat.svg#ouiexpat") format("svg");
+  src:url($font-path + "font-icons/ouiexpat.eot");
+  src:url($font-path + "font-icons/ouiexpat.eot?#iefix") format("embedded-opentype"),
+  url($font-path + "font-icons/ouiexpat.woff") format("woff"),
+  url($font-path + "font-icons/ouiexpat.ttf") format("truetype"),
+  url($font-path + "font-icons/ouiexpat.svg#ouiexpat") format("svg");
   font-weight: normal;
   font-style: normal;
 
