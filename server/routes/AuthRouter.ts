@@ -2,6 +2,7 @@ import * as mongoose from 'mongoose';
 import {Router, Response, NextFunction} from 'express';
 import * as _ from 'lodash';
 import * as jwt from 'jsonwebtoken';
+import * as bcrypt from 'bcrypt';
 import CONFIG from '../config';
 import HTTPCode from '../constants/HttpCodeConstant';
 import IRequest from '../interfaces/IRequest';
@@ -25,12 +26,13 @@ class AuthRouter {
         if (_.isEmpty(req.body.email)) return ErrorHelper.handleError(HTTPCode.error.client.BAD_REQUEST, 'Email is require', res);
         if (_.isEmpty(req.body.password)) return ErrorHelper.handleError(HTTPCode.error.client.BAD_REQUEST, 'Password is require', res);
 
+        req.body.password = bcrypt.hashSync(req.body.password, 10);
         UserModel.create(req.body, (err: mongoose.Error, user: UserFormat) => {
             if (err)
                 ErrorHelper.handleMongooseError(err, res, req);
             else {
-                user.password = '****';
-                const token = AuthRouter.generateToken(user);//jwt.sign(user, CONFIG.jwt.secret, CONFIG.jwt.options);
+                user.password = null;
+                const token = AuthRouter.generateToken(user);
                 res.status(HTTPCode.success.CREATED).json({
                     status: HTTPCode.success.CREATED,
                     data: user,
@@ -47,12 +49,17 @@ class AuthRouter {
         if (_.isEmpty(req.body.email)) return ErrorHelper.handleError(HTTPCode.error.client.BAD_REQUEST, 'Email is require', res);
         if (_.isEmpty(req.body.password)) return ErrorHelper.handleError(HTTPCode.error.client.BAD_REQUEST, 'Password is require', res);
 
-        UserModel.findOne(req.body, { password: 0 }, (err: mongoose.Error, user: UserFormat) => {
+        console.log(bcrypt.hashSync(req.body.password, 10))
+
+        UserModel.findOne({ email: req.body.email }).select('+password').lean().exec((err: mongoose.Error, user: UserFormat) => {
             if (err)
                 ErrorHelper.handleMongooseError(err, res, req);
             else if (!user)
-                ErrorHelper.handleError(HTTPCode.error.client.UNAUTHORIZED, 'Email and password not match', res);
+                ErrorHelper.handleError(HTTPCode.error.client.NOT_FOUND, 'User not found', res);
+            else if (!bcrypt.compareSync(req.body.password, user.password))
+                ErrorHelper.handleError(HTTPCode.error.client.UNAUTHORIZED, 'Password not match', res);
             else {
+                user = <UserFormat> _.omit(user, ['password']);
                 const token = jwt.sign(user, CONFIG.jwt.secret, CONFIG.jwt.options);
                 res.json({
                     status: HTTPCode.success.OK,
@@ -68,8 +75,8 @@ class AuthRouter {
         // TODO
     }
 
-    public static generateToken(data:any): string{
-      return jwt.sign(data, CONFIG.jwt.secret, CONFIG.jwt.options);
+    public static generateToken(data: any): string {
+        return jwt.sign(data, CONFIG.jwt.secret, CONFIG.jwt.options);
     }
 
 }

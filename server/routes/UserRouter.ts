@@ -1,5 +1,6 @@
 import * as mongoose from 'mongoose';
 import * as _ from 'lodash';
+import * as bcrypt from 'bcrypt';
 import {Router, Response, NextFunction} from 'express';
 import HTTPCode from '../constants/HttpCodeConstant';
 import IRequest from '../interfaces/IRequest';
@@ -37,6 +38,9 @@ class UserRouter extends AbstractRouter {
         if (_.isEmpty(req.body)) return ErrorHelper.handleError(HTTPCode.error.client.BAD_REQUEST, 'Request body is empty', res);
         if (!req.authenticatedUser.administrator && req.params._id !== req.authenticatedUser._id)
             return ErrorHelper.handleError(HTTPCode.error.client.UNAUTHORIZED, 'Not authorize', res);
+
+
+        if (req.body.password) req.body.password = bcrypt.hashSync(req.body.password, 10);
 
         UserModel.findOneAndUpdate({ _id: req.authenticatedUser._id }, req.body, { new: true }, (err: mongoose.Error, user: UserFormat) => {
             if (err)
