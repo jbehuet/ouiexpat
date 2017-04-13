@@ -3,7 +3,7 @@
 @import '../../../styles/utils/mixins';
 
 .subtitle {
-    background: linear-gradient(301deg, #F7CB0A 0%, #00A2D8 100%) left bottom rgba(0, 0, 0, 0) no-repeat;
+    background: $linear-gradient left bottom rgba(0, 0, 0, 0) no-repeat;
     background-size: 100% 1px;
     background-origin: content-box;
     background-position: 0 24px;
@@ -15,18 +15,18 @@ ul.expatriations {
     li {
         height: auto;
         padding: 10px 5px 8px 5px;
-        border-bottom: 1px solid #D4D6DF;
+        border-bottom: 1px solid $grey-light;
         @extend %transition;
     }
 
     li.selected,
     li.selected:hover {
-        color: #FFF;
-        background: linear-gradient(301deg, #F7CB0A 0%, #00A2D8 100%);
+        color: $white;
+        background: $linear-gradient;
 
       .expat {
         &:after {
-          color: white;
+          color: $white;
         }
       }
     }
@@ -58,7 +58,7 @@ ul.expatriations {
   }
 
   .info{
-    font-family: "Capriola-Regular";
+    font-family: $capriola;
   }
 
   .ico {

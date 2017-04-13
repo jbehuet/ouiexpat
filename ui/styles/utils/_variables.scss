@@ -22,14 +22,6 @@ $dropdown-color:                                 $secondary-color !default;
 $navbar-font-color:                              $primary-color !default;
 $sidenav-font-color:                             $primary-color !default;
 // ===================================================================
-@font-face {
-    font-family: "Capriola-Regular";
-    src: url("/assets/fonts/Capriola-Regular/Capriola-Regular.ttf");
-}
-@font-face {
-    font-family: "Open Sans";
-    src: url("/assets/fonts/Open-Sans/OpenSans-Regular.ttf");
-}
 $capriola: "Capriola-Regular";
 $open-sans: "Open Sans";
 

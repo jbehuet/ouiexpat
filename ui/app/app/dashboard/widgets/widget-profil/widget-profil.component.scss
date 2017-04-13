@@ -1,7 +1,5 @@
 @import "../../dashboard.component.scss";
-$blue: #00A2D8;
-$yellow: #F7CB0A;
-$linear-gradient: linear-gradient(301deg, $yellow 0%, $blue 100%);
+@import '../../../../../styles/utils/variables';
 
 .widget {
     padding: 0;

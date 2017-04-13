@@ -1,9 +1,5 @@
-$blue: #00A2D8;
-$white: #F8F8F8;
-$yellow: #F7CB0A;
-$linear-gradient: linear-gradient(301deg, $yellow 0%, $blue 100%);
-$capriola: "Capriola-Regular";
-$open-sans: "Open Sans";
+@import '../../../styles/utils/placeholders';
+@import '../../../styles/utils/variables';
 
 .widget {
     padding: 24px;

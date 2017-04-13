@@ -1,7 +1,8 @@
 @import "../../dashboard.component.scss";
+@import '../../../../../styles/utils/variables';
 
 .widget {
-    background: #F8F8F8;
+    background: $white;
 
     .no-expat {
         max-width: 60%;

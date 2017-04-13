@@ -1,5 +1,7 @@
+@import '../../styles/utils/variables';
+
 .wrapper {
-    background-color: #F4F7FC;
+    background-color: $white-grey;
     min-height: 100%;
 
     .container {

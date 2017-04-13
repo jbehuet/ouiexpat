@@ -1,5 +1,14 @@
 @import '../utils/_variables';
 
+@font-face {
+    font-family: "Capriola-Regular";
+    src: url("/assets/fonts/Capriola-Regular/Capriola-Regular.ttf");
+}
+@font-face {
+    font-family: "Open Sans";
+    src: url("/assets/fonts/Open-Sans/OpenSans-Regular.ttf");
+}
+
 body {
     font-size: 14px;
     @media screen and (max-width: 320px) {
@@ -82,5 +91,3 @@ h4 {
 // ================ //
 // TEXT STYLES UTILS (end)
 // ================ //
-
-
