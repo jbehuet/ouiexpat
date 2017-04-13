@@ -26,7 +26,6 @@
       "styles": [
         "../node_modules/normalize.css/normalize.css",
         "../node_modules/leaflet/dist/leaflet.css",
-        "./assets/fonts/font-icons/styles.css",
         "./styles/main.scss"
       ],
       "scripts": [

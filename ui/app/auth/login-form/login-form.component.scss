@@ -1,11 +1,29 @@
 @import '../auth.component.scss';
+@import '../../../styles/utils/placeholders';
+@import '../../../styles/utils/variables';
+
+.logo-login {
+    max-width: 200px;
+}
 
 .register-link {
     height: 54px;
     line-height: 54px;
     border-radius: 3px;
-    background-color: #F7CB0A;
+    background-color: $yellow;
     font-weight: 600;
-    margin: 40px -24px 0;
+    margin: 40px -14px 0;
+    @extend %transition;
 
+    &:hover {
+        @extend %transition;
+        background-color: lighten($yellow, 10%);
+    }
+
+    a {
+        display: block;
+        height: 100%;
+        width: 100%;
+        color: $red;
+    }
 }
