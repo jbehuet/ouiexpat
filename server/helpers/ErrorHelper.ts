@@ -11,9 +11,11 @@ class ErrorHelper {
         //DUPLICATE KEY
         status = HTTPCode.error.client.CONFLICT;
       }
-      //RollbarHelper.getInstance().reportError(error.message, req);
+
+      RollbarHelper.getInstance().reportError(error.message, req);
       res.status(status).json({status, message: error.message, errors: error.errors});
   }
+
 
   public static handleError(status: number, message: string, res: Response) {
       res.status(status).json({ status, message });

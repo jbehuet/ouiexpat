@@ -5,10 +5,13 @@ import CONFIG from '../config';
 class RollbarHelper {
 
     private static _instance: RollbarHelper = new RollbarHelper();
+    public enabled: boolean = false;
 
     constructor() {
-        console.log('Init Rollbar : ' + CONFIG.rollbar);
-        rollbar.init(CONFIG.rollbar, { environment: process.env.NODE_ENV });
+        console.log('Rollbar : ' + (CONFIG.rollbar ||  'disabled'));
+        this.enabled = CONFIG.rollbar;
+        if (this.enabled)
+            rollbar.init(CONFIG.rollbar, { environment: process.env.NODE_ENV });
     }
 
     public static getInstance(): RollbarHelper {
