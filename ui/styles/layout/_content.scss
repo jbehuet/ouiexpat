@@ -13,6 +13,84 @@
 // FORM CARD (end)
 // ================ //
 
+// ================ //
+// TITLE WIDGETS (start)
+// ================ //
+
+.title {
+  margin-top: 18px !important;
+  margin-bottom: 10px !important;
+  padding: 5px;
+  font-size: 20px;
+  font-family: "Capriola-Regular";
+
+  i {
+    @extend %dsplInlineIcon;
+  }
+}
+
+// ================ //
+// TITLE WIDGETS (end)
+// ================ //
+
+// ================ //
+// MESSAGE EMPTY BLOCK (start)
+// ================ //
+
+.empty-block {
+  position: relative;
+  font-family: $capriola;
+  font-size: 12px;
+
+  &.widget {
+    background-color: transparent !important;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0),
+    0 0 0 0 rgba(0, 0, 0, 0),
+    0 0 0 0 rgba(0, 0, 0, 0) !important;
+  }
+
+  &:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+    height: 100%;
+    width: 100%;
+    padding: 24px;
+    background-color: white !important;
+    background-size: calc(100% - 48px);
+    background-position: center;
+    background-repeat: repeat-y;
+    background-image: url($img-path + "empty-line.png");
+    content: '';
+    @extend %blurEffect;
+    z-index: 0;
+  }
+
+  .empty-message {
+    z-index: 1;
+
+    .icon {
+      font-size: 34px;
+      animation: fadeInScale 440ms ease;
+      z-index: 1;
+    }
+
+    p {
+      margin-top: 0;
+      padding: 0 10%;
+      animation: fadeInScale 440ms ease;
+      z-index: 1;
+    }
+  }
+}
+
+// ================ //
+// MESSAGE EMPTY BLOCK (end)
+// ================ //
+
+
+
 
 // ================ //
 // OVERIDE SIDE (start)

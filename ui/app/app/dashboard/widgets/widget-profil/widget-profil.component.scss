@@ -4,14 +4,34 @@ $yellow: #F7CB0A;
 $linear-gradient: linear-gradient(301deg, $yellow 0%, $blue 100%);
 
 .widget {
-    padding: 0px;
+    padding: 0;
     min-height: 370px;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 130px);
+    overflow: hidden;
 
-    .title {
+    .zone-infos-profil {
         background-origin: border-box;
-        background: $linear-gradient;
+        background-color: $linear-gradient;
+        background-image: url("/assets/img/bg-widget-profil.jpg");
+        background-position: center;
+        background-size: cover;
         padding: 10px;
+
+        .avatar { margin-top: 10px;}
+
+        .link {
+            position: relative;
+            right: -8px;
+        }
+
+        .user-name {
+            margin: 5px 0;
+        }
+
+        .title-widget {
+            font-size: 20px;
+            margin: 10px 0;
+        }
     }
     .content{
       padding: 24px;

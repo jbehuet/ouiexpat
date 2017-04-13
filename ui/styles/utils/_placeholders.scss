@@ -5,7 +5,16 @@
 
 // ==== Empty Block effect
 
-%emptyBlock {
-    opacity: 0.3;
-    filter: blur(5px);
+%blurEffect {
+    opacity: 0.4;
+    filter: blur(3px);
 }
+
+// ==== Alignement Icon
+
+%dsplInlineIcon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+

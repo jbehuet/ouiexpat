@@ -1,13 +1,17 @@
 <div class="form-card widget">
-    <div class="title">
+    <div class="zone-infos-profil">
         <div class="row no-margin">
-            <div class="col s4 offset-s4"><img [src]="user.photo" alt="Profil" height="100" class="circle"></div>
+            <div class="col s4 offset-s4 avatar">
+                <img [src]="user.photo" alt="Profil" height="85" class="circle">
+            </div>
+
             <div class="col s4 right-align">
-                <a routerLink="/profil" class="icon icon-gear"></a>
+                <a routerLink="/profil" class="icon link large white-text icon-gear"></a>
             </div>
         </div>
-        <div class="row">
-            <div class="col s12 center-align">{{ user.lastname }} {{ user.firstname }}</div>
+        <div class="row no-margin">
+            <span class="col s12 center-align white-text user-name">{{ user.lastname }} {{ user.firstname }}</span>
+            <h3 class="col s12 center-align white-text title-widget">Activités</h3>
         </div>
     </div>
     <div class="content">

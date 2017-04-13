@@ -3,10 +3,6 @@
 
 .form-card {
     padding: 24px;
-
-    &.empty {
-       @extend %emptyBlock;
-    }
 }
 
 .title {
