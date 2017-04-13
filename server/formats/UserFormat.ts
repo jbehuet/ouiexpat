@@ -16,6 +16,9 @@ export default class UserFormat {
     phone: PhoneFormat;
     birthday: Date;
     expeditions: Array<ExpeditionFormat>;
+    reset_token: string;
     createdAt: Date;
     updatedAt: Date;
+    save():any {};
+    update():any {};
 }

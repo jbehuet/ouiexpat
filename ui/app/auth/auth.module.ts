@@ -11,6 +11,7 @@ import { AuthComponent } from './auth.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { FirstExpatFormComponent } from './first-expat-form/first-expat-form.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
     imports: [
@@ -26,12 +27,14 @@ import { FirstExpatFormComponent } from './first-expat-form/first-expat-form.com
                     { path: '', redirectTo: 'login', pathMatch: 'full' },
                     { path: 'login', component: LoginFormComponent },
                     { path: 'register', component: RegisterFormComponent },
+                    { path: 'reset_password', component: ResetPasswordComponent },
+                    { path: 'reset_password/:token', component: ResetPasswordComponent },
                     { path: 'first', component: FirstExpatFormComponent, canActivate: [AuthGuard] }
                 ]
             }
         ])
     ],
     providers: [],
-    declarations: [AuthComponent, LoginFormComponent, RegisterFormComponent, FirstExpatFormComponent]
+    declarations: [AuthComponent, LoginFormComponent, RegisterFormComponent, ResetPasswordComponent, FirstExpatFormComponent]
 })
 export class AuthModule { }

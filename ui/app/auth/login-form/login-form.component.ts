@@ -22,7 +22,7 @@ export class LoginFormComponent implements OnInit {
 
     login(data) {
         this._authenticationService.login(data.email, data.password)
-            .subscribe((user:User)=> {
+            .subscribe((user:User) => {
                 if (user.expeditions.length === 0) {
                     this._router.navigate(['/auth/first']);
                 } else {

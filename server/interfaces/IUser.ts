@@ -15,6 +15,7 @@ interface IUser extends mongoose.Document {
     phone: PhoneFormat;
     birthday: Date;
     expeditions: Array<ExpeditionFormat>;
+    reset_token: string;
     createdAt: Date;
     updatedAt: Date;
 }

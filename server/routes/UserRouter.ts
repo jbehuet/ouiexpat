@@ -39,7 +39,7 @@ class UserRouter extends AbstractRouter {
         if (!req.authenticatedUser.administrator && req.params._id !== req.authenticatedUser._id)
             return ErrorHelper.handleError(HTTPCode.error.client.UNAUTHORIZED, 'Not authorize', res);
 
-
+        // TODO Check current password
         if (req.body.password) req.body.password = bcrypt.hashSync(req.body.password, 10);
 
         UserModel.findOneAndUpdate({ _id: req.authenticatedUser._id }, req.body, { new: true }, (err: mongoose.Error, user: UserFormat) => {

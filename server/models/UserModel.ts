@@ -23,8 +23,8 @@ const _schema = new mongoose.Schema({
     },
     password: {
         type: String,
-        select: false,
-        required: true
+        required: true,
+        select:false
     },
     phone: {
         number: {
@@ -65,7 +65,8 @@ const _schema = new mongoose.Schema({
             }
         },
         date: Date
-    }]
+    }],
+    reset_token: String
 }, {
         timestamps: true
     });
