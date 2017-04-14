@@ -17,7 +17,7 @@ class ExpatriationRouter extends AbstractRouter {
 
     protected getAll(req: IRequest, res: Response, next: NextFunction) {
 
-      ExpatriationModel.find({owner: req.authenticatedUser._id}).sort({ createdAt: "desc" }).exec((err: mongoose.Error, expatriations: Array<ExpatriationFormat>) => {
+      ExpatriationModel.find({owner: req.authenticatedUser._id}).sort({ date: "asc" }).exec((err: mongoose.Error, expatriations: Array<ExpatriationFormat>) => {
           if (err)
               ErrorHelper.handleMongooseError(err, res, req);
           else

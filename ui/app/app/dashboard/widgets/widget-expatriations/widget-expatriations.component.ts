@@ -25,8 +25,10 @@ export class WidgetExpatriationsComponent implements OnInit {
 
     private _loadExpatriations() {
         this._expatriationService.getAll().subscribe(expatriations => {
-            this.expatriations = expatriations;
-            this.expatSelected = (this.expatriations.length > 0 ? this.expatriations[0] : null);
+            this.expatriations = expatriations.filter(v => new Date(v.date) > new Date());
+            this.expatSelected = this.expatriations.reduce((prev, current) => {
+                return (new Date(current.date) < new Date(prev.date) ) ? current : prev
+            });
         }, (err) => {
             ToastHelper.displayError(err);
         })

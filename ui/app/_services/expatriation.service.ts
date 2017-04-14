@@ -23,4 +23,17 @@ export class ExpatriationService {
             });
     }
 
+    createExpatriation(expatriation: any): Observable<any> {
+        return this._http.post('/api/v1/expatriations', expatriation)
+            .map(res => res.json())
+            .map(res => {
+                this.expatriations.push(res.data);
+                return this.expatriations;
+            })
+            .catch((error: any) => {
+                return Observable.throw(error.json().message || 'Server error')
+            });
+
+    }
+
 }

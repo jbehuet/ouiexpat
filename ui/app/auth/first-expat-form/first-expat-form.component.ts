@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Pickadate } from 'materialize-css';
 import { Router } from '@angular/router';
 import { ToastHelper } from '../../_helpers/toast.helper';
-import { AuthenticationService } from '../../_services/authentication.service';
+import { ExpatriationService } from '../../_services/expatriation.service';
 
 @Component({
     selector: 'oe-first-expat-form',
@@ -15,7 +15,7 @@ export class FirstExpatFormComponent implements OnInit {
     public expatriation: any = {};
 
 
-    constructor(private _router: Router, private _authenticationService: AuthenticationService) { }
+    constructor(private _router: Router, private _expatriationService: ExpatriationService) { }
 
     ngOnInit() {
         this.formDateOptions = this._getDefaultPickaDateOptions();
@@ -26,7 +26,7 @@ export class FirstExpatFormComponent implements OnInit {
             coordinate: [this.expatriation.location.latlng.lat, this.expatriation.location.latlng.lng]
         };
 
-        this._authenticationService.createExpatriation(this.expatriation).subscribe(result => {
+        this._expatriationService.createExpatriation(this.expatriation).subscribe(result => {
             this._router.navigate(['/dashboard']);
         }, (err) => {
             ToastHelper.displayError(err);

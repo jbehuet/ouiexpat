@@ -91,19 +91,6 @@ export class AuthenticationService {
             });
     }
 
-    createExpatriation(expatriation: any): Observable<any> {
-        return this._http.post('/api/v1/users/expeditions', expatriation)
-            .map(res => res.json())
-            .map(res => {
-                this.user = res.data;
-                return true;
-            })
-            .catch((error: any) => {
-                return Observable.throw(error.json().message || 'Server error')
-            });
-
-    }
-
     requestResetPassword(body: any): Observable<any> {
         return this._http.post('/api/v1/auth/reset_password', body)
             .map(res => res.json())
