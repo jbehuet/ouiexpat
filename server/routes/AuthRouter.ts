@@ -7,14 +7,17 @@ import CONFIG from '../config';
 import HTTPCode from '../constants/HttpCodeConstant';
 import IRequest from '../interfaces/IRequest';
 import ErrorHelper from '../helpers/ErrorHelper';
+import MailHelper from '../helpers/MailHelper';
 import UserFormat from '../formats/UserFormat';
 import UserModel from '../models/UserModel';
 
 class AuthRouter {
     public router: Router;
+    private _mailer: MailHelper;
 
     constructor() {
         this.router = Router();
+        this._mailer = new MailHelper();
         this.router.post('/register', this.register.bind(this));
         this.router.post('/login', this.authentication.bind(this));
         this.router.post('/reset_password', this.resetToken.bind(this));
@@ -86,8 +89,10 @@ class AuthRouter {
                 UserModel.update({ email: req.body.email }, { reset_token }, (err) => {
                     if (err)
                         ErrorHelper.handleMongooseError(err, res, req);
-                    else
+                    else {
+                        this._mailer.send('Reset password', 'reset-password', { passwordResetUrl: CONFIG.url.reset_password + reset_token }, user.email);
                         res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK });
+                    }
                 })
             }
         });
