@@ -74,6 +74,14 @@ nav {
         a.selected {
             color: #00A2D8;
 
+            &.active {
+                .chevron-dropdown {
+                    @extend %transition;
+                    opacity: 0;
+                    top: 40px;
+                }
+            }
+
             .circle-border::before {
                 position: relative;
                 display: block;
@@ -98,6 +106,14 @@ nav {
                 color: $grey-light;
                 font-family: $open-sans;
             }
+        }
+
+        .chevron-dropdown  {
+            position: relative;
+            left: 10px;
+            top: 5px;
+            opacity: 1;
+            @extend %transition;
         }
     }
 }
