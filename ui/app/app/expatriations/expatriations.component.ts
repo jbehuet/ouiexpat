@@ -22,9 +22,12 @@ export class ExpatriationsComponent implements OnInit {
     private _loadExpatriations() {
         this._expatriationService.getAll().subscribe(expatriations => {
             this.expatriations = expatriations;
-            this.currentExpat = this.expatriations.filter(v => new Date(v.date) > new Date()).reduce((prev, current) => {
-                return (new Date(current.date) < new Date(prev.date) ) ? current : prev
-            });
+            const filtred = this.expatriations.filter(v => new Date(v.date) > new Date());
+            if (filtred.length > 0) {
+                this.currentExpat = filtred.reduce((prev, current) => {
+                    return (new Date(current.date) < new Date(prev.date)) ? current : prev
+                });
+            }
         }, (err) => {
             ToastHelper.displayError(err);
         })
