@@ -1,1 +1,29 @@
 @import "../profil.component.scss";
+@import '../../../../styles/utils/variables';
+
+.avatar-profil {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 3px;
+
+  &:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-image: url('/assets/img/overlay-avatar.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    content: '';
+  }
+
+  img {
+    width: 100%;
+  }
+}

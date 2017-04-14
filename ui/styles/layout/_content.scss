@@ -14,7 +14,7 @@
 // ================ //
 
 // ================ //
-// TITLE WIDGETS (start)
+// TITLE WIDGETS and SECTIONS (start)
 // ================ //
 
 .title {
@@ -29,8 +29,22 @@
   }
 }
 
+.title-section {
+  margin-top: 18px !important;
+  margin-bottom: 10px !important;
+  padding: 5px;
+  font-size: 20px;
+  font-family: "Capriola-Regular";
+
+  i {
+    @extend %dsplInlineIcon;
+  }
+}
+
+
+
 // ================ //
-// TITLE WIDGETS (end)
+// TITLE WIDGETS and SECTIONS (end)
 // ================ //
 
 // ================ //
