@@ -64,10 +64,8 @@ export class AuthenticationService {
     }
 
     checkValidSession(): boolean {
-        if (!this.token && !this._cookieService.get(this.COOKIE_KEY)) return false;
-        this.token = this.token || JSON.parse(this._cookieService.get(this.COOKIE_KEY)).token;
-        const payload = this._decodePayload();
-        if (Math.round(new Date().getTime() / 1000) > payload.exp) {
+        if (!this.payload) return false;
+        if (Math.round(new Date().getTime() / 1000) > this.payload.exp) {
             this.logout();
             return false;
         } else {

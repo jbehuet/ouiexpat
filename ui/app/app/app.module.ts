@@ -39,14 +39,15 @@ import { ProfilDetailsComponent } from './profil/profil-details/profil-details.c
                 canActivate: [AuthGuard],
                 children: [
                     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-                    { path: 'dashboard', component: DashboardComponent },
-                    { path: 'expatriations', component: ExpatriationsComponent },
+                    { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+                    { path: 'expatriations', component: ExpatriationsComponent, canActivate: [AuthGuard] },
                     {
                         path: 'profil',
                         component: ProfilComponent,
+                        canActivate: [AuthGuard],
                         children: [
                             { path: '', redirectTo: 'details', pathMatch: 'full' },
-                            { path: 'details', component: ProfilDetailsComponent }
+                            { path: 'details', component: ProfilDetailsComponent, canActivate: [AuthGuard] }
                         ]
                     }
                 ]
