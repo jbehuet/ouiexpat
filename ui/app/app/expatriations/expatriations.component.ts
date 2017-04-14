@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../../_services/authentication.service';
+import { ExpatriationService } from '../../_services/expatriation.service';
+import { ToastHelper } from '../../_helpers/toast.helper';
 import { User } from '../../_interfaces/user.interface';
 
 @Component({
@@ -9,16 +10,24 @@ import { User } from '../../_interfaces/user.interface';
 })
 export class ExpatriationsComponent implements OnInit {
 
-    public user: User;
+    public expatriations: any = [];
     public currentExpat: any;
 
-    constructor(private _authenticationService: AuthenticationService) { }
+    constructor(private _expatriationService: ExpatriationService) { }
 
     ngOnInit() {
-        this.user = this._authenticationService.user;
-        this.currentExpat = this.user.expeditions.reduce((prev, current) => {
-            return (new Date(prev.date) > new Date(current.date)) ? prev : current
-        });
+        this._loadExpatriations();
+    }
+
+    private _loadExpatriations() {
+        this._expatriationService.getAll().subscribe(expatriations => {
+            this.expatriations = expatriations;
+            this.currentExpat = this.expatriations.reduce((prev, current) => {
+                return (new Date(prev.date) > new Date(current.date)) ? prev : current
+            });
+        }, (err) => {
+            ToastHelper.displayError(err);
+        })
     }
 
 }

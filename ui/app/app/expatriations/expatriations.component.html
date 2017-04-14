@@ -9,7 +9,7 @@
         <div class="row">
             <h4 class="subtitle">A venir(s)</h4>
             <ul class="expatriations">
-                <li *ngFor="let expat of (user?.expeditions | dateFilter:['date','now'])" class="row no-margin" [class.selected]="(currentExpat?._id === expat._id)" (click)="currentExpat = expat">
+                <li *ngFor="let expat of (expatriations | dateFilter:['date','now'])" class="row no-margin" [class.selected]="(currentExpat?._id === expat._id)" (click)="currentExpat = expat">
                     <div class="valign-wrapper expat">
                         <div class="row no-margin">
                             <div class="col s12 space-bottom-5">
@@ -27,7 +27,7 @@
         <div class="row">
             <h4 class="subtitle">Passée(s)</h4>
             <ul class="expatriations">
-                <li *ngFor="let expat of (user?.expeditions | dateFilter:['date','now', 'before'])" class="row no-margin" [class.selected]="(currentExpat?._id === expat._id)" (click)="currentExpat = expat">
+                <li *ngFor="let expat of (expatriations | dateFilter:['date','now', 'before'])" class="row no-margin" [class.selected]="(currentExpat?._id === expat._id)" (click)="currentExpat = expat">
                     <div class="valign-wrapper expat">
                         <div class="row no-margin">
                             <div class="col s12 space-bottom-5">
@@ -45,7 +45,7 @@
     <div class="col s12 m8 offset-m1">
         <div class="form-card map">
             <div class="row">
-                <leaflet class="col s5 right" [location]="currentExpat.location.geometry.coordinate"></leaflet>
+                <leaflet class="col s5 right" [location]="currentExpat?.location.geometry.coordinate"></leaflet>
             </div>
         </div>
         <div class="form-card">

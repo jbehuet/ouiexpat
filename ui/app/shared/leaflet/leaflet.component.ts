@@ -21,6 +21,7 @@ export class LeafletComponent implements OnInit, AfterViewInit, OnChanges {
     }
 
     ngAfterViewInit() {
+        this.location = this.location || [48.857482, 2.350301];
         this._map = new L.Map('map', { zoomControl: false, doubleClickZoom: false }).setView(this.location, 3);
 
         L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(this._map);

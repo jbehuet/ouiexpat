@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../../../_services/authentication.service';
+import { ExpatriationService } from '../../../../_services/expatriation.service';
+import { ToastHelper } from '../../../../_helpers/toast.helper';
 import { User } from '../../../../_interfaces/user.interface';
 
 @Component({
@@ -10,16 +12,28 @@ import { User } from '../../../../_interfaces/user.interface';
 export class WidgetExpatriationsComponent implements OnInit {
 
     public user: User;
+    public expatriations: any;
     public expatSelected: any;
 
-    constructor(private _authenticationService: AuthenticationService) { }
+    constructor(private _authenticationService: AuthenticationService,
+        private _expatriationService: ExpatriationService) { }
 
     ngOnInit() {
         this.user = this._authenticationService.user;
-        this.expatSelected = (this.user.expeditions.length > 0 ? this.user.expeditions[0] : null);
+        this._loadExpatriations();
+    }
+
+    private _loadExpatriations() {
+        this._expatriationService.getAll().subscribe(expatriations => {
+            this.expatriations = expatriations;
+            this.expatSelected = (this.expatriations.length > 0 ? this.expatriations[0] : null);
+        }, (err) => {
+            ToastHelper.displayError(err);
+        })
     }
 
     getDayDiff(): number {
+        if (!this.expatSelected) return;
         const now = new Date();
         const expatSelectedDate = new Date(this.expatSelected.date);
         if (expatSelectedDate.getTime() > now.getTime()) {
