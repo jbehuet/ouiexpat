@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
 
 import { WidgetProfilComponent } from './dashboard/widgets/widget-profil/widget-profil.component';
 import { WidgetExpatriationsComponent } from './dashboard/widgets/widget-expatriations/widget-expatriations.component';
@@ -54,8 +55,9 @@ import { ProfilDetailsComponent } from './profil/profil-details/profil-details.c
     ],
     declarations: [
         DateFilterPipe,
-        AppComponent, DashboardComponent, NavbarComponent, WidgetProfilComponent,
-        WidgetExpatriationsComponent, WidgetActusComponent, WidgetFavorisComponent,
+        AppComponent, DashboardComponent, NavbarComponent, FooterComponent,
+        WidgetProfilComponent, WidgetExpatriationsComponent, WidgetActusComponent,
+        WidgetFavorisComponent,
         ExpatriationsComponent,
         ProfilComponent, ProfilMenuComponent, ProfilDetailsComponent
     ]
