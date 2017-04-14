@@ -1,5 +1,5 @@
 <div class="form-card widget">
-    <div class="row" *ngIf="expatriations?.length >= 0">
+    <div class="row" *ngIf="expatriations?.length > 0">
         <div class="col s12 m6 l6 separator full-height">
             <select name="expatSelected" materialize="material_select" [(ngModel)]="expatSelected">
             <option *ngFor="let expat of expatriations; index as i" [ngValue]="expat" [attr.selected]="i == 0">{{expat.location.country}}</option>
