@@ -11,7 +11,7 @@ import { User } from '../../_interfaces/user.interface';
 export class ExpatriationsComponent implements OnInit {
 
     public expatriations: any = [];
-    public currentExpat: any;
+    public currentExpat: any = {};
 
     constructor(private _expatriationService: ExpatriationService) { }
 

@@ -45,11 +45,27 @@
     <div class="col s12 m8 offset-m1">
         <div class="form-card map">
             <div class="row">
-                <leaflet class="col s5 right" [location]="currentExpat?.location.geometry.coordinate"></leaflet>
+                <leaflet class="col s5 right" [location]="currentExpat.location?.geometry.coordinate"></leaflet>
             </div>
         </div>
         <div class="form-card">
-            {{currentExpat | json}}
+          <div class="row no-margin">
+              <div class="col s12 title">Détails</div>
+          </div>
+          <div class="row no-margin">
+
+              <div class="col s8">
+                  <algolia-places name="address" [(ngModel)]="currentExpat.location" disabled="true"></algolia-places>
+              </div>
+
+              <div class="input-field col s4">
+                  <input id="date" name="date" type="text" [value]='currentExpat.date | date:"dd/MM/yy"' disabled>
+              </div>
+          </div>
+
+          <div class="row">
+              <a class="btn-flat btn-red waves-effect center-align col s6 offset-s6"><span class="icon icon-trash"></span> Supprimer</a>
+          </div>
         </div>
     </div>
 </div>

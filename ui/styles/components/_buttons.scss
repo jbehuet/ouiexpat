@@ -19,7 +19,21 @@
     height: 38px;
 }
 
+.btn-red {
+    background: $white;
+    border-radius: 40px;
+    color: color("red", "base") ;
+    border: 2px solid color("red", "base") ;
+    height: 38px;
+}
+
 .btn-white:focus,
-.btn-white:hover {
+.btn-white:hover{
     background-color: $grey-very-light;
+}
+
+.btn-red:focus,
+.btn-red:hover {
+  background-color: color("red", "base");
+  color:$white;
 }

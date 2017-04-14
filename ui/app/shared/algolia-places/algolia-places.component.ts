@@ -7,7 +7,7 @@ import places from 'places.js';
     selector: 'algolia-places',
     template: `
         <div class="input-field">
-            <input id="location" placeholder="Adresse" name="location" type="text" class="validate" required="{{required}}">
+            <input id="location" placeholder="Adresse" name="location" type="text" class="validate" [required]="required" [disabled]="disabled">
             <label for="location" *ngIf="label">{{label}}</label>
         </div>
   `,
@@ -23,6 +23,7 @@ export class AlgoliaPlacesComponent implements OnInit, ControlValueAccessor {
 
     @Input() label?: String = '';
     @Input() required?: Boolean = true;
+    @Input() disabled?: Boolean = false;
     //Internal value
     @Input() place;
 
