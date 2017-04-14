@@ -2,30 +2,16 @@
 @import '../../../styles/utils/variables';
 @import '../../../styles/utils/mixins';
 
-.subtitle {
-    background: $linear-gradient left bottom rgba(0, 0, 0, 0) no-repeat;
-    background-size: 100% 1px;
-    background-origin: content-box;
-    background-position: 0 24px;
-    padding-bottom: 20px;
-    margin: 2.1rem 0 1.68rem;
-}
-
-.title {
-    font-size: 16px;
-    background: $linear-gradient left bottom rgba(0, 0, 0, 0) no-repeat;
-    background-size: 100% 1px;
-    background-origin: content-box;
-    font-family: $capriola;
-}
-
-
 ul.expatriations {
     li {
         height: auto;
         padding: 10px 5px 8px 5px;
-        border-bottom: 1px solid $grey-light;
+        border-bottom: 1px solid $line-color;
         @extend %transition;
+
+      &:last-child {
+        border-bottom: 0;
+      }
     }
 
     li.selected,
@@ -59,7 +45,7 @@ ul.expatriations {
     font-family: ouiexpat;
     position: absolute;
     top: 50%;
-    right: -10px;
+    right: 0;
     transform: translate(-50%, -50%);
     content: '\58';
     font-size: 24px;

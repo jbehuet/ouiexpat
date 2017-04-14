@@ -1,8 +1,8 @@
 <div>
     <div class="row no-margin">
-        <label class="col s12">{{label}}</label>
+        <label class="col s12 no-padding">{{label}}</label>
     </div>
-    <div class="row">
+    <div class="row force-space-bottom-0">
         <select name="daySelected" materialize="material_select" class="col s3" (change)="onDayChange($event.target.value)" >
           <option value="" disabled selected>Jour</option>
           <option *ngFor="let day of days" value="{{day}}" [selected]="_currentDate.getDate() == day">{{day}}</option>
