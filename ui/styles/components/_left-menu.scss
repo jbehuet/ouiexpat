@@ -7,7 +7,7 @@ ul.left-menu {
   li {
     position: relative;
     padding: 10px 20px 10px 5px;
-    border-bottom: 1px solid $grey-light;
+    border-bottom: 1px solid $line-color;
     line-height: 1.4;
     @extend %transition;
 
@@ -15,11 +15,11 @@ ul.left-menu {
       font-family: ouiexpat;
       position: absolute;
       top: 57%;
-      right: -10px;
+      right: 0;
       transform: translate(-50%, -50%);
       content: '\58';
       font-size: 24px;
-      color: white;
+      color: $grey-light;
     }
   }
 
@@ -28,6 +28,8 @@ ul.left-menu {
     @extend %transition;
     color: $white;
     background: $linear-gradient;
+
+    &:after { color: white;}
   }
 
   li:hover {

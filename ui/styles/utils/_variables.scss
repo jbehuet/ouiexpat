@@ -7,6 +7,8 @@ $grey:                                            #9e9e9e !default;
 $white:                                           #F8F8F8 !default;
 $white-grey:                                      #F4F7FC !default;
 
+$line-color:                                      lighten($grey-light, 15%) !default;
+
 $yellow:                                          #F7CB0A !default;
 $red:                                             #FF3950 !default;
 $linear-gradient:                                 linear-gradient(301deg, $yellow 0%, $blue 100%)!default;
