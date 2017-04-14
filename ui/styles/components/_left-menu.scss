@@ -1,0 +1,42 @@
+// -----------------------------------------------------------------------------
+// ~ This file contains all styles related to the LEFT MENU layout.
+// -----------------------------------------------------------------------------
+
+
+ul.left-menu {
+  li {
+    position: relative;
+    padding: 10px 20px 10px 5px;
+    border-bottom: 1px solid $grey-light;
+    line-height: 1.4;
+    @extend %transition;
+
+    &:after {
+      font-family: ouiexpat;
+      position: absolute;
+      top: 57%;
+      right: -10px;
+      transform: translate(-50%, -50%);
+      content: '\58';
+      font-size: 24px;
+      color: white;
+    }
+  }
+
+  li.selected,
+  li.selected:hover {
+    @extend %transition;
+    color: $white;
+    background: $linear-gradient;
+  }
+
+  li:hover {
+    @extend %transition;
+    background: rgba(212, 214, 223, .2);
+    cursor: pointer;
+  }
+
+  .ico {
+    font-size: 24px;
+  }
+}

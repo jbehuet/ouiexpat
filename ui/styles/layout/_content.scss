@@ -34,6 +34,23 @@
 // ================ //
 
 // ================ //
+// SUBTITLE (start)
+// ================ //
+
+.subtitle {
+  background: $linear-gradient left bottom rgba(0, 0, 0, 0) no-repeat;
+  background-size: 100% 1px;
+  background-origin: content-box;
+  background-position: 0 28px;
+  padding-bottom: 15px;
+}
+
+// ================ //
+// SUBTITLE (end)
+// ================ //
+
+
+// ================ //
 // MESSAGE EMPTY BLOCK (start)
 // ================ //
 

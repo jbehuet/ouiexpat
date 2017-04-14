@@ -12,13 +12,15 @@
     <div class="col s12 m8">
         <form (ngSubmit)="profilForm.form.valid && updateProfil()" #profilForm="ngForm">
             <div class="row">
-                <div class="col s12 title">Photo de profil</div>
-            </div>
-            <div class="row">
                 <div class="col s12">
-                    <div class="row">
-                        <div class="col s1 icon icon-information icon-gradient"></div>
-                        <div class="col s11">
+                    <h4 class="subtitle">Photo de profil</h4>
+                </div>
+            </div>
+            <div class="row no-margin">
+                <div class="col s12 no-padding">
+                    <div class="row no-margin">
+                        <div class="col s1 no-padding icon icon-information icon-gradient vert-align-middle"></div>
+                        <div class="col s11 vert-align-middle small-txt">
                             Une image carrée au format 400x400 est recommandée pour un avatar de bonne qualité.
                         </div>
                     </div>
@@ -26,7 +28,7 @@
             </div>
 
             <div class="row">
-                <div class="file-field input-field">
+                <div class="col s12 file-field input-field">
                     <div class="btn-flat btn-white waves-effect center-align col s8">
                         <span>Télécharger un fichier <span class="icon icon-cloud-upload"></span></span>
                         <input type="file">
@@ -36,28 +38,30 @@
 
 
             <div class="row">
-                <div class="col s12 title">Mes informations</div>
+                <div class="col s12">
+                    <h4 class="subtitle">Mes informations</h4>
+                </div>
             </div>
-            <div class="row no-margin">
+            <div class="row">
                 <div class="input-field col s12">
                     <input id="email" placeholder="E-mail" name="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [(ngModel)]="user.email" required>
                     <label for="email">Adresse E-mail</label>
                 </div>
             </div>
-            <div class="row no-margin">
+            <div class="row">
                 <div class="input-field col s12">
                     <input id="lastname" placeholder="Prénom" name="lastname" type="text" [(ngModel)]="user.lastname" required>
                     <label for="lastname">Prénom</label>
                 </div>
             </div>
-            <div class="row no-margin">
+            <div class="row">
                 <div class="input-field col s12">
                     <input id="firstname" placeholder="Nom" name="firstname" type="text" [(ngModel)]="user.firstname" required>
                     <label for="firstname">Nom</label>
                 </div>
             </div>
 
-            <div class="row no-margin">
+            <div class="row  force-space-bottom-0">
                 <oe-date-inline class="col s12" label="Date de naissance" name="birthday" [(ngModel)]="user.birthday"></oe-date-inline>
             </div>
 
@@ -67,8 +71,12 @@
                 </div>
             </div>
 
-            <div class="row">
-                <button class="btn btn-validate waves-effect col s8 offset-s4" type="submit" [disabled]="profilForm.invalid || profilForm.pristine">Sauvegarder et mettre à jour</button>
+            <div class="row space-top-30">
+                <div class="col s12">
+                    <button class="btn btn-validate waves-effect col s8 offset-s4" type="submit" [disabled]="profilForm.invalid || profilForm.pristine">
+                        Sauvegarder et mettre à jour
+                    </button>
+                </div>
             </div>
         </form>
 
