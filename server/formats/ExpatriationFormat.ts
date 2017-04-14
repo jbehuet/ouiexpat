@@ -1,6 +1,6 @@
 import AddressFormat from './AddressFormat';
 
-export default class ExpeditionFormat {
+export default class ExpatriationFormat {
     location: AddressFormat;
     date: Date;
 }

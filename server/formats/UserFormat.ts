@@ -1,6 +1,5 @@
 import * as mongoose from 'mongoose';
 import PhoneFormat from './PhoneFormat';
-import ExpeditionFormat from './ExpeditionFormat';
 import AddressFormat from './AddressFormat';
 
 export default class UserFormat {
@@ -15,7 +14,6 @@ export default class UserFormat {
     administrator: boolean;
     phone: PhoneFormat;
     birthday: Date;
-    expeditions: Array<ExpeditionFormat>;
     reset_token: string;
     createdAt: Date;
     updatedAt: Date;

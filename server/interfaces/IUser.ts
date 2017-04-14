@@ -1,6 +1,5 @@
 import * as mongoose from 'mongoose';
 import PhoneFormat from '../formats/PhoneFormat';
-import ExpeditionFormat from '../formats/ExpeditionFormat';
 import AddressFormat from '../formats/AddressFormat';
 
 interface IUser extends mongoose.Document {
@@ -14,7 +13,6 @@ interface IUser extends mongoose.Document {
     address: AddressFormat;
     phone: PhoneFormat;
     birthday: Date;
-    expeditions: Array<ExpeditionFormat>;
     reset_token: string;
     createdAt: Date;
     updatedAt: Date;

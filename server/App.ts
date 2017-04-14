@@ -11,6 +11,7 @@ import HTTPCode from './constants/HttpCodeConstant';
 import CONFIG from './config';
 import UserRouter from './routes/UserRouter';
 import AuthRouter from './routes/AuthRouter';
+import ExpatriationRouter from './routes/ExpatriationRouter';
 import AssociationRouter from './routes/AssociationRouter';
 
 class App {
@@ -44,10 +45,12 @@ class App {
         const userRouter = new UserRouter();
         const authRouter = new AuthRouter();
         const associationRouter = new AssociationRouter();
+        const expatriationRouter = new ExpatriationRouter();
         this.express.use('/api', router);
         this.express.use('/api/v1/auth', authRouter.router);
         this.express.use('/api/v1/users', userRouter.router);
         this.express.use('/api/v1/associations', associationRouter.router);
+        this.express.use('/api/v1/expatriations', expatriationRouter.router);
         //Catch all other routes
         this.express.get('*', (req, res) => {
             res.sendFile(path.join(__dirname, '../client/index.html'));

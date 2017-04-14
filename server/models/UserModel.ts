@@ -51,21 +51,6 @@ const _schema = new mongoose.Schema({
     birthday: {
         type: Date
     },
-    expeditions: [{
-        location: {
-            value: String,
-            name: String,
-            city: String,
-            country: String,
-            postcode: String,
-            countryCode: String,
-            geometry: {
-                coordinate: [],
-                type: { type: String, default: 'Point' }
-            }
-        },
-        date: Date
-    }],
     reset_token: String
 }, {
         timestamps: true

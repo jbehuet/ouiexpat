@@ -7,7 +7,6 @@ import IRequest from '../interfaces/IRequest';
 import ErrorHelper from '../helpers/ErrorHelper';
 import AbstractRouter from './AbstractRouter';
 import AuthRouter from './AuthRouter';
-import ExpeditionFormat from '../formats/ExpeditionFormat';
 import UserFormat from '../formats/UserFormat';
 import UserModel from '../models/UserModel';
 
@@ -15,9 +14,6 @@ class UserRouter extends AbstractRouter {
 
     constructor() {
         super(UserModel)
-        this.router.post('/expeditions', this.createExpedition.bind(this));
-        this.router.put('/expeditions/:id', this.updateExpedition.bind(this));
-        this.router.delete('/expeditions/:id', this.deleteExpedition.bind(this));
     }
 
     protected getAll(req: IRequest, res: Response, next: NextFunction) {
@@ -68,48 +64,6 @@ class UserRouter extends AbstractRouter {
 
     private uploadMedia(req: IRequest, res: Response, next: NextFunction) {
         //TODO
-    }
-
-    private createExpedition(req: IRequest, res: Response, next: NextFunction) {
-
-        if (_.isEmpty(req.body)) return ErrorHelper.handleError(HTTPCode.error.client.BAD_REQUEST, 'Request body is empty', res);
-
-        UserModel.findOneAndUpdate({ _id: req.authenticatedUser._id },
-            { $push: { "expeditions": req.body } }, { new: true }, (err: mongoose.Error, user: UserFormat) => {
-                if (err)
-                    ErrorHelper.handleMongooseError(err, res, req);
-                else
-                    res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user });
-            });
-
-    }
-
-    private updateExpedition(req: IRequest, res: Response, next: NextFunction) {
-
-        if (_.isEmpty(req.body)) return ErrorHelper.handleError(HTTPCode.error.client.BAD_REQUEST, 'Request body is empty', res);
-        if (_.isEmpty(req.body.date)) return ErrorHelper.handleError(HTTPCode.error.client.BAD_REQUEST, 'Date is require', res);
-        if (_.isEmpty(req.body.location)) return ErrorHelper.handleError(HTTPCode.error.client.BAD_REQUEST, 'Location is require', res);
-
-        UserModel.findOneAndUpdate({ _id: req.authenticatedUser._id, 'expeditions._id': req.params.id },
-            { $set: { "expeditions.$": req.body } }, { new: true }, (err: mongoose.Error, user: UserFormat) => {
-                if (err)
-                    ErrorHelper.handleMongooseError(err, res, req);
-                else
-                    res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user });
-            });
-
-    }
-
-    private deleteExpedition(req: IRequest, res: Response, next: NextFunction) {
-
-        UserModel.findOneAndUpdate({ _id: req.authenticatedUser._id },
-            { $pull: { "expeditions": { "_id": req.params.id } } }, { new: true }, (err: mongoose.Error, user: UserFormat) => {
-                if (err)
-                    ErrorHelper.handleMongooseError(err, res, req);
-                else
-                    res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user });
-            });
-
     }
 
 }
