@@ -31,9 +31,22 @@
 .reset-password {
     position: absolute;
     right: 8px;
-    top: 16px;
+    top: 13px;
 
     a {
         color: $blue;
+        opacity: 0.5;
+        @extend %transition;
+
+        i {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 5px;
+        }
+
+        &:hover, &:focus {
+            @extend %transition;
+            opacity: 1;
+        }
     }
 }
