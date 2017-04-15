@@ -19,7 +19,7 @@
 
     @media only screen and (max-width: 993px) {
       display: block;
-      margin: 10px auto;
+      margin: 15px auto;
     }
   }
 }
@@ -71,5 +71,11 @@
     background-image: url(/assets/img/logo-copyright.png);
     background-repeat: no-repeat;
     background-size: 100%;
+  }
+
+  @media only screen and (max-width: 993px) {
+    display: block;
+    text-align: center;
+    margin: 15px auto;
   }
 }
