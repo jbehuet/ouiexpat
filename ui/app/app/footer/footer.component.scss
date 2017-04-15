@@ -2,9 +2,11 @@
 @import '../../../styles/utils/placeholders';
 
 .footer {
-  width: 85%;
+  min-height: $height-footer;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 25px 0;
+  padding: 25px 11px;
+  width: 85%;
 
   .logo-footer {
     display: inline-block;
@@ -15,8 +17,9 @@
     background-size: 100%;
     background-repeat: no-repeat;
 
-    @media only screen and (min-width: 370px) {
-      background-position: center center;
+    @media only screen and (max-width: 993px) {
+      display: block;
+      margin: 10px auto;
     }
   }
 }
@@ -33,7 +36,8 @@
       @extend %transition;
       cursor: pointer;
 
-      @media only screen and (min-width: 370px) {
+      @media only screen and (max-width: 993px) {
+        display: block;
         text-align: center;
       }
 
@@ -48,5 +52,24 @@
         font-weight: bold;
       }
     }
+  }
+}
+
+
+.copyright-container {
+  text-align: right;
+  margin: 5px 0;
+  font-size: 10px;
+  color: #a2a5a8;
+
+  .copyright-logo {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+    height: 15px;
+    width: 15px;
+    background-image: url(/assets/img/logo-copyright.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
   }
 }

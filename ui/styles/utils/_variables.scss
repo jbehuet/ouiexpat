@@ -23,7 +23,11 @@ $link-color:                                     $text-color !default; //  Fonts
 $dropdown-color:                                 $secondary-color !default;
 $navbar-font-color:                              $primary-color !default;
 $sidenav-font-color:                             $primary-color !default;
+
+//FONTS and PATHS
 // ===================================================================
+
+// ==== FONTS
 $capriola: "Capriola-Regular";
 $open-sans: "Open Sans";
 
@@ -33,3 +37,10 @@ $roboto-font-path: '../../node_modules/materialize-css/fonts/roboto/' !default;
 $img-path :                                     '/assets/img/' !default;
 
 $font-path :                                    '/assets/fonts/' !default;
+
+
+//METRICS
+// ===================================================================
+
+// ==== FOOTER
+$height-footer :    100px;
