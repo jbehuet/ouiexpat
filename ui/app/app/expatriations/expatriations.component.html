@@ -48,7 +48,10 @@
     <div class="col s12 m8 offset-m1">
         <div class="form-card map">
             <div class="row">
-                <leaflet class="col s5 right" [location]="currentExpat.location?.geometry.coordinate"></leaflet>
+                <div class="col s7 container-infos-expat">
+
+                </div>
+                <leaflet class="col s5 right force-inner-space-left-0" [location]="currentExpat.location?.geometry.coordinate"></leaflet>
             </div>
         </div>
         <div class="form-card has-padding">
@@ -73,7 +76,7 @@
               <div class="col s12">
                   <div class="row no-margin">
                       <div class="col s12 m6">
-                          <a class="btn-flat btn-red waves-effect has-icon-left"><i class="icon icon-trash"></i> Supprimer</a>
+                          <a class="btn btn-red waves-effect has-icon-left"><i class="icon icon-trash"></i> Supprimer</a>
                       </div>
                       <div class="col s12 m6 text-right">
                           <a class="btn btn-validate waves-effect has-icon-left"><i class="icon icon-checkmark"></i>Sauvegarder</a>
