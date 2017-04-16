@@ -1,5 +1,6 @@
 import * as mongoose from 'mongoose';
 import IAssociation from '../interfaces/IAssociation';
+import IList from '../interfaces/IList';
 
 const _schema = new mongoose.Schema({
     owner: {
@@ -18,7 +19,21 @@ const _schema = new mongoose.Schema({
             type: { type: String, default: 'Point' }
         }
     },
-    date: Date
+    date: Date,
+    lists: [{
+        title: String,
+        type: {
+            type: String,
+            enum: ['administrative', 'house']
+        },
+        items: [
+            {
+                title: String,
+                details: String,
+                completed: Boolean
+            }
+        ]
+    }]
 }, {
         timestamps: true
     });

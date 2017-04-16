@@ -20,11 +20,24 @@ class UserRouter extends AbstractRouter {
 
         if (!req.authenticatedUser.administrator) return ErrorHelper.handleError(HTTPCode.error.client.UNAUTHORIZED, 'Not authorize', res);
 
-        this.model.find({}).sort({ createdAt: "desc" }).exec((err: mongoose.Error, objects: Array<mongoose.Document>) => {
+        UserModel.find({}).sort({ createdAt: "desc" }).exec((err: mongoose.Error, objects: Array<mongoose.Document>) => {
             if (err)
                 ErrorHelper.handleMongooseError(err, res, req);
             else
                 res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: objects });
+        });
+
+    }
+
+    protected getById(req: IRequest, res: Response, next: NextFunction) {
+
+        if (!req.authenticatedUser.administrator && req.authenticatedUser._id !== req.params.id) return ErrorHelper.handleError(HTTPCode.error.client.UNAUTHORIZED, 'Not authorize', res);
+
+        UserModel.findById(req.params.id).exec((err: mongoose.Error, object: mongoose.Document) => {
+            if (err)
+                ErrorHelper.handleMongooseError(err, res, req);
+            else
+                res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: object });
         });
 
     }
