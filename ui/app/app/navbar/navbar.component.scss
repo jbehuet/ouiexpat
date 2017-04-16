@@ -61,6 +61,15 @@ nav {
         a.account {
             line-height: 100%;
             margin: 0;
+
+            &.active {
+                .chevron-dropdown {
+                    @extend %transition;
+                    opacity: 0;
+                    top: 40px;
+                }
+            }
+
         }
 
         .circle-border {
@@ -73,14 +82,6 @@ nav {
 
         a.selected {
             color: #00A2D8;
-
-            &.active {
-                .chevron-dropdown {
-                    @extend %transition;
-                    opacity: 0;
-                    top: 40px;
-                }
-            }
 
             .circle-border::before {
                 position: relative;

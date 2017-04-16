@@ -5,7 +5,9 @@
                 <div class="row inner-space-right-15">
                     <span class="avatar-profil">
                          <img [src]="user.photo" alt="Avatar">
-                         <a href=""><span class="icon icon-trash"></span></a>
+                         <a class="delete-avatar btn-floating btn-medium waves-effect waves-light btn-white-stroke">
+                             <i class="icon-trash"></i>
+                         </a>
                     </span>
                 </div>
             </div>
@@ -73,7 +75,7 @@
                 </div>
             </div>
 
-            <div class="row space-top-30">
+            <div class="row action-bar">
                 <div class="col s12">
                     <button class="btn btn-validate waves-effect col s8 offset-s4" type="submit" [disabled]="profilForm.invalid || profilForm.pristine">
                         Sauvegarder et mettre à jour
