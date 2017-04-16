@@ -51,10 +51,12 @@
                 <leaflet class="col s5 right" [location]="currentExpat.location?.geometry.coordinate"></leaflet>
             </div>
         </div>
-        <div class="form-card">
-          <div class="row no-margin">
-              <div class="col s12 title">Détails</div>
-          </div>
+        <div class="form-card has-padding">
+            <div class="row no-margin">
+                <div class="col s12">
+                    <h4 class="subtitle">Détails</h4>
+                </div>
+            </div>
           <div class="row no-margin">
 
               <div class="col s8">
@@ -66,8 +68,18 @@
               </div>
           </div>
 
-          <div class="row">
-              <a class="btn-flat btn-red waves-effect center-align col s6 offset-s6"><span class="icon icon-trash"></span> Supprimer</a>
+
+          <div class="row action-bar">
+              <div class="col s12">
+                  <div class="row no-margin">
+                      <div class="col s12 m6">
+                          <a class="btn-flat btn-red waves-effect has-icon-left"><i class="icon icon-trash"></i> Supprimer</a>
+                      </div>
+                      <div class="col s12 m6 text-right">
+                          <a class="btn btn-validate waves-effect has-icon-left"><i class="icon icon-checkmark"></i>Sauvegarder</a>
+                      </div>
+                  </div>
+              </div>
           </div>
         </div>
     </div>
