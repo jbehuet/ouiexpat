@@ -21,7 +21,7 @@ class MailHelper {
     }
 
     public send(subject: string, template: string, content: any, email: string) {
-
+        if (!this._enabled ) return;
         const source = fs.readFileSync(path.join(__dirname, '../templates/' + template + '.hbs'), 'utf8');
         const hbs = compile(source)
 

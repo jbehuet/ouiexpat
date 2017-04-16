@@ -36,7 +36,7 @@ class AuthRouter {
             if (err)
                 ErrorHelper.handleMongooseError(err, res, req);
             else {
-                user.password = null;
+                user.password = undefined;
                 const token = AuthRouter.generateToken(user);
                 res.status(HTTPCode.success.CREATED).json({
                     status: HTTPCode.success.CREATED,
@@ -49,7 +49,6 @@ class AuthRouter {
     }
 
     private authentication(req: IRequest, res: Response, next: NextFunction) {
-
         if (_.isEmpty(req.body)) return ErrorHelper.handleError(HTTPCode.error.client.BAD_REQUEST, 'Request body is empty', res);
         if (_.isEmpty(req.body.email)) return ErrorHelper.handleError(HTTPCode.error.client.BAD_REQUEST, 'Email is require', res);
         if (_.isEmpty(req.body.password)) return ErrorHelper.handleError(HTTPCode.error.client.BAD_REQUEST, 'Password is require', res);
@@ -59,10 +58,10 @@ class AuthRouter {
                 ErrorHelper.handleMongooseError(err, res, req);
             else if (!user)
                 ErrorHelper.handleError(HTTPCode.error.client.NOT_FOUND, 'User not found', res);
-            else if (!bcrypt.compareSync(req.body.password, user.password))
+            else if (!user.password || !bcrypt.compareSync(req.body.password, user.password))
                 ErrorHelper.handleError(HTTPCode.error.client.UNAUTHORIZED, 'Password not match', res);
             else {
-                user.password = null;
+                user.password = undefined;
                 const token = jwt.sign(user, CONFIG.jwt.secret, CONFIG.jwt.options);
                 res.json({
                     status: HTTPCode.success.OK,
