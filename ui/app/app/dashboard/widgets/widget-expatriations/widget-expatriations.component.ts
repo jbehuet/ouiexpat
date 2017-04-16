@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../../../../_services/authentication.service';
 import { ExpatriationService } from '../../../../_services/expatriation.service';
 import { ToastHelper } from '../../../../_helpers/toast.helper';
-import { User } from '../../../../_interfaces/user.interface';
 
 @Component({
     selector: 'oe-widget-expatriations',
@@ -11,15 +9,12 @@ import { User } from '../../../../_interfaces/user.interface';
 })
 export class WidgetExpatriationsComponent implements OnInit {
 
-    public user: User;
     public expatriations: any;
     public expatSelected: any;
 
-    constructor(private _authenticationService: AuthenticationService,
-        private _expatriationService: ExpatriationService) { }
+    constructor(private _expatriationService: ExpatriationService) { }
 
     ngOnInit() {
-        this.user = this._authenticationService.user;
         this._loadExpatriations();
     }
 

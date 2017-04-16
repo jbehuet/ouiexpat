@@ -26,7 +26,6 @@ export class ExpatriationsComponent implements OnInit {
         this._expatriationService.delete(this.currentExpat)
             .subscribe(expatriations => {
                 ToastHelper.displaySuccess("Deleted");
-                this.expatriations = expatriations
             }, (err) => {
                 ToastHelper.displayError(err);
             });
