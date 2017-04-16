@@ -7,6 +7,10 @@ const _schema = new mongoose.Schema({
         require: true
     },
     countryCode: String,
+    icon: {
+      type:String,
+      default:'icon-key'
+    },
     type: {
         type: String,
         enum: ['administrative', 'house']

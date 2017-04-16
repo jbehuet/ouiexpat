@@ -9,6 +9,7 @@ export default class ListFormat {
     icon?: string;
     countryCode?: string;
     items:Array<ListItemFormat>;
+    itemsNotCompleted?:number;
     createdAt: Date;
     updatedAt: Date;
     save():any {};

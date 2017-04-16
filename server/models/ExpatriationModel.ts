@@ -26,14 +26,18 @@ const _schema = new mongoose.Schema({
             type: String,
             enum: ['administrative', 'house']
         },
+        icon:String,
         items: [
             {
                 title: String,
                 details: String,
                 completed: Boolean
             }
-        ]
-    }]
+        ],
+        itemsNotCompleted:Number
+    }],
+    dayDiff: Number,
+    completedAt: Number
 }, {
         timestamps: true
     });

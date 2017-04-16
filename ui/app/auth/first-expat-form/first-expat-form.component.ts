@@ -12,7 +12,7 @@ import { ExpatriationService } from '../../_services/expatriation.service';
 export class FirstExpatFormComponent implements OnInit {
 
     public formDateOptions: Pickadate.DateOptions;
-    public expatriation: any = {};
+    public expatriation: any = { lists: [] };
 
 
     constructor(private _router: Router, private _expatriationService: ExpatriationService) { }
@@ -26,12 +26,19 @@ export class FirstExpatFormComponent implements OnInit {
             coordinate: [this.expatriation.location.latlng.lat, this.expatriation.location.latlng.lng]
         };
 
-        this._expatriationService.createExpatriation(this.expatriation).subscribe(result => {
+        this._expatriationService.create(this.expatriation).subscribe(result => {
             this._router.navigate(['/dashboard']);
         }, (err) => {
             ToastHelper.displayError(err);
         });
 
+    }
+
+    updateCheckedLists(e) {
+        if (e.currentTarget.checked)
+            this.expatriation.lists.push(e.currentTarget.value)
+        else
+            this.expatriation.lists.splice(this.expatriation.lists.indexOf(e.currentTarget.value), 1);
     }
 
     private _getDefaultPickaDateOptions(): Pickadate.DateOptions {

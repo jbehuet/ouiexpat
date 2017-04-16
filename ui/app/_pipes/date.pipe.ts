@@ -9,7 +9,7 @@ export class DateFilterPipe implements PipeTransform {
             filter = new Date(args[1]);
         // filter items array, items which match and return true will be kept, false will be filtered out
         return items.filter(item => {
-            if (comparator === 'before')
+            if (comparator === '<')
                 return new Date(item[args[0]]) < filter
             else
                 return new Date(item[args[0]]) > filter

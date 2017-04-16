@@ -1,9 +1,13 @@
 <div class="form-card widget">
     <div class="row" *ngIf="expatriations?.length > 0">
         <div class="col s12 m6 l6 separator full-height">
-            <select name="expatSelected" materialize="material_select" [(ngModel)]="expatSelected">
-            <option *ngFor="let expat of expatriations; index as i" [ngValue]="expat" [attr.selected]="i == 0">{{expat.location.country}}</option>
-          </select>
+            <div class="row no-margin-bottom">
+                <div class="col s12">
+                    <select name="expatSelected" materialize="material_select" [(ngModel)]="expatSelected">
+                      <option *ngFor="let expat of expatriations; index as i" [ngValue]="expat" [attr.selected]="i == 0">{{expat.location.country}}</option>
+                    </select>
+                </div>
+            </div>
             <div class="row">
                 <div class="col s2">
                     <img *ngIf="expatSelected" [src]="'http://www.geonames.org/flags/x/' + expatSelected?.location.countryCode + '.gif'" height="24" width="34" alt="">
@@ -11,13 +15,35 @@
                 <div class="col s8">
                     <span class="city">{{ expatSelected?.location.name }}</span>
                 </div>
-                <div class="col s2" *ngIf="getDayDiff() > -1">
-                    J-{{getDayDiff()}}
+                <div class="col s2" *ngIf="expatSelected?.dayDiff > -1">
+                    J-{{expatSelected?.dayDiff}}
+                </div>
+            </div>
+
+            <div class="row no-margin-bottom">
+                <div class="col s4">
+                    {{expatSelected?.completedAt}}%
+                </div>
+                <div class="col s8">
+                    des tâches effectuées
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="progress-bg">
+                    <div class="progress" [style.width]="expatSelected?.completedAt + '%'"></div>
                 </div>
             </div>
         </div>
         <div class="col s12 m6 l6">
-
+            <div class="row">
+                <div *ngFor="let list of expatSelected?.lists" class="col s1 offset-s1">
+                    <div class="list-icon">
+                        <div class="no-completed" *ngIf="list.itemsNotCompleted > 0">{{list.itemsNotCompleted}}</div>
+                        <div class="icon" [ngClass]="list.icon"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="row full-height" *ngIf="expatriations?.length === 0">

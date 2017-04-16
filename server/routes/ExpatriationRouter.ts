@@ -18,11 +18,42 @@ class ExpatriationRouter extends AbstractRouter {
 
     protected getAll(req: IRequest, res: Response, next: NextFunction) {
 
-        ExpatriationModel.find({ owner: req.authenticatedUser._id }).sort({ date: "asc" }).exec((err: mongoose.Error, expatriations: Array<ExpatriationFormat>) => {
+        ExpatriationModel.find({ owner: req.authenticatedUser._id }).sort({ date: "desc" }).exec((err: mongoose.Error, expatriations: Array<ExpatriationFormat>) => {
             if (err)
                 ErrorHelper.handleMongooseError(err, res, req);
-            else
+            else {
+                const now = new Date();
+
+                expatriations = expatriations.map((expatriation) => {
+
+                    if (expatriation.date.getTime() > now.getTime()) {
+                        const timeDiff = Math.abs(expatriation.date.getTime() - now.getTime());
+                        expatriation.dayDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+                    } else {
+                        expatriation.dayDiff = -1
+                    }
+
+                    let sumNotCompleted = 0;
+                    let sumItems = 0;
+                    
+                    expatriation.lists = expatriation.lists.map(list => {
+                        list.itemsNotCompleted = list.items.reduce((sum, curr) => {
+                            return (curr.completed ? sum : sum + 1)
+                        }, 0)
+                        sumItems += list.items.length;
+                        sumNotCompleted += list.itemsNotCompleted;
+                        return list;
+                    })
+
+                    expatriation.completedAt = Math.round((sumItems - sumNotCompleted) / sumItems * 100) ;
+
+                    return expatriation
+                })
+
+
                 res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: expatriations });
+
+            }
         });
     }
 
@@ -107,7 +138,7 @@ class ExpatriationRouter extends AbstractRouter {
 
     private findList(type: string, countryCode: string): Promise<any> {
         return new Promise((resolve, reject) => {
-            ListModel.findOne({type: type, countryCode: countryCode}).exec((err: mongoose.Error, list: ListFormat) => {
+            ListModel.findOne({ type: type, countryCode: countryCode }).exec((err: mongoose.Error, list: ListFormat) => {
                 if (err)
                     reject(err);
                 else if (!list) {

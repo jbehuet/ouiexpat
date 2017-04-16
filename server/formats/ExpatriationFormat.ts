@@ -7,6 +7,8 @@ export default class ExpatriationFormat {
     location: AddressFormat;
     date: Date;
     lists:Array<ListFormat>;
+    dayDiff?:number;
+    completedAt?: number;
     createdAt: Date;
     updatedAt: Date;
 }

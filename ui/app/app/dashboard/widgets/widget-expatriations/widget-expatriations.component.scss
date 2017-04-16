@@ -26,3 +26,40 @@
         font-size: 16px;
     }
 }
+
+.list-icon {
+    height: 38px;
+    width: 38px;
+    line-height: 38px;
+    border-radius: 50%;
+    background-color: #6EB6A8;
+    color: $white;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.14);
+
+    .icon {
+        margin-left: 11px;
+    }
+
+    .no-completed {
+        position: absolute;
+        text-align: center;
+        font-size: 10px;
+        height: 16px;
+        width: 16px;
+        line-height: 16px;
+        border-radius: 50%;
+        background-color: #FF3950;
+    }
+}
+
+.progress-bg {
+    background-color: $grey-very-light;
+    height: 16px;
+    border-radius: 10px;
+
+    .progress {
+        background: $linear-gradient;
+        height: 16px;
+        border-radius: 10px;
+    }
+}

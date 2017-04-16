@@ -26,7 +26,7 @@ export class WidgetExpatriationsComponent implements OnInit {
     private _loadExpatriations() {
         this._expatriationService.getAll().subscribe(expatriations => {
             this.expatriations = expatriations.filter(v => new Date(v.date) > new Date());
-            
+
             if (this.expatriations.length > 0) {
                 this.expatSelected = this.expatriations.reduce((prev, current) => {
                     return (new Date(current.date) < new Date(prev.date)) ? current : prev
@@ -36,19 +36,6 @@ export class WidgetExpatriationsComponent implements OnInit {
         }, (err) => {
             ToastHelper.displayError(err);
         })
-    }
-
-    getDayDiff(): number {
-        if (!this.expatSelected) return;
-        const now = new Date();
-        const expatSelectedDate = new Date(this.expatSelected.date);
-        if (expatSelectedDate.getTime() > now.getTime()) {
-            const timeDiff = Math.abs(expatSelectedDate.getTime() - now.getTime());
-            const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-            return diffDays;
-        } else {
-            return -1
-        }
     }
 
 }
