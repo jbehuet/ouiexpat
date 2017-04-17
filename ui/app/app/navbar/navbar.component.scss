@@ -117,19 +117,37 @@ nav {
             @extend %transition;
         }
     }
-}
 
-.dropdown-content {
-    top: 64px !important;
+    ul.dropdown-content {
+        top: 64px !important;
 
-    a {
-        font-size: 13px;
-    }
+        li {
+            background-color: $white;
+            border-bottom: 1px solid $line-color;
 
-    a,
-    a:focus,
-    a:visited {
-        color: #525356;
+            &:hover {
+                @extend %transition;
+                background: $linear-gradient left bottom rgba(0, 0, 0, 0) no-repeat;
+                background-size: 3px 100%;
+                background-position: center left;
+            }
+
+            a {
+                font-size: 13px;
+                background-color: $white;
+                color: $text-color;
+
+                &:last-child {
+                    border-bottom: 0;
+                }
+            }
+
+            a,
+            a:focus,
+            a:visited {
+                background-color: $white;
+            }
+        }
     }
 }
 
