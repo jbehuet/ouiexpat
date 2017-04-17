@@ -17,8 +17,19 @@
     }
 
     .separator {
-        padding-right: 25px;
-        border-right: 1px solid #f1f1f1;
+        position: relative;
+        padding-right: 30px;
+
+        &:after {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translate(-50%, -50%);
+            height: 90%;
+            width: 1px;
+            background-color: $line-color;
+            content: '';
+        }
     }
 
     .city {
