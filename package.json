@@ -6,7 +6,7 @@
     "start": "node dist/server",
     "ng": "ng",
     "test": "ng test",
-    "build": "ng build --prod --sm=false --aot=true && npm run server:build",
+    "build": "ng build --prod --sm=false --aot=true && npm run server:build && npm run seeds",
     "seeds": "node dist/server/seeds",
     "server:run": "concurrently \"tsc -w -p ./server\" \"node-dev dist/server\" ",
     "server:static": "cp -r ./server/templates dist/server/ && cp ./server/seeds/*.json dist/server/seeds/",
