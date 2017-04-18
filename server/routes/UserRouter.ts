@@ -45,7 +45,7 @@ class UserRouter extends AbstractRouter {
     protected update(req: IRequest, res: Response, next: NextFunction) {
 
         if (_.isEmpty(req.body)) return ErrorHelper.handleError(HTTPCode.error.client.BAD_REQUEST, 'Request body is empty', res);
-        if (!req.authenticatedUser.administrator && req.params._id !== req.authenticatedUser._id)
+        if (!req.authenticatedUser.administrator && req.params.id !== req.authenticatedUser._id)
             return ErrorHelper.handleError(HTTPCode.error.client.UNAUTHORIZED, 'Not authorize', res);
 
         // TODO Check current password
@@ -66,7 +66,7 @@ class UserRouter extends AbstractRouter {
 
         if (!req.authenticatedUser.administrator) return ErrorHelper.handleError(HTTPCode.error.client.UNAUTHORIZED, 'Not authorize', res);
 
-        UserModel.findByIdAndRemove(req.params._id, (err: mongoose.Error) => {
+        UserModel.findByIdAndRemove(req.params.id, (err: mongoose.Error) => {
             if (err)
                 ErrorHelper.handleMongooseError(err, res, req);
             else
