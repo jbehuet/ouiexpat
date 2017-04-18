@@ -1,0 +1,69 @@
+[
+  {
+      "title" : "Administratif",
+      "type" : "administrative",
+      "items" : [
+          {
+              "title" : "Passport",
+              "details" : "Vérifiez la validité des passeports des menbres de la famille."
+          },
+          {
+              "title" : "Visa",
+              "details" : "Demandez un visa selon votre pays d'expatriation. Les délais d'obtention varient en fonction des pays."
+          },
+          {
+              "title" : "Abonnements",
+              "details" : "Résiliez vos abonnements : téléphone, internet, club de sport ou autre, cotisation association … Il est souvent très difficile d'effectuer ces tâches à distance."
+          },
+          {
+              "title" : "Contrats",
+              "details" : "Résiliez vos contrats : assurance auto, auto, habitation, mutuelle de santé, eau, EDF, GDF…"
+          },
+          {
+              "title" : "Administration",
+              "details" : "Informez l'Administration de votre départ : caisse de retraite, CAF, Centre des impôts…"
+          },
+          {
+              "title" : "Retraite",
+              "details" : "Renseignez vous auprès de la CFE pour comptabiliser vos points de retraite en fonction de votre pays d'accueil."
+          },
+          {
+              "title" : "Courrier",
+              "details" : "Faites suivre votre courrier par la poste ou via un organisme spécialisé (Ubidoca par exemple qui propose un service de boite postale avec accès internet et rééxpédition de courrier pour les expatriés)."
+          },
+          {
+              "title" : "Permis de conduire",
+              "details" : "Demandez votre permis de conduire international auprès de votre ville "
+          }
+      ],
+      "icon" : "icon-document"
+  },
+  {
+      "title" : "Biens",
+      "type" : "things",
+      "items" : [
+          {
+              "title" : "Maison / Appartement",
+              "details" : "Envoyez vos prévis à votre propriètaire ou mettez votre logement en vente ou en location."
+          },
+          {
+              "title" : "Voiture",
+              "details" : "Occupez vous de votre voiture en France et gérez la location / achat d'une voiture sur place."
+          },
+          {
+              "title" : "Compte bancaire",
+              "details" : "Prenez rdv avec votre banque : renseignez vous sur le transfert d'argent, commissions, l'ouverture d'un compte à l'étranger et/ou un compte de transfert."
+          },
+          {
+            "title": "Déménagement international",
+            "details": "Demandez plusieurs devis pour sélectionner votre déménageur en fonction de votre budget/destination. Vous pouvez aussi entreposer des affaires dans un garde de meubles ou chez la famille."
+          },
+          {
+            "title": "Bagages",
+            "details": "Préparez vos bagages et envoyez le surplus via un logisticien spécialisé (DHL, FEDEX…)."
+          }
+      ],
+      "icon" : "icon-document"
+  }
+
+]

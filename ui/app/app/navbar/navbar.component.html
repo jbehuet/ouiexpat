@@ -21,7 +21,7 @@
             </ul>
             <ul class="side-nav" id="mobile-nav">
                 <li class="profil">
-                    <a class="row no-margin info" routerLink="/profil">
+                    <a class="row no-margin-bottom info" routerLink="/profil">
                         <span class="col s3"><img [src]="user.photo" alt="Profil" class="circle" height="40"></span>
                         <span class="col s7">
                           <div class="row no-margin"> {{ user.lastname }} {{ user.firstname }}</div>
@@ -29,10 +29,10 @@
                         </span>
                     </a>
                 </li>
-                <li><a routerLink="/">DASHBOARD</a></li>
-                <li><a routerLink="/">CHECKLISTS</a></li>
+                <li><a routerLink="/dashboard" routerLinkActive="current">DASHBOARD</a></li>
+                <li><a routerLink="/checklists" routerLinkActive="current">CHECKLISTS</a></li>
                 <li><a routerLink="/">HAPPYEXPAT</a></li>
-                <li><a routerLink="/">EXPATRIATIONS</a></li>
+                <li><a routerLink="/expatriations" routerLinkActive="current">EXPATRIATIONS</a></li>
                 <li class="divider"></li>
                 <li><a routerLink="/auth/login">SE DECONNECTER</a></li>
             </ul>

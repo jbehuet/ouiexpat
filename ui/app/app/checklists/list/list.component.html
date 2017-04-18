@@ -1,11 +1,17 @@
 <div class="form-card">
     <div class="list-title">
-      <i class="icon" [ngClass]="list.icon"></i> {{list?.title | uppercase}}
+        <i class="icon" [ngClass]="list.icon"></i> {{list?.title | uppercase}}
     </div>
     <div class="list-content">
-        <div *ngFor="let item of list.items">
-            <input type="checkbox" [id]="item._id" [checked]="item.completed" />
-            <label [for]="item._id">{{item.title}}</label>
-        </div>
+        <ul materialize="collapsible" data-collapsible="accordion">
+            <li *ngFor="let item of list.items; index as i">
+                <div class="collapsible-header">
+                    <input type="checkbox" [id]="item._id" [name]="i" [checked]="item.completed" (change)="check($event)" />
+                    <label [for]="item._id">{{item.title}}</label>
+                    <i class="icon icon-information right"></i>
+                </div>
+                <div class="collapsible-body"><span>{{item.details}}</span></div>
+            </li>
+        </ul>
     </div>
 </div>

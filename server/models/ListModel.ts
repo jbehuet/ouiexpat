@@ -13,7 +13,7 @@ const _schema = new mongoose.Schema({
     },
     type: {
         type: String,
-        enum: ['administrative', 'house']
+        enum: ['administrative', 'things']
     },
     items: [
         {

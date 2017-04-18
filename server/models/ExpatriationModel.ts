@@ -24,7 +24,7 @@ const _schema = new mongoose.Schema({
         title: String,
         type: {
             type: String,
-            enum: ['administrative', 'house']
+            enum: ['administrative', 'things']
         },
         icon:String,
         items: [
