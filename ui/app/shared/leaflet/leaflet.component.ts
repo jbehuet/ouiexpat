@@ -13,6 +13,7 @@ export class LeafletComponent implements OnInit, AfterViewInit, OnChanges {
 
     private _map: Map;
     private _marker: Marker;
+    private _defaultLocation = [48.857482, 2.350301];
 
     constructor() {
     }
@@ -21,7 +22,7 @@ export class LeafletComponent implements OnInit, AfterViewInit, OnChanges {
     }
 
     ngAfterViewInit() {
-        this.location = this.location || [48.857482, 2.350301];
+        this.location = this.location || this._defaultLocation;
         this._map = new L.Map('map', { zoomControl: false, doubleClickZoom: false }).setView(this.location, 3);
 
         L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(this._map);
@@ -39,7 +40,7 @@ export class LeafletComponent implements OnInit, AfterViewInit, OnChanges {
 
     ngOnChanges(changes: any) {
         if (!changes.location.firstChange) {
-            this.location = changes.location.currentValue;
+            this.location = changes.location.currentValue || this._defaultLocation;
             this._map.removeLayer(this._marker);
             this._marker = L.marker(this.location).addTo(this._map);
             this._map.panTo(this.location);

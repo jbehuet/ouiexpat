@@ -2,12 +2,11 @@
     <div class="col m3 hide-on-small-only">
         <div class="row">
             <div class="col s12 no-padding title-section">
-                <i class="icon icon-location"></i>
-                Mes expatriations
+                <i class="icon icon-location"></i> Mes expatriations
             </div>
         </div>
         <div class="row">
-            <button class="btn btn-validate waves-effect col s12"><i class="material-icons right">add</i>Créer une expatriation</button>
+            <button class="btn btn-validate waves-effect col s12" (click)="createExpatriation()"><i class="material-icons right">add</i>Créer une expatriation</button>
         </div>
         <div class="row">
             <h4 class="subtitle">A venir(s)</h4>
@@ -19,7 +18,7 @@
                                 <i class="icon icon-calendar"></i> {{expat?.date | date:"dd/MM/yy"}}
                             </div>
                             <div class="col s12 info">
-                                <img [src]="'http://www.geonames.org/flags/x/' + expat?.location.countryCode + '.gif'" height="12" width="18" alt=""> {{expat?.location.country}} - {{expat?.location.name}}
+                                <img [src]="'//www.geonames.org/flags/x/' + expat?.location.countryCode + '.gif'" height="12" width="18" alt=""> {{expat?.location.country}} - {{expat?.location.name}}
                             </div>
                         </div>
                     </div>
@@ -37,7 +36,7 @@
                                 <i class="icon icon-calendar"></i> {{expat?.date | date:"dd/MM/yy"}}
                             </div>
                             <div class="col s12 info">
-                                <img [src]="'http://www.geonames.org/flags/x/' + expat?.location.countryCode + '.gif'" height="12" width="18" alt=""> {{expat?.location.country}} - {{expat?.location.name}}
+                                <img [src]="'//www.geonames.org/flags/x/' + expat?.location.countryCode + '.gif'" height="12" width="18" alt=""> {{expat?.location.country}} - {{expat?.location.name}}
                             </div>
                         </div>
                     </div>
@@ -51,39 +50,40 @@
                 <div class="col s7 container-infos-expat">
 
                 </div>
-                <leaflet class="col s5 right force-inner-space-left-0" [location]="currentExpat.location?.geometry.coordinate"></leaflet>
+                <leaflet class="col s5 right force-inner-space-left-0" [location]="currentExpat.location?.geometry?.coordinate"></leaflet>
             </div>
         </div>
         <div class="form-card has-padding">
-            <div class="row no-margin">
-                <div class="col s12">
-                    <h4 class="subtitle">Détails</h4>
+            <form (ngSubmit)="expatForm.form.valid && save()" #expatForm="ngForm">
+                <div class="row no-margin">
+                    <div class="col s12">
+                        <h4 class="subtitle">Détails</h4>
+                    </div>
                 </div>
-            </div>
-          <div class="row no-margin">
+                <div class="row no-margin">
+                    <div class="col s8">
+                        <algolia-places name="address" [(ngModel)]="currentExpat.location" [disabled]="!currentExpat.isNew" (change)="onLocationChange($event)"></algolia-places>
+                    </div>
 
-              <div class="col s8">
-                  <algolia-places name="address" [(ngModel)]="currentExpat.location" disabled="true"></algolia-places>
-              </div>
-
-              <div class="input-field col s4">
-                  <input id="date" name="date" type="text" materialize="pickadate" [materializeParams]="[formDateOptions]" [(ngModel)]='currentExpat.date' required>
-              </div>
-          </div>
+                    <div class="input-field col s4">
+                        <input id="date" name="date" type="text" materialize="pickadate" [materializeParams]="[formDateOptions]" [(ngModel)]='currentExpat.date' required>
+                    </div>
+                </div>
 
 
-          <div class="row action-bar">
-              <div class="col s12">
-                  <div class="row no-margin">
-                      <div class="col s12 m6">
-                          <a class="btn btn-red waves-effect has-icon-left" (click)="delete()"><i class="icon icon-trash"></i> Supprimer</a>
-                      </div>
-                      <div class="col s12 m6 text-right">
-                          <a class="btn btn-validate waves-effect has-icon-left" (click)="update()"><i class="icon icon-checkmark"></i>Sauvegarder</a>
-                      </div>
-                  </div>
-              </div>
-          </div>
+                <div class="row action-bar">
+                    <div class="col s12">
+                        <div class="row no-margin">
+                            <div class="col s12 m6">
+                                <button class="btn btn-red waves-effect has-icon-left" (click)="delete()" [disabled]="currentExpat.isNew"><i class="icon icon-trash"></i> Supprimer</button>
+                            </div>
+                            <div class="col s12 m6 text-right">
+                                <button type="submit" class="btn btn-validate waves-effect has-icon-left" [disabled]="expatForm.invalid || expatForm.pristine"><i class="icon icon-checkmark"></i>Sauvegarder</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>

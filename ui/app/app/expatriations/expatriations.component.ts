@@ -22,22 +22,43 @@ export class ExpatriationsComponent implements OnInit {
         this.formDateOptions = this._getDefaultPickaDateOptions();
     }
 
+    createExpatriation() {
+        this.currentExpat = {};
+        this.currentExpat.isNew = true;
+    }
+
     delete() {
         this._expatriationService.delete(this.currentExpat)
             .subscribe(expatriations => {
                 ToastHelper.displaySuccess("Deleted");
+                this.currentExpat = this.expatriations[0];
             }, (err) => {
                 ToastHelper.displayError(err);
             });
     }
 
-    update() {
-        this._expatriationService.update(this.currentExpat)
-            .subscribe(expatriations => {
-                ToastHelper.displaySuccess("Updated");
-            }, (err) => {
-                ToastHelper.displayError(err);
-            });
+    save() {
+        if (this.currentExpat._id) {
+            this._expatriationService.update(this.currentExpat)
+                .subscribe(expatriations => {
+                    ToastHelper.displaySuccess("Updated");
+                }, (err) => {
+                    ToastHelper.displayError(err);
+                });
+        } else {
+            this._expatriationService.create(this.currentExpat)
+                .subscribe(expatriations => {
+                    ToastHelper.displaySuccess("Created");
+                }, (err) => {
+                    ToastHelper.displayError(err);
+                });
+        }
+    }
+
+    onLocationChange(e) {
+        this.currentExpat.location.geometry = {
+            coordinate: [this.currentExpat.location.latlng.lat, this.currentExpat.location.latlng.lng]
+        };
     }
 
     private _loadExpatriations() {
