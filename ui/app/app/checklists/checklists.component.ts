@@ -16,6 +16,7 @@ export class ChecklistsComponent implements OnInit {
     constructor(private _expatriationService: ExpatriationService) { }
 
     ngOnInit() {
+        this.expatriations = this._expatriationService.expatriations;
         this._loadExpatriations();
     }
 

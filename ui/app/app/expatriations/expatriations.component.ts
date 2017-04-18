@@ -17,6 +17,7 @@ export class ExpatriationsComponent implements OnInit {
     constructor(private _expatriationService: ExpatriationService) { }
 
     ngOnInit() {
+        this.expatriations = this._expatriationService.expatriations;
         this._loadExpatriations();
         this.formDateOptions = this._getDefaultPickaDateOptions();
     }
