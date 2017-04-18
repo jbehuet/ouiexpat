@@ -1,0 +1,11 @@
+<div class="form-card">
+    <div class="list-title">
+      <i class="icon" [ngClass]="list.icon"></i> {{list?.title | uppercase}}
+    </div>
+    <div class="list-content">
+        <div *ngFor="let item of list.items">
+            <input type="checkbox" [id]="item._id" [checked]="item.completed" />
+            <label [for]="item._id">{{item.title}}</label>
+        </div>
+    </div>
+</div>

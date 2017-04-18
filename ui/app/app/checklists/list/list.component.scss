@@ -1,0 +1,15 @@
+@import '../../../../styles/utils/variables';
+
+.list-title {
+    height: 76px;
+    line-height: 76px;
+    color: $white;
+    background: $linear-gradient;
+    margin: 0 -14px;
+    padding: 0 14px;
+    font-size: 18px;
+}
+
+.list-content {
+    padding: 14px;
+}

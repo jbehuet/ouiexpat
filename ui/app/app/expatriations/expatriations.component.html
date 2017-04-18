@@ -1,4 +1,17 @@
-<div class="row">
+<div *ngIf="expatriations.length === 0">
+    <div class="row full-height valign-wrapper">
+        <span class="col s3 offset-s2"><img src="assets/img/expat.png" alt="checklists"></span>
+        <span class="col s5 valign">
+          <div class="row">
+            <div class="col s12 center-align">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+          </div>
+          <div class="row">
+            <a routerLink="/auth/first" class="btn btn-validate waves-effect col s12">Créer mon expatriation</a>
+          </div>
+        </span>
+    </div>
+</div>
+<div class="row" *ngIf="expatriations.length > 0">
     <div class="col m3 hide-on-small-only">
         <div class="row">
             <div class="col s12 no-padding title-section">
@@ -75,7 +88,7 @@
                     <div class="col s12">
                         <div class="row no-margin">
                             <div class="col s12 m6">
-                                <button class="btn btn-red waves-effect has-icon-left" (click)="delete()" [disabled]="currentExpat.isNew"><i class="icon icon-trash"></i> Supprimer</button>
+                                <button type="button" class="btn btn-red waves-effect has-icon-left" (click)="delete()" [disabled]="currentExpat.isNew"><i class="icon icon-trash"></i> Supprimer</button>
                             </div>
                             <div class="col s12 m6 text-right">
                                 <button type="submit" class="btn btn-validate waves-effect has-icon-left" [disabled]="expatForm.invalid || expatForm.pristine"><i class="icon icon-checkmark"></i>Sauvegarder</button>

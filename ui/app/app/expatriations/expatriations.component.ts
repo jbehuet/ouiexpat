@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Pickadate } from 'materialize-css';
 import { ExpatriationService } from '../../_services/expatriation.service';
 import { ToastHelper } from '../../_helpers/toast.helper';
-import { User } from '../../_interfaces/user.interface';
 
 @Component({
     selector: 'oe-expatriations',

@@ -22,10 +22,13 @@ import { WidgetFavorisComponent } from './dashboard/widgets/widget-favoris/widge
 
 import { ExpatriationsComponent } from './expatriations/expatriations.component';
 
+import { ChecklistsComponent } from './checklists/checklists.component';
+
 import { ProfilComponent } from './profil/profil.component';
 import { ProfilMenuComponent } from './profil/profil-menu/profil-menu.component';
 import { ProfilDetailsComponent } from './profil/profil-details/profil-details.component';
 import { ProfilPasswordComponent } from './profil/profil-password/profil-password.component';
+import { ListComponent } from './checklists/list/list.component';
 
 @NgModule({
     imports: [
@@ -41,6 +44,7 @@ import { ProfilPasswordComponent } from './profil/profil-password/profil-passwor
                 children: [
                     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
                     { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+                    { path: 'checklists', component: ChecklistsComponent, canActivate: [AuthGuard] },
                     { path: 'expatriations', component: ExpatriationsComponent, canActivate: [AuthGuard] },
                     {
                         path: 'profil',
@@ -58,9 +62,10 @@ import { ProfilPasswordComponent } from './profil/profil-password/profil-passwor
     ],
     declarations: [
         DateFilterPipe,
-        AppComponent, DashboardComponent, NavbarComponent, FooterComponent,
+        AppComponent, NavbarComponent, FooterComponent, DashboardComponent,
         WidgetProfilComponent, WidgetExpatriationsComponent, WidgetActusComponent,
         WidgetFavorisComponent,
+        ChecklistsComponent, ListComponent,
         ExpatriationsComponent,
         ProfilComponent, ProfilMenuComponent, ProfilDetailsComponent, ProfilPasswordComponent
     ]
