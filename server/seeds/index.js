@@ -12,7 +12,7 @@ mongoose.connect(CONFIG.mongodb.uri, function(err) {
         Promise.all(checklists.map(checklist => findOrCreate(checklist)))
             .then((lists) => {
               console.log(lists.filter(e => !!e).length + " lists created");
-              process.exit(1);
+              process.exit(0);
             })
             .catch((err) => {
                 console.log(err);
