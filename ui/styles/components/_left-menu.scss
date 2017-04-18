@@ -38,6 +38,10 @@ ul.left-menu {
     cursor: pointer;
   }
 
+  li.selected:focus{
+    outline: none;
+  }
+
   .ico {
     font-size: 24px;
   }

@@ -25,6 +25,7 @@ import { ExpatriationsComponent } from './expatriations/expatriations.component'
 import { ProfilComponent } from './profil/profil.component';
 import { ProfilMenuComponent } from './profil/profil-menu/profil-menu.component';
 import { ProfilDetailsComponent } from './profil/profil-details/profil-details.component';
+import { ProfilPasswordComponent } from './profil/profil-password/profil-password.component';
 
 @NgModule({
     imports: [
@@ -47,7 +48,8 @@ import { ProfilDetailsComponent } from './profil/profil-details/profil-details.c
                         canActivate: [AuthGuard],
                         children: [
                             { path: '', redirectTo: 'details', pathMatch: 'full' },
-                            { path: 'details', component: ProfilDetailsComponent, canActivate: [AuthGuard] }
+                            { path: 'details', component: ProfilDetailsComponent, canActivate: [AuthGuard] },
+                            { path: 'password', component: ProfilPasswordComponent, canActivate: [AuthGuard] }
                         ]
                     }
                 ]
@@ -60,7 +62,7 @@ import { ProfilDetailsComponent } from './profil/profil-details/profil-details.c
         WidgetProfilComponent, WidgetExpatriationsComponent, WidgetActusComponent,
         WidgetFavorisComponent,
         ExpatriationsComponent,
-        ProfilComponent, ProfilMenuComponent, ProfilDetailsComponent
+        ProfilComponent, ProfilMenuComponent, ProfilDetailsComponent, ProfilPasswordComponent
     ]
 })
 export class AppModule { }
