@@ -1,17 +1,4 @@
-<div *ngIf="expatriations.length === 0">
-    <div class="row full-height valign-wrapper">
-        <span class="col s3 offset-s2"><img src="assets/img/expat.png" alt="checklists"></span>
-        <span class="col s5 valign">
-          <div class="row">
-            <div class="col s12 center-align">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
-          </div>
-          <div class="row">
-            <a routerLink="/auth/first" class="btn btn-validate waves-effect col s12">Créer mon expatriation</a>
-          </div>
-        </span>
-    </div>
-</div>
-<div class="row" *ngIf="expatriations.length > 0">
+<div class="row">
     <div class="col m3 hide-on-small-only">
         <div class="row">
             <div class="col s12 no-padding title-section">
@@ -23,6 +10,12 @@
         </div>
         <div class="row">
             <h4 class="subtitle">A venir(s)</h4>
+            <div *ngIf=" (expatriations | dateFilter:['date','now']).length === 0">
+                <div class="col s2 icon icon-information icon-gradient"></div>
+                <div class="col s10">
+                    Aucunes expatriations à venirs.
+                </div>
+            </div>
             <ul class="expatriations">
                 <li *ngFor="let expat of (expatriations | dateFilter:['date','now'])" class="row no-margin" [class.selected]="(currentExpat?._id === expat._id)" (click)="currentExpat = expat">
                     <div class="valign-wrapper expat">
@@ -41,6 +34,12 @@
 
         <div class="row">
             <h4 class="subtitle">Passée(s)</h4>
+            <div *ngIf="(expatriations | dateFilter:['date','now', '<']).length === 0">
+                <div class="col s2 icon icon-information icon-gradient"></div>
+                <div class="col s10">
+                    Aucunes expatriations passées.
+                </div>
+            </div>
             <ul class="expatriations">
                 <li *ngFor="let expat of (expatriations | dateFilter:['date','now', '<'])" class="row no-margin" [class.selected]="(currentExpat?._id === expat._id)" (click)="currentExpat = expat">
                     <div class="valign-wrapper expat">
@@ -57,7 +56,20 @@
             </ul>
         </div>
     </div>
-    <div class="col s12 m8 offset-m1">
+    <div class="col s12 m8 offset-m1" *ngIf="expatriations.length === 0">
+        <div class="form-card full-height valign-wrapper">
+            <span class="col s3 offset-s2"><img src="assets/img/expat.png" alt="checklists"></span>
+            <span class="col s5 valign">
+              <div class="row">
+                <div class="col s12 center-align">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+              </div>
+              <div class="row">
+                <a routerLink="/auth/first" class="btn btn-validate waves-effect col s12">Créer mon expatriation</a>
+              </div>
+            </span>
+        </div>
+    </div>
+    <div class="col s12 m8 offset-m1" *ngIf="expatriations.length > 0">
         <div class="form-card map">
             <div class="row">
                 <div class="col s7 container-infos-expat">

@@ -68,4 +68,15 @@ ul.expatriations {
   }
 }
 
+.icon-information{
+  font-size: 24px;
+  span{
+    font-size: 14px;
+  }
+}
 
+.icon-gradient:before {
+    background: linear-gradient(301deg, $yellow 0%, $blue 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
