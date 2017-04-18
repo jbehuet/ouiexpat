@@ -10,7 +10,7 @@
             </div>
             <div class="row">
                 <div class="col s2">
-                    <img *ngIf="expatSelected" [src]="'//www.geonames.org/flags/x/' + expatSelected?.location.countryCode + '.gif'" height="24" width="34" alt="">
+                    <img *ngIf="expatSelected" [src]="'http://www.geonames.org/flags/x/' + expatSelected?.location.countryCode + '.gif'" height="24" width="34" alt="">
                 </div>
                 <div class="col s8">
                     <span class="city">{{ expatSelected?.location.name }}</span>
