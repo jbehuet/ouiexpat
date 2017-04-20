@@ -11,9 +11,10 @@
         <div class="row">
             <h4 class="subtitle">A venir(s)</h4>
             <div *ngIf=" (expatriations | dateFilter:['date','now']).length === 0">
-                <div class="col s2 icon icon-information icon-gradient"></div>
-                <div class="col s10">
-                    Aucunes expatriations à venirs.
+                <!-- TODO RLZ Review empty message -->
+                <div class="col s12">
+                    <span class="icon icon-information icon-gradient dspl-inbl vert-align-middle space-top-2 space-right-5"></span>
+                    <p class="dspl-inbl vert-align-middle">Aucunes expatriations à venirs</p>
                 </div>
             </div>
             <ul class="expatriations">
@@ -35,9 +36,10 @@
         <div class="row">
             <h4 class="subtitle">Passée(s)</h4>
             <div *ngIf="(expatriations | dateFilter:['date','now', '<']).length === 0">
-                <div class="col s2 icon icon-information icon-gradient"></div>
-                <div class="col s10">
-                    Aucunes expatriations passées.
+                <!-- TODO RLZ Review empty message -->
+                <div class="col s12">
+                    <span class="icon icon-information icon-gradient dspl-inbl vert-align-middle space-top-2 space-right-5"></span>
+                    <p class="dspl-inbl vert-align-middle small-txt">Aucunes expatriations à passée(s)</p>
                 </div>
             </div>
             <ul class="expatriations">
