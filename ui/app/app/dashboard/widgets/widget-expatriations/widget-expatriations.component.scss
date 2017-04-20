@@ -63,9 +63,34 @@
     }
 }
 
+.label-day-diff, .value-day-diff {
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: bold;
+}
+
+.value-day-diff { font-size: 18px;}
+
+.pourcent-progress {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    font-size: 24px;
+    font-weight: 900;
+    background: $linear-gradient;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.pourcent-progress-label {
+    display: inline-block;
+    vertical-align: middle;
+}
+
 .progress-bg {
     background-color: $grey-very-light;
     height: 16px;
+    margin: 0 10px;
     border-radius: 10px;
 
     .progress {
