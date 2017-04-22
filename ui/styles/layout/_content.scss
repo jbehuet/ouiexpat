@@ -1,3 +1,31 @@
+
+// ================ //
+// LOADIGN APP (start)
+// ================ //
+
+.loading-app {
+  display: block;
+  height: 100vh;
+  width: 100%;
+  background-color: $white-grey;
+
+  .spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100px;
+    width: 100px;
+    background-image: url($img-path + "spinner-rounded-blue.svg");
+    background-size: 100%;
+    background-position: center center;
+  }
+}
+
+// ================ //
+// LOADIGN APP (end)
+// ================ //
+
 // ================ //
 // FORM CARD (start)
 // ================ //
@@ -77,8 +105,6 @@
 // ================ //
 // BLOCK ACTION BAR (end)
 // ================ //
-
-
 
 // ================ //
 // MESSAGE EMPTY BLOCK (start)

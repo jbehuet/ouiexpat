@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 21.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 136 136" style="enable-background:new 0 0 136 136;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;}
+	.st1{fill:none;stroke:#00A2D8;stroke-width:6;stroke-linecap:round;}
+	.st2{clip-path:url(#SVGID_2_);fill:url(#SVGID_3_);}
+</style>
+<rect class="st0" width="136" height="136"/>
+<circle class="st0" cx="68" cy="68" r="54.4"/>
+<circle class="st1" cx="68" cy="68" r="54.4">
+<animate  accumulate="none" additive="replace" attributeName="stroke-dashoffset" calcMode="linear" dur="2s" fill="remove" from="0" repeatCount="indefinite" restart="always" to="502">
+	</animate>
+<animate  accumulate="none" additive="replace" attributeName="stroke-dasharray" calcMode="linear" dur="2s" fill="remove" repeatCount="indefinite" restart="always" values="150.6 100.4;1 250;150.6 100.4">
+	</animate>
+</circle>
+<g>
+	<defs>
+		<path id="SVGID_1_" d="M53.9,82c-0.2-0.3-0.4-0.6-0.5-0.8c-1-1.7-1-5.3,1.1-7.7c1.8-2,5.4-3.2,5.4-4.5c0-1.4-3.5-2.3-5.3-4.3
+			c-2.3-2.5-2.4-5.2-1.4-7c0.4-0.6,0.8-1.1,1.2-1.6c2.8-3.4,6.5-5,11.2-5c4.9,0,8.7,1.8,11.5,5.4c0.3,0.3,0.5,0.7,0.7,1
+			c0.2,0.4,0.5,0.7,0.7,1.1c0.1,0.2,0.2,0.4,0.3,0.6c2,3.5,3,4.2,5.4,5.9c0.1,0.1,0.2,0.1,0.3,0.2c2.3,1.6,4.6,2.2,5.3,3.2
+			c0,0.2,0,0.4,0,0.7c0,0.2,0,0.3,0,0.5c-0.8,1.2-3.7,2.8-5.5,4c-0.1,0.1-0.3,0.2-0.4,0.3c-2.1,1.6-3.4,2.8-4.9,5.4
+			c-0.3,0.6-0.7,1.2-1.1,1.9c0,0,0,0,0,0c-0.2,0.3-0.4,0.7-0.7,1c-2.7,3.7-6.6,5.5-11.6,5.5C60.5,87.8,56.6,85.9,53.9,82 M48.1,50.7
+			c-2,2.1-3.5,4.6-4.7,7.4c-0.4,1.6-0.5,4.3,1.6,6.6c0.3,0.3,0.6,0.6,1,0.9c1.7,1.3,3.9,2.1,4.2,3.1c0,0,0,0.1,0,0.1
+			c0,0.1,0,0.2,0,0.4c-0.3,1-2.5,2-4.2,3.3c-0.4,0.3-0.8,0.6-1.1,1c-1.9,2.2-1.9,5.2-1.3,7.1c0.2,0.5,0.4,1,0.6,1.5
+			c0.9,2,2.1,3.7,3.5,5.4c1.4,1.6,3,3,4.7,4.2c1.8,1.2,3.8,2.1,5.9,2.7c2.2,0.6,4.8,1,7.8,1c3.1,0,6.1-0.7,9.1-2
+			c3-1.4,5.6-3.2,7.7-5.6c1.8-2,3.2-4.1,4.3-6.5c0,0,0,0,0,0c0-0.1,0.1-0.3,0.2-0.4c0.1-0.3,0.3-0.7,0.4-1c1.3-2.7,3.4-4.3,5.6-6
+			c2-1.5,6.1-3.5,6.1-4.9c0-1.4-2.8-1.9-5.5-3.8c-2.6-1.8-3.7-2.5-5.8-6.4c-1-3-2.6-5.7-4.6-8c-4.3-4.9-10.3-7.4-18-7.4
+			C58.4,43.5,52.6,45.9,48.1,50.7"/>
+	</defs>
+	<clipPath id="SVGID_2_">
+		<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+	</clipPath>
+	
+		<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="-351.5329" y1="124.9984" x2="-350.9854" y2="124.9984" gradientTransform="matrix(800.4416 -1.471 -1.471 -800.4416 281608.75 99606.2422)">
+		<stop  offset="0" style="stop-color:#009EE2"/>
+		<stop  offset="1" style="stop-color:#FFCB00"/>
+	</linearGradient>
+	<polygon class="st2" points="42.8,43.5 99.6,43.4 99.6,95.3 42.9,95.4 	"/>
+</g>
+</svg>
