@@ -28,8 +28,8 @@ export class LeafletComponent implements OnInit, AfterViewInit, OnChanges {
         L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(this._map);
 
         const defaultIcon = L.icon({
-            iconUrl: '/assets/marker-icon.png',
-            shadowUrl: '/assets/marker-shadow.png',
+            iconUrl: '/assets/img/marker-icon.png',
+            shadowUrl: '/assets/img/marker-shadow.png',
             iconAnchor: [12, 41]
         });
         L.Marker.prototype.options.icon = defaultIcon;
