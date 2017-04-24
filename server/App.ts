@@ -14,6 +14,7 @@ import AuthRouter from './routes/AuthRouter';
 import ExpatriationRouter from './routes/ExpatriationRouter';
 import AssociationRouter from './routes/AssociationRouter';
 import ListRouter from './routes/ListRouter';
+import BlogRouter from './routes/BlogRouter';
 
 class App {
 
@@ -48,12 +49,14 @@ class App {
         const associationRouter = new AssociationRouter();
         const expatriationRouter = new ExpatriationRouter();
         const listRouter = new ListRouter();
+        const blogRouter = new BlogRouter();
         this.express.use('/api', router);
         this.express.use('/api/v1/auth', authRouter.router);
         this.express.use('/api/v1/users', userRouter.router);
         this.express.use('/api/v1/associations', associationRouter.router);
         this.express.use('/api/v1/expatriations', expatriationRouter.router);
         this.express.use('/api/v1/lists', listRouter.router);
+        this.express.use('/api/v1/blogs', blogRouter.router);
         //Catch all other routes
         this.express.get('*', (req, res) => {
             res.sendFile(path.join(__dirname, '../client/index.html'));
