@@ -69,7 +69,7 @@ export class ExpatriationsComponent implements OnInit {
     }
 
     updateCheckedLists(e) {
-        
+
         let existing = this.currentExpat.lists.find(v => v.type === e.currentTarget.value)
 
         if (existing) {

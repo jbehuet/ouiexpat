@@ -39,6 +39,8 @@ export class ExpatriationService {
         return this._http.put('/api/v1/expatriations/' + expatriation._id, expatriation)
             .map(res => res.json())
             .map(res => {
+                const idx = this.expatriations.findIndex(e => e._id === expatriation._id);
+                this.expatriations[idx] = res.data;
                 return this.expatriations;
             })
             .catch((error: any) => {

@@ -111,7 +111,7 @@ class ExpatriationRouter extends AbstractRouter {
 
         Promise.all(req.body.lists.map(list => this.findList(list, req.body.location.countryCode))).then((lists) => {
             req.body.lists = lists.filter(l => !l.hasOwnProperty('remove') || !l.remove );
-            ExpatriationModel.update(query, req.body, { new: true },
+            ExpatriationModel.findOneAndUpdate(query, req.body, { new: true },
                 (err: mongoose.Error, expatriation: ExpatriationFormat) => {
                     if (err)
                         ErrorHelper.handleMongooseError(err, res, req);
