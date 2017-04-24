@@ -1,11 +1,13 @@
 import { Injectable } from "@angular/core";
+import { Router } from '@angular/router';
 import { ConnectionBackend, RequestOptions, Request, RequestOptionsArgs, Response, Http, Headers } from "@angular/http";
 import { CookieService } from 'ng2-cookies';
 import { Observable } from "rxjs/Rx";
+import * as _ from 'lodash';
 
 export class InterceptedHttp extends Http {
 
-    constructor(backend: ConnectionBackend, defaultOptions: RequestOptions, private _cookieService: CookieService) {
+    constructor(backend: ConnectionBackend, defaultOptions: RequestOptions, private _cookieService: CookieService, private _router: Router) {
         super(backend, defaultOptions);
     }
 
@@ -14,7 +16,7 @@ export class InterceptedHttp extends Http {
     }
 
     get(url: string, options?: RequestOptionsArgs): Observable<Response> {
-        return this.intercept(super.get(url,this.getRequestOptionArgs(options)));
+        return this.intercept(super.get(url, this.getRequestOptionArgs(options)));
     }
 
     post(url: string, body: string, options?: RequestOptionsArgs): Observable<Response> {
@@ -47,13 +49,16 @@ export class InterceptedHttp extends Http {
 
     intercept(observable: Observable<Response>): Observable<Response> {
         return observable.catch((error, source) => {
-            return Observable.throw(error);
-            // if (err.status == 401 && !_.endsWith(err.url, 'api/auth/login')) {
-            //     this._router.navigate(['/login']);
-            //     return Observable.empty();
-            // } else {
-            //     return Observable.throw(err);
-            // }
+            console.log(error, source)
+            if (error.status == 401 && !_.endsWith(error.url, 'api/auth/login')) {
+                this._router.navigate(['/auth/login']);
+                return Observable.empty();
+            } else if (error.status == 504) {
+              this._router.navigate(['/auth/login']);
+              return Observable.throw(error);
+            } else {
+                return Observable.throw(error);
+            }
         });
 
     }

@@ -38,7 +38,7 @@ export class AuthenticationService {
                 return this.user;
             })
             .catch((error: any) => {
-                return Observable.throw(error.json().message || 'Server error')
+                return Observable.throw((error ? error.statusText : 'Server error'))
             });
     }
 
@@ -59,7 +59,7 @@ export class AuthenticationService {
                 this._cookieService.set(this.COOKIE_KEY, JSON.stringify({ token: this.token }), this.payload.exp, '/');
             })
             .catch((error: any) => {
-                return Observable.throw(error.json().message || 'Server error')
+                return Observable.throw((error ? error.statusText : 'Server error'))
             });
     }
 
@@ -85,7 +85,7 @@ export class AuthenticationService {
                 return this.user;
             })
             .catch((error: any) => {
-                return Observable.throw(error.json().message || 'Server error')
+                return Observable.throw((error ? error.statusText : 'Server error'))
             });
     }
 
@@ -96,7 +96,7 @@ export class AuthenticationService {
                 return true;
             })
             .catch((error: any) => {
-                return Observable.throw(error.json().message || 'Server error')
+                return Observable.throw((error ? error.statusText : 'Server error'))
             });
     }
 
@@ -107,7 +107,7 @@ export class AuthenticationService {
                 return true;
             })
             .catch((error: any) => {
-                return Observable.throw(error.json().message || 'Server error')
+                return Observable.throw((error ? error.statusText : 'Server error'))
             });
 
     }
