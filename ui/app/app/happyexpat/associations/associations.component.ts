@@ -7,13 +7,12 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class AssociationsComponent implements OnInit {
 
-  @Input() expatriation: any = [];
-  @Input() empty: boolean = false;
+  @Input() expatriation: any;
 
   constructor() { }
 
   ngOnInit() {
-    
+
   }
 
 }

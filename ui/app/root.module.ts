@@ -12,6 +12,7 @@ import { httpFactory } from "./_factories/http.factory";
 import { AuthGuard } from './_guards/auth.guard';
 import { AuthenticationService } from './_services/authentication.service';
 import { ExpatriationService } from './_services/expatriation.service';
+import { BlogService } from './_services/blog.service';
 
 import { RootComponent } from './root.component';
 
@@ -38,7 +39,8 @@ import { RootComponent } from './root.component';
             useFactory: httpFactory,
             deps: [XHRBackend, RequestOptions, CookieService, Router]
         },
-        RollbarService, CookieService, AuthGuard, AuthenticationService, ExpatriationService],
+        RollbarService, CookieService, AuthGuard, AuthenticationService,
+        ExpatriationService, BlogService],
     bootstrap: [RootComponent]
 })
 export class RootModule { }

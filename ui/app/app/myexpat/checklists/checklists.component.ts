@@ -8,7 +8,7 @@ import { EventEmitter } from '@angular/core';
 })
 export class ChecklistsComponent implements OnInit {
 
-    @Input() expatriation: any = [];
+    @Input() expatriation: any;
     @Input() empty: boolean = false;
 
     @Output() listChange: EventEmitter<any> = new EventEmitter();

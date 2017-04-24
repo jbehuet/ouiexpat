@@ -15,6 +15,6 @@
             <li class="tab col s3"><a href="#associations"><i class="icon icon-list"></i> Associations et partenaires</a></li>
         </ul>
     </div>
-    <oe-blogs id="checklists" class="col s12 tab-content" [expatriation]="expatSelected" [empty]="(expatriations.length === 0)"></oe-blogs>
-    <oe-associations id="associations" class="col s12 tab-content" [expatriation]="expatSelected" [empty]="(expatriations.length === 0)" (listChange)="onListChange()"></oe-associations>
+    <oe-blogs id="checklists" class="col s12 tab-content" [expatriation]="expatSelected"></oe-blogs>
+    <oe-associations id="associations" class="col s12 tab-content" [expatriation]="expatSelected"></oe-associations>
 </div>
