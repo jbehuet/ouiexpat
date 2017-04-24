@@ -20,11 +20,15 @@ import { WidgetExpatriationsComponent } from './dashboard/widgets/widget-expatri
 import { WidgetActusComponent } from './dashboard/widgets/widget-actus/widget-actus.component';
 import { WidgetFavorisComponent } from './dashboard/widgets/widget-favoris/widget-favoris.component';
 
-import { ExpatriationsComponent } from './expatriations/expatriations.component';
-
 import { MyexpatComponent } from './myexpat/myexpat.component';
 import { ChecklistsComponent } from './myexpat/checklists/checklists.component';
 import { ListComponent } from './myexpat/checklists/list/list.component';
+
+import { HappyexpatComponent } from './happyexpat/happyexpat.component';
+import { BlogsComponent } from './happyexpat/blogs/blogs.component';
+import { AssociationsComponent } from './happyexpat/associations/associations.component';
+
+import { ExpatriationsComponent } from './expatriations/expatriations.component';
 
 import { ProfilComponent } from './profil/profil.component';
 import { ProfilMenuComponent } from './profil/profil-menu/profil-menu.component';
@@ -48,6 +52,7 @@ import { FaqComponent } from './faq/faq.component';
                     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
                     { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
                     { path: 'myexpat', component: MyexpatComponent, canActivate: [AuthGuard] },
+                    { path: 'happyexpat', component: HappyexpatComponent, canActivate: [AuthGuard] },
                     { path: 'expatriations', component: ExpatriationsComponent, canActivate: [AuthGuard] },
                     {
                         path: 'profil',
@@ -70,6 +75,7 @@ import { FaqComponent } from './faq/faq.component';
         WidgetProfilComponent, WidgetExpatriationsComponent, WidgetActusComponent,
         WidgetFavorisComponent,
         MyexpatComponent, ChecklistsComponent, ListComponent,
+        HappyexpatComponent, BlogsComponent, AssociationsComponent,
         ExpatriationsComponent,
         ProfilComponent, ProfilMenuComponent, ProfilDetailsComponent, ProfilPasswordComponent,
         FaqComponent

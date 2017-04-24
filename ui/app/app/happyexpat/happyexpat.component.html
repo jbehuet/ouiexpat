@@ -1,0 +1,20 @@
+<div class="filter">
+    <div class="row no-margin">
+        <div class="col s12 m6 ligth">
+            <select name="expatSelected" materialize="material_select" [(ngModel)]="expatSelected">
+              <option *ngFor="let expat of expatriations; index as i" [ngValue]="expat" [attr.selected]="i == 0">{{expat.location.country}}</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12">
+        <ul class="tabs" materialize="tabs">
+            <li class="tab col s3"><a href="#blogs"><i class="icon icon-list"></i> Blogs</a></li>
+            <li class="tab col s3"><a href="#associations"><i class="icon icon-list"></i> Associations et partenaires</a></li>
+        </ul>
+    </div>
+    <oe-blogs id="checklists" class="col s12 tab-content" [expatriation]="expatSelected" [empty]="(expatriations.length === 0)"></oe-blogs>
+    <oe-associations id="associations" class="col s12 tab-content" [expatriation]="expatSelected" [empty]="(expatriations.length === 0)" (listChange)="onListChange()"></oe-associations>
+</div>

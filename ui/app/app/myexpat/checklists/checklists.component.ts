@@ -16,8 +16,6 @@ export class ChecklistsComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
-      console.log(this.expatriation)
-
     }
 
     onListChange() {
