@@ -93,10 +93,26 @@
                     </div>
 
                     <div class="input-field col s4">
-                        <input id="date" name="date" type="text" materialize="pickadate" [materializeParams]="[formDateOptions]" [(ngModel)]='currentExpat.date' required>
+                        <input id="date" name="date" type="text" materialize="pickadate" [value]="currentExpat.date | date:'yyyy-MM-dd'" [materializeParams]="[formDateOptions]" [(ngModel)]='currentExpat.date' required>
                     </div>
                 </div>
 
+
+                <div class="row no-margin">
+                    <div class="col s12">
+                        <h4 class="subtitle">Vos besoins</h4>
+                    </div>
+                </div>
+                <div class="row no-margin">
+                    <div class="col s6">
+                        <input name="things" type="checkbox" id="things" value="things" [checked]="isSelectedList('things')" (change)="updateCheckedLists($event)" ngModel/>
+                        <label for="things"><i class="icon icon-key"></i> Logement</label>
+                    </div>
+                    <div class="col s6">
+                        <input name="administrative" type="checkbox" id="administrative" value="administrative" [checked]="isSelectedList('administrative')" (change)="updateCheckedLists($event)" ngModel/>
+                        <label for="administrative"><i class="icon icon-document"></i> Administratif</label>
+                    </div>
+                </div>
 
                 <div class="row action-bar">
                     <div class="col s12">

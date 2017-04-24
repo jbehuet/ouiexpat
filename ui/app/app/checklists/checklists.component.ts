@@ -37,6 +37,8 @@ export class ChecklistsComponent implements OnInit {
                 this.expatSelected = filtred.reduce((prev, current) => {
                     return (new Date(current.date) < new Date(prev.date)) ? current : prev
                 });
+            } else if (this.expatriations.length > 0) {
+                this.expatSelected = this.expatriations[0]
             }
         }, (err) => {
             ToastHelper.displayError(err);

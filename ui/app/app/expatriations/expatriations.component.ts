@@ -25,6 +25,7 @@ export class ExpatriationsComponent implements OnInit {
     createExpatriation() {
         this.currentExpat = {};
         this.currentExpat.isNew = true;
+        this.currentExpat.lists = [];
     }
 
     delete() {
@@ -41,6 +42,7 @@ export class ExpatriationsComponent implements OnInit {
         if (this.currentExpat._id) {
             this._expatriationService.update(this.currentExpat)
                 .subscribe(expatriations => {
+                    this.expatriations = expatriations;
                     ToastHelper.displaySuccess("Updated");
                 }, (err) => {
                     ToastHelper.displayError(err);
@@ -59,6 +61,25 @@ export class ExpatriationsComponent implements OnInit {
         this.currentExpat.location.geometry = {
             coordinate: [this.currentExpat.location.latlng.lat, this.currentExpat.location.latlng.lng]
         };
+    }
+
+    isSelectedList(_type: String) {
+        if (!this.currentExpat.lists) return false
+        return !!this.currentExpat.lists.find(v => v.type === _type)
+    }
+
+    updateCheckedLists(e) {
+        
+        let existing = this.currentExpat.lists.find(v => v.type === e.currentTarget.value)
+
+        if (existing) {
+            existing.remove = !e.currentTarget.checked;
+        } else {
+            if (e.currentTarget.checked)
+                this.currentExpat.lists.push(e.currentTarget.value)
+            else
+                this.currentExpat.lists.splice(this.currentExpat.lists.indexOf(e.currentTarget.value), 1);
+        }
     }
 
     private _loadExpatriations() {

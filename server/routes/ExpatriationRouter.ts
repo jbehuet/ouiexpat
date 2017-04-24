@@ -35,7 +35,7 @@ class ExpatriationRouter extends AbstractRouter {
 
                     let sumNotCompleted = 0;
                     let sumItems = 0;
-                    
+
                     expatriation.lists = expatriation.lists.map(list => {
                         list.itemsNotCompleted = list.items.reduce((sum, curr) => {
                             return (curr.completed ? sum : sum + 1)
@@ -45,7 +45,7 @@ class ExpatriationRouter extends AbstractRouter {
                         return list;
                     })
 
-                    expatriation.completedAt = Math.round((sumItems - sumNotCompleted) / sumItems * 100) ;
+                    expatriation.completedAt = Math.round((sumItems - sumNotCompleted) / sumItems * 100);
 
                     return expatriation
                 })
@@ -108,14 +108,20 @@ class ExpatriationRouter extends AbstractRouter {
         else
             query = { _id: req.params.id, owner: req.authenticatedUser._id };
 
-        ExpatriationModel.findOneAndUpdate(query, req.body, { new: true },
-            (err: mongoose.Error, expatriation: ExpatriationFormat) => {
-                if (err)
-                    ErrorHelper.handleMongooseError(err, res, req);
-                else
-                    res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: expatriation });
-            })
 
+        Promise.all(req.body.lists.map(list => this.findList(list, req.body.location.countryCode))).then((lists) => {
+            req.body.lists = lists.filter(l => !l.hasOwnProperty('remove') || !l.remove );
+            ExpatriationModel.update(query, req.body, { new: true },
+                (err: mongoose.Error, expatriation: ExpatriationFormat) => {
+                    if (err)
+                        ErrorHelper.handleMongooseError(err, res, req);
+                    else
+                        res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: expatriation });
+                })
+
+        }).catch(err => {
+            ErrorHelper.handleMongooseError(err, res, req);
+        })
     }
 
     protected delete(req: IRequest, res: Response, next: NextFunction) {
@@ -136,22 +142,27 @@ class ExpatriationRouter extends AbstractRouter {
 
     }
 
-    private findList(type: string, countryCode: string): Promise<any> {
+    private findList(list: any, countryCode: string): Promise<any> {
         return new Promise((resolve, reject) => {
-            ListModel.findOne({ type: type, countryCode: countryCode }).exec((err: mongoose.Error, list: ListFormat) => {
-                if (err)
-                    reject(err);
-                else if (!list) {
-                    ListModel.findOne({ type: type }).exec((err: mongoose.Error, list: ListFormat) => {
-                        if (err)
-                            reject(err);
-                        else
-                            resolve(list);
-                    })
-                }
-                else
-                    resolve(list);
-            });
+            if (list.type) {
+                resolve(list);
+            } else {
+                const type = list
+                ListModel.findOne({ type: type, countryCode: countryCode }).exec((err: mongoose.Error, list: ListFormat) => {
+                    if (err)
+                        reject(err);
+                    else if (!list) {
+                        ListModel.findOne({ type: type }).exec((err: mongoose.Error, list: ListFormat) => {
+                            if (err)
+                                reject(err);
+                            else
+                                resolve(list);
+                        })
+                    }
+                    else
+                        resolve(list);
+                });
+            }
         })
     }
 
