@@ -31,6 +31,7 @@ import { ProfilMenuComponent } from './profil/profil-menu/profil-menu.component'
 import { ProfilDetailsComponent } from './profil/profil-details/profil-details.component';
 import { ProfilPasswordComponent } from './profil/profil-password/profil-password.component';
 
+import { FaqComponent } from './faq/faq.component';
 
 @NgModule({
     imports: [
@@ -57,7 +58,8 @@ import { ProfilPasswordComponent } from './profil/profil-password/profil-passwor
                             { path: 'details', component: ProfilDetailsComponent, canActivate: [AuthGuard] },
                             { path: 'password', component: ProfilPasswordComponent, canActivate: [AuthGuard] }
                         ]
-                    }
+                    },
+                    { path: 'faq', component: FaqComponent, canActivate: [AuthGuard] }
                 ]
             }
         ])
@@ -69,7 +71,8 @@ import { ProfilPasswordComponent } from './profil/profil-password/profil-passwor
         WidgetFavorisComponent,
         MyexpatComponent, ChecklistsComponent, ListComponent,
         ExpatriationsComponent,
-        ProfilComponent, ProfilMenuComponent, ProfilDetailsComponent, ProfilPasswordComponent
+        ProfilComponent, ProfilMenuComponent, ProfilDetailsComponent, ProfilPasswordComponent,
+        FaqComponent
     ]
 })
 export class AppModule { }

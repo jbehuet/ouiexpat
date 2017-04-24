@@ -1,0 +1,19 @@
+.list {
+    ul {
+        margin: 0;
+        background: $white;
+        padding: 10px 0;
+
+        .collapsible-header {
+            padding: 0;
+            background: $white;
+            border-bottom: none;
+        }
+
+        .collapsible-body {
+            background: #EEEEEE;
+            border: none;
+            font-size: 12px;
+        }
+    }
+}

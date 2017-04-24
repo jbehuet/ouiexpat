@@ -1,0 +1,19 @@
+@import '../../../styles/utils/variables';
+
+.header {
+    margin-bottom: 10px;
+
+    h1 {
+        font-size: 34px;
+        margin: 0;
+        color: $green;
+    }
+
+    .sub {
+        font-style: italic;
+    }
+}
+
+.list ul{
+  margin: 10px 0;
+}

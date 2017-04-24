@@ -2,7 +2,7 @@
     <div class="list-title">
         <i class="icon" [ngClass]="list.icon"></i> {{list?.title | uppercase}}
     </div>
-    <div class="list-content">
+    <div class="list">
         <ul materialize="collapsible" data-collapsible="accordion">
             <li *ngFor="let item of list.items; index as i">
                 <div class="collapsible-header">
