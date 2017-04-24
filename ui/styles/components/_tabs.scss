@@ -1,0 +1,20 @@
+.tabs {
+    background-color: transparent;
+    border-bottom: 1px solid $grey-light;
+        
+    .tab {
+        .active {
+            background: $linear-gradient;
+            border-radius: 3px;
+            border-bottom: none;
+        }
+
+        a.active {
+            color: $white;
+        }
+    }
+
+    .indicator{
+      display: none;
+    }
+}

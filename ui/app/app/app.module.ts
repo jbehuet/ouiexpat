@@ -22,13 +22,15 @@ import { WidgetFavorisComponent } from './dashboard/widgets/widget-favoris/widge
 
 import { ExpatriationsComponent } from './expatriations/expatriations.component';
 
-import { ChecklistsComponent } from './checklists/checklists.component';
+import { MyexpatComponent } from './myexpat/myexpat.component';
+import { ChecklistsComponent } from './myexpat/checklists/checklists.component';
+import { ListComponent } from './myexpat/checklists/list/list.component';
 
 import { ProfilComponent } from './profil/profil.component';
 import { ProfilMenuComponent } from './profil/profil-menu/profil-menu.component';
 import { ProfilDetailsComponent } from './profil/profil-details/profil-details.component';
 import { ProfilPasswordComponent } from './profil/profil-password/profil-password.component';
-import { ListComponent } from './checklists/list/list.component';
+
 
 @NgModule({
     imports: [
@@ -44,7 +46,7 @@ import { ListComponent } from './checklists/list/list.component';
                 children: [
                     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
                     { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-                    { path: 'checklists', component: ChecklistsComponent, canActivate: [AuthGuard] },
+                    { path: 'myexpat', component: MyexpatComponent, canActivate: [AuthGuard] },
                     { path: 'expatriations', component: ExpatriationsComponent, canActivate: [AuthGuard] },
                     {
                         path: 'profil',
@@ -65,7 +67,7 @@ import { ListComponent } from './checklists/list/list.component';
         AppComponent, NavbarComponent, FooterComponent, DashboardComponent,
         WidgetProfilComponent, WidgetExpatriationsComponent, WidgetActusComponent,
         WidgetFavorisComponent,
-        ChecklistsComponent, ListComponent,
+        MyexpatComponent, ChecklistsComponent, ListComponent,
         ExpatriationsComponent,
         ProfilComponent, ProfilMenuComponent, ProfilDetailsComponent, ProfilPasswordComponent
     ]

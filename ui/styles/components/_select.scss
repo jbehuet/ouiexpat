@@ -5,3 +5,12 @@
 .select-wrapper input.select-dropdown {
     color: $text-color;
 }
+
+.ligth .select-wrapper span.caret {
+    color: $white;
+}
+
+.ligth .select-wrapper input.select-dropdown {
+    color: $white;
+    border-bottom: 1px solid $white;
+}

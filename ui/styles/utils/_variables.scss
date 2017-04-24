@@ -12,7 +12,7 @@ $line-color:                                      lighten($grey-light, 15%) !def
 $yellow:                                          #F7CB0A !default;
 $red:                                             #FF3950 !default;
 $linear-gradient:                                 linear-gradient(301deg, $yellow 0%, $blue 100%)!default;
-
+$gradient-blue:                                   linear-gradient(139deg, #26A69A 0%, #6EB6A8 100%)!default;
 //Override materialize-css
 
 $primary-color:                                  #525356 !default;
