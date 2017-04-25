@@ -32,7 +32,10 @@ export class ExpatriationsComponent implements OnInit {
         this._expatriationService.delete(this.currentExpat)
             .subscribe(expatriations => {
                 ToastHelper.displaySuccess("Deleted");
-                this.currentExpat = this.expatriations[0];
+                if (this.expatriations.length > 0) {
+                    this.currentExpat = this.expatriations[0];
+                    this.currentExpat.date = new Date(this.currentExpat.date).toISOString().slice(0, 10);
+                }
             }, (err) => {
                 ToastHelper.displayError(err);
             });
@@ -70,13 +73,13 @@ export class ExpatriationsComponent implements OnInit {
 
     updateCheckedLists(e) {
 
-        let existing = this.currentExpat.lists.find(v => v.type === e.currentTarget.value)
+        let existing = this.currentExpat.lists.find(v => v.type === e.currentTarget.value);
 
         if (existing) {
             existing.remove = !e.currentTarget.checked;
         } else {
             if (e.currentTarget.checked)
-                this.currentExpat.lists.push(e.currentTarget.value)
+                this.currentExpat.lists.push(e.currentTarget.value);
             else
                 this.currentExpat.lists.splice(this.currentExpat.lists.indexOf(e.currentTarget.value), 1);
         }
@@ -88,8 +91,9 @@ export class ExpatriationsComponent implements OnInit {
             const filtred = this.expatriations.filter(v => new Date(v.date) > new Date());
             if (filtred.length > 0) {
                 this.currentExpat = filtred.reduce((prev, current) => {
-                    return (new Date(current.date) < new Date(prev.date)) ? current : prev
+                    return (new Date(current.date) < new Date(prev.date)) ? current : prev;
                 });
+                this.currentExpat.date = new Date(this.currentExpat.date).toISOString().slice(0, 10);
             }
         }, (err) => {
             ToastHelper.displayError(err);
