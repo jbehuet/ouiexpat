@@ -109,7 +109,7 @@ class ExpatriationRouter extends AbstractRouter {
             query = { _id: req.params.id, owner: req.authenticatedUser._id };
 
 
-        Promise.all(req.body.lists.map(list => this.findList(list, req.body.location.countryCode))).then((lists) => {
+        Promise.all(req.body.lists.map(list => this.findList(list, req.body.location.countryCode))).then((lists:Array<any>) => {
             req.body.lists = lists.filter(l => !l.hasOwnProperty('remove') || !l.remove );
             ExpatriationModel.findOneAndUpdate(query, req.body, { new: true },
                 (err: mongoose.Error, expatriation: ExpatriationFormat) => {

@@ -2,6 +2,8 @@ import * as http from 'http';
 import * as mongoose from 'mongoose';
 import App from './App';
 import CONFIG from './config';
+import Seeds from './seeds'
+
 
 const port = normalizePort(CONFIG.port || 3000);
 const app = new App().express;
@@ -14,8 +16,15 @@ server.on('listening', onListening);
 mongoose.Promise = Promise;
 mongoose.connect(CONFIG.mongodb.uri, function(err) {
     if (!err) {
-        console.log('Connected to database')
-        return server.listen(port);;
+        console.log('Database : Success')
+        const seeds = new Seeds();
+        seeds.start().then(()=>{
+          console.log("Seeds : Success");
+          return server.listen(port);;
+        }).catch((err) => {
+            console.log(err);
+            process.exit(1);
+        });
     } else {
         console.error('App starting error:', err.stack);
         process.exit(1);
