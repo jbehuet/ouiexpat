@@ -6,16 +6,16 @@ const _schema = new mongoose.Schema({
         type: String,
         require: true
     },
-    photo: {
+    image: {
       type: String,
-      default : 'to be define'
+      default : '/assets/img/no-img.png'
     },
     category: {
       type: String,
       enum: ['Other'],
       default: 'Other'
     },
-    detailt: {
+    details: {
       type: String,
       require: true
     },

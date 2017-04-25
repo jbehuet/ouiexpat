@@ -8,6 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AuthGuard } from '../_guards/auth.guard';
 
 import { DateFilterPipe } from '../_pipes/date.pipe';
+import { TruncatePipe } from '../_pipes/truncate.pipe';
 
 import { AppComponent } from './app.component';
 
@@ -70,7 +71,7 @@ import { FaqComponent } from './faq/faq.component';
         ])
     ],
     declarations: [
-        DateFilterPipe,
+        DateFilterPipe, TruncatePipe,
         AppComponent, NavbarComponent, FooterComponent, DashboardComponent,
         WidgetProfilComponent, WidgetExpatriationsComponent, WidgetActusComponent,
         WidgetFavorisComponent,

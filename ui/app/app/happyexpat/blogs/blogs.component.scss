@@ -1,0 +1,15 @@
+@import '../../../../styles/utils/variables';
+
+
+.btn-like{
+  cursor: pointer;
+
+  &:hover{
+    color:$blue;
+  }
+
+  &.liked {
+    color:$red;
+  }
+
+}

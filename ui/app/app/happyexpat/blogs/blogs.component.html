@@ -1,15 +1,26 @@
 <div class="row">
-    <div class="col s12 m7" *ngFor="let blog of blogs">
+    <div class="col xs12 s6 m4" *ngFor="let blog of blogs">
         <div class="card">
             <div class="card-image">
-                <img src="http://materializecss.com/images/sample-1.jpg">
-                <span class="card-title">{{blog.name}}</span>
+                <img [src]="blog.image">
+                <span class="card-title full-width">
+                  <div class="row no-margin-bottom">
+                    <div class="col s10">{{blog.name}}</div>
+                    <div class="col s2 right-align"><span [class.fav]="isFav(blog)" (click)="addOrRemoveToFav(blog)"><i class="icon icon-star"></i></span></div>
+                  </div>
+                </span>
             </div>
             <div class="card-content">
-                <p>{{blog.details}}</p>
+                <div class="row">
+                    <div class="col s10">{{blog.category}}</div>
+                    <div class="col s2 right-align"><span class="btn-like" [class.liked]="isLiked(blog)" (click)="likeOrDislike(blog)"><i class="icon icon-heart"></i></span> {{blog.likes.length}}</div>
+                </div>
+                <p>{{blog.details | truncate:[200]}}</p>
             </div>
             <div class="card-action">
-                <a [href]="blog.link">Visiter</a>
+                <div class="row no-margin-bottom">
+                    <button class="btn btn-validate waves-effect col s5 offset-s7" (click)="visite(blog)" [disabled]="!blog.link">Visiter</button>
+                </div>
             </div>
         </div>
     </div>
