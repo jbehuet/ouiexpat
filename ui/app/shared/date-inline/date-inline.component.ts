@@ -22,7 +22,7 @@ export class DateInlineComponent implements OnInit, ControlValueAccessor {
     public months: Array<String> = [];
     public years: Array<Number> = [];
 
-    public _currentDate: Date = new Date();
+    public _currentDate: Date;
 
 
     onChange: any = () => { };
@@ -49,16 +49,19 @@ export class DateInlineComponent implements OnInit, ControlValueAccessor {
     }
 
     onDayChange(event) {
+        this._currentDate = this._currentDate || new Date();
         this._currentDate.setDate(event);
         this.onChange(this._currentDate);
     }
 
     onMonthChange(event) {
+        this._currentDate = this._currentDate || new Date();
         this._currentDate.setMonth(event);
         this.onChange(this._currentDate);
     }
 
     onYearChange(event) {
+        this._currentDate = this._currentDate || new Date();
         this._currentDate.setFullYear(event);
         this.onChange(this._currentDate);
     }

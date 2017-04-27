@@ -49,7 +49,6 @@ export class InterceptedHttp extends Http {
 
     intercept(observable: Observable<Response>): Observable<Response> {
         return observable.catch((error, source) => {
-            console.log(error, source)
             if (error.status == 401 && !_.endsWith(error.url, 'api/auth/login')) {
                 this._router.navigate(['/auth/login']);
                 return Observable.empty();
