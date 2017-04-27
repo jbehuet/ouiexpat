@@ -2,6 +2,9 @@
 import * as mongoose from 'mongoose';
 import CONFIG from '../config';
 
+import UserModel from '../models/UserModel';
+const users = require('./users.json');
+
 import ListModel from '../models/ListModel';
 const checklists = require('./checklists.json');
 
@@ -15,12 +18,30 @@ export default class Seeds {
 
     }
 
-    start():Promise<any> {
+    start(): Promise<any> {
 
+        const userP = this.seedUsers();
         const chkP = this.seedCheckLists();
         const blogP = this.seedBlogs();
 
-        return Promise.all([chkP, blogP]);
+        return Promise.all([userP, chkP, blogP]);
+
+    }
+
+    private seedUsers() {
+
+        return new Promise((resolve, reject) => {
+            Promise.all(users.map(user => this.findOrCreateUser(user)))
+                .then((users) => {
+                    console.log('>> ' + users.filter(e => !!e).length + " users created");
+                    resolve();
+                })
+                .catch((err) => {
+                    console.log(err);
+                    resolve();
+                })
+        })
+
 
     }
 
@@ -58,6 +79,32 @@ export default class Seeds {
 
     }
 
+    private findOrCreateUser(user) {
+        return new Promise((resolve, reject) => {
+            let query = {
+                email: user.email
+            };
+
+            UserModel.findOne(query).exec((err, doc) => {
+                if (err)
+                    reject(err);
+                else if (!doc) {
+                    //create
+                    UserModel.create(user, (err, doc) => {
+                        if (err)
+                            reject(err);
+                        else
+                            resolve(doc)
+                    })
+                } else {
+                    //exist
+                    console.log(">> User : " + user.email + " exist");
+                    resolve()
+                }
+            })
+        })
+    }
+
     private findOrCreateList(checklist) {
         return new Promise((resolve, reject) => {
             let query;
@@ -71,16 +118,16 @@ export default class Seeds {
                     type: checklist.type
                 };
 
-            ListModel.findOne(query).exec((err, list) => {
+            ListModel.findOne(query).exec((err, doc) => {
                 if (err)
                     reject(err);
-                else if (!list) {
+                else if (!doc) {
                     //create
-                    ListModel.create(checklist, (err, list) => {
+                    ListModel.create(checklist, (err, doc) => {
                         if (err)
                             reject(err);
                         else
-                            resolve(list)
+                            resolve(doc)
                     })
                 } else {
                     //exist
@@ -97,16 +144,16 @@ export default class Seeds {
                 name: blog.name
             };
 
-            BlogModel.findOne(query).exec((err, list) => {
+            BlogModel.findOne(query).exec((err, doc) => {
                 if (err)
                     reject(err);
-                else if (!list) {
+                else if (!doc) {
                     //create
-                    BlogModel.create(blog, (err, list) => {
+                    BlogModel.create(blog, (err, doc) => {
                         if (err)
                             reject(err);
                         else
-                            resolve(list)
+                            resolve(doc)
                     })
                 } else {
                     //exist
@@ -116,4 +163,5 @@ export default class Seeds {
             })
         })
     }
+
 }
