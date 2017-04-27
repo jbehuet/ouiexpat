@@ -19,21 +19,30 @@ export default class Seeds {
     }
 
     start(): Promise<any> {
-
-        const userP = this.seedUsers();
+        console.log('Seed : .. ');
         const chkP = this.seedCheckLists();
         const blogP = this.seedBlogs();
 
-        return Promise.all([userP, chkP, blogP]);
+
+        return this.getUsersCount().then(count => {
+            let promises = [chkP, blogP];
+            if (count === 0) {
+                const userP = this.seedUsers();
+                promises.push(userP);
+            } else {
+              console.log('Users : ' + count + ' exist');
+            }
+
+            return Promise.all(promises);
+        });
 
     }
 
     private seedUsers() {
-
         return new Promise((resolve, reject) => {
             Promise.all(users.map(user => this.findOrCreateUser(user)))
                 .then((users) => {
-                    console.log('>> ' + users.filter(e => !!e).length + " users created");
+                    console.log('>> Users : ' + users.filter(e => !!e).length + " created");
                     resolve();
                 })
                 .catch((err) => {
@@ -46,11 +55,10 @@ export default class Seeds {
     }
 
     private seedCheckLists() {
-
         return new Promise((resolve, reject) => {
             Promise.all(checklists.map(checklist => this.findOrCreateList(checklist)))
                 .then((lists) => {
-                    console.log('>> ' + lists.filter(e => !!e).length + " lists created");
+                    console.log('>> Checklists : ' + lists.filter(e => !!e).length + " created");
                     resolve();
                 })
                 .catch((err) => {
@@ -63,11 +71,10 @@ export default class Seeds {
     }
 
     private seedBlogs() {
-
         return new Promise((resolve, reject) => {
             Promise.all(blogs.map(blog => this.findOrCreateBlog(blog)))
                 .then((blogs) => {
-                    console.log('>> ' + blogs.filter(e => !!e).length + " blogs created");
+                    console.log('>> Blogs ' + blogs.filter(e => !!e).length + " created");
                     resolve();
                 })
                 .catch((err) => {
@@ -79,12 +86,22 @@ export default class Seeds {
 
     }
 
+    private getUsersCount() {
+        return new Promise((resolve, reject) => {
+            UserModel.find({ administrator: true }).exec((err, docs) => {
+                if (err)
+                    reject()
+                else
+                    resolve(docs.length)
+            })
+        })
+    }
+
     private findOrCreateUser(user) {
         return new Promise((resolve, reject) => {
             let query = {
                 email: user.email
             };
-
             UserModel.findOne(query).exec((err, doc) => {
                 if (err)
                     reject(err);
@@ -93,8 +110,10 @@ export default class Seeds {
                     UserModel.create(user, (err, doc) => {
                         if (err)
                             reject(err);
-                        else
+                        else {
+                            console.log(">> User : " + doc.email + " created");
                             resolve(doc)
+                        }
                     })
                 } else {
                     //exist
@@ -126,12 +145,14 @@ export default class Seeds {
                     ListModel.create(checklist, (err, doc) => {
                         if (err)
                             reject(err);
-                        else
+                        else {
+                            console.log(">> Checklists : " + doc.type + " (" + (doc.countryCode || "all") + ") created");
                             resolve(doc)
+                        }
                     })
                 } else {
                     //exist
-                    console.log(">> Checlist : " + checklist.type + " (" + (checklist.countryCode || "all") + ") exist");
+                    console.log(">> Checklists : " + checklist.type + " (" + (checklist.countryCode || "all") + ") exist");
                     resolve()
                 }
             })
@@ -152,12 +173,14 @@ export default class Seeds {
                     BlogModel.create(blog, (err, doc) => {
                         if (err)
                             reject(err);
-                        else
+                        else {
+                            console.log(">> Blogs : " + doc.name + " created");
                             resolve(doc)
+                        }
                     })
                 } else {
                     //exist
-                    console.log(">> Blog : " + blog.name + " exist");
+                    console.log(">> Blogs : " + blog.name + " exist");
                     resolve()
                 }
             })
