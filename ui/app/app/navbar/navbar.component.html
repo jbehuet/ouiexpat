@@ -41,6 +41,7 @@
     <!-- Dropdown Structure -->
     <ul id="dropdown1" class="dropdown-content">
         <li><a routerLink="/profil">MON PROFIL</a></li>
+        <li *ngIf="user.administrator"><a routerLink="/admin">ADMINISTRATION</a></li>
         <li><a routerLink="/auth/login">SE DECONNECTER</a></li>
     </ul>
 </div>

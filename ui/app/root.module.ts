@@ -7,9 +7,13 @@ import { RollbarModule, RollbarService } from 'angular-rollbar/lib/';
 
 import { AuthModule } from './auth/auth.module';
 import { AppModule } from './app/app.module';
+import { AdminModule } from './admin/admin.module';
 
 import { httpFactory } from "./_factories/http.factory";
+
 import { AuthGuard } from './_guards/auth.guard';
+import { AdminGuard } from './_guards/admin.guard';
+
 import { AuthenticationService } from './_services/authentication.service';
 import { ExpatriationService } from './_services/expatriation.service';
 import { BlogService } from './_services/blog.service';
@@ -31,7 +35,8 @@ import { RootComponent } from './root.component';
             { path: '**', redirectTo: '' }
         ]),
         AuthModule,
-        AppModule
+        AppModule,
+        AdminModule
     ],
     providers: [
         {
@@ -39,7 +44,8 @@ import { RootComponent } from './root.component';
             useFactory: httpFactory,
             deps: [XHRBackend, RequestOptions, CookieService, Router]
         },
-        RollbarService, CookieService, AuthGuard, AuthenticationService,
+        AuthGuard, AdminGuard,
+        RollbarService, CookieService, AuthenticationService,
         ExpatriationService, BlogService],
     bootstrap: [RootComponent]
 })
