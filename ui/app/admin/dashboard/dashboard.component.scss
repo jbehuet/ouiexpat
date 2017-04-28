@@ -1,0 +1,12 @@
+@import '../../../styles/utils/placeholders';
+@import '../../../styles/utils/variables';
+
+.card-stats-number {
+  font-size: 24px;
+}
+
+.card-stats-compare {
+    span {
+        color: $blue;
+    }
+}

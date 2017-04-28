@@ -33,6 +33,7 @@
                 <li><a routerLink="/myexpat" routerLinkActive="current">MYEXPAT</a></li>
                 <li><a routerLink="/happyexpat" routerLinkActive="current">HAPPYEXPAT</a></li>
                 <li><a routerLink="/expatriations" routerLinkActive="current">EXPATRIATIONS</a></li>
+                <li *ngIf="user.administrator"><a routerLink="/admin">ADMINISTRATION</a></li>
                 <li class="divider"></li>
                 <li><a routerLink="/auth/login">SE DECONNECTER</a></li>
             </ul>
