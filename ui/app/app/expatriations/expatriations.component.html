@@ -69,15 +69,14 @@
             </span>
         </div>
     </div>
-    <div class="col s12 m8 offset-m1" *ngIf="expatriations.length > 0">
+    <div class="col s12 m7 offset-m1" *ngIf="expatriations.length > 0">
         <div class="form-card map">
-            <div class="row">
-                <div class="col s7 container-infos-expat">
-
-                </div>
-                <leaflet class="col s5 right force-inner-space-left-0" [location]="currentExpat.location?.geometry?.coordinate"></leaflet>
+            <div class="row no-margin full-width">
+                <div class="col s7 container-infos-expat"></div>
+                <leaflet class="col s5 leaflet-map" [location]="currentExpat.location?.geometry?.coordinate"></leaflet>
             </div>
         </div>
+
         <div class="form-card has-padding">
             <form (ngSubmit)="expatForm.form.valid && save()" #expatForm="ngForm">
                 <div class="row no-margin">
