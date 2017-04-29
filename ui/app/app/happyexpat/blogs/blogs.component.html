@@ -1,12 +1,17 @@
 <div class="row">
-    <div class="col xs12 s6 m4" *ngFor="let blog of blogs">
+    <div class="col xs12 s12 m6 l4" *ngFor="let blog of blogs">
         <div class="card">
             <div class="card-image">
                 <img [src]="blog.image">
                 <span class="card-title full-width">
                   <div class="row no-margin-bottom">
-                    <div class="col s10">{{blog.name}}</div>
-                    <div class="col s2 right-align"><span [class.fav]="isFav(blog)" (click)="addOrRemoveToFav(blog)"><i class="icon icon-star"></i></span></div>
+                      <div class="col s12"><h5 class="inner-space-right-40">{{blog.name}}</h5></div>
+
+                      <!-- TODO add class active on class btn-fav when fav select action -->
+                    <span class="btn-fav" [class.fav]="isFav(blog)" (click)="addOrRemoveToFav(blog)">
+                        <span class="animation-fav"></span>
+                        <i class="icon icon-star"></i>
+                    </span>
                   </div>
                 </span>
             </div>
