@@ -30,6 +30,10 @@
             background-color: $line-color;
             content: '';
         }
+
+        @media screen and (max-width: 768px) {
+            &:after { display: none;}
+        }
     }
 
     .city {
