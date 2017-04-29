@@ -1,5 +1,5 @@
 <div class="filter">
-    <div class="row no-margin">
+    <div class="row container">
         <div class="col s12 m6 ligth">
             <select name="expatSelected" materialize="material_select" [(ngModel)]="expatSelected">
               <option *ngFor="let expat of expatriations; index as i" [ngValue]="expat" [attr.selected]="i == 0">{{expat.location.country}}</option>
