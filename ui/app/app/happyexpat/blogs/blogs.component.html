@@ -16,9 +16,15 @@
                 </span>
             </div>
             <div class="card-content">
-                <div class="row">
-                    <div class="col s10">{{blog.category}}</div>
-                    <div class="col s2 right-align"><span class="btn-like" [class.liked]="isLiked(blog)" (click)="likeOrDislike(blog)"><i class="icon icon-heart"></i></span> {{blog.likes.length}}</div>
+                <div class="row card-content-intro">
+                    <div class="col s12">{{blog.category}}</div>
+                    <div class="action-like" [class.liked]="isLiked(blog)">
+                           <span class="btn-like" [class.liked]="isLiked(blog)" (click)="likeOrDislike(blog)">
+                            <span class="animation-like"></span>
+                            <i class="icon icon-heart"></i>
+                        </span>
+                        <span class="value-like">{{blog.likes.length}}</span>
+                    </div>
                 </div>
                 <p>{{blog.details | truncate:[200]}}</p>
             </div>

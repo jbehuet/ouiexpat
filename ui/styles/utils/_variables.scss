@@ -1,4 +1,5 @@
 $blue:                                            #00A2D8 !default;
+$blue-expat:                                      #00A2D8 !default;
 $green:                                           #26A69A !default;
 
 $text-color:                                      #525356 !default;
@@ -11,8 +12,9 @@ $white-grey:                                      #F4F7FC !default;
 $line-color:                                      lighten($grey-light, 15%) !default;
 
 $yellow:                                          #F7CB0A !default;
-$yellow-expat:                                          #F7CB0A !default;
+$yellow-expat:                                    #F7CB0A !default;
 $red:                                             #FF3950 !default;
+$red-expat:                                       #FF3950 !default;
 $linear-gradient:                                 linear-gradient(301deg, $yellow 0%, $blue 100%)!default;
 $gradient-blue:                                   linear-gradient(139deg, $green 0%, #6EB6A8 100%)!default;
 //Override materialize-css

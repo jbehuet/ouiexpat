@@ -1,7 +1,6 @@
 @import '../../../../styles/utils/variables';
 
 
-
 .card-title {
   padding-bottom: 10px !important;
 
@@ -12,16 +11,33 @@
   }
 }
 
+.card-content {
 
-.btn-like{
-  cursor: pointer;
+  .card-content-intro {
+    position: relative;
 
-  &:hover{
-    color:$blue;
+    .action-like {
+      position: absolute;
+      right: -15px;
+      top: 50%;
+      transform: translate(-50%, -50%);
+
+      &.liked {
+        .value-like {
+          color: $blue;
+        }
+      }
+
+      .btn-like {
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      .value-like {
+        display: inline-block;
+        vertical-align: middle;
+        font-weight: bold;
+      }
+    }
   }
-
-  &.liked {
-    color:$red;
-  }
-
 }
