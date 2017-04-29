@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col m3 hide-on-small-only">
+    <div class="col m4 l3 hide-on-small-only">
         <div class="row">
             <div class="col s12 no-padding title-section">
                 <i class="icon icon-location"></i> Mes expatriations
@@ -11,7 +11,6 @@
         <div class="row">
             <h4 class="subtitle">A venir(s)</h4>
             <div *ngIf=" (expatriations | dateFilter:['date','now']).length === 0">
-                <!-- TODO RLZ Review empty message -->
                 <div class="col s12">
                     <span class="icon icon-information icon-gradient dspl-inbl vert-align-middle space-top-2 space-right-5"></span>
                     <p class="dspl-inbl vert-align-middle">Aucunes expatriations à venirs</p>
@@ -36,7 +35,6 @@
         <div class="row">
             <h4 class="subtitle">Passée(s)</h4>
             <div *ngIf="(expatriations | dateFilter:['date','now', '<']).length === 0">
-                <!-- TODO RLZ Review empty message -->
                 <div class="col s12">
                     <span class="icon icon-information icon-gradient dspl-inbl vert-align-middle space-top-2 space-right-5"></span>
                     <p class="dspl-inbl vert-align-middle small-txt">Aucunes expatriations à passée(s)</p>
@@ -58,10 +56,10 @@
             </ul>
         </div>
     </div>
-    <div class="col s12 m8 offset-m1" *ngIf="expatriations.length === 0">
+    <div class="col s12 m7 l8 offset-m1" *ngIf="expatriations.length === 0">
         <div class="form-card full-height valign-wrapper">
-            <span class="col s3 offset-s2"><img src="assets/img/expat.png" alt="checklists"></span>
-            <span class="col s5 valign">
+            <span class="illu-no-expat"><img src="assets/img/expat.png" alt="checklists"></span>
+            <span class="col s12 valign text-no-expat">
               <div class="row">
                 <div class="col s12 center-align">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
               </div>

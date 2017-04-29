@@ -80,3 +80,27 @@ ul.expatriations {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+
+.form-card {
+
+  .illu-no-expat {
+    position: relative;
+    height: 100%;
+    min-height: 200px;
+    width: 300px;
+
+    img {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 400px;
+      width: 90%;
+    }
+  }
+
+  .text-no-expat {
+    padding: 0 10%;
+  }
+}
