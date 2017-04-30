@@ -19,8 +19,23 @@
 }
 
 .list {
+
+    ul {
+
+        li {
+            &:last-child {
+                .collapsible-header {
+                  border-bottom: 0;
+                }
+            }
+        }
+    }
+
     .collapsible-header {
         position: relative;
+        padding: 5px 0;
+        border-bottom: 1px solid $line-color;
+
 
         &.active {
             .icon:before {
@@ -48,7 +63,7 @@
 
         i {
             position: absolute;
-            right: -10px;
+            right: -15px;
             top: 58%;
             transform: translate(-50%, -50%);
             margin: 0;
