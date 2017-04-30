@@ -22,8 +22,13 @@
     .collapsible-header {
         position: relative;
 
-        &:hover, &:focus, &:active {
+        &.active {
+            .icon:before {
+                content: '\59';
+            }
+        }
 
+        &:hover, &:focus, &:active {
             label {
                 @extend %transition;
                 opacity: 1;
