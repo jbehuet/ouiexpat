@@ -1,3 +1,4 @@
+@import '../utils/variables';
 
 // ================ //
 // LOADIGN APP (start)
@@ -62,7 +63,7 @@
 }
 
 .title-section {
-  margin-top: 18px !important;
+  margin-top: 0;
   margin-bottom: 10px !important;
   padding: 5px;
   font-size: 20px;
@@ -178,5 +179,28 @@
 // FORM CARD (end)
 // ================ //
 
+// ================ //
+// HEADER SECTION (start)
+// ================ //
+
+.header-section {
+  margin-top: 15px;
+  margin-bottom: 25px;
+
+  h1 {
+    font-size: 34px;
+    margin: 0;
+    color: $green-expat;
+  }
+
+  .sub {
+    display: block;
+    margin-top: 5px;
+  }
+}
+
+// ================ //
+// HEADER SECTION (end)
+// ================ //
 
 

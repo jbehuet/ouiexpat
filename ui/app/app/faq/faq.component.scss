@@ -1,19 +1,68 @@
 @import '../../../styles/utils/variables';
+@import '../../../styles/utils/placeholders';
 
-.header {
-    margin-bottom: 10px;
+.list-collapse {
+  background-color: white;
 
-    h1 {
-        font-size: 34px;
-        margin: 0;
-        color: $green;
+  ul {
+    margin: 10px 0;
+
+    .list-collapse-item {
+      position: relative;
+
+      * {
+        cursor: pointer;
+      }
+
+      .collapsible-header {
+        padding-left: 40px;
+        line-height: 1.5;
+        @extend %transition;
+
+        &:hover, &:focus, &:active {
+          @extend %transition;
+          background-color: $white-grey;
+        }
+
+        &.active {
+          background-color: $white-grey;
+
+          i {
+           @extend %transition;
+            transform: translate(0, 0) rotate(45deg);
+            color: $blue;
+          }
+
+          label {
+            @extend %transition;
+            color: $blue;
+          }
+        }
+      }
+
+      i {
+        position: absolute;
+        top: 0;
+        left: 5px;
+        transform: translate(0, 0);
+        display: inline-block;
+        vertical-align: middle;
+        @extend %transition;
+      }
+
+      label {
+        font-family: 'Capriola-Regular';
+        display: block;
+        padding: 10px 0;
+        font-weight: bold;
+        font-size: 14px;
+        color: $text-color;
+        @extend %transition;
+      }
+
+      &:last-child {
+        .collapsible-header { border-bottom: 0;}
+      }
     }
-
-    .sub {
-        font-style: italic;
-    }
-}
-
-.list ul{
-  margin: 10px 0;
+  }
 }
