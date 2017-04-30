@@ -53,11 +53,6 @@ h4 {
 a {
     @extend %transition;
     color: $blue-expat;
-
-    &:hover, &:focus, &:active {
-        @extend %transition;
-        color: darken($blue-expat, 5%);
-    }
 }
 
 // ================ //

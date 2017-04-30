@@ -25,12 +25,28 @@
   text-align: right;
 }
 
+.text-right-desktop {
+  text-align: right;
+
+  @media screen and (max-width: 414px) {
+    text-align: inherit;
+  }
+}
+
 .force-text-right {
   text-align: right !important;
 }
 
 .text-center {
   text-align: center;
+}
+
+.text-left-desktop {
+  text-align: right;
+
+  @media screen and (max-width: 414px) {
+    text-align: inherit;
+  }
 }
 
 .force-text-center {

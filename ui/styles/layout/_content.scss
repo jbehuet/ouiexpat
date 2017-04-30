@@ -101,6 +101,14 @@
 
 .action-bar {
   margin-top: 40px;
+
+  @media screen and (max-width: 414px) {
+    text-align: center;
+
+    button {
+      margin-bottom: 15px;
+    }
+  }
 }
 
 // ================ //
