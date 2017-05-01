@@ -12,6 +12,18 @@ const _schema = new mongoose.Schema({
             return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
         }, 'Please use a valid email address'],
     },
+    address: {
+      value: String,
+      name: String,
+      city: String,
+      country: String,
+      postcode: String,
+      countryCode: String,
+      geometry: {
+        coordinate: [],
+        type: { type: String, default: 'Point' }
+      }
+    },
     photo: String,
     link: String,
     phone: {

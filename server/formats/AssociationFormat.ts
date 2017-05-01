@@ -1,5 +1,6 @@
 import PhoneFormat from './PhoneFormat';
 import ReviewFormat from './ReviewFormat';
+import AddressFormat from './AddressFormat';
 
 export default class AssociationFormat {
     _id: string;
@@ -8,6 +9,7 @@ export default class AssociationFormat {
     photo: string;
     link: string;
     phone: PhoneFormat;
+    address: AddressFormat;
     details: string;
     services: Array<string>;
     platformReview: ReviewFormat;
