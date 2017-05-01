@@ -9,6 +9,7 @@ import {CardComponent} from './card/card.component';
 import {LightCardComponent} from './light-card/light-card.component';
 import {CardDetailComponent} from './card-detail/card-detail.component';
 import {TruncatePipe} from '../_pipes/truncate.pipe';
+import { ReviewComponent } from './review/review.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import {TruncatePipe} from '../_pipes/truncate.pipe';
       LeafletComponent,
       CardComponent,
       LightCardComponent,
-      CardDetailComponent
+      CardDetailComponent,
+      ReviewComponent
   ],
   exports: [
       AlgoliaPlacesComponent,
