@@ -17,6 +17,17 @@ class AssociationRouter extends AbstractRouter {
     this.router.delete('/:association_id/reviews', this.deleteReview.bind(this));
   }
 
+  protected getById(req: IRequest, res: Response, next: NextFunction) {
+
+    AssociationModel.findById(req.params.id).populate('reviews.user').exec((err: mongoose.Error, object: mongoose.Document) => {
+      if (err)
+        ErrorHelper.handleMongooseError(err, res, req);
+      else
+        res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: object });
+    });
+
+  }
+
   protected create(req: IRequest, res: Response, next: NextFunction) {
 
     if (_.isEmpty(req.body)) return ErrorHelper.handleError(HTTPCode.error.client.BAD_REQUEST, 'Request body is empty', res);
