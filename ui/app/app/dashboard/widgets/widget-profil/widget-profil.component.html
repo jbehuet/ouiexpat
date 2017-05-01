@@ -15,18 +15,24 @@
     </div>
   </div>
   <div class="content">
-    <ul>
-      <li *ngFor="let history of user.history | reverse" class="row">
-        <div class="col s2">
-          <span [ngClass]="['type', 'valign-wrapper', history.type]">
+    <ul class="list-widget-profil">
+      <li *ngFor="let history of user.history | reverse" class="row list-widget-profil-item">
+       <span class="in-widget-profil" [ngClass]="['type', 'valign-wrapper', history.type]">
             <i class="icon"
-              [class.icon-user]="(history.type === 'account')"
-              [class.icon-star]="(history.type === 'favorites')"
-              [class.icon-heart]="(history.type === 'likes')"
-              [class.icon-location]="(history.type === 'expatriation')"></i>
-          </span>
+               [class.icon-user]="(history.type === 'account')"
+               [class.icon-star]="(history.type === 'favorites')"
+               [class.icon-heart]="(history.type === 'likes')"
+               [class.icon-location]="(history.type === 'expatriation')"></i>
+        </span>
+
+        <!-- TODO Connect date and hour activity -->
+        <div class="col s12 date-widget-profil">
+          <div class="row force-space-bottom-3">
+            <div class="col s6">00/00/00</div>
+            <div class="col s6 text-right">00:00</div>
+          </div>
         </div>
-        <div class="col s10">{{history.details}}</div>
+        <div class="col s12 text-widget-profil">{{history.details}}</div>
       </li>
     </ul>
   </div>
