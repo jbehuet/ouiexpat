@@ -1,3 +1,14 @@
-<p>
-  blog-detail works!
-</p>
+<div class="row">
+    <div class="col s4">
+        <oe-light-card [entity]="blog"
+                       (addOrRemoveToFavChange)="addOrRemoveToFav($event)"
+                       (isFavChange)="isFav($event)"
+                       (isLikedChange)="isLiked($event)"
+                       (likeOrDislikeChange)="likeOrDislike($event)"
+                       (visitChange)="visit($event)">
+        </oe-light-card>
+    </div>
+    <div class="col s8">
+        <oe-card-detail [entity]="blog"></oe-card-detail>
+    </div>
+</div>
