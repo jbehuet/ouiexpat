@@ -1,0 +1,27 @@
+.ouiexpat-review-icon {
+  height: 100px;
+  width: 100px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("../../../assets/favicon/favicon.png") ;
+  border-radius: 100px;
+  border: solid 1px #aaa;
+
+}
+
+.userReview {
+  height: 100px;
+  border-radius: 3px;
+  border-color: #d8e0e5;
+}
+
+.card {
+  min-height: calc(100vh - 100px);
+}
+
+.bottom-line {
+  border-bottom: solid 1px #d8e0e5;
+  padding-bottom: 20px;
+}
+
+//todo change color

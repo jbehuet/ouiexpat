@@ -1,4 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {User} from '../../_interfaces/user.interface';
+import {AuthenticationService} from '../../_services/authentication.service';
 
 @Component({
   selector: 'oe-card-detail',
@@ -8,10 +10,12 @@ import {Component, Input, OnInit} from '@angular/core';
 export class CardDetailComponent implements OnInit {
 
   @Input() entity: any;
+    private currentUser: User;
 
-  constructor() { }
+  constructor(private _authenticationService: AuthenticationService) { }
 
   ngOnInit() {
+      this.currentUser = this._authenticationService.user;
   }
 
 }
