@@ -50,6 +50,11 @@ h4 {
     }
 }
 
+a {
+    @extend %transition;
+    color: $blue-expat;
+}
+
 // ================ //
 // LINK STYLES UTILS (start)
 // ================ //

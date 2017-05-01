@@ -1,0 +1,36 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the FORM effects.
+// -----------------------------------------------------------------------------
+
+// ================ //
+// CUSTOM CHECKBOX (start)
+// ================ //
+
+input[type="checkbox"]:checked + label:before {
+  border-right: 2px solid $green-expat;
+  border-bottom: 2px solid $green-expat;
+}
+
+input[type="checkbox"]:checked + label { color: $green-expat;}
+
+// ================ //
+
+// ================ //
+// CUSTOM CHECKBOX (end)
+// ================ //
+
+// ================ //
+// CUSTOM RADIO (start)
+// ================ //
+
+[type="radio"]:checked + label:after,
+[type="radio"].with-gap:checked + label:after {
+  background-color: $green-expat;
+  border-color: $green-expat;
+}
+
+input[type="radio"]:checked + label { color: $green-expat;}
+
+// ================ //
+// CUSTOM RADIO (end)
+// ================ //

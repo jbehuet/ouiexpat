@@ -3,14 +3,33 @@
     border-bottom: 1px solid $grey-light;
         
     .tab {
+        position: relative;
+
         .active {
             background: $linear-gradient;
-            border-radius: 3px;
+            border-radius: 3px 3px 0 0;
             border-bottom: none;
+
+            &:before {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 1px;
+                background: $linear-gradient;
+                content: '';
+            }
         }
 
-        a.active {
-            color: $white;
+        a {
+            &.active { color: $white;}
+
+            i {
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: 10px;
+                font-size: 18px;
+            }
         }
     }
 

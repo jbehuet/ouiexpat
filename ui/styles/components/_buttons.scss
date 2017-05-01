@@ -54,7 +54,127 @@
     }
 }
 
-    // ================ //
+// ================ //
+// Sepcials Buttons
+// ================ //
+
+.btn-fav {
+    display: block;
+    position: relative;
+    height: 38px;
+    width: 38px;
+    border: 2px solid white;
+    border-radius: 100%;
+    cursor: pointer;
+    @extend %transition;
+
+    &:hover, &:focus, &:active {
+        @extend %transition;
+        background-color: rgba(256, 256, 256, 0.2);
+    }
+
+    i {
+        position: absolute;
+        top: 54%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 20px;
+
+        &:before {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    &.active  {
+        background-color: $yellow-expat;
+        border-color: $yellow-expat;
+        color: white;
+
+        .animation-fav {
+            position: absolute;
+            display: block;
+            top: 50%;
+            left: 50%;
+            transform: scale(1.01) translate(-49%,-50%);
+            height: 60px;
+            width: 60px;
+            background-image : url($img-path + "animation-fav.png");
+            background-position: left;
+            background-size:1090%;
+            z-index: 0;
+            animation: animeFavBtn .4s steps(11) 1;
+            opacity: 0;
+        }
+    }
+}
+
+.btn-like {
+    display: block;
+    position: relative;
+    height: 38px;
+    width: 38px;
+    cursor: pointer;
+    opacity: 0.5;
+    @extend %transition;
+
+    &:hover, &:focus, &:active {
+        @extend %transition;
+        opacity: 1;
+    }
+
+    i {
+        position: absolute;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 22px;
+
+        &:before {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    &.liked  {
+        opacity: 1;
+        color: $blue-expat;
+
+        &:hover, &:focus, &:active {
+
+            i { color: $blue-expat;}
+        }
+
+        .animation-like {
+            position: absolute;
+            display: block;
+            top: 50%;
+            left: 50%;
+            transform: scale(1.01) translate(-49%,-50%);
+            height: 60px;
+            width: 60px;
+            background-image : url($img-path + "animation-like.png");
+            background-position: left;
+            background-size:1090%;
+            z-index: 0;
+            animation: animeFavBtn .4s steps(11) 1;
+            opacity: 0;
+        }
+    }
+
+}
+
+@keyframes animeFavBtn {
+    from {background-position:left; opacity: 0}
+    50% { opacity: 1;}
+    to { background-position:right; opacity: 0}
+}
+
+// ================ //
 // Utils Buttons Styles
 // ================ //
 

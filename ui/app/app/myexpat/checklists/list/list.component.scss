@@ -1,11 +1,101 @@
 @import '../../../../../styles/utils/variables';
+@import '../../../../../styles/utils/placeholders';
 
 .list-title {
-    height: 76px;
-    line-height: 76px;
+    height: 60px;
+    line-height: 60px;
     color: $white;
     background: $linear-gradient;
     margin: 0 -14px;
     padding: 0 14px;
     font-size: 18px;
+    border-radius: 3px 3px 0 0;
+
+    i {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 5px;
+    }
+}
+
+.list {
+
+    ul {
+
+        li {
+            &:last-child {
+                .collapsible-header {
+                  border-bottom: 0;
+                }
+            }
+        }
+    }
+
+    .collapsible-header {
+        position: relative;
+        padding: 5px 0;
+        border-bottom: 1px solid $line-color;
+
+
+        &.active {
+            .icon:before {
+                content: '\59';
+            }
+        }
+
+        &:hover, &:focus, &:active {
+            label {
+                @extend %transition;
+                opacity: 1;
+            }
+        }
+
+        input[type="checkbox"]:checked + label { color: $green;}
+
+        label {
+            color: $text-color;
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 22px;
+            width: 100%;
+            opacity: 0.8;
+        }
+
+        i {
+            position: absolute;
+            right: -15px;
+            top: 58%;
+            transform: translate(-50%, -50%);
+            margin: 0;
+            opacity: 0.5;
+            @extend %transition;
+
+            &:hover, &:focus, &:active {
+                @extend %transition;
+                opacity: 1;
+            }
+        }
+    }
+
+    .collapsible-body {
+        position: relative;
+        padding-left: 30px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        border-radius: 3px;
+        overflow: hidden;
+
+        &:after {
+            font-family: ouiexpat;
+            position: absolute;
+            bottom: 0;
+            right: 5px;
+            height: 44px;
+            width: 44px;
+            display: block;
+            content: '\E00E';
+            font-size: 44px;
+            color: lighten($grey-light, 15%);
+        }
+    }
 }
