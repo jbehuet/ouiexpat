@@ -77,7 +77,7 @@ const _schema = new mongoose.Schema({
 
 let UserModel = mongoose.model<IUser>('user', _schema);
 
-UserModel.prototype.saveToHistory = function(_id: String, history: HistoryFormat): Promise<any> {
+UserModel.saveToHistory = function(_id: String, history: HistoryFormat): Promise<any> {
   return new Promise((resolve, reject) => {
     UserModel.findOneAndUpdate({ _id: _id }, { $push: { 'history': history } }, { new: true }, (err, user) => {
       if (err)
