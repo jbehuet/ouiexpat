@@ -62,6 +62,13 @@ const _schema = new mongoose.Schema({
     }],
     jobs: []
   },
+  history:[
+    {
+      type: String,
+      date: Date,
+      details: String
+    }
+  ],
   reset_token: String
 }, {
     timestamps: true
