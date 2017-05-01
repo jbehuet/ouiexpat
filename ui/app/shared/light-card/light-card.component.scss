@@ -1,0 +1,14 @@
+@import '../../../styles/utils/variables';
+
+.card-content {
+  min-height: 194px;
+}
+
+.card-image {
+  min-height: 200px;
+}
+
+.card-title {
+  background-image: url("../../../assets/img/shadown-thumbnail.png");
+  background-repeat: repeat-x;
+}
