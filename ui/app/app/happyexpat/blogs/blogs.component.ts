@@ -47,7 +47,6 @@ export class BlogsComponent implements OnInit {
     }
 
     isLiked(blog) {
-        console.log(this.currentUser)
         return !!blog.likes.find(e => e === this.currentUser._id);
     }
 
