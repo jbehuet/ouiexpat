@@ -37,16 +37,37 @@
   .content {
     padding: 24px;
 
-
-    li{
+    li {
       line-height: 44px;
     }
-  }
-}
 
-.badge {
-  border-radius: 50%;
-  height: 44px;
-  width: 44px;
-  background: $linear-gradient;
+    .type {
+      border-radius: 50%;
+      height: 44px;
+      width: 44px;
+      color: $white;
+
+      i {
+        margin-left: 9px;
+        margin-top: 6px;
+        font-size: 24px;
+      }
+
+      &.account {
+        background: $linear-gradient;
+      }
+
+      &.expatriation {
+        background: $green;
+      }
+
+      &.favorites {
+        background: $yellow;
+      }
+
+      &.likes {
+        background: $blue;
+      }
+    }
+  }
 }

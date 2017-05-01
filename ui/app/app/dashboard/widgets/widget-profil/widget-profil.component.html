@@ -17,7 +17,15 @@
   <div class="content">
     <ul>
       <li *ngFor="let history of user.history | reverse" class="row">
-        <div class="col s2"><span class="badge vert-align-middle"><i class="icon icon-user"></i></span></div>
+        <div class="col s2">
+          <span [ngClass]="['type', 'valign-wrapper', history.type]">
+            <i class="icon"
+              [class.icon-user]="(history.type === 'account')"
+              [class.icon-star]="(history.type === 'favorites')"
+              [class.icon-heart]="(history.type === 'likes')"
+              [class.icon-location]="(history.type === 'expatriation')"></i>
+          </span>
+        </div>
         <div class="col s10">{{history.details}}</div>
       </li>
     </ul>
