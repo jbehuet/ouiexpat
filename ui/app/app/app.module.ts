@@ -38,7 +38,6 @@ import { ProfilPasswordComponent } from './profil/profil-password/profil-passwor
 
 import { FaqComponent } from './faq/faq.component';
 import { BlogDetailComponent } from './happyexpat/blogs/blog-detail/blog-detail.component';
-import { HappuexpatTabsComponent } from './happyexpat/happuexpat-tabs/happuexpat-tabs.component';
 import { HappyexpatTabsComponent } from './happyexpat/happyexpat-tabs/happyexpat-tabs.component';
 
 @NgModule({
@@ -88,7 +87,6 @@ import { HappyexpatTabsComponent } from './happyexpat/happyexpat-tabs/happyexpat
         ProfilComponent, ProfilMenuComponent, ProfilDetailsComponent, ProfilPasswordComponent,
         FaqComponent,
         BlogDetailComponent,
-        HappuexpatTabsComponent,
         HappyexpatTabsComponent
     ]
 })
