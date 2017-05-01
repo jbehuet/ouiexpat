@@ -6,8 +6,8 @@ interface IAssociation extends mongoose.Document {
     _id: mongoose.Types.ObjectId;
     name: string;
     email: string;
-    logo: string;
-    website: string;
+    photo: string;
+    link: string;
     phone: PhoneFormat;
     details: string;
     services: Array<string>;

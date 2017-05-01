@@ -12,8 +12,8 @@ const _schema = new mongoose.Schema({
             return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
         }, 'Please use a valid email address'],
     },
-    logo: String,
-    website: String,
+    photo: String,
+    link: String,
     phone: {
         number: {
             type: String,
