@@ -69,8 +69,6 @@ class BlogRouter extends AbstractRouter {
 
   private like(req: IRequest, res: Response, next: NextFunction) {
 
-
-
     BlogModel.findOne({ _id: req.params.blog_id }).exec((err: mongoose.Error, blog: BlogFormat) => {
       if (err)
         ErrorHelper.handleMongooseError(err, res, req);

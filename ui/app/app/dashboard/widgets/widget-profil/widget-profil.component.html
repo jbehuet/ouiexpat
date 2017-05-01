@@ -1,20 +1,25 @@
 <div class="form-card widget">
-    <div class="zone-infos-profil">
-        <div class="row no-margin">
-            <div class="col s4 offset-s4 avatar">
-                <img [src]="user.photo" alt="Profil" height="85" class="circle">
-            </div>
+  <div class="zone-infos-profil">
+    <div class="row no-margin">
+      <div class="col s4 offset-s4 avatar">
+        <img [src]="user.photo" alt="Profil" height="85" class="circle">
+      </div>
 
-            <div class="col s4 right-align">
-                <a routerLink="/profil" class="icon link large white-text icon-gear"></a>
-            </div>
-        </div>
-        <div class="row no-margin">
-            <span class="col s12 center-align white-text user-name">{{ user.lastname }} {{ user.firstname }}</span>
-            <h3 class="col s12 center-align white-text title-widget">Activités</h3>
-        </div>
+      <div class="col s4 right-align">
+        <a routerLink="/profil" class="icon link large white-text icon-gear"></a>
+      </div>
     </div>
-    <div class="content">
-
+    <div class="row no-margin">
+      <span class="col s12 center-align white-text user-name">{{ user.lastname }} {{ user.firstname }}</span>
+      <h3 class="col s12 center-align white-text title-widget">Activités</h3>
     </div>
+  </div>
+  <div class="content">
+    <ul>
+      <li *ngFor="let history of user.history | reverse" class="row">
+        <div class="col s2"><span class="badge vert-align-middle"><i class="icon icon-user"></i></span></div>
+        <div class="col s10">{{history.details}}</div>
+      </li>
+    </ul>
+  </div>
 </div>

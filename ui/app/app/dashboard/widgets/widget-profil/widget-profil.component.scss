@@ -2,36 +2,51 @@
 @import '../../../../../styles/utils/variables';
 
 .widget {
-    padding: 0;
-    min-height: 370px;
-    height: calc(100vh - 130px);
-    overflow: hidden;
+  padding: 0;
+  min-height: 370px;
+  height: calc(100vh - 130px);
+  overflow: hidden;
 
-    .zone-infos-profil {
-        background-origin: border-box;
-        background-color: $linear-gradient;
-        background-image: url("/assets/img/bg-widget-profil.jpg");
-        background-position: center;
-        background-size: cover;
-        padding: 10px;
+  .zone-infos-profil {
+    background-origin: border-box;
+    background-color: $linear-gradient;
+    background-image: url("/assets/img/bg-widget-profil.jpg");
+    background-position: center;
+    background-size: cover;
+    padding: 10px;
 
-        .avatar { margin-top: 10px;}
-
-        .link {
-            position: relative;
-            right: -8px;
-        }
-
-        .user-name {
-            margin: 5px 0;
-        }
-
-        .title-widget {
-            font-size: 20px;
-            margin: 10px 0;
-        }
+    .avatar {
+      margin-top: 10px;
     }
-    .content{
-      padding: 24px;
+
+    .link {
+      position: relative;
+      right: -8px;
     }
+
+    .user-name {
+      margin: 5px 0;
+    }
+
+    .title-widget {
+      font-size: 20px;
+      margin: 10px 0;
+    }
+  }
+
+  .content {
+    padding: 24px;
+
+
+    li{
+      line-height: 44px;
+    }
+  }
+}
+
+.badge {
+  border-radius: 50%;
+  height: 44px;
+  width: 44px;
+  background: $linear-gradient;
 }

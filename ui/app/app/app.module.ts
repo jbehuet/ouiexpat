@@ -8,6 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AuthGuard } from '../_guards/auth.guard';
 
 import { DateFilterPipe } from '../_pipes/date.pipe';
+import { ReversePipe } from '../_pipes/reverse.pipe';
 
 import { AppComponent } from './app.component';
 
@@ -76,17 +77,16 @@ import { HappyexpatTabsComponent } from './happyexpat/happyexpat-tabs/happyexpat
         ])
     ],
     declarations: [
-        DateFilterPipe,
+        DateFilterPipe, ReversePipe,
         AppComponent, NavbarComponent, FooterComponent, DashboardComponent,
         WidgetProfilComponent, WidgetExpatriationsComponent, WidgetActusComponent,
         WidgetFavorisComponent,
         MyexpatComponent, ChecklistsComponent, ListComponent,
-        HappyexpatComponent, BlogsComponent, AssociationsComponent,
+        HappyexpatTabsComponent, HappyexpatComponent, BlogsComponent, BlogDetailComponent,
+        AssociationsComponent,
         ExpatriationsComponent,
         ProfilComponent, ProfilMenuComponent, ProfilDetailsComponent, ProfilPasswordComponent,
-        FaqComponent,
-        BlogDetailComponent,
-        HappyexpatTabsComponent
+        FaqComponent
     ]
 })
 export class AppModule { }
