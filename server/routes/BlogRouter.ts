@@ -140,8 +140,10 @@ class BlogRouter extends AbstractRouter {
           review.review = req.body.review;
           review.rate = req.body.rate;
 
-          if (isNew)
+          if (isNew) {
+            review.date = new Date();
             blog.reviews.push(review);
+          }
 
           blog.save();
           res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: blog });
