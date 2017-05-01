@@ -28,7 +28,7 @@ export class BlogsComponent implements OnInit {
     }
 
     isFav(blog){
-      
+      return true;
     }
 
     isLiked(blog) {
@@ -51,7 +51,7 @@ export class BlogsComponent implements OnInit {
         }
     }
 
-    visite(blog) {
+    seeDetail(blog) {
         if (!(/^https?:\/\//).test(blog.link))
             blog.link = 'http://' + blog.link
         window.open(blog.link);
