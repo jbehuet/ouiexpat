@@ -3,6 +3,7 @@ import { BlogService } from '../../../_services/blog.service';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { User } from '../../../_interfaces/user.interface';
 import { ToastHelper } from '../../../_helpers/toast.helper';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'oe-blogs',
@@ -15,7 +16,9 @@ export class BlogsComponent implements OnInit {
     private currentUser: User;
     public blogs: Array<any> = [];
 
-    constructor(private _blogService: BlogService, private _authenticationService: AuthenticationService) { }
+    constructor(private _blogService: BlogService,
+                private _authenticationService: AuthenticationService,
+                private router: Router) { }
 
     ngOnInit() {
         this.currentUser = this._authenticationService.user;
@@ -24,14 +27,27 @@ export class BlogsComponent implements OnInit {
     }
 
     addOrRemoveToFav(blog){
-
+        // if (!!blog.favorites.blogs.find(e => e === this.currentUser._id)) {
+        //     this._blogService.removeFavorite(blog).subscribe(blogs => {
+        //         this.blogs = blogs;
+        //     }, (err) => {
+        //         ToastHelper.displayError(err);
+        //     })
+        // } else {
+        //     this._blogService.addFavorite(blog).subscribe(blogs => {
+        //         this.blogs = blogs;
+        //     }, (err) => {
+        //         ToastHelper.displayError(err);
+        //     })
+        // }
     }
 
     isFav(blog){
-      return true;
+        return !!this.currentUser.favorites.blogs.find(e => e === this.currentUser._id);
     }
 
     isLiked(blog) {
+        console.log(this.currentUser)
         return !!blog.likes.find(e => e === this.currentUser._id);
     }
 
@@ -52,9 +68,7 @@ export class BlogsComponent implements OnInit {
     }
 
     seeDetail(blog) {
-        if (!(/^https?:\/\//).test(blog.link))
-            blog.link = 'http://' + blog.link
-        window.open(blog.link);
+        this.router.navigate(['happyexpat', 'blog', 'detail', blog._id])
     }
 
     private _loadBlogs() {
