@@ -71,7 +71,7 @@ import { FaqComponent } from './faq/faq.component';
         ])
     ],
     declarations: [
-        DateFilterPipe, TruncatePipe,
+        DateFilterPipe,
         AppComponent, NavbarComponent, FooterComponent, DashboardComponent,
         WidgetProfilComponent, WidgetExpatriationsComponent, WidgetActusComponent,
         WidgetFavorisComponent,
