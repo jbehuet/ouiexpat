@@ -1,6 +1,8 @@
 # MacOS
 .DS_Store
 
+.idea
+
 # Logs
 logs
 *.log
@@ -10,3 +12,4 @@ node_modules
 
 # Build directory (js)
 dist/
+.idea/
