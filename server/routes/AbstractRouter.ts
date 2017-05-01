@@ -98,7 +98,7 @@ class AbstractRouter {
 
     protected upload(req: IRequest, res: Response, next: NextFunction) {
         let form = new formidable.IncomingForm();
-        const uploadPath = path.join(__dirname, '../public/img/');
+        const uploadPath = path.join(__dirname, '../public/uploads/');
         form.uploadDir = uploadPath;
 
         if (!fs.existsSync(uploadPath)) fs.mkdirSync(uploadPath);

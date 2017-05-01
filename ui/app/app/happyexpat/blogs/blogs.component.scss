@@ -1,15 +1,26 @@
 @import '../../../../styles/utils/variables';
 
+.btn-like {
+    cursor: pointer;
 
-.btn-like{
-  cursor: pointer;
+    &:hover {
+        color: $blue;
+    }
 
-  &:hover{
-    color:$blue;
-  }
+    &.liked {
+        color: $red;
+    }
+}
 
-  &.liked {
-    color:$red;
-  }
+.card-content {
+    min-height: 194px;
+}
 
+.card-image {
+    min-height: 200px;
+}
+
+.card-title {
+    background-image: url("/assets/img/shadown-thumbnail.png");
+    background-repeat: repeat-x;
 }
