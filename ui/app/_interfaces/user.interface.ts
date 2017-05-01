@@ -1,4 +1,5 @@
 
+import {Favorites} from './favorites.interface';
 export interface User {
     _id?: String;
     firstname: String;
@@ -8,7 +9,8 @@ export interface User {
     photo: String;
     address?: any;
     administrator?: boolean;
+    favorites: Favorites;
     phone?: any;
     birthday?: Date;
-    expeditions?: Array<any>;
+    history?: any;
 }
