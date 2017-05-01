@@ -1,9 +1,16 @@
 @import "../auth.component.scss";
 
 .btn-white {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .terms {
-    font-size: 10px;
+  font-size: 10px;
+}
+
+.tems-content {
+  max-height: 440px;
+  font-size: 10px;
+  overflow-y: auto;
+  text-align: justify;
 }
