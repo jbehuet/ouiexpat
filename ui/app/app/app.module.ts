@@ -37,6 +37,9 @@ import { ProfilDetailsComponent } from './profil/profil-details/profil-details.c
 import { ProfilPasswordComponent } from './profil/profil-password/profil-password.component';
 
 import { FaqComponent } from './faq/faq.component';
+import { BlogDetailComponent } from './happyexpat/blogs/blog-detail/blog-detail.component';
+import { HappuexpatTabsComponent } from './happyexpat/happuexpat-tabs/happuexpat-tabs.component';
+import { HappyexpatTabsComponent } from './happyexpat/happyexpat-tabs/happyexpat-tabs.component';
 
 @NgModule({
     imports: [
@@ -53,7 +56,11 @@ import { FaqComponent } from './faq/faq.component';
                     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
                     { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
                     { path: 'myexpat', component: MyexpatComponent, canActivate: [AuthGuard] },
-                    { path: 'happyexpat', component: HappyexpatComponent, canActivate: [AuthGuard] },
+                    { path: 'happyexpat', component: HappyexpatComponent, canActivate: [AuthGuard],
+                        children: [
+                            { path: '', component: HappyexpatTabsComponent, canActivate: [AuthGuard] },
+                            { path: 'blog/detail/:id', component: BlogDetailComponent, canActivate: [AuthGuard] }
+                        ]},
                     { path: 'expatriations', component: ExpatriationsComponent, canActivate: [AuthGuard] },
                     {
                         path: 'profil',
@@ -79,7 +86,10 @@ import { FaqComponent } from './faq/faq.component';
         HappyexpatComponent, BlogsComponent, AssociationsComponent,
         ExpatriationsComponent,
         ProfilComponent, ProfilMenuComponent, ProfilDetailsComponent, ProfilPasswordComponent,
-        FaqComponent
+        FaqComponent,
+        BlogDetailComponent,
+        HappuexpatTabsComponent,
+        HappyexpatTabsComponent
     ]
 })
 export class AppModule { }

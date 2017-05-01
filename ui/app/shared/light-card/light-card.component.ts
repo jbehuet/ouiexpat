@@ -12,4 +12,10 @@ export class LightCardComponent implements OnInit {
   ngOnInit() {
   }
 
+  visit(entity) {
+    if (!(/^https?:\/\//).test(entity.link))
+      entity.link = 'http://' + entity.link
+    window.open(entity.link);
+  }
+
 }
