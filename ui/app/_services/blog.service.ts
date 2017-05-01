@@ -2,11 +2,13 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
+import {Blog} from '../_interfaces/blog.interface';
 
 @Injectable()
 export class BlogService {
 
-    public blogs: Array<any> = [];
+    public blogs: Array<Blog> = [];
+    public blog: Blog;
 
     constructor(private _http: Http) {
     }
@@ -17,6 +19,18 @@ export class BlogService {
             .map(res => {
                 this.blogs = res.data;
                 return this.blogs;
+            })
+            .catch((error: any) => {
+                return Observable.throw((error ? error.statusText : 'Server error'))
+            });
+    }
+
+    getById(id:string): Observable<any> {
+        return this._http.get('/api/v1/blogs/'+ id)
+            .map(res => res.json())
+            .map(res => {
+                this.blog = res.data;
+                return this.blog;
             })
             .catch((error: any) => {
                 return Observable.throw((error ? error.statusText : 'Server error'))
