@@ -17,7 +17,7 @@ export default class UserFormat {
     phone: PhoneFormat;
     birthday: Date;
     favorites: FavoritesFormat;
-    history: HistoryFormat;
+    history: Array<HistoryFormat>;
     reset_token: string;
     createdAt: Date;
     updatedAt: Date;

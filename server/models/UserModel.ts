@@ -1,5 +1,6 @@
 import * as mongoose from 'mongoose';
 import IUser from '../interfaces/IUser';
+import HistoryFormat from '../formats/HistoryFormat';
 
 const _schema = new mongoose.Schema({
   firstname: String,
@@ -62,10 +63,10 @@ const _schema = new mongoose.Schema({
     }],
     jobs: []
   },
-  history:[
+  history: [
     {
-      type: String,
-      date: Date,
+      type: { type: String },
+      date: { type: Date, default: Date.now },
       details: String
     }
   ],
@@ -74,6 +75,17 @@ const _schema = new mongoose.Schema({
     timestamps: true
   });
 
-const UserModel = mongoose.model<IUser>('user', _schema);
+let UserModel = mongoose.model<IUser>('user', _schema);
+
+UserModel.prototype.saveToHistory = function(_id: String, history: HistoryFormat): Promise<any> {
+  return new Promise((resolve, reject) => {
+    UserModel.findOneAndUpdate({ _id: _id }, { $push: { 'history': history } }, { new: true }, (err, user) => {
+      if (err)
+        reject(err);
+      else
+        resolve(user);
+    });
+  });
+}
 
 export default UserModel;

@@ -2,6 +2,7 @@ import * as mongoose from 'mongoose';
 import * as _ from 'lodash';
 import {Router, Response, NextFunction} from 'express';
 import HTTPCode from '../constants/HttpCodeConstant';
+import HistoryType from '../constants/HistoryTypeConstant';
 import IRequest from '../interfaces/IRequest';
 import AbstractRouter from './AbstractRouter';
 import ErrorHelper from '../helpers/ErrorHelper';
@@ -10,6 +11,7 @@ import UserModel from '../models/UserModel';
 
 import BlogFormat from '../formats/BlogFormat';
 import UserFormat from '../formats/UserFormat';
+import HistoryFormat from '../formats/HistoryFormat';
 import ReviewFormat from '../formats/ReviewFormat';
 
 class BlogRouter extends AbstractRouter {
@@ -67,6 +69,8 @@ class BlogRouter extends AbstractRouter {
 
   private like(req: IRequest, res: Response, next: NextFunction) {
 
+
+
     BlogModel.findOne({ _id: req.params.blog_id }).exec((err: mongoose.Error, blog: BlogFormat) => {
       if (err)
         ErrorHelper.handleMongooseError(err, res, req);
@@ -77,7 +81,15 @@ class BlogRouter extends AbstractRouter {
         if (!blog.likes.find(l => l === req.authenticatedUser._id)) {
           blog.likes.push(req.authenticatedUser._id);
           blog.save();
-          res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: blog });
+
+          const history = <HistoryFormat>{ type: HistoryType.LIKES, details: blog.name + " liké !" };
+
+          UserModel.saveToHistory(req.authenticatedUser._id, history).then((user) => {
+            res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: blog });
+          }).catch(err => {
+            ErrorHelper.handleMongooseError(err, res, req);
+          })
+
         } else {
           res.status(HTTPCode.error.client.CONFLICT).json({ status: HTTPCode.error.client.CONFLICT });
         }
@@ -99,7 +111,14 @@ class BlogRouter extends AbstractRouter {
         } else {
           blog.likes = blog.likes.filter(l => l !== req.authenticatedUser._id);
           blog.save();
-          res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: blog });
+
+          const history = <HistoryFormat>{ type: HistoryType.LIKES, details: blog.name + " disliké !" };
+
+          UserModel.saveToHistory(req.authenticatedUser._id, history).then((user) => {
+            res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: blog });
+          }).catch(err => {
+            ErrorHelper.handleMongooseError(err, res, req);
+          })
         }
       }
     })
@@ -160,8 +179,24 @@ class BlogRouter extends AbstractRouter {
           ErrorHelper.handleMongooseError(err, res, req);
         else if (!user)
           res.status(HTTPCode.error.client.NOT_FOUND).json({ status: HTTPCode.error.client.NOT_FOUND });
-        else
-          res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user });
+        else {
+
+          BlogModel.findOne({ _id: req.params.blog_id }, (err: mongoose.Error, blog: BlogFormat) => {
+
+            if (err)
+              ErrorHelper.handleMongooseError(err, res, req);
+            else {
+              const history = <HistoryFormat>{ type: HistoryType.FAVORITES, details: blog.name + " ajouté aux favoris !" };
+
+              UserModel.saveToHistory(req.authenticatedUser._id, history).then((user) => {
+                res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user });
+              }).catch(err => {
+                ErrorHelper.handleMongooseError(err, res, req);
+              })
+            }
+          })
+
+        }
       });
   }
 
@@ -173,8 +208,22 @@ class BlogRouter extends AbstractRouter {
           ErrorHelper.handleMongooseError(err, res, req);
         else if (!user)
           res.status(HTTPCode.error.client.NOT_FOUND).json({ status: HTTPCode.error.client.NOT_FOUND });
-        else
-          res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user });
+        else {
+          BlogModel.findOne({ _id: req.params.blog_id }, (err: mongoose.Error, blog: BlogFormat) => {
+
+            if (err)
+              ErrorHelper.handleMongooseError(err, res, req);
+            else {
+              const history = <HistoryFormat>{ type: HistoryType.FAVORITES, details: blog.name + " supprimé des favoris !" };
+
+              UserModel.saveToHistory(req.authenticatedUser._id, history).then((user) => {
+                res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user });
+              }).catch(err => {
+                ErrorHelper.handleMongooseError(err, res, req);
+              })
+            }
+          })
+        }
       });
   }
 
