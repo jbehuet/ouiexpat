@@ -1,5 +1,5 @@
-<div class="form-card widget">
-    <div class="row" *ngIf="expatriations?.length > 0">
+<div class="form-card widget force-inner-space-bottom-0 force-inner-space-top-5">
+    <div class="row no-margin" *ngIf="expatriations?.length > 0">
         <div class="col s12 m6 l6 separator full-height">
             <div class="row no-margin-bottom">
                 <div class="col s12">
@@ -34,15 +34,17 @@
                 </div>
             </div>
         </div>
+
         <div class="col s12 m6 l6">
-            <div class="row">
-                <div *ngFor="let list of expatSelected?.lists" class="col s1 offset-s2">
-                    <div class="list-icon">
-                        <div class="no-completed" *ngIf="list.itemsNotCompleted > 0">{{list.itemsNotCompleted}}</div>
-                        <div class="icon" [ngClass]="list.icon"></div>
-                    </div>
-                </div>
+            <div class="row title-list space-top-3">
+                <span class="s12 title">Les besoins</span>
             </div>
+            <ul class="row list-expat-areas">
+                <li *ngFor="let list of expatSelected?.lists" class="list-expat-areas-item">
+                    <div class="no-completed" *ngIf="list.itemsNotCompleted > 0">{{list.itemsNotCompleted}}</div>
+                    <i class="icon" [ngClass]="list.icon"></i>
+                </li>
+            </ul>
         </div>
     </div>
     <div class="row full-height valign-wrapper" *ngIf="expatriations?.length === 0">
