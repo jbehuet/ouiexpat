@@ -41,7 +41,7 @@ class AuthRouter {
         ErrorHelper.handleMongooseError(err, res, req);
       else {
         user.password = undefined;
-        const token = AuthRouter.generateToken(user);
+        const token = AuthRouter.generateToken({_id: user._id, email: user.email, administrator: user.administrator});
         res.status(HTTPCode.success.CREATED).json({
           status: HTTPCode.success.CREATED,
           data: user,
@@ -66,7 +66,8 @@ class AuthRouter {
         ErrorHelper.handleError(HTTPCode.error.client.UNAUTHORIZED, 'Password not match', res);
       else {
         user.password = undefined;
-        const token = jwt.sign(user, CONFIG.jwt.secret, CONFIG.jwt.options);
+        const contentToken = {_id: user._id, email: user.email, administrator: user.administrator};
+        const token = jwt.sign(contentToken, CONFIG.jwt.secret, CONFIG.jwt.options);
         res.json({
           status: HTTPCode.success.OK,
           data: user,

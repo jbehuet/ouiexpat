@@ -35,7 +35,7 @@ class AbstractRouter {
             if (err) {
                 ErrorHelper.handleError(HTTPCode.error.client.UNAUTHORIZED, err.message, res);
             } else {
-                req.authenticatedUser = decoded._doc;
+                req.authenticatedUser = decoded;
                 next();
             }
         });
