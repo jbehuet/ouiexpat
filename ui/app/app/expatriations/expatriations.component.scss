@@ -3,41 +3,41 @@
 @import '../../../styles/utils/mixins';
 
 ul.expatriations {
-    li {
-        height: auto;
-        padding: 10px 5px 8px 5px;
-        border-bottom: 1px solid $line-color;
-        @extend %transition;
+  li {
+    height: auto;
+    padding: 10px 5px 8px;
+    border-bottom: 1px solid $line-color;
+    @extend %transition;
 
-      &:last-child {
-        border-bottom: 0;
-      }
+    &:last-child {
+      border-bottom: 0;
     }
+  }
 
-    li.selected,
-    li.selected:hover {
+  li.selected,
+  li.selected:hover {
+    color: $white;
+    background: $linear-gradient;
+
+    .expat {
+      &:after {
         color: $white;
-        background: $linear-gradient;
-
-      .expat {
-        &:after {
-          color: $white;
-        }
       }
     }
+  }
 
-    li:hover {
-        @extend %transition;
-        background: rgba(212, 214, 223, .2);
-        cursor: pointer;
-    }
+  li:hover {
+    @extend %transition;
+    background: rgba(212, 214, 223, .2);
+    cursor: pointer;
+  }
 }
 
 .container-infos-expat {
   position: relative;
   height: 100%;
   min-height: 200px;
-  background:  linear-gradient(270deg, $yellow 0%, $blue 100%);
+  background: linear-gradient(270deg, $yellow 0%, $blue 100%);
   z-index: 401;
 
   &:before {
@@ -50,12 +50,25 @@ ul.expatriations {
     content: '';
     z-index: 1;
   }
+
+  .destination {
+    padding: 20px;
+    .country {
+      color: $white;
+      font-size: 26px;
+    }
+
+    .name {
+      color: $white;
+      font-size: 16px;
+    }
+  }
 }
 
 .map {
-    padding-left: 0;
-    padding-right: 0;
-    margin-bottom: 25px;
+  padding-left: 0;
+  padding-right: 0;
+  margin-bottom: 25px;
   overflow: hidden;
 }
 
@@ -64,8 +77,7 @@ ul.expatriations {
   overflow: hidden;
 }
 
-
-.expat{
+.expat {
   position: relative;
   padding-right: 20px;
 
@@ -90,7 +102,7 @@ ul.expatriations {
     }
   }
 
-  .info{
+  .info {
     font-family: $capriola;
 
     img {
@@ -106,22 +118,21 @@ ul.expatriations {
   }
 }
 
-.icon-information{
+.icon-information {
   font-size: 24px;
-  span{
+
+  span {
     font-size: 14px;
   }
 }
 
 .icon-gradient:before {
-    background: linear-gradient(301deg, $yellow 0%, $blue 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  background: linear-gradient(301deg, $yellow 0%, $blue 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-
 .form-card {
-
   .illu-no-expat {
     position: relative;
     height: 100%;
@@ -142,5 +153,3 @@ ul.expatriations {
     padding: 0 10%;
   }
 }
-
-

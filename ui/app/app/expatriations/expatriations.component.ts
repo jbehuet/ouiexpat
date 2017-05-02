@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Pickadate } from 'materialize-css';
+import { AuthenticationService } from '../../_services/authentication.service';
 import { ExpatriationService } from '../../_services/expatriation.service';
 import { ToastHelper } from '../../_helpers/toast.helper';
+import { User } from '../../_interfaces/user.interface';
 
 @Component({
     selector: 'oe-expatriations',
@@ -13,12 +15,19 @@ export class ExpatriationsComponent implements OnInit {
     public formDateOptions: Pickadate.DateOptions;
     public expatriations: any = [];
     public currentExpat: any = {};
+    public user: User;
 
-    constructor(private _expatriationService: ExpatriationService) { }
+    constructor(private _expatriationService: ExpatriationService, private _authenticationService: AuthenticationService) { }
 
     ngOnInit() {
         this.expatriations = this._expatriationService.expatriations;
         this._loadExpatriations();
+
+        this.user = this._authenticationService.user;
+        this._authenticationService.userChange.subscribe(
+            user => this.user = user
+        );
+
         this.formDateOptions = this._getDefaultPickaDateOptions();
     }
 
