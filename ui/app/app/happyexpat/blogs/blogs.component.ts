@@ -16,6 +16,7 @@ export class BlogsComponent implements OnInit {
     private currentUser: User;
     public blogs: Array<any> = [];
 
+
     constructor(private _blogService: BlogService,
                 private _authenticationService: AuthenticationService,
                 private router: Router) { }
@@ -24,6 +25,10 @@ export class BlogsComponent implements OnInit {
         this.currentUser = this._authenticationService.user;
         this.blogs = this._blogService.blogs;
         this._loadBlogs();
+
+        this._authenticationService.userChange.subscribe(
+            user => this.currentUser = user
+        );
     }
 
     addOrRemoveToFav(blog){

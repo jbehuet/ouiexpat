@@ -1,9 +1,9 @@
 <div class="row">
     <div class="col xs12 s12 m6 l4" *ngFor="let blog of blogs">
        <oe-card [entity]="blog"
+        [isFav]="isFav(blog)"
+        [isLiked]="isLiked(blog)"
         (addOrRemoveToFavChange)="addOrRemoveToFav($event)"
-        (isFavChange)="isFav($event)"
-        (isLikedChange)="isLiked($event)"
         (likeOrDislikeChange)="likeOrDislike($event)"
         (seeDetailChange)="seeDetail($event)">
        </oe-card>

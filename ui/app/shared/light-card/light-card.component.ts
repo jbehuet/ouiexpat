@@ -8,23 +8,15 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 export class LightCardComponent {
 
     @Input() entity: any;
+    @Input() isFav: boolean;
+    @Input() isLiked: boolean;
     @Output() addOrRemoveToFavChange: EventEmitter<any> = new EventEmitter();
-    @Output() isFavChange: EventEmitter<any> = new EventEmitter();
-    @Output() isLikedChange: EventEmitter<any> = new EventEmitter();
     @Output() likeOrDislikeChange: EventEmitter<any> = new EventEmitter();
     @Output() visitChange: EventEmitter<any> = new EventEmitter();
 
 
     addOrRemoveToFav(entity){
         this.addOrRemoveToFavChange.emit(entity);
-    }
-
-    isFav(entity){
-        this.isFavChange.emit(entity);
-    }
-
-    isLiked(entity) {
-        this.isLikedChange.emit(entity);
     }
 
     likeOrDislike(entity) {

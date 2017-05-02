@@ -16,6 +16,10 @@ export class CardDetailComponent implements OnInit {
 
   ngOnInit() {
       this.currentUser = this._authenticationService.user;
+
+      this._authenticationService.userChange.subscribe(
+          user => this.currentUser = user
+      );
   }
 
 }
