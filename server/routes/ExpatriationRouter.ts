@@ -146,7 +146,7 @@ class ExpatriationRouter extends AbstractRouter {
       if (err)
         ErrorHelper.handleMongooseError(err, res, req);
       else {
-        const history = <HistoryFormat>{ type: HistoryType.EXPATRIATION, details: "Suppression de l'expatriation : " + expatriation.location.name };
+        const history = <HistoryFormat>{ type: HistoryType.DELETE, details: "Suppression de l'expatriation : " + expatriation.location.name };
 
         UserModel.saveToHistory(req.authenticatedUser._id, history).then((user) => {
           ExpatriationModel.findOneAndRemove(query, (err: mongoose.Error) => {

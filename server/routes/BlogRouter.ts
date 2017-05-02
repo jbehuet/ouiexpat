@@ -28,12 +28,12 @@ class BlogRouter extends AbstractRouter {
 
   protected getById(req: IRequest, res: Response, next: NextFunction) {
 
-      BlogModel.findById(req.params.id).populate('reviews.user').exec((err: mongoose.Error, object: mongoose.Document) => {
-          if (err)
-              ErrorHelper.handleMongooseError(err, res, req);
-          else
-              res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: object });
-      });
+    BlogModel.findById(req.params.id).populate('reviews.user').exec((err: mongoose.Error, object: mongoose.Document) => {
+      if (err)
+        ErrorHelper.handleMongooseError(err, res, req);
+      else
+        res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: object });
+    });
 
   }
 
@@ -121,13 +121,7 @@ class BlogRouter extends AbstractRouter {
           blog.likes = blog.likes.filter(l => l !== req.authenticatedUser._id);
           blog.save();
 
-          const history = <HistoryFormat>{ type: HistoryType.LIKES, details: blog.name + " disliké !" };
-
-          UserModel.saveToHistory(req.authenticatedUser._id, history).then((user) => {
-            res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: blog });
-          }).catch(err => {
-            ErrorHelper.handleMongooseError(err, res, req);
-          })
+          res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: blog });
         }
       }
     })
@@ -157,7 +151,18 @@ class BlogRouter extends AbstractRouter {
           }
 
           blog.save();
-          res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: blog });
+          if (isNew) {
+            const history = <HistoryFormat>{ type: HistoryType.MESSAGE, details: "Commentaires ajouté à " + blog.name };
+
+            UserModel.saveToHistory(req.authenticatedUser._id, history).then((user) => {
+              res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: blog });
+            }).catch(err => {
+              ErrorHelper.handleMongooseError(err, res, req);
+            })
+          } else {
+            res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: blog });
+          }
+
         }
       });
 
@@ -177,7 +182,15 @@ class BlogRouter extends AbstractRouter {
 
           blog.reviews = blog.reviews.filter(r => r.user.email !== req.authenticatedUser.email);
           blog.save();
-          res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: blog });
+
+          const history = <HistoryFormat>{ type: HistoryType.DELETE, details: "Commentaires supprimé de " + blog.name };
+
+          UserModel.saveToHistory(req.authenticatedUser._id, history).then((user) => {
+            res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: blog });
+          }).catch(err => {
+            ErrorHelper.handleMongooseError(err, res, req);
+          })
+
         }
       });
   }
@@ -225,13 +238,7 @@ class BlogRouter extends AbstractRouter {
             if (err)
               ErrorHelper.handleMongooseError(err, res, req);
             else {
-              const history = <HistoryFormat>{ type: HistoryType.FAVORITES, details: blog.name + " supprimé des favoris !" };
-
-              UserModel.saveToHistory(req.authenticatedUser._id, history).then((user) => {
-                res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user });
-              }).catch(err => {
-                ErrorHelper.handleMongooseError(err, res, req);
-              })
+              res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user });
             }
           })
         }
