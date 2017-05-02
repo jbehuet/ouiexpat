@@ -1,7 +1,7 @@
-<div *ngIf="empty">
-    <div class="row full-height valign-wrapper">
-        <span class="col s3 offset-s2"><img src="assets/img/checklist.png" alt="checklists"></span>
-        <span class="col s5 valign">
+<div class="col s12" *ngIf="empty">
+    <div class="row full-height valign-wrapper form-card infos-message">
+        <img src="assets/img/checklist.png" alt="checklists">
+        <span class="col s12 valign text-message">
           <div class="row">
             <div class="col s12 center-align">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
           </div>
@@ -15,5 +15,4 @@
     <div class="row">
       <oe-list *ngFor="let list of expatriation?.lists" class="col s12 m6 l4" [list]="list" (listChange)="onListChange()"></oe-list>
     </div>
-
 </div>

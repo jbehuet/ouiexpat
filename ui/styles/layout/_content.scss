@@ -171,6 +171,41 @@
 // MESSAGE EMPTY BLOCK (end)
 // ================ //
 
+// ================ //
+// INFOS MESSAGE (start)
+// ================ //
+
+.infos-message {
+  position: relative;
+
+  img {
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translate(-50%, -38%);
+    height: 90%;
+    max-height: 150px;
+
+    @media screen and (max-width: 600px) {
+     display: none;
+    }
+  }
+
+  .text-message {
+    padding: 35px 15% 35px 40%;
+
+    @media screen and (max-width: 600px) {
+      display: block;
+      padding: 35px 10% 35px 10%;
+    }
+  }
+}
+
+// ================ //
+// INFOS MESSAGE (end)
+// ================ //
+
+
 
 // ================ //
 // OVERIDE SIDE (start)
