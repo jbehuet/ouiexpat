@@ -141,18 +141,27 @@ class ExpatriationRouter extends AbstractRouter {
     else
       query = { _id: req.params.id, owner: req.authenticatedUser._id };
 
-    const history = <HistoryFormat>{ type: HistoryType.EXPATRIATION, details: "Suppression de l'expatriation : " + req.body.location.name };
-    
-    UserModel.saveToHistory(req.authenticatedUser._id, history).then((user) => {
-      ExpatriationModel.findOneAndRemove(query, (err: mongoose.Error) => {
-        if (err)
+
+    ExpatriationModel.findOne(query, (err: mongoose.Error, expatriation: ExpatriationFormat) => {
+      if (err)
+        ErrorHelper.handleMongooseError(err, res, req);
+      else {
+        const history = <HistoryFormat>{ type: HistoryType.EXPATRIATION, details: "Suppression de l'expatriation : " + expatriation.location.name };
+
+        UserModel.saveToHistory(req.authenticatedUser._id, history).then((user) => {
+          ExpatriationModel.findOneAndRemove(query, (err: mongoose.Error) => {
+            if (err)
+              ErrorHelper.handleMongooseError(err, res, req);
+            else
+              res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK });
+          });
+        }).catch(err => {
           ErrorHelper.handleMongooseError(err, res, req);
-        else
-          res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK });
-      });
-    }).catch(err => {
-      ErrorHelper.handleMongooseError(err, res, req);
+        })
+      }
     })
+
+
   }
 
   private findList(list: any, countryCode: string): Promise<any> {
