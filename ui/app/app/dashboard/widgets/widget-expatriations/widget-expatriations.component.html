@@ -8,14 +8,13 @@
                     </select>
                 </div>
             </div>
-            <div class="row force-space-bottom-5">
-                <div class="col s2">
-                    <img *ngIf="expatSelected" [src]="'http://www.geonames.org/flags/x/' + expatSelected?.location.countryCode + '.gif'" height="24" width="34" alt="">
-                </div>
-                <div class="col s7">
+            <div class="row force-space-bottom-5 info-expat">
+                <div class="col s9 location-expat">
+                    <img *ngIf="expatSelected" [src]="'http://www.geonames.org/flags/x/' + expatSelected?.location.countryCode + '.gif'" alt="">
                     <span class="city">{{ expatSelected?.location.name }}</span>
                 </div>
-                <div class="col s3 text-right" *ngIf="expatSelected?.dayDiff > -1">
+
+                <div class="col s3 text-right force-inner-space-right-0" *ngIf="expatSelected?.dayDiff > -1">
                     <span class="label-day-diff">J -</span>
                     <span class="value-day-diff">{{expatSelected?.dayDiff}}</span>
                 </div>

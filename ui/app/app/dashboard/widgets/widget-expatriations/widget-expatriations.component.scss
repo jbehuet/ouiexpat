@@ -57,6 +57,27 @@
     }
 }
 
+.info-expat {
+    padding: 0 11px;
+
+    .location-expat {
+        position: relative;
+        padding-left: 34px;
+        font-size: 12px;
+
+        img {
+            position: absolute;
+            top: 50%;
+            left: 11px;
+            transform: translate(-50%, -50%);
+            display: inline-block;
+            vertical-align: middle;
+            height: 16px;
+            width: 24px;
+        }
+    }
+}
+
 .list-expat-areas {
     margin: 0;
     padding-left: 10px;
