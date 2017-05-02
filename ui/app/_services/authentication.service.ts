@@ -18,7 +18,7 @@ export class AuthenticationService {
   public user: User;
   public userChange: EventEmitter<User> = new EventEmitter();
 
-  constructor(private _http: Http, private _cookieService: CookieService, private _router:Router ) {
+  constructor(private _http: Http, private _cookieService: CookieService, private _router: Router) {
     // set token if saved in local storage
     if (this._cookieService.get(this.COOKIE_KEY)) {
       const session = JSON.parse(this._cookieService.get(this.COOKIE_KEY));
@@ -119,7 +119,7 @@ export class AuthenticationService {
 
   }
 
-  getUserById(id: string): Observable<any> {
+  getUserById(id: String): Observable<any> {
     return this._http.get('/api/v1/users/' + id)
       .map(res => res.json())
       .map(res => {

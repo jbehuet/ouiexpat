@@ -120,7 +120,11 @@
     background: $yellow;
   }
 
-  &.likes {
+  &.likes, &.message {
     background: $blue;
+  }
+
+  &.delete {
+    background: $red;
   }
 }

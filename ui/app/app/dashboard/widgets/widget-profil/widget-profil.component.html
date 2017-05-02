@@ -2,7 +2,7 @@
   <div class="zone-infos-profil">
     <div class="row no-margin">
       <div class="col s4 offset-s4 avatar">
-        <img [src]="user.photo" alt="Profil" height="85" class="circle">
+        <img [src]="user?.photo || ''" alt="Profil" height="85" class="circle">
       </div>
 
       <div class="col s4 right-align">
@@ -10,26 +10,27 @@
       </div>
     </div>
     <div class="row no-margin">
-      <span class="col s12 center-align white-text user-name">{{ user.lastname }} {{ user.firstname }}</span>
+      <span class="col s12 center-align white-text user-name">{{ user?.lastname }} {{ user?.firstname }}</span>
       <h3 class="col s12 center-align white-text title-widget">Activités</h3>
     </div>
   </div>
   <div class="content">
     <ul class="list-widget-profil">
-      <li *ngFor="let history of user.history | reverse" class="row list-widget-profil-item">
+      <li *ngFor="let history of user?.history | reverse" class="row list-widget-profil-item">
        <span class="in-widget-profil" [ngClass]="['type', 'valign-wrapper', history.type]">
             <i class="icon"
                [class.icon-user]="(history.type === 'account')"
                [class.icon-star]="(history.type === 'favorites')"
                [class.icon-heart]="(history.type === 'likes')"
-               [class.icon-location]="(history.type === 'expatriation')"></i>
+               [class.icon-location]="(history.type === 'expatriation')"
+               [class.icon-message]="(history.type === 'message')"
+               [class.icon-trash]="(history.type === 'delete')"></i>
         </span>
 
-        <!-- TODO Connect date and hour activity -->
         <div class="col s12 date-widget-profil">
           <div class="row force-space-bottom-3">
-            <div class="col s6">00/00/00</div>
-            <div class="col s6 text-right">00:00</div>
+            <div class="col s6">{{history.date | date:'dd/MM/yyyy'}}</div>
+            <div class="col s6 text-right">{{history.date | date:'HH:mm'}}</div>
           </div>
         </div>
         <div class="col s12 text-widget-profil">{{history.details}}</div>
