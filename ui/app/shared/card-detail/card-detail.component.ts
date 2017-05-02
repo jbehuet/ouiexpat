@@ -10,7 +10,7 @@ import {AuthenticationService} from '../../_services/authentication.service';
 export class CardDetailComponent implements OnInit {
 
   @Input() entity: any;
-    private currentUser: User;
+  public currentUser: User;
 
   constructor(private _authenticationService: AuthenticationService) { }
 
