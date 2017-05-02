@@ -1,6 +1,18 @@
 .select-wrapper span.caret {
     color: $text-color;
+    display: none;
 }
+
+.select-wrapper:before {
+    font-family: 'ouiexpat';
+    position: absolute;
+    top: 56%;
+    right: -8px;
+    transform: translate(-50%, -50%);
+    content: '\56';
+    font-size: 18px;
+}
+
 
 .select-wrapper input.select-dropdown {
     color: $text-color;
