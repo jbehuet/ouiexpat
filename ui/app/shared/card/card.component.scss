@@ -5,10 +5,19 @@
 }
 
 .card-image {
+  position: relative;
   min-height: 200px;
-}
+  overflow: hidden;
 
-.card-title {
-  background-image: url("../../../assets/img/shadown-thumbnail.png");
-  background-repeat: repeat-x;
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+  }
+
+  &:after {
+    opacity: 0.7;
+  }
 }

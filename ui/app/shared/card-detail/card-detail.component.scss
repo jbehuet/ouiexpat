@@ -1,3 +1,5 @@
+@import '../../../styles/utils/variables';
+
 .ouiexpat-review-icon {
   height: 100px;
   width: 100px;
@@ -5,14 +7,14 @@
   background-repeat: no-repeat;
   background-image: url("../../../assets/favicon/favicon.png") ;
   border-radius: 100px;
-  border: solid 1px #aaa;
+  border: solid 1px $line-color;
 
 }
 
 .userReview {
   height: 100px;
   border-radius: 3px;
-  border-color: #d8e0e5;
+  border-color: $line-color;
 }
 
 .card {
@@ -20,8 +22,6 @@
 }
 
 .bottom-line {
-  border-bottom: solid 1px #d8e0e5;
+  border-bottom: solid 1px $line-color;
   padding-bottom: 20px;
 }
-
-//todo change color

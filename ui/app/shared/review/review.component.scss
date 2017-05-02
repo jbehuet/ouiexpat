@@ -1,6 +1,8 @@
+@import '../../../styles/utils/variables';
+
 .review {
   min-height: 100px;
-  border: solid 1px #d8e0e5;
+  border: solid 1px $line-color;
   margin: 20px 0 0 0;
   border-radius: 3px;
 }
@@ -9,5 +11,3 @@
 .pg-top20 {
   padding-top: 20px;
 }
-
-//todo change color

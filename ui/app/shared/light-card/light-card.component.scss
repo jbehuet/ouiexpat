@@ -5,10 +5,46 @@
 }
 
 .card-image {
+  position: relative;
   min-height: 200px;
+  overflow: hidden;
+
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+  }
+
+  &:after {
+    opacity: 0.7;
+  }
 }
 
-.card-title {
-  background-image: url("../../../assets/img/shadown-thumbnail.png");
-  background-repeat: repeat-x;
+.card-date {
+  i {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+    font-size: 22px;
+  }
+}
+
+
+.large-like {
+  display: inline-block;
+  vertical-align: middle;
+  height: 58px;
+  width: 58px;
+
+  i {
+    font-size: 34px;
+  }
+}
+
+.value-like {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 24px;
 }
