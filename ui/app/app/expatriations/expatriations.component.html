@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="row">
-      <button class="btn btn-validate waves-effect col s12" (click)="createExpatriation()"><i class="material-icons right">add</i>Créer une expatriation</button>
+      <button class="btn btn-validate waves-effect col s12" (click)="createExpatriation()" [disabled]="expatriations.length === 0"><i class="material-icons right">add</i>Créer une expatriation</button>
     </div>
     <div class="row">
       <h4 class="subtitle">A venir(s)</h4>
@@ -59,14 +59,14 @@
   <div class="col s12 m7 l8 offset-m1" *ngIf="expatriations.length === 0">
     <div class="form-card full-height valign-wrapper">
       <span class="illu-no-expat"><img src="assets/img/expat.png" alt="checklists"></span>
-      <span class="col s12 valign text-no-expat">
-              <div class="row">
-                <div class="col s12 center-align">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
-              </div>
-              <div class="row">
-                <a routerLink="/auth/first" class="btn btn-validate waves-effect col s12">Créer mon expatriation</a>
-              </div>
-            </span>
+      <div class="col s12 valign text-no-expat">
+        <div class="row">
+          <div class="col s12 center-align">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+        </div>
+        <div class="row">
+          <a routerLink="/auth/first" class="btn btn-validate waves-effect col s12">Créer mon expatriation</a>
+        </div>
+      </div>
     </div>
   </div>
   <div class="col s12 m7 offset-m1" *ngIf="expatriations.length > 0">
@@ -117,16 +117,25 @@
             <h4 class="subtitle">Vos besoins</h4>
           </div>
         </div>
-        <div class="row no-margin">
-          <div class="col s6">
-            <input name="things" type="checkbox" id="things" value="things" [checked]="isSelectedList('things')" (change)="updateCheckedLists($event)" ngModel/>
-            <label for="things"><i class="icon icon-key"></i> Logement</label>
-          </div>
-          <div class="col s6">
-            <input name="administrative" type="checkbox" id="administrative" value="administrative" [checked]="isSelectedList('administrative')" (change)="updateCheckedLists($event)" ngModel/>
-            <label for="administrative"><i class="icon icon-document"></i> Administratif</label>
-          </div>
-        </div>
+
+        <ul class="row no-margin list-check-area">
+            <li class="list-check-area-item">
+                <div class="check-area">
+                    <input name="things" type="checkbox" id="things" value="things" [checked]="isSelectedList('things')" (change)="updateCheckedLists($event)" ngModel/>
+                    <label for="things">
+                        <i class="icon icon-key"></i>Logement
+                    </label>
+                </div>
+            </li>
+            <li class="list-check-area-item">
+                <div class="check-area">
+                    <input name="administrative" type="checkbox" id="administrative" value="administrative" [checked]="isSelectedList('administrative')" (change)="updateCheckedLists($event)" ngModel/>
+                    <label for="administrative">
+                        <i class="icon icon-document"></i>Administratif
+                    </label>
+                </div>
+            </li>
+        </ul>
 
         <div class="row action-bar">
           <div class="col s12">
