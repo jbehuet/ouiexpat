@@ -19,6 +19,10 @@ export class ProfilPasswordComponent implements OnInit {
 
     ngOnInit() {
         this.user = { ...this._authenticationService.user };
+
+        this._authenticationService.userChange.subscribe(
+            user => this.user = user
+        );
     }
 
     updatePassword() {
