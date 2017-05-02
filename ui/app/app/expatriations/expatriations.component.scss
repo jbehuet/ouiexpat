@@ -80,8 +80,24 @@ ul.expatriations {
     color: $grey-light;
   }
 
+  .date {
+    font-size: 11px;
+
+    i {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 5px;
+    }
+  }
+
   .info{
     font-family: $capriola;
+
+    img {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 5px;
+    }
   }
 
   .ico {
