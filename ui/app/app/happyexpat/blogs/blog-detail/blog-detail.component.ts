@@ -86,4 +86,12 @@ export class BlogDetailComponent implements OnInit {
     window.open(blog.link);
   }
 
+  postReview(review){
+    this._blogService.postReview(this.blog, review).subscribe(blog => {
+      this.blog = blog;
+    }, (err) => {
+      ToastHelper.displayError(err);
+    })
+  }
+
 }

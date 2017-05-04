@@ -27,7 +27,7 @@ const _schema = new mongoose.Schema({
          ref: 'user'
       },
       review: String,
-      date: Date,
+      date: { type: Date, default: Date.now },
       rate: Number
     },
     reviews: [{
@@ -36,7 +36,7 @@ const _schema = new mongoose.Schema({
          ref: 'user'
       },
       review: String,
-      date: Date,
+      date: { type: Date, default: Date.now },
       rate: Number
     }]
 }, {

@@ -1,6 +1,8 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MaterializeModule} from 'angular2-materialize';
+import { FormsModule } from '@angular/forms';
+
 
 import {AlgoliaPlacesComponent} from './algolia-places/algolia-places.component';
 import {DateInlineComponent} from './date-inline/date-inline.component';
@@ -14,6 +16,7 @@ import { ReviewComponent } from './review/review.component';
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     MaterializeModule
   ],
   declarations: [

@@ -42,7 +42,7 @@ export class InterceptedHttp extends Http {
 
         if (this._cookieService.get('__session')) {
             const session = JSON.parse(this._cookieService.get('__session'));
-            options.headers.append('Authorization', session.token);
+            options.headers.set('Authorization', session.token);
         }
         return options;
     }

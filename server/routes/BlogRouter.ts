@@ -94,7 +94,7 @@ class BlogRouter extends AbstractRouter {
           const history = <HistoryFormat>{ type: HistoryType.LIKES, details: blog.name + " liké !" };
 
           UserModel.saveToHistory(req.authenticatedUser._id, history).then((user) => {
-            res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: {blog, user} });
+            res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: { blog, user } });
           }).catch(err => {
             ErrorHelper.handleMongooseError(err, res, req);
           })
@@ -143,24 +143,22 @@ class BlogRouter extends AbstractRouter {
 
           review.user = req.authenticatedUser;
           review.review = req.body.review;
-          review.rate = req.body.rate;
+          review.rate = req.body.rate ||  -1;
 
-          if (isNew) {
-            review.date = new Date();
+          if (isNew)
             blog.reviews.push(review);
-          }
 
           blog.save();
           if (isNew) {
             const history = <HistoryFormat>{ type: HistoryType.MESSAGE, details: "Commentaires ajouté à " + blog.name };
 
             UserModel.saveToHistory(req.authenticatedUser._id, history).then((user) => {
-              res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: blog });
+              res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: {blog, user} });
             }).catch(err => {
               ErrorHelper.handleMongooseError(err, res, req);
             })
           } else {
-            res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: blog });
+            res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: { blog } });
           }
 
         }

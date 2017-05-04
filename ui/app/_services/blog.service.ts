@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { AuthenticationService } from '../_services/authentication.service';
 import { Blog } from '../_interfaces/blog.interface';
+import { Review } from '../_interfaces/review.interface';
 
 @Injectable()
 export class BlogService {
@@ -108,7 +109,6 @@ export class BlogService {
     return this._http.post('/api/v1/blogs/' + blog._id + '/favorites', blog)
       .map(res => res.json())
       .map(res => {
-        //TODO
         this._authenticationService.user = res.data
         this._authenticationService.userChange.emit(res.data)
         return true;
@@ -125,6 +125,21 @@ export class BlogService {
         this._authenticationService.user = res.data
         this._authenticationService.userChange.emit(res.data)
         return true;
+      })
+      .catch((error: any) => {
+        return Observable.throw((error ? error.statusText : 'Server error'))
+      });
+  }
+
+  postReview(blog: Blog, review: Review): Observable<any> {
+    return this._http.post('/api/v1/blogs/' + blog._id + '/reviews', review)
+      .map(res => res.json())
+      .map(res => {
+        if (res.data.user) {
+          this._authenticationService.user = res.data.user
+          this._authenticationService.userChange.emit(res.data.user)
+        }
+        return res.data.blog;
       })
       .catch((error: any) => {
         return Observable.throw((error ? error.statusText : 'Server error'))

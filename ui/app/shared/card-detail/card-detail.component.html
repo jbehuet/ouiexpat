@@ -18,25 +18,25 @@
         Personne n'a encore laissé son avis... Laissez le votre !
     </div>
 
-    <div class="card-content">
+    <form class="card-content" *ngIf="checkReviewNoWritten()"
+          (ngSubmit)="reviewForm.form.valid && postReview(reviewForm)" #reviewForm="ngForm">
         <div class="col s12 add-comment">
             <div class="row">
                 <span class="circle">
                     <img  alt="Profil" class="circle" height="100" [src]="currentUser?.photo || ''">
                 </span>
                 <div class="col s12">
-                    <textarea class="userReview" cols="30" rows="20"
-                          #userReview placeholder="Votre avis"></textarea>
+                    <textarea class="userReview" cols="30" rows="20" name="review"
+                              placeholder="Votre avis" ngModel required></textarea>
                 </div>
             </div>
         </div>
-        <!-- TODO Connect btn send -->
         <div class="col-s12 space-top-5 text-right">
-            <button class="btn btn-validate waves-effect">
+            <button class="btn btn-validate waves-effect"  type="submit" [disabled]="reviewForm.invalid || reviewForm.pristine">
                 Envoyer
             </button>
         </div>
-    </div>
+    </form>
 
     <div class="card-content" *ngIf="entity?.reviews.length > 0">
         <div class="col s12">
