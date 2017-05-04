@@ -254,6 +254,11 @@
   @extend %transition;
   opacity: 0.5;
 
+  &.back-white {
+    .icon { color: white;}
+    a { color: white;}
+  }
+
   &:hover,
   &:focus,
   &:active,
