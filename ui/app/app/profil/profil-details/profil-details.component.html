@@ -5,7 +5,7 @@
                 <div class="row inner-space-right-15">
                     <span class="avatar-profil">
                          <img [src]="user?.photo || ''" alt="Avatar">
-                         <a class="delete-avatar btn-floating btn-medium waves-effect waves-light btn-white-stroke">
+                         <a (click)="deleteImage()" class="delete-avatar btn-floating btn-medium waves-effect waves-light btn-white-stroke">
                              <i class="icon-trash"></i>
                          </a>
                     </span>
@@ -35,7 +35,7 @@
                 <div class="col s12 file-field input-field">
                     <div class="btn-flat btn-white waves-effect center-align col s8">
                         <span>Télécharger un fichier <span class="icon icon-cloud-upload"></span></span>
-                        <input type="file">
+                        <input type="file" ng2FileSelect [uploader]="uploader" (change)="fileChange($event)" />
                     </div>
                 </div>
             </div>

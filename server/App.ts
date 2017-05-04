@@ -57,6 +57,8 @@ class App {
         this.express.use('/api/v1/expatriations', expatriationRouter.router);
         this.express.use('/api/v1/lists', listRouter.router);
         this.express.use('/api/v1/blogs', blogRouter.router);
+        //uploads
+        this.express.use('/uploads', express.static('dist/server/uploads'));
         //Catch all other routes
         this.express.get('*', (req, res) => {
             res.sendFile(path.join(__dirname, '../client/index.html'));

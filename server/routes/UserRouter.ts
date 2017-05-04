@@ -1,6 +1,9 @@
 import * as mongoose from 'mongoose';
 import * as _ from 'lodash';
 import * as bcrypt from 'bcrypt';
+import * as path from 'path';
+import * as fs from 'fs';
+import * as formidable from 'formidable';
 import {Router, Response, NextFunction} from 'express';
 import HTTPCode from '../constants/HttpCodeConstant';
 import HistoryType from '../constants/HistoryTypeConstant';
@@ -61,7 +64,7 @@ class UserRouter extends AbstractRouter {
         if (err)
           ErrorHelper.handleMongooseError(err, res, req);
         else {
-          const token = AuthRouter.generateToken(user);
+          const token = AuthRouter.generateToken({_id: user._id, email: user.email, administrator: user.administrator});
           res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user, token: token });
         }
       });
@@ -84,8 +87,55 @@ class UserRouter extends AbstractRouter {
 
   }
 
-  private uploadMedia(req: IRequest, res: Response, next: NextFunction) {
-    //TODO
+  protected upload(req: IRequest, res: Response, next: NextFunction) {
+
+    let fileName;
+    let form = new formidable.IncomingForm();
+    const uploadPath = path.join('dist/server/uploads/users/');
+    form.uploadDir = uploadPath;
+
+    //TODO Depreciation
+    if (!fs.existsSync(uploadPath)) fs.mkdirSync(uploadPath);
+
+    form.on('file', (field, file) => {
+      const ext = file.name.split('.').pop();
+      fileName = req.authenticatedUser._id + '_' + new Date().getTime() + '.' + ext
+      fs.renameSync(file.path, uploadPath + fileName);
+    }).on('end', () => {
+
+      const history = <HistoryFormat>{ type: HistoryType.ACCOUNT, details: "Mise à jours du compte." };
+
+      UserModel.findOneAndUpdate({ _id: req.authenticatedUser._id }, { photo: 'uploads/users/' + fileName, $push: { history: history } }, { new: true }, (err: mongoose.Error, user: UserFormat) => {
+        if (err)
+          ErrorHelper.handleMongooseError(err, res, req);
+        else {
+          this._removePreviousMedia(uploadPath, fileName, req.authenticatedUser._id + "*").then(() => {
+            res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user });
+          }).catch(err => {
+            ErrorHelper.handleError(HTTPCode.error.server.INTERNAL_SERVER_ERROR, 'Oupss', res);
+          })
+        }
+      });
+    }).on('error', (error) => {
+      ErrorHelper.handleError(HTTPCode.error.server.INTERNAL_SERVER_ERROR, 'Oupss', res);
+    });
+
+    form.parse(req);
+  }
+
+  private _removePreviousMedia(path, fileName, regExp): Promise<any> {
+    return new Promise((resolve, reject) => {
+      fs.readdir(path, (err, files) => {
+        if (err)
+          reject()
+        const regex = new RegExp(regExp);
+        files.forEach((item) => {
+          if (regex.test(item) && item !== fileName)
+            fs.unlink(path + item);
+        });
+        resolve();
+      })
+    })
   }
 
 }

@@ -52,6 +52,7 @@
     "mongoose": "4.9.2",
     "morgan": "1.8.1",
     "ng2-cookies": "^1.0.11",
+    "ng2-file-upload": "^1.2.1",
     "nodemailer": "^4.0.1",
     "nodemailer-smtp-transport": "^2.7.4",
     "normalize.css": "^6.0.0",
