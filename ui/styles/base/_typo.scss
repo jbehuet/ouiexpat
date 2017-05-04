@@ -90,6 +90,34 @@ a {
 // LINK STYLES UTILS (end)
 // ================ //
 
+// ================ //
+// ICON ACTION (start)
+// ================ //
+
+.icon-action {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 5px;
+    opacity: 0.5;
+    @extend %transition;
+    cursor: pointer;
+
+    &.xmedium { font-size: 18px;}
+    &.medium { font-size: 24px;}
+
+
+    &:hover,
+    &:active,
+    &:focus {
+        @extend %transition;
+        opacity: 1;
+    }
+}
+
+// ================ //
+// ICON ACTION (end)
+// ================ //
+
 
 // ================ //
 // TEXT STYLES UTILS (start)
