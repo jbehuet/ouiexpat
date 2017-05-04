@@ -20,7 +20,7 @@
         <li *ngFor="let expat of (expatriations | dateFilter:['date','now'])" class="row no-margin" [class.selected]="(currentExpat?._id === expat._id)" (click)="currentExpat = expat">
           <div class="valign-wrapper expat">
             <div class="row no-margin">
-              <div class="col s12 space-bottom-5">
+              <div class="col s12 space-bottom-5 date">
                 <i class="icon icon-calendar"></i> {{expat?.date | date:"dd/MM/yy"}}
               </div>
               <div class="col s12 info">
@@ -44,7 +44,7 @@
         <li *ngFor="let expat of (expatriations | dateFilter:['date','now', '<'])" class="row no-margin" [class.selected]="(currentExpat?._id === expat._id)" (click)="currentExpat = expat">
           <div class="valign-wrapper expat">
             <div class="row no-margin">
-              <div class="col s12 space-bottom-5">
+              <div class="col s12 space-bottom-5 date">
                 <i class="icon icon-calendar"></i> {{expat?.date | date:"dd/MM/yy"}}
               </div>
               <div class="col s12 info">

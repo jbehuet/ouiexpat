@@ -53,6 +53,7 @@ ul.expatriations {
 
   .destination {
     padding: 20px;
+
     .country {
       color: $white;
       font-size: 26px;
@@ -152,4 +153,9 @@ ul.expatriations {
   .text-no-expat {
     padding: 0 10%;
   }
+}
+
+
+.list-check-area {
+  padding: 0 10px;
 }
