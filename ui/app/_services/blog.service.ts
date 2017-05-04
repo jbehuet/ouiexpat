@@ -23,7 +23,7 @@ export class BlogService {
         return this.blogs;
       })
       .catch((error: any) => {
-        return Observable.throw((error ? error.statusText : 'Server error'))
+        return Observable.throw((error ? error : 'Server error'))
       });
   }
 
@@ -35,7 +35,7 @@ export class BlogService {
         return this.blog;
       })
       .catch((error: any) => {
-        return Observable.throw((error ? error.statusText : 'Server error'))
+        return Observable.throw((error ? error : 'Server error'))
       });
   }
 
@@ -47,7 +47,7 @@ export class BlogService {
         return this.blogs;
       })
       .catch((error: any) => {
-        return Observable.throw((error ? error.statusText : 'Server error'))
+        return Observable.throw((error ? error : 'Server error'))
       });
   }
 
@@ -60,7 +60,7 @@ export class BlogService {
         return this.blogs;
       })
       .catch((error: any) => {
-        return Observable.throw((error ? error.statusText : 'Server error'))
+        return Observable.throw((error ? error : 'Server error'))
       });
   }
 
@@ -73,7 +73,7 @@ export class BlogService {
         return this.blogs;
       })
       .catch((error: any) => {
-        return Observable.throw((error ? error.statusText : 'Server error'))
+        return Observable.throw((error ? error : 'Server error'))
       });
   }
 
@@ -88,7 +88,7 @@ export class BlogService {
         return this.blogs;
       })
       .catch((error: any) => {
-        return Observable.throw((error ? error.statusText : 'Server error'))
+        return Observable.throw((error ? error : 'Server error'))
       });
   }
 
@@ -101,7 +101,7 @@ export class BlogService {
         return this.blogs;
       })
       .catch((error: any) => {
-        return Observable.throw((error ? error.statusText : 'Server error'))
+        return Observable.throw((error ? error : 'Server error'))
       });
   }
 
@@ -114,7 +114,7 @@ export class BlogService {
         return true;
       })
       .catch((error: any) => {
-        return Observable.throw((error ? error.statusText : 'Server error'))
+        return Observable.throw((error ? error : 'Server error'))
       });
   }
 
@@ -127,7 +127,7 @@ export class BlogService {
         return true;
       })
       .catch((error: any) => {
-        return Observable.throw((error ? error.statusText : 'Server error'))
+        return Observable.throw((error ? error : 'Server error'))
       });
   }
 
@@ -142,7 +142,7 @@ export class BlogService {
         return res.data.blog;
       })
       .catch((error: any) => {
-        return Observable.throw((error ? error.statusText : 'Server error'))
+        return Observable.throw((error ? error : 'Server error'))
       });
   }
 

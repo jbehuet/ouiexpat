@@ -6,6 +6,7 @@ import * as bcrypt from 'bcrypt';
 import CONFIG from '../config';
 import HTTPCode from '../constants/HttpCodeConstant';
 import HistoryType from '../constants/HistoryTypeConstant';
+import { ErrorMessagesOptions } from '../constants/ErrorMessagesConstant';
 import IRequest from '../interfaces/IRequest';
 import ErrorHelper from '../helpers/ErrorHelper';
 import MailHelper from '../helpers/MailHelper';
@@ -61,9 +62,9 @@ class AuthRouter {
       if (err)
         ErrorHelper.handleMongooseError(err, res, req);
       else if (!user)
-        ErrorHelper.handleError(HTTPCode.error.client.NOT_FOUND, 'User not found', res);
+        ErrorHelper.handleError(HTTPCode.error.client.NOT_FOUND, ErrorMessagesOptions.USER_NOT_FOUND, res, req);
       else if (!user.password || !bcrypt.compareSync(req.body.password, user.password))
-        ErrorHelper.handleError(HTTPCode.error.client.UNAUTHORIZED, 'Password not match', res);
+        ErrorHelper.handleError(HTTPCode.error.client.NOT_FOUND, ErrorMessagesOptions.PASSWORD_ERROR, res, req);
       else {
         user.password = undefined;
         const contentToken = {_id: user._id, email: user.email, administrator: user.administrator};
@@ -87,7 +88,7 @@ class AuthRouter {
       if (err)
         ErrorHelper.handleMongooseError(err, res, req);
       else if (!user)
-        ErrorHelper.handleError(HTTPCode.error.client.NOT_FOUND, 'User not found', res);
+        ErrorHelper.handleError(HTTPCode.error.client.NOT_FOUND, ErrorMessagesOptions.USER_NOT_FOUND, res, req);
       else {
         const reset_token = jwt.sign({ email: user.email }, CONFIG.jwt.secret, CONFIG.jwt.reset_options);
         UserModel.update({ email: req.body.email }, { reset_token }, (err) => {
@@ -121,7 +122,7 @@ class AuthRouter {
             if (err)
               ErrorHelper.handleMongooseError(err, res, req);
             else if (!user)
-              ErrorHelper.handleError(HTTPCode.error.client.NOT_FOUND, 'User not found', res);
+              ErrorHelper.handleError(HTTPCode.error.client.NOT_FOUND, ErrorMessagesOptions.USER_NOT_FOUND, res, req);
             else {
               res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK });
             }

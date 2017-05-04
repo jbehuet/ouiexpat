@@ -19,7 +19,7 @@ export class ExpatriationService {
                 return this.expatriations;
             })
             .catch((error: any) => {
-                return Observable.throw((error ? error.statusText : 'Server error'))
+                return Observable.throw((error ? error : 'Server error'))
             });
     }
 
@@ -31,7 +31,7 @@ export class ExpatriationService {
                 return this.expatriations;
             })
             .catch((error: any) => {
-                return Observable.throw((error ? error.statusText : 'Server error'))
+                return Observable.throw((error ? error : 'Server error'))
             });
     }
 
@@ -44,7 +44,7 @@ export class ExpatriationService {
                 return this.expatriations;
             })
             .catch((error: any) => {
-                return Observable.throw((error ? error.statusText : 'Server error'))
+                return Observable.throw((error ? error : 'Server error'))
             });
     }
 
@@ -57,7 +57,7 @@ export class ExpatriationService {
                 return this.expatriations;
             })
             .catch((error: any) => {
-                return Observable.throw((error ? error.statusText : 'Server error'))
+                return Observable.throw((error ? error : 'Server error'))
             });
     }
 
