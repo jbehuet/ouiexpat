@@ -100,12 +100,18 @@
 
   i {
     position: absolute;
-    top: 55%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: auto;
-    display: inherit;
+    height: 100%;
     font-size: 22px;
+
+    &:before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
 
   &.account {
