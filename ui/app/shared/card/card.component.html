@@ -16,7 +16,7 @@
   <div class="card-content">
     <div class="row card-content-intro">
       <div class="col s12">{{entity.category}}</div>
-      <div class="action-like">
+      <div class="action-like" [class.liked]="isLiked">
         <span class="btn-like" [class.liked]="isLiked" (click)="likeOrDislike(entity)">
                             <span class="animation-like"></span>
         <i class="icon icon-like-ouiexpat"></i>
