@@ -43,6 +43,9 @@
 }
 
 .card-content {
+  display: inline-block;
+  width: 100%;
+
   .title {
     margin-top: 0 !important;
   }
