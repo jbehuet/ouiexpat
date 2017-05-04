@@ -72,7 +72,7 @@
   <div class="col s12 m7 l8 offset-m1" *ngIf="expatriations.length > 0">
     <div class="form-card map">
       <div class="row no-margin full-width">
-        <div class="col s7 container-infos-expat">
+        <div class="col s12 m7 container-infos-expat">
           <div class="destination">
             <div class="row">
               <div class="country">
@@ -90,7 +90,7 @@
             </div>
           </div>
         </div>
-        <leaflet class="col s5 leaflet-map" [location]="currentExpat.location?.geometry?.coordinate"></leaflet>
+        <leaflet class="col s12 m5 leaflet-map" [location]="currentExpat.location?.geometry?.coordinate"></leaflet>
       </div>
     </div>
 
