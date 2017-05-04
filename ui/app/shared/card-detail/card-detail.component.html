@@ -20,13 +20,20 @@
 
     <div class="card-content">
         <div class="col s12 add-comment">
-            <span class="circle">
-                <img  alt="Profil" class="circle" height="100" [src]="currentUser?.photo || ''">
-            </span>
-            <div class="col s12">
-                <textarea class="userReview" cols="30" rows="20"
+            <div class="row">
+                <span class="circle">
+                    <img  alt="Profil" class="circle" height="100" [src]="currentUser?.photo || ''">
+                </span>
+                <div class="col s12">
+                    <textarea class="userReview" cols="30" rows="20"
                           #userReview placeholder="Votre avis"></textarea>
+                </div>
             </div>
+        </div>
+        <div class="col-s12 space-top-5 text-right">
+            <button class="btn btn-validate waves-effect">
+                Envoyer
+            </button>
         </div>
     </div>
 
@@ -35,7 +42,4 @@
             <oe-review [review]="review" *ngFor="let review of entity?.reviews"></oe-review>
         </div>
     </div>
-
-
-
 </div>
