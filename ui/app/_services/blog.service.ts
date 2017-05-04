@@ -81,7 +81,9 @@ export class BlogService {
       .map(res => res.json())
       .map(res => {
         const idx = this.blogs.findIndex(e => e._id === blog._id);
-        this.blogs[idx] = res.data;
+        this.blogs[idx] = res.data.blog;
+        this._authenticationService.user = res.data.user;
+        this._authenticationService.userChange.emit(res.data.user);
         return this.blogs;
       })
       .catch((error: any) => {

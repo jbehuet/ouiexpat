@@ -94,7 +94,7 @@ class BlogRouter extends AbstractRouter {
           const history = <HistoryFormat>{ type: HistoryType.LIKES, details: blog.name + " liké !" };
 
           UserModel.saveToHistory(req.authenticatedUser._id, history).then((user) => {
-            res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: blog });
+            res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: {blog, user} });
           }).catch(err => {
             ErrorHelper.handleMongooseError(err, res, req);
           })
