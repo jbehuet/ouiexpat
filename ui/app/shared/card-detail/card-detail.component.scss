@@ -69,6 +69,12 @@
   margin-left: 15px !important;
   padding-left: 80px;
 
+  @media screen and (max-width: 600px) {
+    margin-left: 0 !important;
+    padding-left: 55px;
+  }
+
+
   .circle {
     position: absolute;
     left: 0;
@@ -76,6 +82,11 @@
     height: 65px;
     width: 65px;
     overflow: hidden;
+
+    @media screen and (max-width: 600px) {
+      height: 44px;
+      width: 44px;
+    }
 
     img {
       width: 100%;
