@@ -32,23 +32,23 @@ export class BlogsComponent implements OnInit {
     }
 
     addOrRemoveToFav(blog){
-        // if (!!blog.favorites.blogs.find(e => e === this.currentUser._id)) {
-        //     this._blogService.removeFavorite(blog).subscribe(blogs => {
-        //         this.blogs = blogs;
-        //     }, (err) => {
-        //         ToastHelper.displayError(err);
-        //     })
-        // } else {
-        //     this._blogService.addFavorite(blog).subscribe(blogs => {
-        //         this.blogs = blogs;
-        //     }, (err) => {
-        //         ToastHelper.displayError(err);
-        //     })
-        // }
+        if (!!this.currentUser.favorites.blogs.find(e => e === blog._id)) {
+            this._blogService.removeFromFavorites(blog).subscribe(success => {
+
+            }, (err) => {
+                ToastHelper.displayError(err);
+            })
+        } else {
+            this._blogService.addToFavorites(blog).subscribe(success => {
+
+            }, (err) => {
+                ToastHelper.displayError(err);
+            })
+        }
     }
 
     isFav(blog){
-        return !!this.currentUser.favorites.blogs.find(e => e === this.currentUser._id);
+        return !!this.currentUser.favorites.blogs.find(e => e === blog._id);
     }
 
     isLiked(blog) {

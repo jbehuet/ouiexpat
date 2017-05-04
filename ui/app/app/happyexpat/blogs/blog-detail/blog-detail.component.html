@@ -1,8 +1,8 @@
 <div class="row">
     <div class="col s12 m4">
         <oe-light-card [entity]="blog"
-                       [isFav]="isFav(blog)"
-                       [isLiked]="isLiked(blog)"
+                       [isFav]="isFav()"
+                       [isLiked]="isLiked()"
                        (addOrRemoveToFavChange)="addOrRemoveToFav($event)"
                        (likeOrDislikeChange)="likeOrDislike($event)"
                        (visitChange)="visit($event)">
