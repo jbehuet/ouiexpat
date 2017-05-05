@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FileUploader } from 'ng2-file-upload';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { ToastHelper } from '../../../_helpers/toast.helper';
 
@@ -12,7 +11,6 @@ import { User } from '../../../_interfaces/user.interface';
 })
 export class ProfilDetailsComponent implements OnInit {
 
-  public uploader: FileUploader;
   public user: User;
   public token: String;
 
@@ -20,9 +18,6 @@ export class ProfilDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.user = { ...this._authenticationService.user };
-
-    this.uploader = new FileUploader({ url: '/api/v1/users/media', authToken: this._authenticationService.token });
-
     this._authenticationService.userChange.subscribe(
       user => this.user = user
     );
@@ -47,13 +42,19 @@ export class ProfilDetailsComponent implements OnInit {
     this.updateProfil(false);
   }
 
-  fileChange(e) {
-    this.uploader.uploadAll()
-    this.uploader.onCompleteItem = (item: any, res: any, status: any, headers: any) => {
-      res = JSON.parse(res);
-      this._authenticationService.user = res.data;
-      this._authenticationService.userChange.emit(res.data);
-    };
+  fileChange(event) {
+    const fileList: FileList = event.target.files;
+    if(fileList.length > 0) {
+        const file: File = fileList[0];
+        let formData:FormData = new FormData();
+        formData.append('file', file, file.name);
+        this._authenticationService.uploadMedia(this.user._id, formData)
+        .subscribe((user) => {
+            //OK
+        }, (err) => {
+          ToastHelper.displayError(err);
+        });
+    }
   }
 
 

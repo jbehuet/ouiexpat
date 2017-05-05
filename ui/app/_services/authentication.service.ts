@@ -130,6 +130,19 @@ export class AuthenticationService {
       });
   }
 
+  uploadMedia(id: String, data: FormData): Observable<any> {
+    return this._http.post('/api/v1/users/' + id + '/media', data)
+      .map(res => res.json())
+      .map(res => {
+        this.user = res.data;
+        this.userChange.emit(res.data);
+        return res.data;
+      })
+      .catch((error: any) => {
+        return Observable.throw((error ? error : 'Server error'))
+      });
+  }
+
   private _decodePayload(): any {
     let payload = this.token.split('.')[1];
     payload = decodeURIComponent(escape(window.atob(payload)));

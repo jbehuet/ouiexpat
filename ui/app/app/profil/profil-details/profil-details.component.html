@@ -35,7 +35,7 @@
                 <div class="col s12 file-field input-field">
                     <div class="btn-flat btn-white waves-effect center-align col s8">
                         <span>Télécharger un fichier <span class="icon icon-cloud-upload"></span></span>
-                        <input type="file" ng2FileSelect [uploader]="uploader" (change)="fileChange($event)" />
+                        <input type="file" (change)="fileChange($event)" accept="image/*" />
                     </div>
                 </div>
             </div>

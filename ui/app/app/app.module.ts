@@ -5,8 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { MaterializeModule } from 'angular2-materialize';
 import { SharedModule } from '../shared/shared.module';
 
-import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
-
 import { AuthGuard } from '../_guards/auth.guard';
 
 import { DateFilterPipe } from '../_pipes/date.pipe';
@@ -79,7 +77,6 @@ import { HappyexpatTabsComponent } from './happyexpat/happyexpat-tabs/happyexpat
         ])
     ],
     declarations: [
-        FileSelectDirective,
         DateFilterPipe, ReversePipe,
         AppComponent, NavbarComponent, FooterComponent, DashboardComponent,
         WidgetProfilComponent, WidgetExpatriationsComponent, WidgetActusComponent,
