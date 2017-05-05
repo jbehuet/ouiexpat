@@ -50,12 +50,12 @@ export class BlogDetailComponent implements OnInit {
     }
   }
 
-  isFav(blog) {
+  isFav() {
     if (!this.blog) return false
     return !!this.currentUser.favorites.blogs.find(e => e === this.blog._id);
   }
 
-  isLiked(blog) {
+  isLiked() {
     if (!this.blog) return false
     return !!this.blog.likes.find(e => e === this.currentUser._id);
   }
