@@ -31,7 +31,7 @@ export class ProfilDetailsComponent implements OnInit {
     this._authenticationService.updateProfil(this.user)
       .subscribe(user => {
         if (toast)
-          ToastHelper.displaySuccess("Updated");
+          ToastHelper.displaySuccess("Mis à jour !");
       }, (err) => {
         ToastHelper.displayError(err);
       });
@@ -44,7 +44,6 @@ export class ProfilDetailsComponent implements OnInit {
 
   fileChange(event) {
     const fileList: FileList = event.target.files;
-    debugger
     if(fileList.length > 0) {
         const file: File = fileList[0];
         let formData:FormData = new FormData();

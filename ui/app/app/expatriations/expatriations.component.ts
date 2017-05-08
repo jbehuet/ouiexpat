@@ -40,7 +40,7 @@ export class ExpatriationsComponent implements OnInit {
     delete() {
         this._expatriationService.delete(this.currentExpat)
             .subscribe(expatriations => {
-                ToastHelper.displaySuccess("Deleted");
+                ToastHelper.displaySuccess("Supprimée");
                 if (this.expatriations.length > 0) {
                     this.currentExpat = this.expatriations[0];
                     this.currentExpat.date = new Date(this.currentExpat.date).toISOString().slice(0, 10);
@@ -55,14 +55,14 @@ export class ExpatriationsComponent implements OnInit {
             this._expatriationService.update(this.currentExpat)
                 .subscribe(expatriations => {
                     this.expatriations = expatriations;
-                    ToastHelper.displaySuccess("Updated");
+                    ToastHelper.displaySuccess("Mis à jour !");
                 }, (err) => {
                     ToastHelper.displayError(err);
                 });
         } else {
             this._expatriationService.create(this.currentExpat)
                 .subscribe(expatriations => {
-                    ToastHelper.displaySuccess("Created");
+                    ToastHelper.displaySuccess("Créée !");
                 }, (err) => {
                     ToastHelper.displayError(err);
                 });

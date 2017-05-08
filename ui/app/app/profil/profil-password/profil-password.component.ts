@@ -27,11 +27,11 @@ export class ProfilPasswordComponent implements OnInit {
 
     updatePassword() {
         if (this.user.password != this.confirmation) {
-            ToastHelper.displayWarning('Password and confirmation not match !');
+            ToastHelper.displayWarning('Les mots de passe ne correspondent pas !');
         } else {
             this._authenticationService.updateProfil(this.user)
                 .subscribe(user => {
-                    ToastHelper.displaySuccess("Updated");
+                    ToastHelper.displaySuccess("Mis à jour !");
                 }, (err) => {
                     ToastHelper.displayError(err);
                 });
