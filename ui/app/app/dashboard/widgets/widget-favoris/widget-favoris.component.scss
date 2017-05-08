@@ -3,7 +3,7 @@
 
 .widget {
     background: $white;
-    height: calc(100vh - 381px);
+    height: calc(100vh - 377px);
 
     &.widget-favoris {
         padding: 0;
@@ -60,6 +60,7 @@
 
             img {
                 position: absolute;
+                height: 100%;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
@@ -94,6 +95,7 @@
             position: relative;
             display: inline-block;
             height: 100%;
+            width: 100%;
             padding-left: calc(#{$widget-favoris-height-item} + 15px);
             padding-right: 25px;
 
