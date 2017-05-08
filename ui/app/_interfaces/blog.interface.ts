@@ -3,7 +3,7 @@ import {Review} from './review.interface';
 export interface Blog {
     _id: string;
     name: string;
-    photo: string;
+    image: string;
     category: string;
     details: string;
     link:string;

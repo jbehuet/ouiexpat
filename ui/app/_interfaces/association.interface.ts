@@ -4,7 +4,7 @@ export interface Association {
     _id: string;
     name: string;
     email: string;
-    photo: string;
+    image: string;
     link: string;
     phone: any;
     details: string;

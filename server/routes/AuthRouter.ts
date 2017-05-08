@@ -58,7 +58,11 @@ class AuthRouter {
     if (_.isEmpty(req.body.email)) return ErrorHelper.handleError(HTTPCode.error.client.BAD_REQUEST, 'Email is require', res);
     if (_.isEmpty(req.body.password)) return ErrorHelper.handleError(HTTPCode.error.client.BAD_REQUEST, 'Password is require', res);
 
-    UserModel.findOne({ email: req.body.email }).select("+password").exec((err: mongoose.Error, user: UserFormat) => {
+    UserModel.findOne({ email: req.body.email })
+    .populate('favorites.associations')
+    .populate('favorites.blogs')
+    .populate('favorites.jobs')
+    .select("+password").exec((err: mongoose.Error, user: UserFormat) => {
       if (err)
         ErrorHelper.handleMongooseError(err, res, req);
       else if (!user)

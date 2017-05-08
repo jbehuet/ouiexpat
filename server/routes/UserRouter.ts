@@ -38,7 +38,11 @@ class UserRouter extends AbstractRouter {
 
     if (!req.authenticatedUser.administrator && req.authenticatedUser._id !== req.params.id) return ErrorHelper.handleError(HTTPCode.error.client.UNAUTHORIZED, 'Not authorize', res);
 
-    UserModel.findById(req.params.id).exec((err: mongoose.Error, object: mongoose.Document) => {
+    UserModel.findById(req.params.id)
+    .populate('favorites.associations')
+    .populate('favorites.blogs')
+    .populate('favorites.jobs')
+    .exec((err: mongoose.Error, object: mongoose.Document) => {
       if (err)
         ErrorHelper.handleMongooseError(err, res, req);
       else
@@ -64,7 +68,7 @@ class UserRouter extends AbstractRouter {
         if (err)
           ErrorHelper.handleMongooseError(err, res, req);
         else {
-          const token = AuthRouter.generateToken({_id: user._id, email: user.email, administrator: user.administrator});
+          const token = AuthRouter.generateToken({ _id: user._id, email: user.email, administrator: user.administrator });
           res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user, token: token });
         }
       });

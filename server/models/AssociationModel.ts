@@ -24,7 +24,7 @@ const _schema = new mongoose.Schema({
         type: { type: String, default: 'Point' }
       }
     },
-    photo: String,
+    image: String,
     link: String,
     phone: {
         number: {
