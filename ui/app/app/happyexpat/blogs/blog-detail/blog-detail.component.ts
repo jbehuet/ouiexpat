@@ -35,7 +35,7 @@ export class BlogDetailComponent implements OnInit {
   }
 
   addOrRemoveToFav(blog) {
-    if (!!this.currentUser.favorites.blogs.find(e => e === blog._id)) {
+    if (!!this.currentUser.favorites.blogs.find(e => e._id === blog._id)) {
       this._blogService.removeFromFavorites(blog).subscribe(success => {
 
       }, (err) => {
@@ -52,7 +52,7 @@ export class BlogDetailComponent implements OnInit {
 
   isFav() {
     if (!this.blog) return false
-    return !!this.currentUser.favorites.blogs.find(e => e === this.blog._id);
+    return !!this.currentUser.favorites.blogs.find(e => e._id === this.blog._id);
   }
 
   isLiked() {

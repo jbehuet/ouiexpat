@@ -3,7 +3,7 @@ import {Association} from './association.interface';
 import {Job} from './job.interface';
 
 export interface Favorites {
-    blogs: Array<Blog | string>;
-    associations: Array<Association | string>;
-    jobs: Array<Job | string>;
+    blogs: Array<Blog>;
+    associations: Array<Association>;
+    jobs: Array<Job>;
 }
