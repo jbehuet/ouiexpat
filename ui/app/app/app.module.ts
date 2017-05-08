@@ -21,9 +21,9 @@ import { WidgetExpatriationsComponent } from './dashboard/widgets/widget-expatri
 import { WidgetActusComponent } from './dashboard/widgets/widget-actus/widget-actus.component';
 import { WidgetFavorisComponent } from './dashboard/widgets/widget-favoris/widget-favoris.component';
 
-import { MyexpatComponent } from './myexpat/myexpat.component';
-import { ChecklistsComponent } from './myexpat/checklists/checklists.component';
-import { ListComponent } from './myexpat/checklists/list/list.component';
+import { MyneedsComponent } from './myneeds/myneeds.component';
+import { ChecklistsComponent } from './myneeds/checklists/checklists.component';
+import { ListComponent } from './myneeds/checklists/list/list.component';
 
 import { HappyexpatComponent } from './happyexpat/happyexpat.component';
 import { BlogsComponent } from './happyexpat/blogs/blogs.component';
@@ -54,7 +54,7 @@ import { HappyexpatTabsComponent } from './happyexpat/happyexpat-tabs/happyexpat
                 children: [
                     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
                     { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-                    { path: 'myexpat', component: MyexpatComponent, canActivate: [AuthGuard] },
+                    { path: 'myneeds', component: MyneedsComponent, canActivate: [AuthGuard] },
                     { path: 'happyexpat', component: HappyexpatComponent, canActivate: [AuthGuard],
                         children: [
                             { path: '', component: HappyexpatTabsComponent, canActivate: [AuthGuard] },
@@ -81,7 +81,7 @@ import { HappyexpatTabsComponent } from './happyexpat/happyexpat-tabs/happyexpat
         AppComponent, NavbarComponent, FooterComponent, DashboardComponent,
         WidgetProfilComponent, WidgetExpatriationsComponent, WidgetActusComponent,
         WidgetFavorisComponent,
-        MyexpatComponent, ChecklistsComponent, ListComponent,
+        MyneedsComponent, ChecklistsComponent, ListComponent,
         HappyexpatTabsComponent, HappyexpatComponent, BlogsComponent, BlogDetailComponent,
         AssociationsComponent,
         ExpatriationsComponent,

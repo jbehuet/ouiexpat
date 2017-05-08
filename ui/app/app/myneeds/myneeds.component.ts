@@ -3,11 +3,11 @@ import { ExpatriationService } from '../../_services/expatriation.service';
 import { ToastHelper } from '../../_helpers/toast.helper';
 
 @Component({
-  selector: 'oe-myexpat',
-  templateUrl: './myexpat.component.html',
-  styleUrls: ['./myexpat.component.scss']
+  selector: 'oe-myneeds',
+  templateUrl: './myneeds.component.html',
+  styleUrls: ['./myneeds.component.scss']
 })
-export class MyexpatComponent implements OnInit {
+export class MyneedsComponent implements OnInit {
 
   public expatriations: any = [];
   public expatSelected: any;
