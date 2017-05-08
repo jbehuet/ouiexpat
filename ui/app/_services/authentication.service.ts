@@ -1,6 +1,6 @@
 import { CookieService } from 'ng2-cookies';
 import { Injectable, EventEmitter } from '@angular/core';
-import { Http, Headers, Response } from '@angular/http';
+import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
@@ -130,17 +130,29 @@ export class AuthenticationService {
       });
   }
 
-  uploadMedia(id: String, data: FormData): Observable<any> {
-    return this._http.post('/api/v1/users/' + id + '/media', data)
-      .map(res => res.json())
-      .map(res => {
-        this.user = res.data;
-        this.userChange.emit(res.data);
-        return res.data;
-      })
-      .catch((error: any) => {
-        return Observable.throw((error ? error : 'Server error'))
-      });
+  uploadMedia(data: FormData): Promise<any> {
+    return new Promise((resolve, reject) => {
+
+      let xhr: XMLHttpRequest = new XMLHttpRequest();
+
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            const res = JSON.parse(xhr.response);
+            this.user = <User>res.data;
+            this.userChange.emit(this.user);
+            resolve(this.user);
+          } else {
+            reject(xhr.response);
+          }
+        }
+      };
+
+      xhr.open('POST', '/api/v1/users/media', true);
+      xhr.setRequestHeader('Authorization', this.token);
+
+      xhr.send(data);
+    });
   }
 
   private _decodePayload(): any {

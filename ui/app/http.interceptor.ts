@@ -37,8 +37,8 @@ export class InterceptedHttp extends Http {
     }
     if (options.headers == null) {
       options.headers = new Headers();
+      options.headers.append('Content-Type', 'application/json');
     }
-    options.headers.append('Content-Type', 'application/json');
 
     if (this._cookieService.get('__session')) {
       const session = JSON.parse(this._cookieService.get('__session'));

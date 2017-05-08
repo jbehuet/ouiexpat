@@ -88,7 +88,6 @@ class UserRouter extends AbstractRouter {
   }
 
   protected upload(req: IRequest, res: Response, next: NextFunction) {
-
     let fileName;
     let form = new formidable.IncomingForm();
     const uploadPath = path.join('dist/server/uploads/users/');

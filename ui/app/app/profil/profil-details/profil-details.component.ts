@@ -44,14 +44,15 @@ export class ProfilDetailsComponent implements OnInit {
 
   fileChange(event) {
     const fileList: FileList = event.target.files;
+    debugger
     if(fileList.length > 0) {
         const file: File = fileList[0];
         let formData:FormData = new FormData();
-        formData.append('file', file, file.name);
-        this._authenticationService.uploadMedia(this.user._id, formData)
-        .subscribe((user) => {
+        formData.append('avatar', file, file.name);
+        this._authenticationService.uploadMedia(formData)
+        .then((user) => {
             //OK
-        }, (err) => {
+        }).catch((err) => {
           ToastHelper.displayError(err);
         });
     }
