@@ -94,4 +94,12 @@ export class BlogDetailComponent implements OnInit {
     })
   }
 
+  deleteReview(review){
+    this._blogService.deleteReview(this.blog, review).subscribe(blog => {
+      this.blog = blog;
+    }, (err) => {
+      ToastHelper.displayError(err);
+    })
+  }
+
 }

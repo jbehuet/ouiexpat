@@ -141,25 +141,30 @@ class BlogRouter extends AbstractRouter {
           let review = blog.reviews.find(r => r.user.email === req.authenticatedUser.email) || new ReviewFormat();
           let isNew = _.isEmpty(review.user)
 
-          review.user = req.authenticatedUser;
-          review.review = req.body.review;
-          review.rate = req.body.rate ||  -1;
+          UserModel.findOne({_id: req.authenticatedUser._id}, (err, user) => {
 
-          if (isNew)
-            blog.reviews.push(review);
+            review.user = user;
+            review.review = req.body.review;
+            review.rate = req.body.rate ||  -1;
 
-          blog.save();
-          if (isNew) {
-            const history = <HistoryFormat>{ type: HistoryType.MESSAGE, details: "Commentaires ajouté à " + blog.name };
+            if (isNew)
+              blog.reviews.push(review);
 
-            UserModel.saveToHistory(req.authenticatedUser._id, history).then((user) => {
-              res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: {blog, user} });
-            }).catch(err => {
-              ErrorHelper.handleMongooseError(err, res, req);
-            })
-          } else {
-            res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: { blog } });
-          }
+            blog.save();
+            if (isNew) {
+              const history = <HistoryFormat>{ type: HistoryType.MESSAGE, details: "Commentaires ajouté à " + blog.name };
+
+              UserModel.saveToHistory(req.authenticatedUser._id, history).then((user) => {
+                res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: {blog, user} });
+              }).catch(err => {
+                ErrorHelper.handleMongooseError(err, res, req);
+              })
+            } else {
+              res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: { blog } });
+            }
+
+          })
+
 
         }
       });
@@ -184,7 +189,7 @@ class BlogRouter extends AbstractRouter {
           const history = <HistoryFormat>{ type: HistoryType.DELETE, details: "Commentaires supprimé de " + blog.name };
 
           UserModel.saveToHistory(req.authenticatedUser._id, history).then((user) => {
-            res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: blog });
+            res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: {blog, user} });
           }).catch(err => {
             ErrorHelper.handleMongooseError(err, res, req);
           })

@@ -40,7 +40,11 @@
 
     <div class="card-content" *ngIf="entity?.reviews.length > 0">
         <div class="col s12">
-            <oe-review [review]="review" *ngFor="let review of entity?.reviews"></oe-review>
+            <oe-review *ngFor="let review of entity?.reviews"
+                       [review]="review"
+                       [currentUser]="currentUser"
+                       (onDelete)="deleteReview(review)"
+                       (onEdit)="editReview($event)"></oe-review>
         </div>
     </div>
 </div>

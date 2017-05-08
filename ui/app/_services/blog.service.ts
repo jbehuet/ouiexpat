@@ -146,4 +146,19 @@ export class BlogService {
       });
   }
 
+  deleteReview(blog: Blog, review: Review): Observable<any> {
+    return this._http.delete('/api/v1/blogs/' + blog._id + '/reviews', review)
+      .map(res => res.json())
+      .map(res => {
+        if (res.data.user) {
+          this._authenticationService.user = res.data.user
+          this._authenticationService.userChange.emit(res.data.user)
+        }
+        return res.data.blog;
+      })
+      .catch((error: any) => {
+        return Observable.throw((error ? error : 'Server error'))
+      });
+  }
+
 }

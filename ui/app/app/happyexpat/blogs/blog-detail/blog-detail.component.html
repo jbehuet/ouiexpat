@@ -15,6 +15,6 @@
         </oe-light-card>
     </div>
     <div class="col s12 m8">
-        <oe-card-detail [entity]="blog" (onPostReview)="postReview($event)"></oe-card-detail>
+        <oe-card-detail [entity]="blog" (onPostReview)="postReview($event)" (onDeleteReview)="deleteReview($event)"></oe-card-detail>
     </div>
 </div>

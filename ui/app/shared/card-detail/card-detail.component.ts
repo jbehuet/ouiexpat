@@ -13,6 +13,8 @@ export class CardDetailComponent implements OnInit {
 
   @Input() entity: any;
   @Output() onPostReview: EventEmitter<any> = new EventEmitter();
+  @Output() onDeleteReview: EventEmitter<any> = new EventEmitter();
+  @Output() onEditReview: EventEmitter<any> = new EventEmitter();
   public currentUser: User;
   public currentReview: Review;
 
@@ -26,7 +28,7 @@ export class CardDetailComponent implements OnInit {
     );
   }
 
-  checkReviewNoWritten(): boolean{
+  checkReviewNoWritten(): boolean {
     if (!this.entity) return false
     return !this.entity.reviews.find(r => r.user._id === this.currentUser._id);
   }
@@ -34,6 +36,14 @@ export class CardDetailComponent implements OnInit {
   postReview(form: NgForm) {
     this.onPostReview.emit(form.value);
     form.reset();
+  }
+
+  deleteReview(review) {
+    this.onDeleteReview.emit(review);
+  }
+
+  editReview(review) {
+    this.onPostReview.emit(review);
   }
 
 }
