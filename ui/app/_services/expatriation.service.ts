@@ -1,12 +1,13 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
+import { Expatriation } from '../_interfaces/expatriation.interface';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ExpatriationService {
 
-    public expatriations: Array<any> = [];
+    public expatriations: Array<Expatriation> = [];
 
     constructor(private _http: Http) {
     }
