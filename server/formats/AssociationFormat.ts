@@ -6,7 +6,7 @@ export default class AssociationFormat {
     _id: string;
     name: string;
     email: string;
-    photo: string;
+    image: string;
     link: string;
     likes:Array<string>;
     phone: PhoneFormat;

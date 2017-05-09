@@ -9,6 +9,7 @@ import ErrorHelper from '../helpers/ErrorHelper';
 import AssociationModel from '../models/AssociationModel';
 import AssociationFormat from '../formats/AssociationFormat';
 import UserModel from '../models/UserModel';
+import UserFormat from '../formats/UserFormat';
 import ReviewFormat from '../formats/ReviewFormat';
 import HistoryFormat from '../formats/HistoryFormat';
 
@@ -16,6 +17,8 @@ class AssociationRouter extends AbstractRouter {
 
   constructor() {
     super(AssociationModel)
+    this.router.post('/:association_id/favorites', this.addToFavorites.bind(this));
+    this.router.delete('/:association_id/favorites', this.removeFromFavorites.bind(this));
     this.router.post('/:association_id/like', this.like.bind(this));
     this.router.post('/:association_id/dislike', this.dislike.bind(this));
     this.router.post('/:association_id/reviews', this.updateOrCreateReview.bind(this));
@@ -77,21 +80,21 @@ class AssociationRouter extends AbstractRouter {
 
   private like(req: IRequest, res: Response, next: NextFunction) {
 
-    AssociationModel.findOne({ _id: req.params.association_id }).exec((err: mongoose.Error, assocation: AssociationFormat) => {
+    AssociationModel.findOne({ _id: req.params.association_id }).exec((err: mongoose.Error, association: AssociationFormat) => {
       if (err)
         ErrorHelper.handleMongooseError(err, res, req);
-      else if (!assocation) {
+      else if (!association) {
         res.status(HTTPCode.error.client.NOT_FOUND).json({ status: HTTPCode.error.client.NOT_FOUND });
       }
       else {
-        if (!assocation.likes.find(l => l === req.authenticatedUser._id)) {
-          assocation.likes.push(req.authenticatedUser._id);
-          assocation.save();
+        if (!association.likes.find(l => l === req.authenticatedUser._id)) {
+          association.likes.push(req.authenticatedUser._id);
+          association.save();
 
-          const history = <HistoryFormat>{ type: HistoryType.LIKES, details: assocation.name + " liké !" };
+          const history = <HistoryFormat>{ type: HistoryType.LIKES, details: association.name + " liké !" };
 
           UserModel.saveToHistory(req.authenticatedUser._id, history).then((user) => {
-            res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: { assocation, user } });
+            res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: { association, user } });
           }).catch(err => {
             ErrorHelper.handleMongooseError(err, res, req);
           })
@@ -105,20 +108,20 @@ class AssociationRouter extends AbstractRouter {
 
   private dislike(req: IRequest, res: Response, next: NextFunction) {
 
-    AssociationModel.findOne({ _id: req.params.association_id }).exec((err: mongoose.Error, assocation: AssociationFormat) => {
+    AssociationModel.findOne({ _id: req.params.association_id }).exec((err: mongoose.Error, association: AssociationFormat) => {
       if (err)
         ErrorHelper.handleMongooseError(err, res, req);
-      else if (!assocation) {
+      else if (!association) {
         res.status(HTTPCode.error.client.NOT_FOUND).json({ status: HTTPCode.error.client.NOT_FOUND });
       }
       else {
-        if (!assocation.likes.find(l => l === req.authenticatedUser._id)) {
+        if (!association.likes.find(l => l === req.authenticatedUser._id)) {
           res.status(HTTPCode.error.client.NOT_FOUND).json({ status: HTTPCode.error.client.NOT_FOUND });
         } else {
-          assocation.likes = assocation.likes.filter(l => l !== req.authenticatedUser._id);
-          assocation.save();
+          association.likes = association.likes.filter(l => l !== req.authenticatedUser._id);
+          association.save();
 
-          res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: assocation });
+          res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: association });
         }
       }
     })
@@ -169,6 +172,60 @@ class AssociationRouter extends AbstractRouter {
           association.reviews = association.reviews.filter(r => r.user.email !== req.authenticatedUser.email);
           association.save();
           res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: association });
+        }
+      });
+  }
+
+  private addToFavorites(req: IRequest, res: Response, next: NextFunction) {
+
+    UserModel.findOneAndUpdate({ _id: req.authenticatedUser._id },
+      { $push: { 'favorites.associations': req.params.association_id } }, { new: true }, (err: mongoose.Error, user: UserFormat) => {
+        if (err)
+          ErrorHelper.handleMongooseError(err, res, req);
+        else if (!user)
+          res.status(HTTPCode.error.client.NOT_FOUND).json({ status: HTTPCode.error.client.NOT_FOUND });
+        else {
+
+          AssociationModel.findOne({ _id: req.params.association_id }, (err: mongoose.Error, association: AssociationFormat) => {
+
+            if (err)
+              ErrorHelper.handleMongooseError(err, res, req);
+            else if (!association)
+              res.status(HTTPCode.error.client.NOT_FOUND).json({ status: HTTPCode.error.client.NOT_FOUND });
+            else {
+              const history = <HistoryFormat>{ type: HistoryType.FAVORITES, details: association.name + " ajouté aux favoris !" };
+
+              UserModel.saveToHistory(req.authenticatedUser._id, history).then((user) => {
+                res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user });
+              }).catch(err => {
+                ErrorHelper.handleMongooseError(err, res, req);
+              })
+            }
+          })
+
+        }
+      });
+  }
+
+  private removeFromFavorites(req: IRequest, res: Response, next: NextFunction) {
+
+    UserModel.findOneAndUpdate({ _id: req.authenticatedUser._id },
+      { $pull: { 'favorites.associations': req.params.association_id } }, { new: true }, (err: mongoose.Error, user: UserFormat) => {
+        if (err)
+          ErrorHelper.handleMongooseError(err, res, req);
+        else if (!user)
+          res.status(HTTPCode.error.client.NOT_FOUND).json({ status: HTTPCode.error.client.NOT_FOUND });
+        else {
+          AssociationModel.findOne({ _id: req.params.association_id }, (err: mongoose.Error, association: AssociationFormat) => {
+
+            if (err)
+              ErrorHelper.handleMongooseError(err, res, req);
+            else if (!association)
+              res.status(HTTPCode.error.client.NOT_FOUND).json({ status: HTTPCode.error.client.NOT_FOUND });
+            else {
+              res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user });
+            }
+          })
         }
       });
   }

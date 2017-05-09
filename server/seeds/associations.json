@@ -1,0 +1,57 @@
+[{
+    "name": "French Founders",
+    "link": "https://www.frenchfounders.com/",
+    "image": "/uploads/associations/FrenchFounders.png",
+    "details": "Fondé en 2014, FrenchFounders est le club business, next-generation des dirigeants et fondateurs Francophones - partout dans le monde.",
+    "reviews": [],
+    "likes": []
+  },
+  {
+    "name": "W Project",
+    "link": "http://www.wproject.fr/",
+    "image": "/uploads/associations/WProject.png",
+    "details": "La plate-forme de référence des entrepreneurs français de l'étranger* le tour du monde des entrepreneurs français de l’étranger. Chaque année, une ou plusieurs équipes de jeunes partent sur des thèmes différents avec pour objectif de mettre en avant cette diaspora française à l’étranger à travers des portraits vidéos d’entrepreneurs, des fiches pays et des reportages pays sur l’écosystème entrepreneurial local. En savoir plus sur https://start.lesechos.fr/travailler-a-letranger/temoignages-expats/mon-tour-du-monde-des-entrepreneurs-francais-621.php?m0cB5WOE47r8LudK.99",
+    "reviews": [],
+    "likes": []
+  },
+  {
+    "name": "CCI Paris IDF",
+    "link": "cci-paris-idf.fr",
+    "image": "/uploads/associations/CCI_IdF.png",
+    "details": "Une étude sur les entrepreneurs français à l'étranger par la CCI PARIS ILE DE France",
+    "reviews": [],
+    "likes": []
+  },
+  {
+    "name": "Girls in Tech",
+    "link": "girlsintech.org",
+    "image": "/uploads/associations/GirlsinTech.png",
+    "details": "Girls in Tech (GIT) is a global non-profit focused on the engagement, education and empowerment of girls and women who are passionate about technology. Adriana Gascoigne founded GIT in 2007 to create a support framework to help women advance their careers in STEM fields. Today, GIT aims to accelerate the growth of innovative women entering into the high - tech industry and building startups.We achieve this through the creation of proprietary, innovative programming and strategic global partnerships. With headquarters in San Francisco and more than 50,000 members located around the globe, GIT relies on volunteer efforts to lead each of the 60 local chapters.Programming and events vary by chapter based on local interests and needs. GIT is not just for professional women.We exist for anyone with an interest in technology, startups and providing women with a platform for growth.But we operate with the spirit of the girl within all of us— fearless, lively and determined.",
+    "reviews": [],
+    "likes": []
+  },
+  {
+    "name": "Mash-up",
+    "link": "mash-up.fr",
+    "image": "/uploads/associations/MashUp.png",
+    "details": "L’EVENEMENT DES ENTREPRENEURS PAR & POUR LES ETUDIANTS. Le Mash Up est l’ association de référence en France pour l’ organisation d’ événements promouvant l’ entrepreneuriat auprès des étudiants.",
+    "reviews": [],
+    "likes": []
+  },
+  {
+    "name": "La fusee",
+    "link": "lafusee.org",
+    "image": "/uploads/associations/LaFusee.png",
+    "details": "WoMen'Up - La Fusée accompagne des jeunes dans leur développement personnel et professionnel en leur permettant d’intégrer le premier Programme de Leadership à destination exclusive de la Génération Y : le Propulseur de Potentiels. Le Propulseur de Potentiels est un programme - incubateur de jeunes talents favorisant l’ émergence des leaders de demain, ambassadeurs d’ une vision équilibrée et mixte de la réussite.",
+    "reviews": [],
+    "likes": []
+  },
+  {
+    "name": "FemmeExpat",
+    "link": "femmexpat.com",
+    "image": "/uploads/associations/Femmexpat.png",
+    "details": "Expat Communication est le spécialiste des transitions internationales depuis 15 ans. Notre mission est de préparer les expatriés au départ et au retour d'expatriation, accompagner les carrières internationales, faire du coaching de vie et de carrière. Expat Communication est l'éditeur de femmexpat.",
+    "reviews": [],
+    "likes": []
+  }
+]

@@ -6,6 +6,7 @@ export interface Association {
     email: string;
     image: string;
     link: string;
+    likes:Array<string>;
     phone: any;
     details: string;
     services: Array<string>;

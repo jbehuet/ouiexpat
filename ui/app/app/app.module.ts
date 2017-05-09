@@ -39,6 +39,7 @@ import { ProfilPasswordComponent } from './profil/profil-password/profil-passwor
 import { FaqComponent } from './faq/faq.component';
 import { BlogDetailComponent } from './happyexpat/blogs/blog-detail/blog-detail.component';
 import { HappyexpatTabsComponent } from './happyexpat/happyexpat-tabs/happyexpat-tabs.component';
+import { AssociationDetailComponent } from './happyexpat/associations/association-detail/association-detail.component';
 
 @NgModule({
     imports: [
@@ -58,7 +59,8 @@ import { HappyexpatTabsComponent } from './happyexpat/happyexpat-tabs/happyexpat
                     { path: 'happyexpat', component: HappyexpatComponent, canActivate: [AuthGuard],
                         children: [
                             { path: '', component: HappyexpatTabsComponent, canActivate: [AuthGuard] },
-                            { path: 'blog/detail/:id', component: BlogDetailComponent, canActivate: [AuthGuard] }
+                            { path: 'blog/detail/:id', component: BlogDetailComponent, canActivate: [AuthGuard] },
+                            { path: 'association/detail/:id', component: AssociationDetailComponent, canActivate: [AuthGuard] }
                         ]},
                     { path: 'expatriations', component: ExpatriationsComponent, canActivate: [AuthGuard] },
                     {
@@ -83,7 +85,7 @@ import { HappyexpatTabsComponent } from './happyexpat/happyexpat-tabs/happyexpat
         WidgetFavorisComponent,
         MyneedsComponent, ChecklistsComponent, ListComponent,
         HappyexpatTabsComponent, HappyexpatComponent, BlogsComponent, BlogDetailComponent,
-        AssociationsComponent,
+        AssociationsComponent, AssociationDetailComponent,
         ExpatriationsComponent,
         ProfilComponent, ProfilMenuComponent, ProfilDetailsComponent, ProfilPasswordComponent,
         FaqComponent

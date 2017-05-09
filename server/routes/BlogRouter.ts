@@ -141,11 +141,11 @@ class BlogRouter extends AbstractRouter {
           let review = blog.reviews.find(r => r.user.email === req.authenticatedUser.email) || new ReviewFormat();
           let isNew = _.isEmpty(review.user)
 
-          UserModel.findOne({_id: req.authenticatedUser._id}, (err, user) => {
+          UserModel.findOne({ _id: req.authenticatedUser._id }, (err, user) => {
 
             review.user = user;
             review.review = req.body.review;
-            review.rate = req.body.rate ||  -1;
+            review.rate = req.body.rate || -1;
 
             if (isNew)
               blog.reviews.push(review);
@@ -155,7 +155,7 @@ class BlogRouter extends AbstractRouter {
               const history = <HistoryFormat>{ type: HistoryType.MESSAGE, details: "Commentaires ajouté à " + blog.name };
 
               UserModel.saveToHistory(req.authenticatedUser._id, history).then((user) => {
-                res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: {blog, user} });
+                res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: { blog, user } });
               }).catch(err => {
                 ErrorHelper.handleMongooseError(err, res, req);
               })
@@ -189,7 +189,7 @@ class BlogRouter extends AbstractRouter {
           const history = <HistoryFormat>{ type: HistoryType.DELETE, details: "Commentaires supprimé de " + blog.name };
 
           UserModel.saveToHistory(req.authenticatedUser._id, history).then((user) => {
-            res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: {blog, user} });
+            res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: { blog, user } });
           }).catch(err => {
             ErrorHelper.handleMongooseError(err, res, req);
           })
@@ -212,6 +212,8 @@ class BlogRouter extends AbstractRouter {
 
             if (err)
               ErrorHelper.handleMongooseError(err, res, req);
+            else if (!blog)
+              res.status(HTTPCode.error.client.NOT_FOUND).json({ status: HTTPCode.error.client.NOT_FOUND });
             else {
               const history = <HistoryFormat>{ type: HistoryType.FAVORITES, details: blog.name + " ajouté aux favoris !" };
 
@@ -240,6 +242,8 @@ class BlogRouter extends AbstractRouter {
 
             if (err)
               ErrorHelper.handleMongooseError(err, res, req);
+            else if (!blog)
+              res.status(HTTPCode.error.client.NOT_FOUND).json({ status: HTTPCode.error.client.NOT_FOUND });
             else {
               res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user });
             }

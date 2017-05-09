@@ -16,6 +16,7 @@ import { AdminGuard } from './_guards/admin.guard';
 
 import { AuthenticationService } from './_services/authentication.service';
 import { ExpatriationService } from './_services/expatriation.service';
+import { AssociationService } from './_services/association.service';
 import { BlogService } from './_services/blog.service';
 
 import { RootComponent } from './root.component';
@@ -46,7 +47,7 @@ import { RootComponent } from './root.component';
         },
         AuthGuard, AdminGuard,
         RollbarService, CookieService, AuthenticationService,
-        ExpatriationService, BlogService],
+        AssociationService, ExpatriationService, BlogService],
     bootstrap: [RootComponent]
 })
 export class RootModule { }

@@ -11,6 +11,9 @@ const checklists = require('./checklists.json');
 import BlogModel from '../models/BlogModel';
 const blogs = require('./blogs.json');
 
+import AssociationModel from '../models/AssociationModel';
+const associations = require('./associations.json');
+
 
 export default class Seeds {
 
@@ -22,10 +25,11 @@ export default class Seeds {
         console.log('Seed : .. ');
         const chkP = this.seedCheckLists();
         const blogP = this.seedBlogs();
+        const associationP = this.seedAssociations();
 
 
         return this.getUsersCount().then(count => {
-            let promises = [chkP, blogP];
+            let promises = [chkP, blogP, associationP];
             if (count === 0) {
                 const userP = this.seedUsers();
                 promises.push(userP);
@@ -50,8 +54,6 @@ export default class Seeds {
                     resolve();
                 })
         })
-
-
     }
 
     private seedCheckLists() {
@@ -66,8 +68,6 @@ export default class Seeds {
                     resolve();
                 })
         })
-
-
     }
 
     private seedBlogs() {
@@ -82,8 +82,20 @@ export default class Seeds {
                     resolve();
                 })
         })
+    }
 
-
+    private seedAssociations() {
+        return new Promise((resolve, reject) => {
+            Promise.all(associations.map(association => this.findOrCreateAssociation(association)))
+                .then((associations) => {
+                    console.log('>> Associations ' + associations.filter(e => !!e).length + " created");
+                    resolve();
+                })
+                .catch((err) => {
+                    console.log(err);
+                    resolve();
+                })
+        })
     }
 
     private getUsersCount() {
@@ -117,7 +129,6 @@ export default class Seeds {
                     })
                 } else {
                     //exist
-                    console.log(">> User : " + user.email + " exist");
                     resolve()
                 }
             })
@@ -152,7 +163,6 @@ export default class Seeds {
                     })
                 } else {
                     //exist
-                    console.log(">> Checklists : " + checklist.type + " (" + (checklist.countryCode || "all") + ") exist");
                     resolve()
                 }
             })
@@ -180,7 +190,33 @@ export default class Seeds {
                     })
                 } else {
                     //exist
-                    console.log(">> Blogs : " + blog.name + " exist");
+                    resolve()
+                }
+            })
+        })
+    }
+
+    private findOrCreateAssociation(association) {
+        return new Promise((resolve, reject) => {
+            let query = {
+                name: association.name
+            };
+
+            AssociationModel.findOne(query).exec((err, doc) => {
+                if (err)
+                    reject(err);
+                else if (!doc) {
+                    //create
+                    AssociationModel.create(association, (err, doc) => {
+                        if (err)
+                            reject(err);
+                        else {
+                            console.log(">> Associations : " + doc.name + " created");
+                            resolve(doc)
+                        }
+                    })
+                } else {
+                    //exist
                     resolve()
                 }
             })

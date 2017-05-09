@@ -1,3 +1,11 @@
-<p>
-  associations works!
-</p>
+<div class="row">
+    <div class="col xs12 s12 m6 l4" *ngFor="let association of associations">
+       <oe-card [entity]="association"
+        [isFav]="isFav(association)"
+        [isLiked]="isLiked(association)"
+        (addOrRemoveToFavChange)="addOrRemoveToFav($event)"
+        (likeOrDislikeChange)="likeOrDislike($event)"
+        (seeDetailChange)="seeDetail($event)">
+       </oe-card>
+    </div>
+</div>
