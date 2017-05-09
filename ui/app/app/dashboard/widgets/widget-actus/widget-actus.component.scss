@@ -8,6 +8,16 @@
     &.widget-actus {
         padding: 0;
         padding-left: 10px;
+
+        &:before {
+            position: absolute;
+            top: 0;
+            left: 34px;
+            height: 100%;
+            width: 1px;
+            background-color: $line-color;
+            content: '';
+        }
     }
 }
 
@@ -17,21 +27,13 @@
     margin: 0;
     padding-top: 10px;
     height: 100%;
-
-    &:before {
-        position: absolute;
-        top: 0;
-        left: 30px;
-        height: 100%;
-        width: 1px;
-        background-color: $line-color;
-        content: '';
-    }
+    overflow: hidden;
+    overflow-y: auto;
 
     .list-actus-item {
         display: block;
         margin: 10px 0;
-        padding-left: 65px;
+        padding-left: 57px;
         padding-right: 25px;
         position: relative;
         width: 100%;
@@ -41,24 +43,31 @@
             font-family: ouiexpat;
             display: block;
             position: absolute;
-            left: 8px;
+            left: 5px;
             top: 0;
-            height: 44px;
-            width: 44px;
+            height: 40px;
+            width: 40px;
+            padding-left: 1px;
             border-radius: 100%;
             border: 2px solid $green-expat;
             background-color: white;
             content: '\e03c';
-            font-size: 24px;
+            font-size: 22px;
             color: $green-expat;
             text-align: center;
-            line-height: 42px;
+            line-height: 38px;
+        }
+
+        &:last-child {
+            .desc-actu {
+                border-bottom: 0;
+            }
         }
 
         .title-actu {
             display: block;
             width: 100%;
-            padding: 8px 0;
+            padding: 6px 0;
 
             i {
                 display: inline-block;
@@ -75,7 +84,7 @@
         }
 
         .desc-actu {
-            padding-bottom: 15px;
+            padding-bottom: 20px;
             border-bottom: 1px solid $line-color;
 
             .container-img {
@@ -95,7 +104,7 @@
                 margin-top: 0;
                 width: calc(100% - 74px);
                 font-size: 12px;
-                padding: 0 10px;
+                padding: 0 5px 0 10px;
             }
         }
     }
