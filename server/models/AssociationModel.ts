@@ -26,6 +26,7 @@ const _schema = new mongoose.Schema({
     },
     image: String,
     link: String,
+    likes: [String],
     phone: {
         number: {
             type: String,

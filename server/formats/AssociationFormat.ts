@@ -8,6 +8,7 @@ export default class AssociationFormat {
     email: string;
     photo: string;
     link: string;
+    likes:Array<string>;
     phone: PhoneFormat;
     address: AddressFormat;
     details: string;
