@@ -7,6 +7,13 @@
     </div>
     <div class="row">
       <ul class="left-menu col s12">
+        <li [class.selected]="section === 'confidentialite'" (click)="section = 'confidentialite'">
+          <div class="row no-margin">
+            <div class="col s8 info">
+              Confidentialité
+            </div>
+          </div>
+        </li>
         <li [class.selected]="section === 'cgu'" (click)="section = 'cgu'">
           <div class="row no-margin">
             <div class="col s8 info">
@@ -32,6 +39,102 @@
     </div>
   </div>
   <div class="col s12 m8  offset-m1">
+
+    <div class="row form-card list-collapse" [hidden]="section != 'confidentialite'">
+      <div class="col s12">
+
+        <div class="row no-margin">
+          <h1 class="col s12">Politique de confidentialité</h1>
+        </div>
+
+        <div class="row no-margin">
+          <div class="col s12">
+            <h4 class="subtitle"><span class="number">1.</span> Collecte de l’information</h4>
+          </div>
+        </div>
+
+        <div class="row">
+          <p>Nous recueillons des informations lorsque vous vous inscrivez sur notre site, lorsque vous vous connectez à votre compte, et / ou lorsque vous vous déconnectez. Les informations recueillies incluent votre nom, votre adresse e-mail, numéro de
+            téléphone. En outre, nous recevons et enregistrons automatiquement des informations à partir de votre ordinateur et navigateur, y compris votre adresse IP, vos logiciels et votre matériel, et la page que vous demandez.
+          </p>
+        </div>
+
+        <div class="row no-margin">
+          <div class="col s12">
+            <h4 class="subtitle"><span class="number">2.</span> Utilisation des informations</h4>
+          </div>
+        </div>
+
+        <div class="row">
+          <p>Toute les informations que nous recueillons auprès de vous peuvent être utilisées pour :</p>
+          <ul>
+            <li>- Personnaliser votre expérience et répondre à vos besoins individuels</li>
+            <li>- Fournir un contenu publicitaire personnalisé</li>
+            <li>- Améliorer notre site Web</li>
+            <li>- Améliorer le service client et vos besoins de prise en charge</li>
+            <li>- Vous contacter par e-mail</li>
+            <li>- Administrer un concours, une promotion, ou une enquête</li>
+          </ul>
+        </div>
+
+        <div class="row no-margin">
+          <div class="col s12">
+            <h4 class="subtitle"><span class="number">3.</span> Confidentialité du commerce en ligne</h4>
+          </div>
+        </div>
+
+        <div class="row">
+          <p>Nous sommes les seuls propriétaires des informations recueillies sur ce site. Vos informations personnelles ne seront pas vendues, échangées, transférées, ou données à une autre société pour n’importe quelle raison, sans votre consentement,
+            en dehors de ce qui est nécessaire pour répondre à une demande.
+          </p>
+        </div>
+
+        <div class="row no-margin">
+          <div class="col s12">
+            <h4 class="subtitle"><span class="number">4.</span> Divulgation à des tiers</h4>
+          </div>
+        </div>
+
+        <div class="row">
+          <p>Nous ne vendons, n’échangeons et ne transférons pas vos informations personnelles identifiables à des tiers. Cela ne comprend pas les tierce parties de confiance qui nous aident à exploiter notre site Web ou à mener nos affaires, tant que ces
+            parties conviennent de garder ces informations confidentielles. Nous pensons qu’il est nécessaire de partager des informations afin d’enquêter, de prévenir ou de prendre des mesures concernant des activités illégales, fraudes présumées, situations
+            impliquant des menaces potentielles à la sécurité physique de toute personne, violations de nos conditions d’utilisation, ou quand la loi nous y contraint.
+          </p>
+          <p>
+            Les informations non-privées, cependant, peuvent être fournies à d’autres parties pour le marketing, la publicité, ou d’autres utilisations.
+          </p>
+        </div>
+
+        <div class="row no-margin">
+          <div class="col s12">
+            <h4 class="subtitle"><span class="number">5.</span> Protection des informations</h4>
+          </div>
+        </div>
+
+        <div class="row">
+          <p>Nous mettons en œuvre une variété de mesures de sécurité pour préserver la sécurité de vos informations personnelles. Nous protégeons également vos informations hors ligne. Les ordinateurs et serveurs utilisés pour stocker des informations personnelles
+            identifiables sont conservés dans un environnement sécurisé. Est-ce que nous utilisons des cookies ?
+          </p>
+          <p>
+            Oui. Nos cookies améliorent l’accès à notre site et identifient les visiteurs réguliers. En outre, nos cookies améliorent l’expérience d’utilisateur grâce au suivi et au ciblage de ses intérêts. Cependant, cette utilisation des cookies n’est en aucune
+            façon liée à des informations personnelles identifiables sur notre site.
+          </p>
+        </div>
+
+        <div class="row no-margin">
+          <div class="col s12">
+            <h4 class="subtitle"><span class="number">6.</span> Consentement</h4>
+          </div>
+        </div>
+
+        <div class="row">
+          <p>En utilisant notre site, vous consentez à notre politique de confidentialité.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
     <div class="row form-card list-collapse" [hidden]="section != 'cgu'">
       <div class="col s12">
 
