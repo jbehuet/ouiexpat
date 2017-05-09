@@ -4,7 +4,12 @@
 .widget {
   padding: 0;
   min-height: 370px;
-  height: calc(100vh - 130px);
+  @media screen and (max-width:1920px) {
+    height: calc(100vh - 102px);
+  }
+  @media screen and (min-width:1920px) {
+    height: calc(100vh - 122px);
+  }
   overflow: hidden;
 
   .zone-infos-profil {
@@ -50,8 +55,7 @@
 
     .list-widget-profil {
       height: 100%;
-      padding: 24px;
-      padding-bottom: 15px;
+      padding: 24px 24px 15px;
       margin-top: 0;
       margin-bottom: 0;
       overflow: auto;
@@ -66,7 +70,8 @@
           margin-top: 0;
         }
 
-        .date-widget-profil, .text-widget-profil {
+        .date-widget-profil,
+        .text-widget-profil {
           padding-left: 70px;
         }
 
@@ -125,7 +130,8 @@
     background: $yellow;
   }
 
-  &.likes, &.message {
+  &.likes,
+  &.message {
     background: $blue;
   }
 
