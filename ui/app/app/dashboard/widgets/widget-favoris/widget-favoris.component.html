@@ -16,7 +16,7 @@
      <div class="widget widget-favoris form-card" *ngIf="!isEmpty()">
         <div class="row full-height no-margin">
             <ul class="list-favoris">
-                <li class="list-favoris-item" *ngFor="let favorite of user?.favorites.associations">
+                <li class="list-favoris-item" *ngFor="let favorite of user?.favorites.jobs">
                     <div class="type-content">
                         <img [src]="favorite.image || ''">
                         <span class="type">
@@ -44,7 +44,7 @@
                       <a routerLink="{{'/happyexpat/blog/detail/' + favorite._id}}" class="link secondary-text"><i class="icon-link"></i>Accéder au blog</a>
                   </div>
                 </li>
-                <li class="list-favoris-item" *ngFor="let favorite of user?.favorites.jobs">
+                <li class="list-favoris-item" *ngFor="let favorite of user?.favorites.associations">
                   <div class="type-content">
                       <img [src]="favorite.image || ''">
                       <span class="type">
@@ -55,7 +55,7 @@
                   </div>
                   <div class="desc-content s12">
                       <p class="desc">{{favorite.name}}</p>
-                      <a href="" class="link secondary-text"><i class="icon-link"></i>Accéder à la fiche</a>
+                      <a routerLink="{{'/happyexpat/association/detail/' + favorite._id}}" class="link secondary-text"><i class="icon-link"></i>Accéder à la fiche</a>
                   </div>
                 </li>
             </ul>
