@@ -26,8 +26,11 @@ import { ChecklistsComponent } from './myneeds/checklists/checklists.component';
 import { ListComponent } from './myneeds/checklists/list/list.component';
 
 import { HappyexpatComponent } from './happyexpat/happyexpat.component';
+import { HappyexpatTabsComponent } from './happyexpat/happyexpat-tabs/happyexpat-tabs.component';
 import { BlogsComponent } from './happyexpat/blogs/blogs.component';
+import { BlogDetailComponent } from './happyexpat/blogs/blog-detail/blog-detail.component';
 import { AssociationsComponent } from './happyexpat/associations/associations.component';
+import { AssociationDetailComponent } from './happyexpat/associations/association-detail/association-detail.component';
 
 import { ExpatriationsComponent } from './expatriations/expatriations.component';
 
@@ -37,9 +40,7 @@ import { ProfilDetailsComponent } from './profil/profil-details/profil-details.c
 import { ProfilPasswordComponent } from './profil/profil-password/profil-password.component';
 
 import { FaqComponent } from './faq/faq.component';
-import { BlogDetailComponent } from './happyexpat/blogs/blog-detail/blog-detail.component';
-import { HappyexpatTabsComponent } from './happyexpat/happyexpat-tabs/happyexpat-tabs.component';
-import { AssociationDetailComponent } from './happyexpat/associations/association-detail/association-detail.component';
+import { LegalComponent } from './legal/legal.component';
 
 @NgModule({
     imports: [
@@ -73,7 +74,8 @@ import { AssociationDetailComponent } from './happyexpat/associations/associatio
                             { path: 'password', component: ProfilPasswordComponent, canActivate: [AuthGuard] }
                         ]
                     },
-                    { path: 'faq', component: FaqComponent, canActivate: [AuthGuard] }
+                    { path: 'faq', component: FaqComponent, canActivate: [AuthGuard] },
+                    { path: 'mentions', component: LegalComponent, canActivate: [AuthGuard] }
                 ]
             }
         ])
@@ -88,7 +90,8 @@ import { AssociationDetailComponent } from './happyexpat/associations/associatio
         AssociationsComponent, AssociationDetailComponent,
         ExpatriationsComponent,
         ProfilComponent, ProfilMenuComponent, ProfilDetailsComponent, ProfilPasswordComponent,
-        FaqComponent
+        FaqComponent,
+        LegalComponent
     ]
 })
 export class AppModule { }
