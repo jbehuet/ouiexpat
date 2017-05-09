@@ -52,7 +52,7 @@
                 left: 0;
                 height: calc(100% + 1px);
                 width: 100%;
-                background-color: rgba(0, 0, 0, 0.4);
+                background-color: rgba(0, 0, 0, 0.6);
                 content: '';
                 z-index: 1;
                 @extend %transition;
