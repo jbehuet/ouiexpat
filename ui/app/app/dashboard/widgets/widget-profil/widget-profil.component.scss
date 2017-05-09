@@ -78,6 +78,25 @@
         .text-widget-profil {
           position: relative;
           animation: appearLeftFadeIn 440ms ease;
+          font-size: 12px;
+          white-space: nowrap;
+
+          .id-history, .type-history {
+            display: inline-block;
+            vertical-align: middle;
+            margin-top: 0;
+          }
+
+          .id-history {
+            max-width: 40%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+
+          .type-history {
+            width: 60%;
+          }
         }
       }
     }
