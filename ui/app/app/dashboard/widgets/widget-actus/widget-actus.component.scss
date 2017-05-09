@@ -4,4 +4,99 @@
 .widget {
     background: $white;
     height: calc(100vh - 380px);
+
+    &.widget-actus {
+        padding: 0;
+        padding-left: 10px;
+    }
+}
+
+
+.list-actus {
+    position: relative;
+    margin: 0;
+    padding-top: 10px;
+    height: 100%;
+
+    &:before {
+        position: absolute;
+        top: 0;
+        left: 30px;
+        height: 100%;
+        width: 1px;
+        background-color: $line-color;
+        content: '';
+    }
+
+    .list-actus-item {
+        display: block;
+        margin: 10px 0;
+        padding-left: 65px;
+        padding-right: 25px;
+        position: relative;
+        width: 100%;
+        min-height: 100px;
+
+        &:before {
+            font-family: ouiexpat;
+            display: block;
+            position: absolute;
+            left: 8px;
+            top: 0;
+            height: 44px;
+            width: 44px;
+            border-radius: 100%;
+            border: 2px solid $green-expat;
+            background-color: white;
+            content: '\e03c';
+            font-size: 24px;
+            color: $green-expat;
+            text-align: center;
+            line-height: 42px;
+        }
+
+        .title-actu {
+            display: block;
+            width: 100%;
+            padding: 8px 0;
+
+            i {
+                display: inline-block;
+                vertical-align: middle;
+                font-size: 24px;
+                margin-right: 5px;
+            }
+
+            .title-type-actu {
+                display: inline-block;
+                font-size: 16px;
+                font-weight: bold;
+            }
+        }
+
+        .desc-actu {
+            padding-bottom: 15px;
+            border-bottom: 1px solid $line-color;
+
+            .container-img {
+                display: inline-block;
+                vertical-align: top;
+                height: 60px;
+                width: 70px;
+                overflow: hidden;
+
+                img {
+                    height: 100%;
+                }
+            }
+
+            .text-desc-actu {
+                display: inline-block;
+                margin-top: 0;
+                width: calc(100% - 74px);
+                font-size: 12px;
+                padding: 0 10px;
+            }
+        }
+    }
 }
