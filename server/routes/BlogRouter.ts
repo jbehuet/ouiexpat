@@ -232,7 +232,11 @@ class BlogRouter extends AbstractRouter {
   private removeFromFavorites(req: IRequest, res: Response, next: NextFunction) {
 
     UserModel.findOneAndUpdate({ _id: req.authenticatedUser._id },
-      { $pull: { 'favorites.blogs': req.params.blog_id } }, { new: true }, (err: mongoose.Error, user: UserFormat) => {
+      { $pull: { 'favorites.blogs': req.params.blog_id } }, { new: true })
+      .populate('favorites.associations')
+      .populate('favorites.blogs')
+      .populate('favorites.jobs')
+      .exec((err: mongoose.Error, user: UserFormat) => {
         if (err)
           ErrorHelper.handleMongooseError(err, res, req);
         else if (!user)

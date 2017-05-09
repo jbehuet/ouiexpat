@@ -39,15 +39,15 @@ class UserRouter extends AbstractRouter {
     if (!req.authenticatedUser.administrator && req.authenticatedUser._id !== req.params.id) return ErrorHelper.handleError(HTTPCode.error.client.UNAUTHORIZED, 'Not authorize', res);
 
     UserModel.findById(req.params.id)
-    .populate('favorites.associations')
-    .populate('favorites.blogs')
-    .populate('favorites.jobs')
-    .exec((err: mongoose.Error, object: mongoose.Document) => {
-      if (err)
-        ErrorHelper.handleMongooseError(err, res, req);
-      else
-        res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: object });
-    });
+      .populate('favorites.associations')
+      .populate('favorites.blogs')
+      .populate('favorites.jobs')
+      .exec((err: mongoose.Error, object: mongoose.Document) => {
+        if (err)
+          ErrorHelper.handleMongooseError(err, res, req);
+        else
+          res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: object });
+      });
 
   }
 
@@ -64,14 +64,18 @@ class UserRouter extends AbstractRouter {
 
     UserModel.saveToHistory(req.authenticatedUser._id, history).then((user) => {
       req.body.history = user.history;
-      UserModel.findOneAndUpdate({ _id: req.authenticatedUser._id }, req.body, { new: true }, (err: mongoose.Error, user: UserFormat) => {
-        if (err)
-          ErrorHelper.handleMongooseError(err, res, req);
-        else {
-          const token = AuthRouter.generateToken({ _id: user._id, email: user.email, administrator: user.administrator });
-          res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user, token: token });
-        }
-      });
+      UserModel.findOneAndUpdate({ _id: req.authenticatedUser._id }, req.body, { new: true })
+        .populate('favorites.associations')
+        .populate('favorites.blogs')
+        .populate('favorites.jobs')
+        .exec((err: mongoose.Error, user: UserFormat) => {
+          if (err)
+            ErrorHelper.handleMongooseError(err, res, req);
+          else {
+            const token = AuthRouter.generateToken({ _id: user._id, email: user.email, administrator: user.administrator });
+            res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user, token: token });
+          }
+        });
     }).catch(err => {
       ErrorHelper.handleMongooseError(err, res, req);
     })
@@ -108,17 +112,21 @@ class UserRouter extends AbstractRouter {
 
       const history = <HistoryFormat>{ type: HistoryType.ACCOUNT, details: "Mise à jours du compte." };
 
-      UserModel.findOneAndUpdate({ _id: req.authenticatedUser._id }, { photo: 'uploads/users/' + fileName, $push: { history: history } }, { new: true }, (err: mongoose.Error, user: UserFormat) => {
-        if (err)
-          ErrorHelper.handleMongooseError(err, res, req);
-        else {
-          this._removePreviousMedia(uploadPath, fileName, req.authenticatedUser._id + "*").then(() => {
-            res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user });
-          }).catch(err => {
-            ErrorHelper.handleError(HTTPCode.error.server.INTERNAL_SERVER_ERROR, 'Oupss', res);
-          })
-        }
-      });
+      UserModel.findOneAndUpdate({ _id: req.authenticatedUser._id }, { photo: 'uploads/users/' + fileName, $push: { history: history } }, { new: true })
+        .populate('favorites.associations')
+        .populate('favorites.blogs')
+        .populate('favorites.jobs')
+        .exec((err: mongoose.Error, user: UserFormat) => {
+          if (err)
+            ErrorHelper.handleMongooseError(err, res, req);
+          else {
+            this._removePreviousMedia(uploadPath, fileName, req.authenticatedUser._id + "*").then(() => {
+              res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user });
+            }).catch(err => {
+              ErrorHelper.handleError(HTTPCode.error.server.INTERNAL_SERVER_ERROR, 'Oupss', res);
+            })
+          }
+        });
     }).on('error', (error) => {
       ErrorHelper.handleError(HTTPCode.error.server.INTERNAL_SERVER_ERROR, 'Oupss', res);
     });

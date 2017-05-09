@@ -32,7 +32,7 @@ export class BlogsComponent implements OnInit {
   }
 
   addOrRemoveToFav(blog) {
-    if (!!this.currentUser.favorites.blogs.find(e => e === blog._id)) {
+    if (!!this.currentUser.favorites.blogs.find(e => e._id === blog._id)) {
       this._blogService.removeFromFavorites(blog).subscribe(success => {
 
       }, (err) => {

@@ -33,7 +33,7 @@ export class AssociationsComponent implements OnInit {
   }
 
   addOrRemoveToFav(association) {
-    if (!!this.currentUser.favorites.blogs.find(e => e === association._id)) {
+    if (!!this.currentUser.favorites.associations.find(e => e._id === association._id)) {
       this._associationService.removeFromFavorites(association).subscribe(success => {
 
       }, (err) => {
