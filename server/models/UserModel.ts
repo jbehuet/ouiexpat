@@ -55,7 +55,7 @@ const _schema = new mongoose.Schema({
   favorites: {
     associations: [{
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'assocation'
+      ref: 'association'
     }],
     blogs: [{
       type: mongoose.Schema.Types.ObjectId,

@@ -64,6 +64,6 @@ const _schema = new mongoose.Schema({
         timestamps: true
     });
 
-const AssociationModel = mongoose.model<IAssociation>('assocation', _schema);
+const AssociationModel = mongoose.model<IAssociation>('association', _schema);
 
 export default AssociationModel;
