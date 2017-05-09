@@ -79,7 +79,11 @@ let UserModel = mongoose.model<IUser>('user', _schema);
 
 UserModel.saveToHistory = function(_id: String, history: HistoryFormat): Promise<any> {
   return new Promise((resolve, reject) => {
-    UserModel.findOneAndUpdate({ _id: _id }, { $push: { 'history': history } }, { new: true }, (err, user) => {
+    UserModel.findOneAndUpdate({ _id: _id }, { $push: { 'history': history } }, { new: true })
+    .populate('favorites.associations')
+    .populate('favorites.blogs')
+    .populate('favorites.jobs')
+    .exec((err, user) => {
       if (err)
         reject(err);
       else
