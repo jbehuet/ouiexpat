@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
+import { Expatriation } from '../../../_interfaces/expatriation.interface';
 
 @Component({
     selector: 'oe-checklists',
@@ -8,7 +9,7 @@ import { EventEmitter } from '@angular/core';
 })
 export class ChecklistsComponent implements OnInit {
 
-    @Input() expatriation: any;
+    @Input() expatriation: Expatriation;
     @Input() empty: boolean = false;
 
     @Output() listChange: EventEmitter<any> = new EventEmitter();
