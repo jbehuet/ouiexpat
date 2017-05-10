@@ -15,6 +15,7 @@ import ExpatriationRouter from './routes/ExpatriationRouter';
 import AssociationRouter from './routes/AssociationRouter';
 import ListRouter from './routes/ListRouter';
 import BlogRouter from './routes/BlogRouter';
+import JobRouter from './routes/JobRouter';
 
 class App {
 
@@ -50,6 +51,8 @@ class App {
         const expatriationRouter = new ExpatriationRouter();
         const listRouter = new ListRouter();
         const blogRouter = new BlogRouter();
+        const jobRouter = new JobRouter();
+
         this.express.use('/api', router);
         this.express.use('/api/v1/auth', authRouter.router);
         this.express.use('/api/v1/users', userRouter.router);
@@ -57,6 +60,7 @@ class App {
         this.express.use('/api/v1/expatriations', expatriationRouter.router);
         this.express.use('/api/v1/lists', listRouter.router);
         this.express.use('/api/v1/blogs', blogRouter.router);
+        this.express.use('/api/v1/jobs', jobRouter.router);
         //uploads
         this.express.use('/uploads', express.static('dist/server/uploads'));
         //Catch all other routes
