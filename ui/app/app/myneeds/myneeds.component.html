@@ -19,5 +19,6 @@
                   [expatriation]="expatSelected"
                   [empty]="(expatriations.length === 0)"
                   (listChange)="onListChange()"></oe-checklists>
-    <div id="jobs" class="col s12 tab-content">Nothing...</div>
+    <oe-jobs id="jobs" class="col s12 tab-content"
+                  [expatriation]="expatSelected"></oe-jobs>
 </div>

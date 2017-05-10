@@ -41,6 +41,7 @@ import { ProfilPasswordComponent } from './profil/profil-password/profil-passwor
 
 import { FaqComponent } from './faq/faq.component';
 import { LegalComponent } from './legal/legal.component';
+import { JobsComponent } from './myneeds/jobs/jobs.component';
 
 @NgModule({
     imports: [
@@ -91,7 +92,8 @@ import { LegalComponent } from './legal/legal.component';
         ExpatriationsComponent,
         ProfilComponent, ProfilMenuComponent, ProfilDetailsComponent, ProfilPasswordComponent,
         FaqComponent,
-        LegalComponent
+        LegalComponent,
+        JobsComponent
     ]
 })
 export class AppModule { }
