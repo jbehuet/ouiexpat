@@ -8,6 +8,7 @@ export interface Association {
     link: string;
     likes:Array<string>;
     phone: any;
+    address: any;
     details: string;
     services: Array<string>;
     platformReview: Review;
