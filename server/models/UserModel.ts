@@ -67,6 +67,7 @@ const _schema = new mongoose.Schema({
     {
       type: { type: String },
       date: { type: Date, default: Date.now },
+      object: String,
       details: String
     }
   ],

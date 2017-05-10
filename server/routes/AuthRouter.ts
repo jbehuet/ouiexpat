@@ -34,7 +34,7 @@ class AuthRouter {
     if (_.isEmpty(req.body.password)) return ErrorHelper.handleError(HTTPCode.error.client.BAD_REQUEST, 'Password is require', res);
 
     req.body.history = []
-    req.body.history.push({ type: HistoryType.ACCOUNT, details: "Création du compte." })
+    req.body.history.push({ type: HistoryType.ACCOUNT, object: "Profil", details: "créé !" })
 
     req.body.password = bcrypt.hashSync(req.body.password, 10);
     UserModel.create(req.body, (err: mongoose.Error, user: UserFormat) => {
@@ -120,7 +120,7 @@ class AuthRouter {
         const email = decoded.email;
         req.body.new_password = bcrypt.hashSync(req.body.new_password, 10);
 
-        const history = { type: HistoryType.ACCOUNT, details: "Mot de passe réinitialisé." };
+        const history = { type: HistoryType.ACCOUNT, object:"Compte", details: "mot de passe réinitialisé." };
         UserModel.findOneAndUpdate({ email: email }, { $set: { password: req.body.new_password, reset_token: '' }, $push: { history: history} }, { new: true })
           .exec((err: mongoose.Error, user: UserFormat) => {
             if (err)

@@ -84,7 +84,7 @@ class ExpatriationRouter extends AbstractRouter {
     req.body.owner = req.authenticatedUser._id;
     req.body.lists = req.body.lists || [];
 
-    const history = <HistoryFormat>{ type: HistoryType.EXPATRIATION, details: "Création de l'expatriation : " + req.body.location.name };
+    const history = <HistoryFormat>{ type: HistoryType.EXPATRIATION, object: req.body.location.name, details: "Expatriation créée !"};
     UserModel.saveToHistory(req.authenticatedUser._id, history).then((user) => {
       Promise.all(req.body.lists.map(list => this.findList(list, req.body.location.countryCode))).then((lists) => {
         req.body.lists = lists;
@@ -146,7 +146,7 @@ class ExpatriationRouter extends AbstractRouter {
       if (err)
         ErrorHelper.handleMongooseError(err, res, req);
       else {
-        const history = <HistoryFormat>{ type: HistoryType.DELETE, details: "Suppression de l'expatriation : " + expatriation.location.name };
+        const history = <HistoryFormat>{ type: HistoryType.DELETE, object: expatriation.location.name, details: "Expatriation supprimée !"};
 
         UserModel.saveToHistory(req.authenticatedUser._id, history).then((user) => {
           ExpatriationModel.findOneAndRemove(query, (err: mongoose.Error) => {

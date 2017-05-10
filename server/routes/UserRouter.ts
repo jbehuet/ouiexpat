@@ -60,7 +60,7 @@ class UserRouter extends AbstractRouter {
     // TODO Check current password
     if (req.body.password) req.body.password = bcrypt.hashSync(req.body.password, 10);
 
-    const history = <HistoryFormat>{ type: HistoryType.ACCOUNT, details: "Mise à jours du compte." };
+    const history = <HistoryFormat>{ type: HistoryType.ACCOUNT, object: "Profil", details: "mis à jours !" };
 
     UserModel.saveToHistory(req.authenticatedUser._id, history).then((user) => {
       req.body.history = user.history;
@@ -110,7 +110,7 @@ class UserRouter extends AbstractRouter {
       fs.renameSync(file.path, uploadPath + fileName);
     }).on('end', () => {
 
-      const history = <HistoryFormat>{ type: HistoryType.ACCOUNT, details: "Mise à jours du compte." };
+      const history = <HistoryFormat>{ type: HistoryType.ACCOUNT, object: "Profil", details: "mis à jours !" };
 
       UserModel.findOneAndUpdate({ _id: req.authenticatedUser._id }, { photo: 'uploads/users/' + fileName, $push: { history: history } }, { new: true })
         .populate('favorites.associations')

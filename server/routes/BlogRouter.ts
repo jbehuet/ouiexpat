@@ -91,7 +91,7 @@ class BlogRouter extends AbstractRouter {
           blog.likes.push(req.authenticatedUser._id);
           blog.save();
 
-          const history = <HistoryFormat>{ type: HistoryType.LIKES, details: blog.name + " liké !" };
+          const history = <HistoryFormat>{ type: HistoryType.LIKES, object: blog.name, details: "liké !" };
 
           UserModel.saveToHistory(req.authenticatedUser._id, history).then((user) => {
             res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: { blog, user } });
@@ -152,7 +152,7 @@ class BlogRouter extends AbstractRouter {
 
             blog.save();
             if (isNew) {
-              const history = <HistoryFormat>{ type: HistoryType.MESSAGE, details: "Commentaires ajouté à " + blog.name };
+              const history = <HistoryFormat>{ type: HistoryType.MESSAGE, object: blog.name, details: "commentaires ajouté !"};
 
               UserModel.saveToHistory(req.authenticatedUser._id, history).then((user) => {
                 res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: { blog, user } });
@@ -186,7 +186,7 @@ class BlogRouter extends AbstractRouter {
           blog.reviews = blog.reviews.filter(r => r.user.email !== req.authenticatedUser.email);
           blog.save();
 
-          const history = <HistoryFormat>{ type: HistoryType.DELETE, details: "Commentaires supprimé de " + blog.name };
+          const history = <HistoryFormat>{ type: HistoryType.DELETE, object:blog.name, details: "Commentaires supprimé !" };
 
           UserModel.saveToHistory(req.authenticatedUser._id, history).then((user) => {
             res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: { blog, user } });

@@ -91,7 +91,7 @@ class AssociationRouter extends AbstractRouter {
           association.likes.push(req.authenticatedUser._id);
           association.save();
 
-          const history = <HistoryFormat>{ type: HistoryType.LIKES, details: association.name + " liké !" };
+          const history = <HistoryFormat>{ type: HistoryType.LIKES, object: association.name, details: "liké !" };
 
           UserModel.saveToHistory(req.authenticatedUser._id, history).then((user) => {
             res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: { association, user } });
@@ -193,7 +193,7 @@ class AssociationRouter extends AbstractRouter {
             else if (!association)
               res.status(HTTPCode.error.client.NOT_FOUND).json({ status: HTTPCode.error.client.NOT_FOUND });
             else {
-              const history = <HistoryFormat>{ type: HistoryType.FAVORITES, details: association.name + " ajouté aux favoris !" };
+              const history = <HistoryFormat>{ type: HistoryType.FAVORITES, object: association.name, details: "ajouté aux favoris !" };
 
               UserModel.saveToHistory(req.authenticatedUser._id, history).then((user) => {
                 res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user });

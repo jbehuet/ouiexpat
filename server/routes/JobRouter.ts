@@ -78,7 +78,7 @@ class JobRouter extends AbstractRouter {
               else if (!job)
                 res.status(HTTPCode.error.client.NOT_FOUND).json({ status: HTTPCode.error.client.NOT_FOUND });
               else {
-                const history = <HistoryFormat>{ type: HistoryType.FAVORITES, details: job.title + " ajouté aux favoris !" };
+                const history = <HistoryFormat>{ type: HistoryType.FAVORITES, object: job.title, details: "ajouté aux favoris !" };
 
                 UserModel.saveToHistory(req.authenticatedUser._id, history).then((user) => {
                   res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK, data: user });
