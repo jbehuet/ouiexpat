@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { BlogService } from '../../../_services/blog.service';
 import { AuthenticationService } from '../../../_services/authentication.service';
 import { User } from '../../../_interfaces/user.interface';
+import { Blog } from '../../../_interfaces/blog.interface';
 import { ToastHelper } from '../../../_helpers/toast.helper';
 import { Router } from '@angular/router';
 
@@ -14,7 +15,7 @@ export class BlogsComponent implements OnInit {
 
   @Input() expatriation: any;
   private currentUser: User;
-  public blogs: Array<any> = [];
+  public blogs: Array<Blog> = [];
 
 
   constructor(private _blogService: BlogService,
