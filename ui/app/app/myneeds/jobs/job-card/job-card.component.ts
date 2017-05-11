@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Job } from '../../../../_interfaces/job.interface';
 
 @Component({
   selector: 'oe-job-card',
@@ -7,7 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class JobCardComponent implements OnInit {
 
-  @Input() job: any;
+  @Input() job: Job;
   @Input() isFav: boolean;
   @Output() addOrRemoveToFavChange: EventEmitter<any> = new EventEmitter();
 
