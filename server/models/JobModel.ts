@@ -30,6 +30,7 @@ const _schema = new mongoose.Schema({
     },
     image: String,
     link: String,
+    website: String,
     phone: {
         number: {
             type: String,

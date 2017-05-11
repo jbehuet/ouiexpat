@@ -9,6 +9,7 @@ export default class JobFormat {
   address: AddressFormat;
   image: string;
   link: string;
+  website: string;
   phone: PhoneFormat;
   contract: string;
   details: string;
