@@ -1,0 +1,44 @@
+@import '../../../../../styles/utils/placeholders';
+@import '../../../../../styles/utils/helpers';
+@import '../../../../../styles/utils/variables';
+
+.title {
+  color: $green;
+}
+
+.company{
+  color:$blue;
+}
+
+.list-expat-areas-item {
+    position: relative;
+    display: block;
+    height: 40px;
+    width: 40px;
+    margin-bottom: 15px;
+    line-height: 40px;
+    border-radius: 50%;
+    background-color: $green-expat;
+    color: $white;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.14);
+
+    &:last-child { margin-bottom: 0;}
+
+    a {
+      color: $white;
+      &:hover{
+        color:$yellow;
+        cursor: pointer;
+      }
+      i {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          height: auto;
+          display: inline-flex;
+          font-size: 20px;
+      }
+    }
+
+}

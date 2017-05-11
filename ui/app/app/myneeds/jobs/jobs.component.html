@@ -1,3 +1,19 @@
-<p>
-  jobs works!
-</p>
+<div class="row" *ngIf="jobs.length > 0">
+  <oe-job-card *ngFor="let job of jobs"
+               class="col xs12 s12 m12 l6"
+               [job]="job"
+               [isFav]="isFav(job)"
+               (addOrRemoveToFavChange)="addOrRemoveToFav($event)">
+  </oe-job-card>
+</div>
+
+<div *ngIf="jobs.length === 0">
+  <div class="row full-height valign-wrapper form-card infos-message">
+    <img src="assets/img/illu-search-no-result.png" alt="jobs">
+    <span class="col s12 valign text-message">
+      <div class="row">
+        <div class="col s12 center-align">Aucuns emplois dans notre base de donnée pour l’expatration selectionnée !</div>
+      </div>
+    </span>
+  </div>
+</div>

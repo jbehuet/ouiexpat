@@ -1,64 +1,65 @@
 <div>
-    <div class="row no-margin no-padding title">
-        <div class="col s12 no-padding"><i class="icon icon-star"></i> Favoris</div>
-    </div>
-    <div class="widget form-card empty-block" *ngIf="isEmpty()">
-        <div class="row full-height">
-            <div class="valign-wrapper full-height">
-                <div class="valign center-align empty-message">
-                    <div><i class="icon icon-information icon-gradient"></i></div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-            </div>
+  <div class="row no-margin no-padding title">
+    <div class="col s12 no-padding"><i class="icon icon-star"></i> Favoris</div>
+  </div>
+  <div class="widget form-card empty-block" *ngIf="isEmpty()">
+    <div class="row full-height">
+      <div class="valign-wrapper full-height">
+        <div class="valign center-align empty-message">
+          <div><i class="icon icon-information icon-gradient"></i></div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
         </div>
+      </div>
     </div>
+  </div>
 
-     <div class="widget widget-favoris form-card" *ngIf="!isEmpty()">
-        <div class="row full-height no-margin">
-            <ul class="list-favoris">
-                <li class="list-favoris-item" *ngFor="let favorite of user?.favorites.jobs">
-                    <div class="type-content">
-                        <img [src]="favorite.image || ''">
-                        <span class="type">
+  <div class="widget widget-favoris form-card" *ngIf="!isEmpty()">
+    <div class="row full-height no-margin">
+      <ul class="list-favoris">
+        <li class="list-favoris-item" *ngFor="let favorite of user?.favorites.jobs">
+          <div class="type-content">
+            <img [src]="favorite.image || ''">
+            <span class="type">
                             <i class="icon-work"></i>
                             <h6>Emplois</h6>
                         </span>
-                        <i class="type-icon icon-star"></i>
-                    </div>
-                    <div class="desc-content">
-                        <p class="desc">{{favorite.name}}</p>
-                        <a href="" class="link secondary-text"><i class="icon-link"></i>Accéder à l'offre</a>
-                    </div>
-                </li>
-                <li class="list-favoris-item" *ngFor="let favorite of user?.favorites.blogs">
-                  <div class="type-content">
-                      <img [src]="favorite.image || ''">
-                      <span class="type">
+            <i class="type-icon icon-star"></i>
+          </div>
+          <div class="desc-content">
+            <p class="desc">{{favorite.title}}</p>
+            <a [href]="favorite.link" class="link secondary-text" *ngIf="favorite.link; else website"><i class="icon-link"></i>Accéder à l'offre</a>
+            <ng-template #website><a [href]="favorite.website" class="link secondary-text"><i class="icon-link"></i>Accéder au site</a></ng-template>
+          </div>
+        </li>
+        <li class="list-favoris-item" *ngFor="let favorite of user?.favorites.blogs">
+          <div class="type-content">
+            <img [src]="favorite.image || ''">
+            <span class="type">
                           <i class="icon-document"></i>
                           <h6>Blogs</h6>
                       </span>
-                      <i class="type-icon icon-star"></i>
-                  </div>
-                  <div class="desc-content s12">
-                      <p class="desc">{{favorite.name}}</p>
-                      <a routerLink="{{'/happyexpat/blog/detail/' + favorite._id}}" class="link secondary-text"><i class="icon-link"></i>Accéder au blog</a>
-                  </div>
-                </li>
-                <li class="list-favoris-item" *ngFor="let favorite of user?.favorites.associations">
-                  <div class="type-content">
-                      <img [src]="favorite.image || ''">
-                      <span class="type">
+            <i class="type-icon icon-star"></i>
+          </div>
+          <div class="desc-content s12">
+            <p class="desc">{{favorite.name}}</p>
+            <a routerLink="{{'/happyexpat/blog/detail/' + favorite._id}}" class="link secondary-text"><i class="icon-link"></i>Accéder au blog</a>
+          </div>
+        </li>
+        <li class="list-favoris-item" *ngFor="let favorite of user?.favorites.associations">
+          <div class="type-content">
+            <img [src]="favorite.image || ''">
+            <span class="type">
                           <i class="icon-store"></i>
                           <h6>Asso. et partenaires</h6>
                       </span>
-                      <i class="type-icon icon-star"></i>
-                  </div>
-                  <div class="desc-content s12">
-                      <p class="desc">{{favorite.name}}</p>
-                      <a routerLink="{{'/happyexpat/association/detail/' + favorite._id}}" class="link secondary-text"><i class="icon-link"></i>Accéder à la fiche</a>
-                  </div>
-                </li>
-            </ul>
-        </div>
+            <i class="type-icon icon-star"></i>
+          </div>
+          <div class="desc-content s12">
+            <p class="desc">{{favorite.name}}</p>
+            <a routerLink="{{'/happyexpat/association/detail/' + favorite._id}}" class="link secondary-text"><i class="icon-link"></i>Accéder à la fiche</a>
+          </div>
+        </li>
+      </ul>
     </div>
+  </div>
 </div>

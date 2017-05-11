@@ -21,9 +21,12 @@ import { WidgetExpatriationsComponent } from './dashboard/widgets/widget-expatri
 import { WidgetActusComponent } from './dashboard/widgets/widget-actus/widget-actus.component';
 import { WidgetFavorisComponent } from './dashboard/widgets/widget-favoris/widget-favoris.component';
 
+import { MyneedsTabsComponent } from './myneeds/myneeds-tabs/myneeds-tabs.component';
 import { MyneedsComponent } from './myneeds/myneeds.component';
 import { ChecklistsComponent } from './myneeds/checklists/checklists.component';
 import { ListComponent } from './myneeds/checklists/list/list.component';
+import { JobsComponent } from './myneeds/jobs/jobs.component';
+import { JobCardComponent } from './myneeds/jobs/job-card/job-card.component';
 
 import { HappyexpatComponent } from './happyexpat/happyexpat.component';
 import { HappyexpatTabsComponent } from './happyexpat/happyexpat-tabs/happyexpat-tabs.component';
@@ -41,59 +44,64 @@ import { ProfilPasswordComponent } from './profil/profil-password/profil-passwor
 
 import { FaqComponent } from './faq/faq.component';
 import { LegalComponent } from './legal/legal.component';
-import { JobsComponent } from './myneeds/jobs/jobs.component';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        MaterializeModule,
-        SharedModule,
-        RouterModule.forChild([
-            {
-                path: '',
-                component: AppComponent,
-                canActivate: [AuthGuard],
-                children: [
-                    { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-                    { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-                    { path: 'myneeds', component: MyneedsComponent, canActivate: [AuthGuard] },
-                    { path: 'happyexpat', component: HappyexpatComponent, canActivate: [AuthGuard],
-                        children: [
-                            { path: '', component: HappyexpatTabsComponent, canActivate: [AuthGuard] },
-                            { path: 'blog/detail/:id', component: BlogDetailComponent, canActivate: [AuthGuard] },
-                            { path: 'association/detail/:id', component: AssociationDetailComponent, canActivate: [AuthGuard] }
-                        ]},
-                    { path: 'expatriations', component: ExpatriationsComponent, canActivate: [AuthGuard] },
-                    {
-                        path: 'profil',
-                        component: ProfilComponent,
-                        canActivate: [AuthGuard],
-                        children: [
-                            { path: '', redirectTo: 'details', pathMatch: 'full' },
-                            { path: 'details', component: ProfilDetailsComponent, canActivate: [AuthGuard] },
-                            { path: 'password', component: ProfilPasswordComponent, canActivate: [AuthGuard] }
-                        ]
-                    },
-                    { path: 'faq', component: FaqComponent, canActivate: [AuthGuard] },
-                    { path: 'mentions', component: LegalComponent, canActivate: [AuthGuard] }
-                ]
-            }
-        ])
-    ],
-    declarations: [
-        DateFilterPipe, ReversePipe,
-        AppComponent, NavbarComponent, FooterComponent, DashboardComponent,
-        WidgetProfilComponent, WidgetExpatriationsComponent, WidgetActusComponent,
-        WidgetFavorisComponent,
-        MyneedsComponent, ChecklistsComponent, ListComponent,
-        HappyexpatTabsComponent, HappyexpatComponent, BlogsComponent, BlogDetailComponent,
-        AssociationsComponent, AssociationDetailComponent,
-        ExpatriationsComponent,
-        ProfilComponent, ProfilMenuComponent, ProfilDetailsComponent, ProfilPasswordComponent,
-        FaqComponent,
-        LegalComponent,
-        JobsComponent
-    ]
+  imports: [
+    CommonModule,
+    FormsModule,
+    MaterializeModule,
+    SharedModule,
+    RouterModule.forChild([
+      {
+        path: '',
+        component: AppComponent,
+        canActivate: [AuthGuard],
+        children: [
+          { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+          { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+          {
+            path: 'myneeds', component: MyneedsComponent, canActivate: [AuthGuard],
+            children: [
+              { path: '', component: MyneedsTabsComponent, canActivate: [AuthGuard] },
+            ]
+          },
+          {
+            path: 'happyexpat', component: HappyexpatComponent, canActivate: [AuthGuard],
+            children: [
+              { path: '', component: HappyexpatTabsComponent, canActivate: [AuthGuard] },
+              { path: 'blog/detail/:id', component: BlogDetailComponent, canActivate: [AuthGuard] },
+              { path: 'association/detail/:id', component: AssociationDetailComponent, canActivate: [AuthGuard] }
+            ]
+          },
+          { path: 'expatriations', component: ExpatriationsComponent, canActivate: [AuthGuard] },
+          {
+            path: 'profil',
+            component: ProfilComponent,
+            canActivate: [AuthGuard],
+            children: [
+              { path: '', redirectTo: 'details', pathMatch: 'full' },
+              { path: 'details', component: ProfilDetailsComponent, canActivate: [AuthGuard] },
+              { path: 'password', component: ProfilPasswordComponent, canActivate: [AuthGuard] }
+            ]
+          },
+          { path: 'faq', component: FaqComponent, canActivate: [AuthGuard] },
+          { path: 'mentions', component: LegalComponent, canActivate: [AuthGuard] }
+        ]
+      }
+    ])
+  ],
+  declarations: [
+    DateFilterPipe, ReversePipe,
+    AppComponent, NavbarComponent, FooterComponent, DashboardComponent,
+    WidgetProfilComponent, WidgetExpatriationsComponent, WidgetActusComponent,
+    WidgetFavorisComponent,
+    MyneedsTabsComponent, MyneedsComponent, ChecklistsComponent, ListComponent,
+    JobsComponent, JobCardComponent,
+    HappyexpatTabsComponent, HappyexpatComponent, BlogsComponent, BlogDetailComponent,
+    AssociationsComponent, AssociationDetailComponent,
+    ExpatriationsComponent,
+    ProfilComponent, ProfilMenuComponent, ProfilDetailsComponent, ProfilPasswordComponent,
+    FaqComponent, LegalComponent
+  ]
 })
 export class AppModule { }

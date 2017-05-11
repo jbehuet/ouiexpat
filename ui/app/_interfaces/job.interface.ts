@@ -7,6 +7,7 @@ export interface Job {
   address: any;
   image: string;
   link: string;
+  website: string;
   phone: any;
   contract: string;
   details: string;

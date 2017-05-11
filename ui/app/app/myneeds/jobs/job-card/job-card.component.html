@@ -1,0 +1,61 @@
+<div class="card">
+  <div class="card-content">
+    <div class="row">
+      <div class="col m3 hide-on-small-only">
+        <img src="/assets/img/no-img-rounded.png" alt="">
+      </div>
+      <div class="col s9 m6">
+        <div class="row no-margin">
+          <div class="col s12 title">{{job.title}}</div>
+        </div>
+        <div class="row no-margin">
+          <div class="col s6 right-align">Type de contrat :</div>
+          <div class="col s6 highlight-text-bold">{{job.contract}}</div>
+        </div>
+        <div class="row no-margin">
+          <div class="col s6 right-align">Société :</div>
+          <div class="col s6 highlight-text-bold company">{{job.company}}</div>
+        </div>
+        <div class="row no-margin">
+          <div class="col s6 right-align">Posté le :</div>
+          <div class="col s6 highlight-text-bold">{{job.createdAt | date: 'dd/MM/yyyy'}}</div>
+        </div>
+      </div>
+      <div class="col s3">
+        <span class="btn-fav right" [class.active]="isFav" (click)="addOrRemoveToFav(job)">
+          <span class="animation-fav"></span>
+        <i class="icon icon-star"></i>
+        </span>
+      </div>
+    </div>
+    <div class="row no-margin">
+      <div class="col s3">
+        <div class="row">
+          <ul class="col s6 offset-s3">
+            <li class="list-expat-areas-item" [hidden]="!job.phone">
+              <a (click)="call()"><i class="icon icon-phone"></i></a>
+            </li>
+            <li class="list-expat-areas-item" [hidden]="!job.email">
+              <a (click)="mailTo()"><i class="icon icon-mail"></i></a>
+            </li>
+            <li class="list-expat-areas-item" [hidden]="!job.website">
+              <a (click)="visit()"><i class="icon icon-link"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col s9">
+        <div class="row">
+          <div class="col s12">
+            {{job.details}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-action">
+    <div class="row no-margin-bottom">
+      <button class="btn btn-validate waves-effect col s5 offset-s7" (click)="visit(job)" [disabled]="!job.link">Site de l'annonce</button>
+    </div>
+  </div>
+</div>
