@@ -28,7 +28,7 @@ const _schema = new mongoose.Schema({
         type: { type: String, default: 'Point' }
       }
     },
-    image: String,
+    image: {type: String, default: '/assets/img/no-img-rounded.png'},
     link: String,
     website: String,
     phone: {
