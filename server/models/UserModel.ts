@@ -61,7 +61,10 @@ const _schema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: 'blog'
     }],
-    jobs: []
+    jobs: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'job'
+    }]
   },
   history: [
     {
