@@ -1,0 +1,26 @@
+#toast-container {
+  width: 100%;
+  max-width: inherit;
+  left: 0;
+  top: 64px;
+  z-index: 1;
+
+  @media screen and (max-width: 600px) {
+    top: inherit;
+    left: inherit;
+  }
+
+  .toast {
+    display: inline-block;
+    width: 100%;
+    margin-top: 0;
+    border-radius: 0;
+    float: inherit;
+    text-align: center;
+
+    &.red { background-color: $red-expat !important;}
+    &.green { background-color: $green-expat !important;}
+    &.orange { background-color: $yellow-expat !important;}
+    &.blue { background-color: $blue-expat !important;}
+  }
+}
