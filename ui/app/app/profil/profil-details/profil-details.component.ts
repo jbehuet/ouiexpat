@@ -46,14 +46,18 @@ export class ProfilDetailsComponent implements OnInit {
     const fileList: FileList = event.target.files;
     if(fileList.length > 0) {
         const file: File = fileList[0];
-        let formData:FormData = new FormData();
-        formData.append('avatar', file, file.name);
-        this._authenticationService.uploadMedia(formData)
-        .then((user) => {
-            //OK
-        }).catch((err) => {
-          ToastHelper.displayError(err);
-        });
+        if (file.size / 1024 <= 2048){
+          let formData:FormData = new FormData();
+          formData.append('avatar', file, file.name);
+          this._authenticationService.uploadMedia(formData)
+          .then((user) => {
+              //OK
+          }).catch((err) => {
+            ToastHelper.displayError(err);
+          });
+        } else {
+          ToastHelper.displayWarning('Votre image est trop grande (taille maximale 2Mo)');
+        }
     }
   }
 
