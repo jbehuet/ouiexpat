@@ -55,9 +55,9 @@ export class InterceptedHttp extends Http {
           return Observable.empty();
         } else if (error.status == 504) {
           this._router.navigate(['/auth/login']);
-          return Observable.throw(error.statusText);
+          return Observable.throw(error.json().message || error.statusText);
         } else {
-          return Observable.throw(error.statusText);
+          return Observable.throw(error.json().message || error.statusText);
         }
       } else {
         return Observable.throw(error);
