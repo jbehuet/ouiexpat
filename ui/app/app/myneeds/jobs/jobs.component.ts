@@ -31,7 +31,7 @@ export class JobsComponent implements OnInit {
   }
 
   addOrRemoveToFav(job) {
-    if (!!this.currentUser.favorites.blogs.find(e => e._id === job._id)) {
+    if (!!this.currentUser.favorites.jobs.find(e => e._id === job._id)) {
       this._jobService.removeFromFavorites(job).subscribe(success => {
 
       }, (err) => {
