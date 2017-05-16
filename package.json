@@ -15,6 +15,9 @@
     "postinstall": "npm run build"
   },
   "private": true,
+  "engines": {
+    "node": "6"
+  },
   "dependencies": {
     "@angular/common": "4.0.0",
     "@angular/compiler": "4.0.0",
@@ -58,9 +61,7 @@
     "places.js": "^1.4.12",
     "rollbar": "^0.6.5",
     "rxjs": "5.1.0",
-    "zone.js": "0.8.4"
-  },
-  "devDependencies": {
+    "zone.js": "0.8.4",
     "@angular/cli": "1.0.0",
     "@angular/compiler-cli": "4.0.0",
     "@types/jasmine": "2.5.38",
@@ -77,5 +78,8 @@
     "node-sass": "^4.5.2",
     "ts-node": "~2.0.0",
     "typescript": "~2.2.0"
+  },
+  "devDependencies": {
+
   }
 }
