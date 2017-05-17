@@ -99,7 +99,8 @@ class AuthRouter {
           if (err)
             ErrorHelper.handleMongooseError(err, res, req);
           else {
-            this._mailer.send('Reset password', 'reset-password', { passwordResetUrl: CONFIG.url.reset_password + reset_token }, user.email);
+            const content = { userFullName: user.firstname + ' ' + user.lastname, passwordResetUrl: CONFIG.url.reset_password + reset_token };
+            this._mailer.send('Reset password', 'reset-password', content, user.email);
             res.status(HTTPCode.success.OK).json({ status: HTTPCode.success.OK });
           }
         })
