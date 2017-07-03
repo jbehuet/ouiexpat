@@ -33,7 +33,9 @@ class ListRouter extends AbstractRouter {
         if (!req.authenticatedUser.administrator) return ErrorHelper.handleError(HTTPCode.error.client.UNAUTHORIZED, 'Not authorize', res);
         if (_.isEmpty(req.body)) return ErrorHelper.handleError(HTTPCode.error.client.BAD_REQUEST, 'Request body is empty', res);
 
-        ListModel.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true }, (err: mongoose.Error, object: mongoose.Document) => {
+        // Fix error : mod on _id not allowed (mongodb < v2.6)
+        const data = _.omit(req.body,'_id');
+        ListModel.findOneAndUpdate({ _id: req.params.id }, data, { new: true }, (err: mongoose.Error, object: mongoose.Document) => {
             if (err)
                 ErrorHelper.handleMongooseError(err, res, req);
             else

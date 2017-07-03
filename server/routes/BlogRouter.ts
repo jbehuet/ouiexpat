@@ -56,7 +56,9 @@ class BlogRouter extends AbstractRouter {
     if (_.isEmpty(req.body)) return ErrorHelper.handleError(HTTPCode.error.client.BAD_REQUEST, 'Request body is empty', res);
     if (!req.authenticatedUser.administrator) return ErrorHelper.handleError(HTTPCode.error.client.UNAUTHORIZED, 'Not authorize', res);
 
-    BlogModel.findOneAndUpdate({ _id: req.params._id }, req.body, { new: true }, (err: mongoose.Error, blog: BlogFormat) => {
+    // Fix error : mod on _id not allowed (mongodb < v2.6)
+    const data = _.omit(req.body,'_id');
+    BlogModel.findOneAndUpdate({ _id: req.params._id }, data, { new: true }, (err: mongoose.Error, blog: BlogFormat) => {
       if (err)
         ErrorHelper.handleMongooseError(err, res, req);
       else

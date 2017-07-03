@@ -76,7 +76,9 @@ class AbstractRouter {
     }
 
     protected update(req: IRequest, res: Response, next: NextFunction) {
-        this.model.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true }, (err: mongoose.Error, object: mongoose.Document) => {
+        // Fix error : mod on _id not allowed (mongodb < v2.6)
+        const data = _.omit(req.body,'_id');
+        this.model.findOneAndUpdate({ _id: req.params.id }, data, { new: true }, (err: mongoose.Error, object: mongoose.Document) => {
             if (err)
                 ErrorHelper.handleMongooseError(err, res, req);
             else

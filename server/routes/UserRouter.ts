@@ -64,7 +64,10 @@ class UserRouter extends AbstractRouter {
 
     UserModel.saveToHistory(req.authenticatedUser._id, history).then((user) => {
       req.body.history = user.history;
-      UserModel.findOneAndUpdate({ _id: req.authenticatedUser._id }, req.body, { new: true })
+
+      // Fix error : mod on _id not allowed (mongodb < v2.6)
+      const data = _.omit(req.body,'_id');
+      UserModel.findOneAndUpdate({ _id: req.authenticatedUser._id }, data, { new: true })
         .populate('favorites.associations')
         .populate('favorites.blogs')
         .populate('favorites.jobs')

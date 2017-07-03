@@ -120,7 +120,9 @@ class ExpatriationRouter extends AbstractRouter {
 
     Promise.all(req.body.lists.map(list => this.findList(list, req.body.location.countryCode))).then((lists: Array<any>) => {
       req.body.lists = lists.filter(l => !l.hasOwnProperty('remove') || !l.remove);
-      ExpatriationModel.findOneAndUpdate(query, req.body, { new: true },
+      // Fix error : mod on _id not allowed (mongodb < v2.6)
+      const data = _.omit(req.body,'_id');
+      ExpatriationModel.findOneAndUpdate(query, data, { new: true },
         (err: mongoose.Error, expatriation: ExpatriationFormat) => {
           if (err)
             ErrorHelper.handleMongooseError(err, res, req);

@@ -55,7 +55,9 @@ class AssociationRouter extends AbstractRouter {
     if (_.isEmpty(req.body)) return ErrorHelper.handleError(HTTPCode.error.client.BAD_REQUEST, 'Request body is empty', res);
     if (!req.authenticatedUser.administrator) return ErrorHelper.handleError(HTTPCode.error.client.UNAUTHORIZED, 'Not authorize', res);
 
-    AssociationModel.findOneAndUpdate({ _id: req.params._id }, req.body, { new: true }, (err: mongoose.Error, association: AssociationFormat) => {
+    // Fix error : mod on _id not allowed (mongodb < v2.6)
+    const data = _.omit(req.body,'_id');
+    AssociationModel.findOneAndUpdate({ _id: req.params._id }, data, { new: true }, (err: mongoose.Error, association: AssociationFormat) => {
       if (err)
         ErrorHelper.handleMongooseError(err, res, req);
       else
