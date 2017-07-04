@@ -1,9 +1,12 @@
+import * as dotenv from 'dotenv';
 import * as http from 'http';
 import * as mongoose from 'mongoose';
 import App from './App';
 import CONFIG from './config';
 import Seeds from './seeds'
 
+// Load configuration
+dotenv.config({path: './dist/server/.env'});
 
 const port = normalizePort(CONFIG.port || 3000);
 const app = new App().express;

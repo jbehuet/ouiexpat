@@ -19,7 +19,7 @@ const CONFIG = {
         }
     },
     url:{
-      reset_password:'https://ouiexpat.herokuapp.com/auth/reset_password/'
+      reset_password:process.env.RESET_URL || 'https://ouiexpat.herokuapp.com/auth/reset_password/'
     }
 };
 
