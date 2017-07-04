@@ -1,3 +1,7 @@
+import * as dotenv from 'dotenv';
+// LOAD DOTENV CONFIGURATION
+dotenv.config({path: './dist/server/.env'});
+
 const CONFIG = {
     rollbar: process.env.ROLLBAR_API || '',
     port: process.env.PORT || 3000,
@@ -19,8 +23,10 @@ const CONFIG = {
         }
     },
     url:{
-      reset_password:process.env.RESET_URL || 'https://ouiexpat.herokuapp.com/auth/reset_password/'
+      reset_password:process.env.RESET_URL || 'http://localhost:4200/auth/reset_password/'
     }
 };
+
+console.log(CONFIG.rollbar);
 
 export default CONFIG
