@@ -43,7 +43,7 @@
     "@types/nodemailer-smtp-transport": "^1.0.29",
     "angular-rollbar": "0.0.1",
     "angular2-materialize": "^6.7.2",
-    "bcrypt": "1.0.2",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "1.17.1",
     "concurrently": "3.4.0",
     "core-js": "2.4.1",
