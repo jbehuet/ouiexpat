@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { MaterializeModule } from 'angular2-materialize';
 import { SharedModule } from '../shared/shared.module';
 
+import { AuthGuard } from '../_guards/auth.guard';
 import { AdminGuard } from '../_guards/admin.guard';
 
 import { AdminComponent } from './admin.component';
@@ -20,6 +21,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
           {
               path: 'admin',
               component: AdminComponent,
+              canActivate: [AuthGuard],
               children: [
                   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
                   { path: 'dashboard', component: DashboardComponent, canActivate: [AdminGuard] }

@@ -8,10 +8,11 @@ export class AdminGuard implements CanActivate {
     constructor(private _router: Router, private _authenticationService: AuthenticationService) { }
 
     canActivate() {
-      if (this._authenticationService.user.administrator)
-      return true
+      if (!this._authenticationService.checkValidSession()) {
+        this._router.navigate(['/']);
+        return false;
+      }
 
-      this._router.navigate(['/']);
-      return false;
+      return this._authenticationService.payload.administrator;
     }
 }

@@ -15,6 +15,9 @@ export class AdminComponent implements OnInit {
 
   ngOnInit() {
     this.user = this._authenticationService.user;
+    this._authenticationService.userChange.subscribe(
+        user => this.user = user
+    );
   }
 
 }

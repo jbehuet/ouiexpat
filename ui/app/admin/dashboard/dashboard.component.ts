@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { StatisticService } from '../../_services/statistics.service';
+import { ToastHelper } from '../../_helpers/toast.helper';
 
 @Component({
   selector: 'oe-dashboard',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  public statistics:any;
+
+  constructor(private _statisticService: StatisticService) { }
 
   ngOnInit() {
+      this.statistics = this._statisticService.statistics;
+      this._load();
+  }
+
+  private _load() {
+      this._statisticService.getAll().subscribe(statistics => {
+          this.statistics = statistics;
+      }, (err) => {
+          ToastHelper.displayError(err);
+      })
   }
 
 }

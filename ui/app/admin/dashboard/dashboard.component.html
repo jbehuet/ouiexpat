@@ -2,8 +2,8 @@
     <div class="col s12 m6 l6">
         <div class="card">
             <div class="card-content black-text">
-                <p><i class="icon icon-user-group"></i> Nouveaux utilisateurs</p>
-                <h4 class="card-stats-number">56</h4>
+                <p><i class="icon icon-user-group"></i> Utilisateurs</p>
+                <h4 class="card-stats-number">{{ statistics.users?.count.total }}</h4>
                 <p class="card-stats-compare"><i class="icon icon-chevron-up"></i> 15% <span>que le mois précédent</span>
                 </p>
             </div>
@@ -12,8 +12,8 @@
     <div class="col s12 m6 l6">
         <div class="card">
             <div class="card-content black-text">
-                <p><i class="icon icon-location"></i> Nouvelles expatriations</p>
-                <h4 class="card-stats-number">1990</h4>
+                <p><i class="icon icon-location"></i> Expatriations</p>
+                <h4 class="card-stats-number">{{ statistics.expatriations?.count.total }}</h4>
                 <p class="card-stats-compare"><i class="icon icon-chevron-up"></i> 70% <span>que le mois précédent</span>
                 </p>
             </div>

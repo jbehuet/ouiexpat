@@ -19,6 +19,7 @@ import { ExpatriationService } from './_services/expatriation.service';
 import { AssociationService } from './_services/association.service';
 import { BlogService } from './_services/blog.service';
 import { JobService } from './_services/job.service';
+import { StatisticService } from './_services/statistics.service';
 
 import { RootComponent } from './root.component';
 
@@ -49,7 +50,7 @@ import { RootComponent } from './root.component';
     AuthGuard, AdminGuard,
     RollbarService, CookieService, AuthenticationService,
     AssociationService, ExpatriationService, BlogService,
-    JobService],
+    JobService, StatisticService],
   bootstrap: [RootComponent]
 })
 export class RootModule { }
