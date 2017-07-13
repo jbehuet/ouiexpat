@@ -16,7 +16,8 @@
   },
   "private": true,
   "engines": {
-    "node": "6"
+    "node": "6",
+    "npm": "*"
   },
   "dependencies": {
     "@angular/cli": "1.0.0",
