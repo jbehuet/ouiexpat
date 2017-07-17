@@ -2,7 +2,7 @@ import * as mongoose from 'mongoose';
 import {Router, Response, NextFunction} from 'express';
 import * as _ from 'lodash';
 import * as jwt from 'jsonwebtoken';
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from 'bcrypt-nodejs';
 import CONFIG from '../config';
 import HTTPCode from '../constants/HttpCodeConstant';
 import HistoryType from '../constants/HistoryTypeConstant';

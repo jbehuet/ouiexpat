@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
 import * as _ from 'lodash';
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from 'bcrypt-nodejs';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as formidable from 'formidable';
