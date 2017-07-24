@@ -38,7 +38,7 @@ class App {
 
     console.log(`Server Mode : ${this.express.get('env')}`)
     if (this.express.get('env') === 'production')
-    this.express.use(express.static(path.join(__dirname, '../client')));
+    this.express.use(express.static(__dirname + '/../client/'));
 
     this.rollbarHelper = RollbarHelper.getInstance();
     this.express.use(rollbar.errorHandler(CONFIG.rollbar))
@@ -65,7 +65,7 @@ class App {
     this.express.use('/api/v1/jobs', jobRouter.router);
     this.express.use('/api/v1/statistics', statisticRouter.router);
     //uploads
-    this.express.use('/uploads', express.static('dist/server/uploads'));
+    this.express.use('/uploads', express.static(__dirname + '/uploads'));
     //Catch all other routes
     this.express.get('*', (req, res) => {
       res.sendFile(path.join(__dirname, '../client/index.html'));
