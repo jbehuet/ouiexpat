@@ -38,7 +38,7 @@ class App {
 
     console.log(`Server Mode : ${this.express.get('env')}`)
     if (this.express.get('env') === 'production')
-      this.express.use(express.static('dist/client'));
+    this.express.use(express.static(path.join(__dirname, '../client')));
 
     this.rollbarHelper = RollbarHelper.getInstance();
     this.express.use(rollbar.errorHandler(CONFIG.rollbar))
