@@ -36,7 +36,7 @@ class AuthRouter {
     req.body.history = []
     req.body.history.push({ type: HistoryType.ACCOUNT, object: "Profil", details: "créé !" })
 
-    req.body.password = bcrypt.hashSync(req.body.password, 10);
+    req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
     UserModel.create(req.body, (err: mongoose.Error, user: UserFormat) => {
       if (err)
         ErrorHelper.handleMongooseError(err, res, req);
