@@ -38,10 +38,11 @@ class App {
 
     console.log(`Server Mode : ${this.express.get('env')}`)
     if (this.express.get('env') === 'production')
-    this.express.use(express.static(__dirname + '/../client/'));
+      this.express.use(express.static(__dirname + '/../client/'));
 
     this.rollbarHelper = RollbarHelper.getInstance();
-    this.express.use(this.rollbarHelper.errorHandler);
+    if (this.rollbarHelper.enabled)
+      this.express.use(rollbar.errorHandler(CONFIG.rollbar));
   }
 
   private routes(): void {

@@ -11,7 +11,7 @@
     "server:static": "cp -r ./server/uploads dist/server/ && cp -r ./server/templates dist/server/ && cp ./server/seeds/*.json dist/server/seeds/",
     "server:build": "tsc -p ./server && npm run server:static",
     "client:run": "ng serve --proxy-config proxy.conf.json",
-    "dev": "concurrently --kill-others \"ng serve --aot=true --progress=false --proxy-config proxy.conf.json\" \"npm run server:run\"",
+    "dev": "concurrently --kill-others \"ng serve --progress=false --proxy-config proxy.conf.json\" \"npm run server:run\"",
     "postinstall": "npm run build"
   },
   "private": true,

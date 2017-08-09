@@ -27,6 +27,4 @@ const CONFIG = {
     }
 };
 
-console.log(CONFIG.rollbar);
-
 export default CONFIG

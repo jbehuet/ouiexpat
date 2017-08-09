@@ -6,15 +6,12 @@ class RollbarHelper {
 
     private static _instance: RollbarHelper = new RollbarHelper();
     public enabled: boolean = false;
-    public errorHandler;
 
     constructor() {
         console.log('Rollbar : ' + (CONFIG.rollbar ||  'disabled'));
         this.enabled = CONFIG.rollbar;
-        if (this.enabled){
+        if (this.enabled)
             rollbar.init(CONFIG.rollbar, { environment: process.env.NODE_ENV });
-            this.errorHandler = rollbar.errorHandler(CONFIG.rollbar);
-        }
     }
 
     public static getInstance(): RollbarHelper {
