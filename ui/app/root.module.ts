@@ -1,6 +1,6 @@
 import { CookieService } from 'ng2-cookies';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 import { HttpModule, Http, XHRBackend, RequestOptions } from '@angular/http';
 import { RollbarModule, RollbarService } from 'angular-rollbar/lib/';
@@ -47,8 +47,12 @@ import { RootComponent } from './root.component';
       useFactory: httpFactory,
       deps: [XHRBackend, RequestOptions, CookieService, Router]
     },
+    {
+      provide: ErrorHandler,
+      useClass: RollbarService
+    },
     AuthGuard, AdminGuard,
-    RollbarService, CookieService, AuthenticationService,
+    CookieService, AuthenticationService,
     AssociationService, ExpatriationService, BlogService,
     JobService, StatisticService],
   bootstrap: [RootComponent]

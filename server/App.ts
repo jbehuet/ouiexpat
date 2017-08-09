@@ -41,7 +41,7 @@ class App {
     this.express.use(express.static(__dirname + '/../client/'));
 
     this.rollbarHelper = RollbarHelper.getInstance();
-    this.express.use(rollbar.errorHandler(CONFIG.rollbar))
+    this.express.use(this.rollbarHelper.errorHandler);
   }
 
   private routes(): void {
@@ -66,6 +66,7 @@ class App {
     this.express.use('/api/v1/statistics', statisticRouter.router);
     //uploads
     this.express.use('/uploads', express.static(__dirname + '/uploads'));
+
     //Catch all other routes
     this.express.get('*', (req, res) => {
       res.sendFile(path.join(__dirname, '../client/index.html'));
