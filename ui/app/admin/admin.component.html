@@ -30,6 +30,7 @@
                 <a class="waves-effect waves-grey" routerLink="/admin/users" routerLinkActive="current">
                     <i class="material-icons">perm_identity</i>
                     <span>Utilisateurs</span>
+                    <span class="indicator">{{ statistics.users?.count.total }}</span>
                 </a>
             </li>
             <li>
@@ -42,12 +43,14 @@
                 <a class="waves-effect waves-grey">
                     <i class="material-icons">description</i>
                     <span>Blogs</span>
+                    <span class="indicator">{{ statistics.blogs?.count.total }}</span>
                 </a>
             </li>
             <li>
                 <a class="waves-effect waves-grey">
                     <i class="material-icons">store</i>
                     <span>Associations</span>
+                    <span class="indicator">{{ statistics.associations?.count.total }}</span>
                 </a>
             </li>
             <li>

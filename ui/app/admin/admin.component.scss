@@ -1,6 +1,5 @@
 @import '../../styles/utils/placeholders';
 @import '../../styles/utils/variables';
-
 nav {
     background: $white;
     font-family: $capriola;
@@ -12,7 +11,8 @@ header,
 main {
     padding-left: 240px;
 }
-@media only screen and (max-width : 992px) {
+
+@media only screen and (max-width: 992px) {
     footer,
     header,
     main {
@@ -22,34 +22,28 @@ main {
 
 ul.side-nav {
     background-color: $white;
-
     li {
         border-bottom: 1px solid $line-color;
-
         &:first-child {
             padding: 0 32px;
         }
-
         .chip {
             background: $linear-gradient left bottom rgba(0, 0, 0, 0) repeat-x;
         }
-
         .current {
             background: $linear-gradient left bottom rgba(0, 0, 0, 0) no-repeat;
             background-size: 3px 100%;
             background-position: center left;
             color: $blue;
-
             i {
                 color: $blue;
             }
         }
-
         a {
+            padding: 0 0 0 32px;
             font-size: 13px;
             background-color: $white;
             color: $text-color;
-
             &:hover {
                 @extend %transition;
                 background: $linear-gradient left bottom rgba(0, 0, 0, 0) no-repeat;
@@ -57,11 +51,19 @@ ul.side-nav {
                 background-position: center left;
             }
         }
-
         a,
         a:focus,
         a:visited {
             background-color: $white;
+        }
+        .indicator {
+            width: 36px;
+            line-height: 36px;
+            padding: 8px;
+            background: $blue;
+            color: $white;
+            text-align: center;
+            float: right;
         }
     }
 }
